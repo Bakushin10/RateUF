@@ -75,6 +75,11 @@ class Add extends React.Component {
                 messageFromServer: response.data
             });
         });
+
+        //set the state back to null
+        this.setState({ profName: '' });
+        this.setState({ course: '' });
+        this.setState({ major: '' });
     }
 
     handleTextChange(e) {

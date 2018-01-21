@@ -29485,6 +29485,10 @@ var Add = function (_React$Component) {
                     messageFromServer: response.data
                 });
             });
+
+            this.setState({ profName: '' });
+            this.setState({ course: '' });
+            this.setState({ major: '' });
         }
     }, {
         key: 'handleTextChange',
