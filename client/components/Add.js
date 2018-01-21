@@ -80,6 +80,7 @@ class Add extends React.Component {
         this.setState({ profName: '' });
         this.setState({ course: '' });
         this.setState({ major: '' });
+        
     }
 
     handleTextChange(e) {
