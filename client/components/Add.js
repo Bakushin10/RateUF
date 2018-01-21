@@ -30,8 +30,8 @@ class Add extends React.Component {
         this.onClick = this.onClick.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
         this.insertNewExpense = this.insertNewExpense.bind(this);
-        this.warningOff = this.warningOff.bind(this);
-        this.warningOn = this.warningOn.bind(this);
+        this.warning = this.warning.bind(this);
+        this.getSubmitButton = this.getSubmitButton.bind(this);
     }
 
     componentDidMount() {
@@ -97,51 +97,39 @@ class Add extends React.Component {
             this.setState({ major: e.target.value })
     }
     
-    warningOff(){
-        return (<WarningOff>text</WarningOff>);
+    warning(givenState){
+        if(givenState){
+            return (<WarningOff>text</WarningOff>);
+        }
+        else{
+            return (<WarningOn>Text required</WarningOn>);
+        }
     }
-    warningOn(){
-        return (<WarningOn>Text required</WarningOn>);
+
+    getSubmitButton(){
+        const checkListForWarning = 
+        [
+            this.state.profName,
+            this.state.course,
+            this.state.major
+        ]
+        const allFieldChecked = !checkListForWarning.includes('');
+
+        if(allFieldChecked){
+            return (<Button bsStyle="success" bsSize="small" 
+                    onClick={this.onClick}>Add New Expense</Button>);
+        }else{
+            return (<Button color="danger" disabled = 'false'>cant submit</Button> );
+        }
     }
 
    render() {
 
-    let profWarning, courseWarning, majorWarning, allFieldEntered;
-    let submitButton;
-    const checkListForWarning = 
-    [
-        this.state.profName,
-        this.state.course,
-        this.state.major
-    ]
-    const allFieldChecked = !checkListForWarning.includes('');
+    const profWarning = this.warning(this.state.profName);
+    const courseWarning = this.warning(this.state.course);
+    const majorWarning = this.warning(this.state.major);
+    const submitButton = this.getSubmitButton();
 
-    if(this.state.profName){
-        profWarning = this.warningOff();
-    }else{
-        profWarning  = this.warningOn();
-    }
-
-    if(this.state.course){
-        courseWarning = this.warningOff();
-    }else{
-        courseWarning  = this.warningOn();
-    }
-
-    if(this.state.major){
-        majorWarning = this.warningOff();
-    }else{
-        majorWarning  = this.warningOn();
-    }
-
-    if(allFieldChecked){
-        submitButton = <Button bsStyle="success" bsSize="small" 
-                        onClick={this.onClick}>Add New Expense</Button>
-    }else{
-        submitButton = (<Button color="danger" disabled = 'false'>cant submit</Button> );
-    }
-
-    //if(this.state.messageFromServer == ''){
       return (
         <div className='button-center'>
             <div>
@@ -165,7 +153,6 @@ class Add extends React.Component {
             { submitButton }
         </div>
       )
-   //}
    }
 }
 export default Add;

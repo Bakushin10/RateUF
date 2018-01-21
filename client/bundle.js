@@ -29435,8 +29435,8 @@ var Add = function (_React$Component) {
         _this.onClick = _this.onClick.bind(_this);
         _this.handleTextChange = _this.handleTextChange.bind(_this);
         _this.insertNewExpense = _this.insertNewExpense.bind(_this);
-        _this.warningOff = _this.warningOff.bind(_this);
-        _this.warningOn = _this.warningOn.bind(_this);
+        _this.warning = _this.warning.bind(_this);
+        _this.getSubmitButton = _this.getSubmitButton.bind(_this);
         return _this;
     }
 
@@ -29504,69 +29504,52 @@ var Add = function (_React$Component) {
             if (e.target.name == "major") this.setState({ major: e.target.value });
         }
     }, {
-        key: 'warningOff',
-        value: function warningOff() {
-            return _react2.default.createElement(
-                WarningOff,
-                null,
-                'text'
-            );
+        key: 'warning',
+        value: function warning(givenState) {
+            if (givenState) {
+                return _react2.default.createElement(
+                    WarningOff,
+                    null,
+                    'text'
+                );
+            } else {
+                return _react2.default.createElement(
+                    WarningOn,
+                    null,
+                    'Text required'
+                );
+            }
         }
     }, {
-        key: 'warningOn',
-        value: function warningOn() {
-            return _react2.default.createElement(
-                WarningOn,
-                null,
-                'Text required'
-            );
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-
-            var profWarning = void 0,
-                courseWarning = void 0,
-                majorWarning = void 0,
-                allFieldEntered = void 0;
-            var submitButton = void 0;
+        key: 'getSubmitButton',
+        value: function getSubmitButton() {
             var checkListForWarning = [this.state.profName, this.state.course, this.state.major];
             var allFieldChecked = !checkListForWarning.includes('');
 
-            if (this.state.profName) {
-                profWarning = this.warningOff();
-            } else {
-                profWarning = this.warningOn();
-            }
-
-            if (this.state.course) {
-                courseWarning = this.warningOff();
-            } else {
-                courseWarning = this.warningOn();
-            }
-
-            if (this.state.major) {
-                majorWarning = this.warningOff();
-            } else {
-                majorWarning = this.warningOn();
-            }
-
             if (allFieldChecked) {
-                submitButton = _react2.default.createElement(
+                return _react2.default.createElement(
                     _reactBootstrap.Button,
                     { bsStyle: 'success', bsSize: 'small',
                         onClick: this.onClick },
                     'Add New Expense'
                 );
             } else {
-                submitButton = _react2.default.createElement(
+                return _react2.default.createElement(
                     _reactBootstrap.Button,
                     { color: 'danger', disabled: 'false' },
                     'cant submit'
                 );
             }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
 
-            //if(this.state.messageFromServer == ''){
+            var profWarning = this.warning(this.state.profName);
+            var courseWarning = this.warning(this.state.course);
+            var majorWarning = this.warning(this.state.major);
+            var submitButton = this.getSubmitButton();
+
             return _react2.default.createElement(
                 'div',
                 { className: 'button-center' },
@@ -29593,7 +29576,6 @@ var Add = function (_React$Component) {
                 ),
                 submitButton
             );
-            //}
         }
     }]);
 
