@@ -30,6 +30,8 @@ class Add extends React.Component {
         this.onClick = this.onClick.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
         this.insertNewExpense = this.insertNewExpense.bind(this);
+        this.warningOff = this.warningOff.bind(this);
+        this.warningOn = this.warningOn.bind(this);
     }
 
     componentDidMount() {
@@ -94,6 +96,13 @@ class Add extends React.Component {
         if(e.target.name == "major")
             this.setState({ major: e.target.value })
     }
+    
+    warningOff(){
+        return (<WarningOff>text</WarningOff>);
+    }
+    warningOn(){
+        return (<WarningOn>Text required</WarningOn>);
+    }
 
    render() {
 
@@ -108,28 +117,28 @@ class Add extends React.Component {
     const allFieldChecked = !checkListForWarning.includes('');
 
     if(this.state.profName){
-        profWarning = (<WarningOff>text</WarningOff>);
+        profWarning = this.warningOff();
     }else{
-        profWarning  = (<WarningOn>Text required</WarningOn>);
+        profWarning  = this.warningOn();
     }
 
     if(this.state.course){
-        courseWarning = (<WarningOff>text</WarningOff>);
+        courseWarning = this.warningOff();
     }else{
-        courseWarning  = (<WarningOn>Text required</WarningOn>);
+        courseWarning  = this.warningOn();
     }
 
     if(this.state.major){
-        majorWarning = (<WarningOff>text</WarningOff>);
+        majorWarning = this.warningOff();
     }else{
-        majorWarning  = (<WarningOn>Text required</WarningOn>);
+        majorWarning  = this.warningOn();
     }
 
     if(allFieldChecked){
         submitButton = <Button bsStyle="success" bsSize="small" 
                         onClick={this.onClick}>Add New Expense</Button>
     }else{
-        submitButton = (<button disabled = 'false'>submit</button> );
+        submitButton = (<Button color="danger" disabled = 'false'>cant submit</Button> );
     }
 
     //if(this.state.messageFromServer == ''){

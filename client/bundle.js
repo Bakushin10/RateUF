@@ -29435,6 +29435,8 @@ var Add = function (_React$Component) {
         _this.onClick = _this.onClick.bind(_this);
         _this.handleTextChange = _this.handleTextChange.bind(_this);
         _this.insertNewExpense = _this.insertNewExpense.bind(_this);
+        _this.warningOff = _this.warningOff.bind(_this);
+        _this.warningOn = _this.warningOn.bind(_this);
         return _this;
     }
 
@@ -29502,6 +29504,24 @@ var Add = function (_React$Component) {
             if (e.target.name == "major") this.setState({ major: e.target.value });
         }
     }, {
+        key: 'warningOff',
+        value: function warningOff() {
+            return _react2.default.createElement(
+                WarningOff,
+                null,
+                'text'
+            );
+        }
+    }, {
+        key: 'warningOn',
+        value: function warningOn() {
+            return _react2.default.createElement(
+                WarningOn,
+                null,
+                'Text required'
+            );
+        }
+    }, {
         key: 'render',
         value: function render() {
 
@@ -29514,45 +29534,21 @@ var Add = function (_React$Component) {
             var allFieldChecked = !checkListForWarning.includes('');
 
             if (this.state.profName) {
-                profWarning = _react2.default.createElement(
-                    WarningOff,
-                    null,
-                    'text'
-                );
+                profWarning = this.warningOff();
             } else {
-                profWarning = _react2.default.createElement(
-                    WarningOn,
-                    null,
-                    'Text required'
-                );
+                profWarning = this.warningOn();
             }
 
             if (this.state.course) {
-                courseWarning = _react2.default.createElement(
-                    WarningOff,
-                    null,
-                    'text'
-                );
+                courseWarning = this.warningOff();
             } else {
-                courseWarning = _react2.default.createElement(
-                    WarningOn,
-                    null,
-                    'Text required'
-                );
+                courseWarning = this.warningOn();
             }
 
             if (this.state.major) {
-                majorWarning = _react2.default.createElement(
-                    WarningOff,
-                    null,
-                    'text'
-                );
+                majorWarning = this.warningOff();
             } else {
-                majorWarning = _react2.default.createElement(
-                    WarningOn,
-                    null,
-                    'Text required'
-                );
+                majorWarning = this.warningOn();
             }
 
             if (allFieldChecked) {
@@ -29564,9 +29560,9 @@ var Add = function (_React$Component) {
                 );
             } else {
                 submitButton = _react2.default.createElement(
-                    'button',
-                    { disabled: 'false' },
-                    'submit'
+                    _reactBootstrap.Button,
+                    { color: 'danger', disabled: 'false' },
+                    'cant submit'
                 );
             }
 
