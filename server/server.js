@@ -13,6 +13,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
 
 mongoose.connect('mongodb://admin:rateUFadmin@ds261247.mlab.com:61247/rateuf');
+//test
 
 app.use('/', router);
 
