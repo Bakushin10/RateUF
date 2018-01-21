@@ -29486,6 +29486,7 @@ var Add = function (_React$Component) {
                 });
             });
 
+            //set the state back to null
             this.setState({ profName: '' });
             this.setState({ course: '' });
             this.setState({ major: '' });
