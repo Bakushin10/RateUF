@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+
+import ShowClassDetail from './ShowClassDetail';
 var querystring = require('querystring');
 
 
@@ -23,8 +25,10 @@ class Add extends React.Component {
         profName: '',
         course: '',
         major: '',
-        year: '',
-        messageFromServer: ''
+        year: '2016',
+        month: 'Jan',
+        messageFromServer: '',
+        data: []
       }
         this.handleSelectChange = this.handleSelectChange.bind(this);
         this.onClick = this.onClick.bind(this);
@@ -32,17 +36,17 @@ class Add extends React.Component {
         this.insertNewExpense = this.insertNewExpense.bind(this);
         this.warning = this.warning.bind(this);
         this.getSubmitButton = this.getSubmitButton.bind(this);
+        this.getData = this.getData.bind(this);
     }
 
     componentDidMount() {
-        this.setState({
-            month: this.props.selectedMonth
-        });
-        this.setState({
-            year: this.props.selectedYear
-        });
-    
+        this.getData(this, '2016');
     }
+
+    componentWillReceiveProps(){
+
+    }
+
     handleSelectChange(e) {
         if (e.target.name == 'month') {
             this.setState({
@@ -58,6 +62,17 @@ class Add extends React.Component {
 
     onClick(e) {
         this.insertNewExpense(this);
+        this.getData(this, '2016');
+        console.log("this.state.data");
+        console.log(this.state.data);
+    }
+
+    getData(ev, year){
+        axios.get('/getAll?month=All&year='+year)
+          .then(function(response) {
+            console.log("response data === ");
+            ev.setState({data:response.data})
+          });
     }
 
     insertNewExpense(e) {
@@ -86,7 +101,6 @@ class Add extends React.Component {
     }
 
     handleTextChange(e) {
-        console.log(e.target.value);
         if(e.target.name == "profName")
             this.setState({ profName: e.target.value })
         
@@ -119,12 +133,11 @@ class Add extends React.Component {
             return (<Button bsStyle="success" bsSize="small" 
                     onClick={this.onClick}>Add New Expense</Button>);
         }else{
-            return (<Button color="danger" disabled = 'false'>cant submit</Button> );
+            return (<Button color="danger" disabled>cant submit</Button> );
         }
     }
 
    render() {
-
     const profWarning = this.warning(this.state.profName);
     const courseWarning = this.warning(this.state.course);
     const majorWarning = this.warning(this.state.major);
@@ -151,6 +164,9 @@ class Add extends React.Component {
             </div>    
                 
             { submitButton }
+            <div>
+                <ShowClassDetail {...this.state} />
+            </div>
         </div>
       )
    }
