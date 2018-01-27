@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var Expense = require('../../models/Expense');
+var Professor = require('../../models/Prof');
 
 router.get('/', function(req, res){
   res.render('index')
@@ -48,6 +49,20 @@ router.get('/delete', function(req, res){
     })
 });
 
+router.get('/getProfByMajor',function(req, res) {
+    var majorRec = req.query.major;
+    console.log("majorRec")
+    console.log(req.query.major);
+ 
+    Professor.find({}, function(err, professor) {
+        if (err)
+            res.send(err);
+        console.log(professor)
+        res.json(professor);
+    });
+
+});
+
 router.get('/getAll',function(req, res) {
     var monthRec = req.query.month;
     var yearRec = req.query.year;
@@ -56,14 +71,14 @@ router.get('/getAll',function(req, res) {
         if (err)
             res.send(err);
         res.json(expenses);
-  });
- } else {
-    Expense.find({year: yearRec}, function(err, expenses) {
-        if (err)
-            res.send(err);
-        res.json(expenses);
     });
- }
+    } else {
+        Expense.find({year: yearRec}, function(err, expenses) {
+            if (err)
+                res.send(err);
+            res.json(expenses);
+        });
+    }
 });
 
 module.exports = router;

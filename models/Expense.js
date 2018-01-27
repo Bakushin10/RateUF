@@ -11,16 +11,3 @@ var expenseSchema = new Schema({
 });
 
 module.exports = mongoose.model('Expense', expenseSchema);
-
-
-/*
-
-
-  description: String,
-  amount: Number,
-  month: String,
-  year: Number
-
-
-  
-*/

@@ -1,12 +1,13 @@
 //client/components/Add.js
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import { Button, ButtonToolbar, DropdownButton, MenuItem } from 'react-bootstrap';
 import Modal from 'react-modal';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import ShowClassDetail from './ShowClassDetail';
+
 var querystring = require('querystring');
 
 
@@ -28,7 +29,8 @@ class Add extends React.Component {
         year: '2016',
         month: 'Jan',
         messageFromServer: '',
-        data: []
+        data: [],
+        selectedMajor: "CS"
       }
         this.handleSelectChange = this.handleSelectChange.bind(this);
         this.onClick = this.onClick.bind(this);
@@ -37,6 +39,7 @@ class Add extends React.Component {
         this.warning = this.warning.bind(this);
         this.getSubmitButton = this.getSubmitButton.bind(this);
         this.getData = this.getData.bind(this);
+        this.getProfByMajor = this.getProfByMajor.bind(this);
     }
 
     componentDidMount() {
@@ -65,6 +68,26 @@ class Add extends React.Component {
         this.getData(this, '2016');
         console.log("this.state.data");
         console.log(this.state.data);
+    }
+
+    onClickMenuItem(e, major){
+        console.log("dropdown");
+        console.log(this.state.selectedMajor)        
+        console.log(major);
+        
+        if(this.state.selectedMajor != major){
+            this.setState({selectedMajor: major});
+            this.getProfByMajor(this, major);
+        }
+    }
+
+    getProfByMajor(ev, major){
+        axios.get('/getProfByMajor?major='+major)
+          .then(function(response) {
+            console.log("getProfByMajor === ");
+            console.log(response.data);
+            //ev.setState({data:response.data})
+          });
     }
 
     getData(ev, year){
@@ -147,6 +170,20 @@ class Add extends React.Component {
         <div className='button-center'>
             <div>
                { profWarning }
+               <ButtonToolbar>
+                    <DropdownButton
+                        bsStyle="default"
+                        title="No caret"
+                        noCaret
+                        id="dropdown-no-caret"
+                    >
+                        <MenuItem onClick = { (e) => this.onClickMenuItem(e,"CS")} >CS</MenuItem>
+                        <MenuItem onClick = { (e) => this.onClickMenuItem(e,"ECE")} >ECE</MenuItem>
+                        <MenuItem onClick = { (e) => this.onClickMenuItem(e,"MATH")} >MATH</MenuItem>
+                        <MenuItem divider />
+                        <MenuItem eventKey="4">Separated link</MenuItem>
+                    </DropdownButton>
+                </ButtonToolbar>
                <input ref= {this.state.profName.value} onChange = { this.handleTextChange } 
                 type = "text" name = "profName" value = {this.state.profName} placeholder = "prof name "/>
             </div>

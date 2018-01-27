@@ -8695,7 +8695,8 @@ var Add = function (_React$Component) {
             year: '2016',
             month: 'Jan',
             messageFromServer: '',
-            data: []
+            data: [],
+            selectedMajor: "CS"
         };
         _this.handleSelectChange = _this.handleSelectChange.bind(_this);
         _this.onClick = _this.onClick.bind(_this);
@@ -8704,6 +8705,7 @@ var Add = function (_React$Component) {
         _this.warning = _this.warning.bind(_this);
         _this.getSubmitButton = _this.getSubmitButton.bind(_this);
         _this.getData = _this.getData.bind(_this);
+        _this.getProfByMajor = _this.getProfByMajor.bind(_this);
         return _this;
     }
 
@@ -8736,6 +8738,27 @@ var Add = function (_React$Component) {
             this.getData(this, '2016');
             console.log("this.state.data");
             console.log(this.state.data);
+        }
+    }, {
+        key: 'onClickMenuItem',
+        value: function onClickMenuItem(e, major) {
+            console.log("dropdown");
+            console.log(this.state.selectedMajor);
+            console.log(major);
+
+            if (this.state.selectedMajor != major) {
+                this.setState({ selectedMajor: major });
+                this.getProfByMajor(this, major);
+            }
+        }
+    }, {
+        key: 'getProfByMajor',
+        value: function getProfByMajor(ev, major) {
+            _axios2.default.get('/getProfByMajor?major=' + major).then(function (response) {
+                console.log("getProfByMajor === ");
+                console.log(response.data);
+                //ev.setState({data:response.data})
+            });
         }
     }, {
         key: 'getData',
@@ -8819,6 +8842,8 @@ var Add = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             var profWarning = this.warning(this.state.profName);
             var courseWarning = this.warning(this.state.course);
             var majorWarning = this.warning(this.state.major);
@@ -8831,6 +8856,46 @@ var Add = function (_React$Component) {
                     'div',
                     null,
                     profWarning,
+                    _react2.default.createElement(
+                        _reactBootstrap.ButtonToolbar,
+                        null,
+                        _react2.default.createElement(
+                            _reactBootstrap.DropdownButton,
+                            {
+                                bsStyle: 'default',
+                                title: 'No caret',
+                                noCaret: true,
+                                id: 'dropdown-no-caret'
+                            },
+                            _react2.default.createElement(
+                                _reactBootstrap.MenuItem,
+                                { onClick: function onClick(e) {
+                                        return _this2.onClickMenuItem(e, "CS");
+                                    } },
+                                'CS'
+                            ),
+                            _react2.default.createElement(
+                                _reactBootstrap.MenuItem,
+                                { onClick: function onClick(e) {
+                                        return _this2.onClickMenuItem(e, "ECE");
+                                    } },
+                                'ECE'
+                            ),
+                            _react2.default.createElement(
+                                _reactBootstrap.MenuItem,
+                                { onClick: function onClick(e) {
+                                        return _this2.onClickMenuItem(e, "MATH");
+                                    } },
+                                'MATH'
+                            ),
+                            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
+                            _react2.default.createElement(
+                                _reactBootstrap.MenuItem,
+                                { eventKey: '4' },
+                                'Separated link'
+                            )
+                        )
+                    ),
                     _react2.default.createElement('input', { ref: this.state.profName.value, onChange: this.handleTextChange,
                         type: 'text', name: 'profName', value: this.state.profName, placeholder: 'prof name ' })
                 ),
