@@ -8695,8 +8695,9 @@ var Add = function (_React$Component) {
             year: '2016',
             month: 'Jan',
             messageFromServer: '',
-            data: [],
-            selectedMajor: "CS"
+            data: [], //array classes data
+            selectedMajor: "CS",
+            professor: [] //array professors 
         };
         _this.handleSelectChange = _this.handleSelectChange.bind(_this);
         _this.onClick = _this.onClick.bind(_this);
@@ -8706,6 +8707,7 @@ var Add = function (_React$Component) {
         _this.getSubmitButton = _this.getSubmitButton.bind(_this);
         _this.getData = _this.getData.bind(_this);
         _this.getProfByMajor = _this.getProfByMajor.bind(_this);
+        _this.getAllProfToShow = _this.getAllProfToShow.bind(_this);
         return _this;
     }
 
@@ -8713,6 +8715,7 @@ var Add = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.getData(this, '2016');
+            this.getProfByMajor(this, 'CS');
         }
     }, {
         key: 'componentWillReceiveProps',
@@ -8755,9 +8758,11 @@ var Add = function (_React$Component) {
         key: 'getProfByMajor',
         value: function getProfByMajor(ev, major) {
             _axios2.default.get('/getProfByMajor?major=' + major).then(function (response) {
-                console.log("getProfByMajor === ");
+                console.log("=== getProfByMajor === ");
                 console.log(response.data);
-                //ev.setState({data:response.data})
+                console.log(response.data[0].professor);
+                console.log("=== getProfByMajor === ");
+                ev.setState({ professor: response.data[0].professor });
             });
         }
     }, {
@@ -8840,6 +8845,50 @@ var Add = function (_React$Component) {
             }
         }
     }, {
+        key: 'getAllProfToShow',
+        value: function getAllProfToShow() {
+            if (this.state.professor) {
+                return _react2.default.createElement(
+                    _reactBootstrap.Table,
+                    { striped: true, bordered: true, condensed: true, hover: true },
+                    _react2.default.createElement(
+                        'thead',
+                        null,
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'th',
+                                null,
+                                'professor'
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'tbody',
+                        null,
+                        this.state.professor.map(function (prof) {
+                            return _react2.default.createElement(
+                                'tr',
+                                null,
+                                _react2.default.createElement(
+                                    'td',
+                                    null,
+                                    prof.name
+                                )
+                            );
+                        })
+                    )
+                );
+            } else {
+                return _react2.default.createElement(
+                    'h1',
+                    null,
+                    'No Prof to show'
+                );
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -8848,6 +8897,7 @@ var Add = function (_React$Component) {
             var courseWarning = this.warning(this.state.course);
             var majorWarning = this.warning(this.state.major);
             var submitButton = this.getSubmitButton();
+            var showProfessor = this.getAllProfToShow();
 
             return _react2.default.createElement(
                 'div',
@@ -8855,7 +8905,8 @@ var Add = function (_React$Component) {
                 _react2.default.createElement(
                     'div',
                     null,
-                    profWarning,
+                    showProfessor,
+                    ' ',
                     _react2.default.createElement(
                         _reactBootstrap.ButtonToolbar,
                         null,
@@ -8863,7 +8914,7 @@ var Add = function (_React$Component) {
                             _reactBootstrap.DropdownButton,
                             {
                                 bsStyle: 'default',
-                                title: 'No caret',
+                                title: 'Choose prof by major',
                                 noCaret: true,
                                 id: 'dropdown-no-caret'
                             },
@@ -8887,15 +8938,10 @@ var Add = function (_React$Component) {
                                         return _this2.onClickMenuItem(e, "MATH");
                                     } },
                                 'MATH'
-                            ),
-                            _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-                            _react2.default.createElement(
-                                _reactBootstrap.MenuItem,
-                                { eventKey: '4' },
-                                'Separated link'
                             )
                         )
                     ),
+                    profWarning,
                     _react2.default.createElement('input', { ref: this.state.profName.value, onChange: this.handleTextChange,
                         type: 'text', name: 'profName', value: this.state.profName, placeholder: 'prof name ' })
                 ),

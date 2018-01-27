@@ -51,13 +51,10 @@ router.get('/delete', function(req, res){
 
 router.get('/getProfByMajor',function(req, res) {
     var majorRec = req.query.major;
-    console.log("majorRec")
-    console.log(req.query.major);
  
-    Professor.find({}, function(err, professor) {
+    Professor.find({major: majorRec}, function(err, professor) {
         if (err)
             res.send(err);
-        console.log(professor)
         res.json(professor);
     });
 
