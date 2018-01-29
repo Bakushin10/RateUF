@@ -1,14 +1,14 @@
 //client/components/Add.js
 import React from 'react';
-import {Button} from 'react-bootstrap';
-import Modal from 'react-modal';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import ShowClassDetail from './ShowClassDetail';
-var querystring = require('querystring');
+import ShowAllProf from './ShowAllProf';
 
+var querystring = require('querystring');
 
 const WarningOn = styled.p`
   color: #FF1493;
@@ -28,7 +28,7 @@ class Add extends React.Component {
         year: '2016',
         month: 'Jan',
         messageFromServer: '',
-        data: []
+        data: [] //array classes data
       }
         this.handleSelectChange = this.handleSelectChange.bind(this);
         this.onClick = this.onClick.bind(this);
@@ -97,7 +97,6 @@ class Add extends React.Component {
         this.setState({ profName: '' });
         this.setState({ course: '' });
         this.setState({ major: '' });
-        
     }
 
     handleTextChange(e) {
@@ -145,8 +144,10 @@ class Add extends React.Component {
 
       return (
         <div className='button-center'>
+
+            <ShowAllProf/>
             <div>
-               { profWarning }
+                { profWarning }
                <input ref= {this.state.profName.value} onChange = { this.handleTextChange } 
                 type = "text" name = "profName" value = {this.state.profName} placeholder = "prof name "/>
             </div>
@@ -155,7 +156,7 @@ class Add extends React.Component {
                { courseWarning }
                <input ref= {this.state.course.value} onChange = { this.handleTextChange } 
                 type = "text" name = "course" value = {this.state.course} placeholder = "course "/>
-            </div>    
+            </div>
 
             <div>
                { majorWarning }
