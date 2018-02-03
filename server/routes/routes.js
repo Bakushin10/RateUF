@@ -60,6 +60,20 @@ router.get('/getProfByMajor',function(req, res) {
 
 });
 
+router.get('/getProfDetails',function(req, res) {
+    var _id = req.query._id;
+    console.log("getProfDetails server side");
+    console.log(_id);
+
+    Professor.findOne({professor: {$elemMatch : {_id:_id}}}, function(err, professor) {
+        if (err)
+            res.send(err);
+        res.json(professor);
+    });
+
+});
+
+
 router.get('/getAll',function(req, res) {
     var monthRec = req.query.month;
     var yearRec = req.query.year;
