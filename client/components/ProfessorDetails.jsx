@@ -15,7 +15,6 @@ class ProfessorDetails extends React.Component {
             id: "",
             prof: []
         }
-       // this.inits() = this.inits().bind(this);
      }
 
     componentDidMount(){
@@ -24,21 +23,13 @@ class ProfessorDetails extends React.Component {
         const name = this.props.match.params.name;
         axios.get('/getProfDetails?_id='+_id)
         .then(function(response) {
-            console.log("=== getProfDetails === ");
-            console.log(response.data);
-            console.log(response.data.professor);
-            console.log("=== getProfDetails === ");
             self.inits(response.data.professor);  
-          });
-          
+          });  
     }
 
     inits(array){
-        console.log("inti")
         array.forEach(element => {
-            console.log(element)
             if(element._id === this.props.match.params.id){
-                console.log("match")
                 this.setState({profName:element.name})
                 this.setState({id:element._id})
             }
@@ -46,9 +37,6 @@ class ProfessorDetails extends React.Component {
     }
 
     render(){
-        console.log("prof details");
-        console.log(this.state.profName);
-        console.log(this.state.id);
         return(
             <div>
                 <h1>
@@ -60,7 +48,6 @@ class ProfessorDetails extends React.Component {
             </div>
         )
     }
-
 }
 
 export default ProfessorDetails;

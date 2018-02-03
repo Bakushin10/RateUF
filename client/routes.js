@@ -1,8 +1,6 @@
 //client/routes.js
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import axios from 'axios';
-import App from './components/App';
 import Home from './components/Home';
 import Add from './components/Add';
 import Professor from './components/Professor';
