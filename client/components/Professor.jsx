@@ -24,9 +24,9 @@ class Professor extends React.Component {
             selectedMajor: "CS",
             professor: [], //array professors to keep
             professorToShow:[], //this array will change based on the search
+            searchTerm: '', // user input for search
             loading: false,
-            hasMore: true,
-            searchTerm: ''
+            hasMore: true
         }
 
         this.getProfByMajor = this.getProfByMajor.bind(this);
@@ -99,15 +99,13 @@ class Professor extends React.Component {
                 <Col xs = {12} md = {3} className = "sidebar">{/* side bar*/}
                     <div>
                         <form>
-                            <FormGroup
-                                controlId="formBasicText"
-                            >
-                            <FormControl
-                                type="text"
-                                value={this.state.searchTerm}
-                                placeholder="Search Professors"
-                                onChange={this.handleSearchProf}
-                            />
+                            <FormGroup controlId="formBasicText">
+                                <FormControl
+                                    type="text"
+                                    value={this.state.searchTerm}
+                                    placeholder="Search your Professor"
+                                    onChange={this.handleSearchProf}
+                                />
                             </FormGroup>
                         </form>
                     </div>
@@ -144,12 +142,13 @@ class Professor extends React.Component {
                                                 <ProfessorName>{item.name}</ProfessorName>
                                         </Col>
                                         <Col xs = {7} md = {5}>
-                                            <Slider 
+                                            <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
                                                 defaultValue={30} 
                                                 disabled = {true} 
-                                                marks={{ 30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                                            60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
-                                                            90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
+                                                marks={{ 
+                                                        30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                                                        60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
+                                                        90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
                                                         }}
                                             />
                                         </Col>
