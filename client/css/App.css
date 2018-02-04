@@ -57,3 +57,24 @@ margin:0px auto;
 .closebtn{
  float:right;
 }
+
+.demo-infinite-container {
+  margin-top: 100px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 8px 24px;
+  height: 550px;
+  /*
+  width: 1100px;
+  */
+}
+
+.sidebar{
+  margin-top: 100px;
+}
+
+.vl {
+  border-left: 1px solid green;
+  height: 500px;
+}
