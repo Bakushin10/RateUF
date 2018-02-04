@@ -90,13 +90,11 @@ class Professor extends React.Component {
               {text}
             </span>
         );
-        
-        console.log("this.state.selectedMajor")
+
         console.log(this.state)
         
         return(
             <div className = "container">
-              
               <Grid>
                 <Col xs = {12} md = {3} className = "sidebar">{/* side bar*/}
                     <div>
@@ -141,32 +139,33 @@ class Professor extends React.Component {
                             dataSource={ this.state.professorToShow }
                             renderItem={item => (
                                 <Link to={`/ProfessorDetails/${item._id}`}>
-                                        <Row>
-                                            <Col xs = {12} md = {4}>
-                                                    <ProfessorName>{item.name}</ProfessorName>
-                                            </Col>
-                                            <Col xs = {7} md = {5}>
-                                                <Slider defaultValue={30} 
-                                                        disabled = {true} 
-                                                        marks={{ 30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                                                 60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
-                                                                 90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
-                                                                }}
-                                                />
-                                            </Col>
-                                        </Row>
-                                        <Col xs = {9} md = {9}>
-                                            <List.Item xs = {9} md = {9}
-                                                key={item.id}
-                                                /*
-                                                actions={[<IconText type="star-o" text="156" />, 
-                                                        <IconText type= "like-o" text="156" />, 
-                                                        <IconText type="message" text="2" />]}
-                                                */
-                                            >
-                                            <List.Item.Meta/>
-                                            </List.Item>
+                                    <Row>
+                                        <Col xs = {12} md = {4}>
+                                                <ProfessorName>{item.name}</ProfessorName>
                                         </Col>
+                                        <Col xs = {7} md = {5}>
+                                            <Slider 
+                                                defaultValue={30} 
+                                                disabled = {true} 
+                                                marks={{ 30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                                                            60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
+                                                            90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
+                                                        }}
+                                            />
+                                        </Col>
+                                    </Row>
+                                    <Col xs = {9} md = {9}>
+                                        <List.Item xs = {9} md = {9}
+                                            key={item.id}
+                                            /*
+                                            actions={[<IconText type="star-o" text="156" />, 
+                                                    <IconText type= "like-o" text="156" />, 
+                                                    <IconText type="message" text="2" />]}
+                                            */
+                                        >
+                                        <List.Item.Meta/>
+                                        </List.Item>
+                                    </Col>
                                 </Link>
                             )}
                         />
