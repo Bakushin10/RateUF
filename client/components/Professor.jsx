@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { List, Avatar, Icon, Slider} from 'antd';
-import { Row, Grid, Col, DropdownButton, MenuItem} from 'react-bootstrap';
+import { Row, Grid, Col, DropdownButton, MenuItem,FormGroup, FormControl} from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
@@ -22,26 +22,42 @@ class Professor extends React.Component {
 
         this.state = {
             selectedMajor: "CS",
-            professor: [], //array professors
+            professor: [], //array professors to keep
+            professorToShow:[], //this array will change based on the search
             loading: false,
             hasMore: true,
+            searchTerm: ''
         }
 
         this.getProfByMajor = this.getProfByMajor.bind(this);
+        this.handleSearchProf = this.handleSearchProf.bind(this);
+        this.searchProf = this.searchProf.bind(this);
     }
 
     componentDidMount(){
         this.getProfByMajor(this, 'CS');
       //  this.setState({selectedMajor:'CS'});
     }
+    
+    handleSearchProf(e) {
+        this.setState({ searchTerm: e.target.value });
+        this.searchProf();
+    }
+
+    searchProf(){
+        const selectedProf = this.state.professor.filter(prof =>{
+            if(`${prof.name}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase())>=0){
+                return prof;
+            }
+        })
+        this.setState({professorToShow : selectedProf})
+    }
 
     getProfByMajor(ev, major){
         axios.get('/getProfByMajor?major='+major) //passing major as an argument
           .then(function(response) {
-            console.log("=== getProfByMajor === ");
-            console.log(response.data);
-            console.log("=== getProfByMajor === ");
             ev.setState({professor:response.data[0].professor});
+            ev.setState({professorToShow:response.data[0].professor});
           });
     }
     
@@ -64,7 +80,7 @@ class Professor extends React.Component {
         const pagination = {
             pageSize: 10,
             current: 1,
-            total: this.state.professor.length,
+            total: this.state.professorToShow.length,
             onChange: (() => {}),
         };
 
@@ -82,17 +98,33 @@ class Professor extends React.Component {
             <div className = "container">
               
               <Grid>
-                <Col xs = {12} md = {3} className = "sidebar">{/* Buttton*/}
-                    <DropdownButton
-                        bsStyle="default"
-                        title="Change Major"
-                        noCaret
-                        id="dropdown-no-caret"
-                    >
-                        <MenuItem onClick = { (e) => this.changeProfByMajor(e,"CS")} >CS</MenuItem>
-                        <MenuItem onClick = { (e) => this.changeProfByMajor(e,"ECE")} >ECE</MenuItem>
-                        <MenuItem onClick = { (e) => this.changeProfByMajor(e,"MATH")} >MATH</MenuItem>
-                    </DropdownButton>
+                <Col xs = {12} md = {3} className = "sidebar">{/* side bar*/}
+                    <div>
+                        <form>
+                            <FormGroup
+                                controlId="formBasicText"
+                            >
+                            <FormControl
+                                type="text"
+                                value={this.state.searchTerm}
+                                placeholder="Search Professors"
+                                onChange={this.handleSearchProf}
+                            />
+                            </FormGroup>
+                        </form>
+                    </div>
+                    <div>
+                        <DropdownButton
+                            bsStyle="default"
+                            title="Change Major"
+                            noCaret
+                            id="dropdown-no-caret"
+                        >
+                            <MenuItem onClick = { (e) => this.changeProfByMajor(e,"CS")} >CS</MenuItem>
+                            <MenuItem onClick = { (e) => this.changeProfByMajor(e,"ECE")} >ECE</MenuItem>
+                            <MenuItem onClick = { (e) => this.changeProfByMajor(e,"MATH")} >MATH</MenuItem>
+                        </DropdownButton>
+                    </div>
                 </Col>
                 <Col xs = {12} md = {9}>{/* lift of prof*/}
                     <InfiniteScroll className = "demo-infinite-container"
@@ -106,7 +138,7 @@ class Professor extends React.Component {
                             itemLayout="vertical"
                             size="large"
                             pagination={pagination}
-                            dataSource={ this.state.professor }
+                            dataSource={ this.state.professorToShow }
                             renderItem={item => (
                                 <Link to={`/ProfessorDetails/${item._id}`}>
                                         <Row>
@@ -117,9 +149,9 @@ class Professor extends React.Component {
                                                 <Slider defaultValue={30} 
                                                         disabled = {true} 
                                                         marks={{ 30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                                                60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
-                                                                90:<div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
-                                                                }} 
+                                                                 60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
+                                                                 90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
+                                                                }}
                                                 />
                                             </Col>
                                         </Row>
@@ -135,7 +167,6 @@ class Professor extends React.Component {
                                             <List.Item.Meta/>
                                             </List.Item>
                                         </Col>
-                                
                                 </Link>
                             )}
                         />
@@ -145,7 +176,6 @@ class Professor extends React.Component {
             </div>
         )
     }
-
 }
 
 export default Professor;
