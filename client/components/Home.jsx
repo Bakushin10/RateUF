@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container, Row, Col, Grid } from 'react-bootstrap';
-import Header from './New_Header';
+import Header from './Header';
 import Footer from './Footer';
 
 export default class Home extends React.Component {

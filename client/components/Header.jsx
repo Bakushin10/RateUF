@@ -1,89 +1,60 @@
 import React from 'react';
+import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 
 const Header = () => (
   <div className="container">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/Header.css" />
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico" rel="stylesheet" />
-    <div className="navbar-header head">
-      <button
-        type="button"
-        className="navbar-toggle collapsed"
-        data-toggle="collapse"
-        data-target="#navbar"
-        aria-expanded="false"
-        aria-controls="navbar"
-      >
-        <span className="sr-only">Toggle navigation</span>
-        <span className="icon-bar" />
-        <span className="icon-bar" />
-        <span className="icon-bar" />
-      </button>
-      <a className="navbar-brand special-text" href="#">
-        RateUF
-      </a>
-      <div id="navbar" className="collapse navbar-collapse head-not-head">
-        <ul className="nav navbar-nav">
-          <li>
-            <a className="head-contents" href="#/professor">
-              Professor
-              <div className="ant-dropdown">
-                <ul>
-                  <li>
-                    <a href="#">Find Professor</a>
-                  </li>
-                  <li>
-                    <a href="#">Rate Professor</a>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a className="head-contents" href="#">
-              Class
-              <div className="ant-dropdown">
-                <ul>
-                  <li>
-                    <a href="#">Find Class</a>
-                  </li>
-                  <li>
-                    <a href="#">Rate Class</a>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a className="head-contents" href="#">
-              Degree Outline
-              <div className="ant-dropdown">
-                <ul>
-                  <li>
-                    <a href="#">CSC</a>
-                  </li>
-                  <li>
-                    <a href="#">CSE</a>
-                  </li>
-                  <li>
-                    <a href="#">CE</a>
-                  </li>
-                  <li>
-                    <a href="#">DAS</a>
-                  </li>
-                  <li>
-                    <a href="#">EE</a>
-                  </li>
-                  <li>
-                    <a href="#">MATH</a>
-                  </li>
-                </ul>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <Navbar className="head">
+      <Navbar.Header>
+        <Navbar.Brand>
+          <a href="#" className="special-text">
+            RateUF
+          </a>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Nav>
+        <NavDropdown className="head-contents" eventKey={1} title="Professors" id="basic-nav-dropdown">
+          <MenuItem eventKey={1.1} href="#/professor">
+            Find Professor
+          </MenuItem>
+          <MenuItem eventKey={1.2} href="#">
+            Rate Professor
+          </MenuItem>
+        </NavDropdown>
+
+        <NavDropdown className="head-contents" eventKey={2} title="Classes" id="basic-nav-dropdown">
+          <MenuItem eventKey={2.1} href="#">
+            Find Class
+          </MenuItem>
+          <MenuItem eventKey={2.2} href="#">
+            Rate Class
+          </MenuItem>
+        </NavDropdown>
+
+        <NavDropdown className="head-contents" eventKey={3} title="Degree Outline" id="basic-nav-dropdown">
+          <MenuItem eventKey={3.1} href="#">
+            CSC
+          </MenuItem>
+          <MenuItem eventKey={3.2} href="#">
+            CSE
+          </MenuItem>
+          <MenuItem eventKey={3.3} href="#">
+            CE
+          </MenuItem>
+          <MenuItem eventKey={3.4} href="#">
+            EE
+          </MenuItem>
+          <MenuItem eventKey={3.5} href="#">
+            DAS
+          </MenuItem>
+          <MenuItem eventKey={3.2} href="#">
+            MATH
+          </MenuItem>
+        </NavDropdown>
+      </Nav>
+    </Navbar>
   </div>
 );
 

@@ -7,7 +7,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
-import Header from './New_Header';
+import Header from './Header';
 import Footer from './Footer';
 
 const ProfessorName = styled.h5`

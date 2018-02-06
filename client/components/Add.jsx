@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 import ShowClassDetail from './ShowClassDetail';
 import ShowAllProf from './ShowAllProf';
-import Header from './New_Header';
+import Header from './Header';
 import Footer from './Footer';
 
 var querystring = require('querystring');
