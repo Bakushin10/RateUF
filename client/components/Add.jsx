@@ -4,6 +4,8 @@ import { Button, ButtonToolbar } from 'react-bootstrap';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import { List, Avatar, Icon, Slider} from 'antd';
+import 'antd/dist/antd.css';
 
 import ShowClassDetail from './ShowClassDetail';
 import ShowAllProf from './ShowAllProf';
@@ -146,12 +148,28 @@ class Add extends React.Component {
         <div className='button-center'>
 
             <ShowAllProf/>
+
             <div>
                 { profWarning }
+                <p>
+                    Select the professor name
+                </p>
                <input ref= {this.state.profName.value} onChange = { this.handleTextChange } 
                 type = "text" name = "profName" value = {this.state.profName} placeholder = "prof name "/>
             </div>
-
+            <div>
+                <p> level of difficulty
+                    <Slider
+                            defaultValue={30}
+                            disabled = {false}
+                            marks={{
+                                30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                                60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
+                                90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
+                            }}
+                    />
+                </p>
+            </div>
             <div>
                { courseWarning }
                <input ref= {this.state.course.value} onChange = { this.handleTextChange } 
