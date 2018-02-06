@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container, Row, Col, Grid } from 'react-bootstrap';
-import Header from './Header';
+import Header from './New_Header';
+import Footer from './Footer';
 
 export default class Home extends React.Component {
   render() {
@@ -24,6 +25,7 @@ export default class Home extends React.Component {
             </Row>
           </Grid>
         </div>
+        <Footer />
       </div>
     );
   }
