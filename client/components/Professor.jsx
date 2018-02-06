@@ -6,10 +6,9 @@ import { Row, Grid, Col, DropdownButton, MenuItem,FormGroup, FormControl} from '
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
+
 import Header from './New_Header';
 import Footer from './Footer';
-
-
 
 const ProfessorName = styled.h5`
     color:#878fad;
@@ -20,7 +19,6 @@ const ProfessorName = styled.h5`
 class Professor extends React.Component {
     constructor() {
         super();
-
 
         this.state = {
             selectedMajor: "CS",
@@ -35,7 +33,6 @@ class Professor extends React.Component {
         this.handleSearchProf = this.handleSearchProf.bind(this);
         this.searchProf = this.searchProf.bind(this);
     }   
-
 
     handleInfiniteOnLoad() {
         let data = this.state.professor;
@@ -59,7 +56,6 @@ class Professor extends React.Component {
         });
     }
     
-
     componentDidMount(){
         this.getProfByMajor(this, 'CS');
       //  this.setState({selectedMajor:'CS'});
@@ -109,19 +105,19 @@ class Professor extends React.Component {
       onChange: () => {}
     };
 
-        const IconText = ({ type, text }) => (
-            <span>
-              <Icon type={type} style={{ marginRight: 8 }} />
-              {text}
-            </span>
-        );
+    const IconText = ({ type, text }) => (
+        <span>
+            <Icon type={type} style={{ marginRight: 8 }} />
+            {text}
+        </span>
+    );
 
-        console.log(this.state)
-        
-        return(
-            <div className = "container">
-            <Header />
-              <Grid>
+    console.log(this.state)
+    
+    return(
+        <div className = "container">
+        <Header />
+            <Grid>
                 <Col xs = {12} md = {3} className = "sidebar">{/* side bar*/}
                     <div>
                         <form>
@@ -195,10 +191,10 @@ class Professor extends React.Component {
                             )}
                         />
                     </InfiniteScroll>
-              </Col>
-             </Grid>
-             <Footer />
-            </div>
+                </Col>
+            </Grid>
+         <Footer />
+        </div>
         )
     }
 }
