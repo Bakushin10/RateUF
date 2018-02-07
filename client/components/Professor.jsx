@@ -7,6 +7,8 @@ import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
+import Header from './Header';
+import Footer from './Footer';
 
 const ProfessorName = styled.h5`
     color:#878fad;
@@ -15,9 +17,7 @@ const ProfessorName = styled.h5`
 `
 
 class Professor extends React.Component {
-    
-    constructor(){
-
+    constructor() {
         super();
 
         this.state = {
@@ -32,8 +32,30 @@ class Professor extends React.Component {
         this.getProfByMajor = this.getProfByMajor.bind(this);
         this.handleSearchProf = this.handleSearchProf.bind(this);
         this.searchProf = this.searchProf.bind(this);
-    }
+    }   
 
+    handleInfiniteOnLoad() {
+        let data = this.state.professor;
+        this.setState({
+            loading: true
+        });
+        if (data.length > 14) {
+            message.warning('Infinite List loaded all');
+            this.setState({
+            hasMore: false,
+            loading: false
+            });
+            return;
+        }
+        this.getData(res => {
+            data = data.concat(res.results);
+            this.setState({
+            data,
+            loading: false
+            });
+        });
+    }
+    
     componentDidMount(){
         this.getProfByMajor(this, 'CS');
       //  this.setState({selectedMajor:'CS'});
@@ -75,27 +97,27 @@ class Professor extends React.Component {
         }
     }
 
-    render(){
+  render() {
+    const pagination = {
+      pageSize: 10,
+      current: 1,
+      total: this.state.professor.length,
+      onChange: () => {}
+    };
 
-        const pagination = {
-            pageSize: 10,
-            current: 1,
-            total: this.state.professorToShow.length,
-            onChange: (() => {}),
-        };
+    const IconText = ({ type, text }) => (
+        <span>
+            <Icon type={type} style={{ marginRight: 8 }} />
+            {text}
+        </span>
+    );
 
-        const IconText = ({ type, text }) => (
-            <span>
-              <Icon type={type} style={{ marginRight: 8 }} />
-              {text}
-            </span>
-        );
-
-        console.log(this.state)
-        
-        return(
-            <div className = "container">
-              <Grid>
+    console.log(this.state)
+    
+    return(
+        <div className = "container">
+        <Header />
+            <Grid>
                 <Col xs = {12} md = {3} className = "sidebar">{/* side bar*/}
                     <div>
                         <form>
@@ -169,12 +191,12 @@ class Professor extends React.Component {
                             )}
                         />
                     </InfiniteScroll>
-              </Col>
-             </Grid>
-            </div>
+                </Col>
+            </Grid>
+         <Footer />
+        </div>
         )
     }
 }
 
 export default Professor;
-
