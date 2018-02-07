@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17a06ee3-303e-45d3-a677-00728726d41e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/bundle.js" afterPath="$PROJECT_DIR$/client/bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/Add.jsx" afterPath="$PROJECT_DIR$/client/components/Add.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/App.css" afterPath="$PROJECT_DIR$/client/css/App.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +28,7 @@
       <file leaf-file-name="Add.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/components/Add.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
+            <state relative-caret-position="100">
               <caret line="215" column="48" lean-forward="false" selection-start-line="215" selection-start-column="48" selection-end-line="215" selection-end-column="48" />
               <folding>
                 <element signature="e#27#53#0" expanded="true" />
@@ -179,12 +177,12 @@
       <updated>1517951315567</updated>
       <workItem from="1517951342629" duration="98000" />
       <workItem from="1517952135498" duration="19000" />
-      <workItem from="1517953172850" duration="3035000" />
+      <workItem from="1517953172850" duration="3148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3178000" />
+    <option name="totallyTimeSpent" value="3291000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -271,7 +269,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/Add.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
+        <state relative-caret-position="100">
           <caret line="215" column="48" lean-forward="false" selection-start-line="215" selection-start-column="48" selection-end-line="215" selection-end-column="48" />
           <folding>
             <element signature="e#27#53#0" expanded="true" />
