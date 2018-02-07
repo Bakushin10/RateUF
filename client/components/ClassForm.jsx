@@ -21,17 +21,17 @@ const WarningOff = styled.p`
 
 class Add extends React.Component {
     constructor() {
-      super();
-      
-      this.state = {
-        profName: '',
-        course: '',
-        major: '',
-        year: '2016',
-        month: 'Jan',
-        messageFromServer: '',
-        data: [] //array classes data
-      }
+        super();
+
+        this.state = {
+            profName: '',
+            course: '',
+            major: '',
+            year: '2016',
+            month: 'Jan',
+            messageFromServer: '',
+            data: [] //array classes data
+        }
         this.handleSelectChange = this.handleSelectChange.bind(this);
         this.onClick = this.onClick.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
@@ -52,12 +52,12 @@ class Add extends React.Component {
     handleSelectChange(e) {
         if (e.target.name == 'month') {
             this.setState({
-            month: e.target.value
+                month: e.target.value
             });
         }
         if (e.target.name == 'year') {
             this.setState({
-            year: e.target.value
+                year: e.target.value
             });
         }
     }
@@ -71,10 +71,10 @@ class Add extends React.Component {
 
     getData(ev, year){
         axios.get('/getAll?month=All&year='+year)
-          .then(function(response) {
-            console.log("response data === ");
-            ev.setState({data:response.data})
-          });
+            .then(function(response) {
+                console.log("response data === ");
+                ev.setState({data:response.data})
+            });
     }
 
     insertNewExpense(e) {
@@ -86,9 +86,9 @@ class Add extends React.Component {
                 month: e.state.month,
                 year: e.state.year
             }), {
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
             }).then(function(response) {
             e.setState({
                 messageFromServer: response.data
@@ -104,14 +104,14 @@ class Add extends React.Component {
     handleTextChange(e) {
         if(e.target.name == "profName")
             this.setState({ profName: e.target.value })
-        
+
         if(e.target.name == "course")
             this.setState({ course: e.target.value })
-        
+
         if(e.target.name == "major")
             this.setState({ major: e.target.value })
     }
-    
+
     warning(givenState){
         if(givenState){
             return (<WarningOff>text</WarningOff>);
@@ -122,40 +122,40 @@ class Add extends React.Component {
     }
 
     getSubmitButton(){
-        const checkListForWarning = 
-        [
-            this.state.profName,
-            this.state.course,
-            this.state.major
-        ]
+        const checkListForWarning =
+            [
+                this.state.profName,
+                this.state.course,
+                this.state.major
+            ]
         const allFieldChecked = !checkListForWarning.includes('');
 
         if(allFieldChecked){
-            return (<Button bsStyle="success" bsSize="small" 
-                    onClick={this.onClick}>Add New Expense</Button>);
+            return (<Button bsStyle="success" bsSize="small"
+                            onClick={this.onClick}>Add New Expense</Button>);
         }else{
             return (<Button color="danger" disabled>cant submit</Button> );
         }
     }
 
-   render() {
-    const profWarning = this.warning(this.state.profName);
-    const courseWarning = this.warning(this.state.course);
-    const majorWarning = this.warning(this.state.major);
-    const submitButton = this.getSubmitButton();
+    render() {
+        const profWarning = this.warning(this.state.profName);
+        const courseWarning = this.warning(this.state.course);
+        const majorWarning = this.warning(this.state.major);
+        const submitButton = this.getSubmitButton();
 
-      return (
-        <div className='button-center'>
+        return (
+            <div className='button-center'>
 
-            <ShowAllProf/>
+                <ShowAllProf/>
 
-            <div>
-            <form>
-                <label>Select the professor name { profWarning }<input ref= {this.state.profName.value} onChange = { this.handleTextChange }
-                    type = "text" name = "profName" value = {this.state.profName} placeholder = "prof name "/>
-                </label>
-                <br /><br />
-                <label>Overall experience<Slider
+                <div>
+                    <form>
+                        <label>Select the professor name { profWarning }<input ref= {this.state.profName.value} onChange = { this.handleTextChange }
+                                                                               type = "text" name = "profName" value = {this.state.profName} placeholder = "prof name "/>
+                        </label>
+                        <br /><br />
+                        <label>Overall experience<Slider
                             defaultValue={30}
                             disabled = {false}
                             marks={{
@@ -164,20 +164,9 @@ class Add extends React.Component {
                                 90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
                             }}
                         />
-                </label>
-                <br /><br />
-                <label>level of difficulty<Slider
-                                defaultValue={30}
-                                disabled = {false}
-                                marks={{
-                                    30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                    60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-                                    90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-                                }}
-                        />
-                </label>
-                <br /><br />
-                <label> level of difficulty<Slider
+                        </label>
+                        <br /><br />
+                        <label>level of difficulty<Slider
                             defaultValue={30}
                             disabled = {false}
                             marks={{
@@ -186,9 +175,9 @@ class Add extends React.Component {
                                 90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
                             }}
                         />
-                </label>
-                <br /><br />
-                <label>Communication of ideas<Slider
+                        </label>
+                        <br /><br />
+                        <label> level of difficulty<Slider
                             defaultValue={30}
                             disabled = {false}
                             marks={{
@@ -197,9 +186,9 @@ class Add extends React.Component {
                                 90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
                             }}
                         />
-                </label>
-                <br /><br />
-                <label>Facilitation of learning<Slider
+                        </label>
+                        <br /><br />
+                        <label>Communication of ideas<Slider
                             defaultValue={30}
                             disabled = {false}
                             marks={{
@@ -208,25 +197,36 @@ class Add extends React.Component {
                                 90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
                             }}
                         />
-                </label>
-                <br /><br />
-                <label>Would take again, Yes/No { courseWarning } <input ref= {this.state.course.value} onChange = { this.handleTextChange }
-                    type = "text" name = "course" value = {this.state.course} placeholder = "course "/>
-                </label>
-                <br /><br />
-                <label>Extra comments { majorWarning } <input ref= {this.state.major.value} onChange = { this.handleTextChange }
-                    type = "text" name = "major" value = {this.state.major} placeholder = "major " />
-                </label>
-                <br /><br />
-                { submitButton }
-            </form>
+                        </label>
+                        <br /><br />
+                        <label>Facilitation of learning<Slider
+                            defaultValue={30}
+                            disabled = {false}
+                            marks={{
+                                30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                                60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
+                                90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
+                            }}
+                        />
+                        </label>
+                        <br /><br />
+                        <label>Would take again, Yes/No { courseWarning } <input ref= {this.state.course.value} onChange = { this.handleTextChange }
+                                                                                 type = "text" name = "course" value = {this.state.course} placeholder = "course "/>
+                        </label>
+                        <br /><br />
+                        <label>Extra comments { majorWarning } <input ref= {this.state.major.value} onChange = { this.handleTextChange }
+                                                                      type = "text" name = "major" value = {this.state.major} placeholder = "major " />
+                        </label>
+                        <br /><br />
+                        { submitButton }
+                    </form>
 
-            </div>
+                </div>
                 <div>
                     <ShowClassDetail {...this.state} />
                 </div>
-        </div>
-      )
-   }
+            </div>
+        )
+    }
 }
 export default Add;
