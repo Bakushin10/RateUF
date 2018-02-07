@@ -13,13 +13,13 @@ export default class Home extends React.Component {
           <Grid>
             <Row>
               <Col xs={6} md={4}>
-                <Link to="/Add">
-                  <Button>Form</Button>
+                <Link to="/ProfessorForm">
+                  <Button>Professor Form</Button>
                 </Link>
               </Col>
               <Col xs={6} md={4}>
-                <Link to="/Add">
-                  <Button>also Form</Button>
+                <Link to="/ClassForm">
+                  <Button>Class Form</Button>
                 </Link>
               </Col>
             </Row>

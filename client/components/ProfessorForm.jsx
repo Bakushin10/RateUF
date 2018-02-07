@@ -21,7 +21,7 @@ const WarningOff = styled.p`
   color: #adff2f;
 `;
 
-class Add extends React.Component {
+class ProfessorForm extends React.Component {
   constructor() {
     super();
 
@@ -153,84 +153,84 @@ class Add extends React.Component {
       <ShowAllProf/>
 
       <div>
-      <form>
-      <label>Select the professor name { profWarning }<input ref= {this.state.profName.value} onChange = { this.handleTextChange }
-      type = "text" name = "profName" value = {this.state.profName} placeholder = "prof name "/>
-      </label>
-      <br /><br />
-      <label>Overall experience<Slider
-      defaultValue={30}
-      disabled = {false}
-      marks={{
-          30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-          60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-          90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-      }}
-      />
-      </label>
-      <br /><br />
-      <label>level of difficulty<Slider
-      defaultValue={30}
-      disabled = {false}
-      marks={{
-          30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-          60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-          90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-      }}
-      />
-      </label>
-      <br /><br />
-      <label> level of difficulty<Slider
-      defaultValue={30}
-      disabled = {false}
-      marks={{
-          30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-          60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-          90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-      }}
-      />
-      </label>
-      <br /><br />
-      <label>Communication of ideas<Slider
-      defaultValue={30}
-      disabled = {false}
-      marks={{
-          30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-          60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-          90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-      }}
-      />
-      </label>
-      <br /><br />
-      <label>Facilitation of learning<Slider
-      defaultValue={30}
-      disabled = {false}
-      marks={{
-          30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-          60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-          90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-      }}
-      />
-      </label>
-      <br /><br />
-      <label>Would take again, Yes/No { courseWarning } <input ref= {this.state.course.value} onChange = { this.handleTextChange }
-      type = "text" name = "course" value = {this.state.course} placeholder = "course "/>
-      </label>
-      <br /><br />
-      <label>Extra comments { majorWarning } <input ref= {this.state.major.value} onChange = { this.handleTextChange }
-      type = "text" name = "major" value = {this.state.major} placeholder = "major " />
-      </label>
-      <br /><br />
-      { submitButton }
-      </form>
+          <form>
+              <label>Select the professor name { profWarning }<input ref= {this.state.profName.value} onChange = { this.handleTextChange }
+              type = "text" name = "profName" value = {this.state.profName} placeholder = "prof name "/>
+              </label>
+              <br /><br />
+              <label>Overall experience<Slider
+              defaultValue={30}
+              disabled = {false}
+              marks={{
+                  30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                  60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
+                  90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
+              }}
+              />
+              </label>
+              <br /><br />
+              <label>level of difficulty<Slider
+              defaultValue={30}
+              disabled = {false}
+              marks={{
+                  30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                  60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
+                  90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
+              }}
+              />
+              </label>
+              <br /><br />
+              <label> level of difficulty<Slider
+              defaultValue={30}
+              disabled = {false}
+              marks={{
+                  30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                  60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
+                  90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
+              }}
+              />
+              </label>
+              <br /><br />
+              <label>Communication of ideas<Slider
+              defaultValue={30}
+              disabled = {false}
+              marks={{
+                  30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                  60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
+                  90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
+              }}
+              />
+              </label>
+              <br /><br />
+              <label>Facilitation of learning<Slider
+              defaultValue={30}
+              disabled = {false}
+              marks={{
+                  30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                  60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
+                  90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
+              }}
+              />
+              </label>
+              <br /><br />
+              <label>Would take again, Yes/No { courseWarning } <input ref= {this.state.course.value} onChange = { this.handleTextChange }
+              type = "text" name = "course" value = {this.state.course} placeholder = "course "/>
+              </label>
+              <br /><br />
+              <label>Extra comments { majorWarning } <input ref= {this.state.major.value} onChange = { this.handleTextChange }
+              type = "text" name = "major" value = {this.state.major} placeholder = "major " />
+              </label>
+              <br /><br />
+              { submitButton }
+          </form>
 
       </div>
       <div>
-      <ShowClassDetail {...this.state} />
+          <ShowClassDetail {...this.state} />
       </div>
       <Footer />
       </div>
       )
+    }
   }
-  }
-  export default Add;
+  export default ProfessorForm;

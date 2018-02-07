@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-import Add from './Add';
+import Add from './ProfessorForm';
 import Home from './Home';
 
 export default class App extends React.Component {

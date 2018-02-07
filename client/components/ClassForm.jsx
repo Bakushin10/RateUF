@@ -2,24 +2,26 @@
 import React from 'react';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { List, Avatar, Icon, Slider} from 'antd';
 import 'antd/dist/antd.css';
 
 import ShowClassDetail from './ShowClassDetail';
 import ShowAllProf from './ShowAllProf';
+import Header from './Header';
+import Footer from './Footer';
 
 var querystring = require('querystring');
 
 const WarningOn = styled.p`
-  color: #FF1493;
-`
+  color: #ff1493;
+`;
 const WarningOff = styled.p`
-  color: #ADFF2F;
-`
+  color: #adff2f;
+`;
 
-class Add extends React.Component {
+class ClassForm extends React.Component {
     constructor() {
         super();
 
@@ -31,7 +33,7 @@ class Add extends React.Component {
             month: 'Jan',
             messageFromServer: '',
             data: [] //array classes data
-        }
+        };
         this.handleSelectChange = this.handleSelectChange.bind(this);
         this.onClick = this.onClick.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
@@ -45,9 +47,7 @@ class Add extends React.Component {
         this.getData(this, '2016');
     }
 
-    componentWillReceiveProps(){
-
-    }
+    componentWillReceiveProps() {}
 
     handleSelectChange(e) {
         if (e.target.name == 'month') {
@@ -65,35 +65,39 @@ class Add extends React.Component {
     onClick(e) {
         this.insertNewExpense(this);
         this.getData(this, '2016');
-        console.log("this.state.data");
+        console.log('this.state.data');
         console.log(this.state.data);
     }
 
-    getData(ev, year){
-        axios.get('/getAll?month=All&year='+year)
-            .then(function(response) {
-                console.log("response data === ");
-                ev.setState({data:response.data})
-            });
+    getData(ev, year) {
+        axios.get('/getAll?month=All&year=' + year).then(function(response) {
+            console.log('response data === ');
+            ev.setState({ data: response.data });
+        });
     }
 
     insertNewExpense(e) {
-        axios.post('/insert',
-            querystring.stringify({
-                profName: e.state.profName,
-                course: e.state.course,
-                major: e.state.major,
-                month: e.state.month,
-                year: e.state.year
-            }), {
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+        axios
+            .post(
+                '/insert',
+                querystring.stringify({
+                    profName: e.state.profName,
+                    course: e.state.course,
+                    major: e.state.major,
+                    month: e.state.month,
+                    year: e.state.year
+                }),
+                {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
                 }
-            }).then(function(response) {
-            e.setState({
-                messageFromServer: response.data
+            )
+            .then(function(response) {
+                e.setState({
+                    messageFromServer: response.data
+                });
             });
-        });
 
         //set the state back to null
         this.setState({ profName: '' });
@@ -102,39 +106,37 @@ class Add extends React.Component {
     }
 
     handleTextChange(e) {
-        if(e.target.name == "profName")
-            this.setState({ profName: e.target.value })
+        if (e.target.name == 'profName') this.setState({ profName: e.target.value });
 
-        if(e.target.name == "course")
-            this.setState({ course: e.target.value })
+        if (e.target.name == 'course') this.setState({ course: e.target.value });
 
-        if(e.target.name == "major")
-            this.setState({ major: e.target.value })
+        if (e.target.name == 'major') this.setState({ major: e.target.value });
     }
 
-    warning(givenState){
-        if(givenState){
-            return (<WarningOff>text</WarningOff>);
-        }
-        else{
-            return (<WarningOn>Text required</WarningOn>);
+    warning(givenState) {
+        if (givenState) {
+            return <WarningOff>text</WarningOff>;
+        } else {
+            return <WarningOn>Text required</WarningOn>;
         }
     }
 
-    getSubmitButton(){
-        const checkListForWarning =
-            [
-                this.state.profName,
-                this.state.course,
-                this.state.major
-            ]
+    getSubmitButton() {
+        const checkListForWarning = [this.state.profName, this.state.course, this.state.major];
         const allFieldChecked = !checkListForWarning.includes('');
 
-        if(allFieldChecked){
-            return (<Button bsStyle="success" bsSize="small"
-                            onClick={this.onClick}>Add New Expense</Button>);
-        }else{
-            return (<Button color="danger" disabled>cant submit</Button> );
+        if (allFieldChecked) {
+            return (
+                <Button bsStyle="success" bsSize="small" onClick={this.onClick}>
+                    Add New Expense
+                </Button>
+            );
+        } else {
+            return (
+                <Button color="danger" disabled>
+                    cant submit
+                </Button>
+            );
         }
     }
 
@@ -144,18 +146,21 @@ class Add extends React.Component {
         const majorWarning = this.warning(this.state.major);
         const submitButton = this.getSubmitButton();
 
+
         return (
             <div className='button-center'>
-
-                <ShowAllProf/>
+                <Header />
+                <h1>
+                    THIS IS THE CLASS FORM
+                </h1>
 
                 <div>
                     <form>
-                        <label>Select the professor name { profWarning }<input ref= {this.state.profName.value} onChange = { this.handleTextChange }
+                        <label>Select the class name { profWarning }<input ref= {this.state.profName.value} onChange = { this.handleTextChange }
                                                                                type = "text" name = "profName" value = {this.state.profName} placeholder = "prof name "/>
                         </label>
                         <br /><br />
-                        <label>Overall experience<Slider
+                        <label>Overall Experience<Slider
                             defaultValue={30}
                             disabled = {false}
                             marks={{
@@ -166,7 +171,7 @@ class Add extends React.Component {
                         />
                         </label>
                         <br /><br />
-                        <label>level of difficulty<Slider
+                        <label>Level of Difficulty<Slider
                             defaultValue={30}
                             disabled = {false}
                             marks={{
@@ -177,40 +182,7 @@ class Add extends React.Component {
                         />
                         </label>
                         <br /><br />
-                        <label> level of difficulty<Slider
-                            defaultValue={30}
-                            disabled = {false}
-                            marks={{
-                                30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-                                90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-                            }}
-                        />
-                        </label>
-                        <br /><br />
-                        <label>Communication of ideas<Slider
-                            defaultValue={30}
-                            disabled = {false}
-                            marks={{
-                                30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-                                90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-                            }}
-                        />
-                        </label>
-                        <br /><br />
-                        <label>Facilitation of learning<Slider
-                            defaultValue={30}
-                            disabled = {false}
-                            marks={{
-                                30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
-                                90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-                            }}
-                        />
-                        </label>
-                        <br /><br />
-                        <label>Would take again, Yes/No { courseWarning } <input ref= {this.state.course.value} onChange = { this.handleTextChange }
+                        <label>Information you should know before taking this course { courseWarning } <input ref= {this.state.course.value} onChange = { this.handleTextChange }
                                                                                  type = "text" name = "course" value = {this.state.course} placeholder = "course "/>
                         </label>
                         <br /><br />
@@ -225,8 +197,9 @@ class Add extends React.Component {
                 <div>
                     <ShowClassDetail {...this.state} />
                 </div>
+                <Footer />
             </div>
         )
     }
 }
-export default Add;
+export default ClassForm;
