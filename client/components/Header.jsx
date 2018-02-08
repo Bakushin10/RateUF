@@ -3,8 +3,7 @@ import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 
 const Header = () => (
   <div className="container">
-    <link rel="stylesheet" href="./css/Header.css" />
-    <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico" rel="stylesheet" />
+
     <Navbar className="head">
       <Navbar.Header>
         <Navbar.Brand>
