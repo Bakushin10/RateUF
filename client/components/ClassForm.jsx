@@ -7,7 +7,7 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 
-import { Form, Select, Radio, Input, Slider, Icon, Rate } from 'antd';
+import { Form, Select, Input, Slider, Icon, Button } from 'antd';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -25,9 +25,9 @@ class ClassForm extends React.Component {
                 <Header />
                 <h1>Rate a Class</h1>
 
-                <div>
+                <div align="center">
                     <Form.Item
-                        {... formItemLayout}
+                        {...formItemLayout}
                         label = "Select a Class"
                         hasFeedback
                     >
@@ -85,7 +85,13 @@ class ClassForm extends React.Component {
                             <Select.Option value="Databases">Databases</Select.Option>
                         </Select>
                     </FormItem>
-
+                    <FormItem
+                        wrapperCol={{ span: 12, offset: 5 }}
+                    >
+                        <Button type="primary" htmlType="submit">
+                            Submit
+                        </Button>
+                    </FormItem>
                 </div>
                 <Footer />
             </div>

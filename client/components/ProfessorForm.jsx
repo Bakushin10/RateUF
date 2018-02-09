@@ -8,7 +8,7 @@ import React from 'react';
 
 import ShowAllProf from './ShowAllProf';
 
-import { Form, Select, Radio, Input, Slider, Icon, Rate } from 'antd';
+import { Form, Select, Radio, Input, Slider, Icon, Rate, Button } from 'antd';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -26,9 +26,10 @@ class ProfessorForm extends React.Component {
           <Header />
           <ShowAllProf/>
           <br/>
+          <h1>Rate a Professor</h1>
 
-          <div>
-              <h1>Rate a Professor</h1>
+          <div align="center">
+
               <Form.Item
                   {... formItemLayout}
                   label = "Select a Professor"
@@ -103,6 +104,13 @@ class ProfessorForm extends React.Component {
                   label="Rate"
               >
                   <Rate />
+              </FormItem>
+              <FormItem
+                  wrapperCol={{ span: 12, offset: 5 }}
+              >
+                  <Button type="primary" htmlType="submit">
+                      Submit
+                  </Button>
               </FormItem>
           </div>
           <Footer />
