@@ -17,7 +17,7 @@ class ClassForm extends React.Component {
     render() {
         const formItemLayout = {
             labelCol: {span: 8},
-            wrapperCol : {span: 9}
+            wrapperCol : {span: 10}
         };
 
         return (
@@ -85,10 +85,8 @@ class ClassForm extends React.Component {
                             <Select.Option value="Databases">Databases</Select.Option>
                         </Select>
                     </FormItem>
-                    <FormItem
-                        wrapperCol={{ span: 12, offset: 5 }}
-                    >
-                        <Button type="primary" htmlType="submit">
+                    <FormItem>
+                        <Button align="center" type="primary" htmlType="submit">
                             Submit
                         </Button>
                     </FormItem>

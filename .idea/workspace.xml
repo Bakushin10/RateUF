@@ -76,8 +76,8 @@
       <file leaf-file-name="ProfessorForm.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/components/ProfessorForm.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="33" column="38" lean-forward="true" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+            <state relative-caret-position="131">
+              <caret line="108" column="41" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
               <folding>
                 <element signature="e#275#315#0" expanded="true" />
               </folding>
@@ -88,8 +88,8 @@
       <file leaf-file-name="ClassForm.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/ClassForm.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
               <folding>
                 <element signature="e#243#271#0" expanded="true" />
               </folding>
@@ -266,12 +266,12 @@
       <workItem from="1517967649289" duration="2116000" />
       <workItem from="1518126341320" duration="8000" />
       <workItem from="1518137794966" duration="416000" />
-      <workItem from="1518139658230" duration="7823000" />
+      <workItem from="1518139658230" duration="8667000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14198000" />
+    <option name="totallyTimeSpent" value="15042000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -739,8 +739,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/ClassForm.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
           <folding>
             <element signature="e#243#271#0" expanded="true" />
           </folding>
@@ -749,8 +749,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/ProfessorForm.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="33" column="38" lean-forward="true" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+        <state relative-caret-position="131">
+          <caret line="108" column="41" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
           <folding>
             <element signature="e#275#315#0" expanded="true" />
           </folding>

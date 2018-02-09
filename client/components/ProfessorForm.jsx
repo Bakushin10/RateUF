@@ -105,10 +105,8 @@ class ProfessorForm extends React.Component {
               >
                   <Rate />
               </FormItem>
-              <FormItem
-                  wrapperCol={{ span: 12, offset: 5 }}
-              >
-                  <Button type="primary" htmlType="submit">
+              <FormItem>
+                  <Button align="center" type="primary" htmlType="submit">
                       Submit
                   </Button>
               </FormItem>
