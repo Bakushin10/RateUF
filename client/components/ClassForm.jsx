@@ -69,6 +69,10 @@ class ClassForm extends React.Component {
                     >
                         <Input />
                     </Form.Item>
+
+                    {/*dont need this. Just showing another option for selecting something beforehand. */}
+                    {/*instead of the user typing, we have predetermined options and they are able to chose */}
+                    {/*whatever ones they want. (able to select as many as you want)*/}
                     <FormItem
                         {...formItemLayout}
                         label="Select what to know beforehand"

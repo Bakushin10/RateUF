@@ -94,6 +94,10 @@ class ProfessorForm extends React.Component {
               >
                   <Input />
               </Form.Item>
+
+              {/*don't need this. just showing another option for the form. */}
+              {/*this is the stars that are shown.*/}
+
               <FormItem
                   {...formItemLayout}
                   label="Rate"
