@@ -75,10 +75,10 @@ class ClassForm extends React.Component {
                     >
                         <Select mode="multiple" placeholder="Please select what someone should
                         know beforehand">
-                            <Option value="C++">C++</Option>
-                            <Option value="Java">Java</Option>
-                            <Option value="Javascript">Javascript</Option>
-                            <Option value="Databases">Databases</Option>
+                            <Select.Option value="C++">C++</Select.Option>
+                            <Select.Option value="Java">Java</Select.Option>
+                            <Select.Option value="Javascript">Javascript</Select.Option>
+                            <Select.Option value="Databases">Databases</Select.Option>
                         </Select>
                     </FormItem>
 

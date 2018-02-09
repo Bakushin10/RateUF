@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="17a06ee3-303e-45d3-a677-00728726d41e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/bundle.js" afterPath="$PROJECT_DIR$/client/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/ClassForm.jsx" afterPath="$PROJECT_DIR$/client/components/ClassForm.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/ProfessorForm.jsx" afterPath="$PROJECT_DIR$/client/components/ProfessorForm.jsx" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,7 +74,7 @@
       <file leaf-file-name="ProfessorForm.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/ProfessorForm.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
+            <state relative-caret-position="-175">
               <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="e#275#315#0" expanded="true" />
@@ -88,8 +86,8 @@
       <file leaf-file-name="ClassForm.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/components/ClassForm.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="61" column="61" lean-forward="false" selection-start-line="61" selection-start-column="61" selection-end-line="61" selection-end-column="61" />
+            <state relative-caret-position="194">
+              <caret line="80" column="36" lean-forward="false" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
               <folding>
                 <element signature="e#243#271#0" expanded="true" />
               </folding>
@@ -266,12 +264,12 @@
       <workItem from="1517967649289" duration="2116000" />
       <workItem from="1518126341320" duration="8000" />
       <workItem from="1518137794966" duration="416000" />
-      <workItem from="1518139658230" duration="6306000" />
+      <workItem from="1518139658230" duration="6550000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12681000" />
+    <option name="totallyTimeSpent" value="12925000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -739,7 +737,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/ProfessorForm.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
+        <state relative-caret-position="-175">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="e#275#315#0" expanded="true" />
@@ -749,8 +747,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/ClassForm.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="61" column="61" lean-forward="false" selection-start-line="61" selection-start-column="61" selection-end-line="61" selection-end-column="61" />
+        <state relative-caret-position="194">
+          <caret line="80" column="36" lean-forward="false" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
           <folding>
             <element signature="e#243#271#0" expanded="true" />
           </folding>
