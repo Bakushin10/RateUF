@@ -1,9 +1,4 @@
-//client/components/ProfessorForm.jsx
 import React from 'react';
-// import { Button, ButtonToolbar } from 'react-bootstrap';
-// import axios from 'axios';
-// import { Link } from 'react-router-dom';
-// import styled from 'styled-components';
 
 import 'antd/dist/antd.css';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { List, Avatar, Icon, Slider} from 'antd';
-import { Row, Grid, Col, DropdownButton, MenuItem,FormGroup, FormControl} from 'react-bootstrap';
+import { List, Avatar, Icon, Slider,Menu, Dropdown, Button} from 'antd';
+import { Row, Grid, Col, FormGroup, FormControl} from 'react-bootstrap';
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
@@ -112,6 +112,20 @@ class Professor extends React.Component {
         </span>
     );
 
+    const menu = (
+        <Menu>
+          <Menu.Item >
+             <div onClick = { (e) => this.changeProfByMajor(e,"CS")} align="center" >CS</div>
+          </Menu.Item>
+          <Menu.Item>
+            <div onClick = { (e) => this.changeProfByMajor(e,"ECE")} align="center" >ECE</div>
+          </Menu.Item>
+          <Menu.Item>
+            <div onClick = { (e) => this.changeProfByMajor(e,"MATH")} align="center">MATH</div>
+          </Menu.Item>
+        </Menu>
+      );
+
     console.log(this.state)
     
     return(
@@ -132,16 +146,9 @@ class Professor extends React.Component {
                         </form>
                     </div>
                     <div>
-                        <DropdownButton
-                            bsStyle="default"
-                            title="Change Major"
-                            noCaret
-                            id="dropdown-no-caret"
-                        >
-                            <MenuItem onClick = { (e) => this.changeProfByMajor(e,"CS")} >CS</MenuItem>
-                            <MenuItem onClick = { (e) => this.changeProfByMajor(e,"ECE")} >ECE</MenuItem>
-                            <MenuItem onClick = { (e) => this.changeProfByMajor(e,"MATH")} >MATH</MenuItem>
-                        </DropdownButton>
+                        <Dropdown overlay = {menu} title="Change Major">
+                            <Button >Change Major</Button>
+                        </Dropdown>
                     </div>
                 </Col>
                 <Col xs = {12} md = {9}>{/* lift of prof*/}
