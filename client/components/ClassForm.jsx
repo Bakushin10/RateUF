@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card} from 'antd';
 import styled from 'styled-components';
 import Header from './Header';
@@ -7,10 +8,10 @@ import Footer from './Footer';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-const WarningOn = styled.p`
+const WarningOn = styled.span`
     color:#fc2f4e;
 `
-const WarningOff = styled.p`
+const WarningOff = styled.span`
     color:#6be594;
 `
 

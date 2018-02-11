@@ -4,6 +4,9 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var Expense = require('../../models/Expense');
 var Professor = require('../../models/Prof');
+var CS_Prof = require('../../models/CSProfModel');
+var Math_Prof = require('../../models/MathProfModel');
+var ECE_Prof = require('../../models/ECEProfModel');
 
 router.get('/', function(req, res){
   res.render('index')
@@ -25,33 +28,16 @@ router.route('/insert').post(function(req,res) {
     });
 })
 
-router.route('/update').post(function(req, res) {
- const doc = {
-     description: req.body.description,
-     amount: req.body.amount,
-     month: req.body.month,
-     year: req.body.year
- };
-    console.log(doc);
-    Expense.update({_id: req.body._id}, doc, function(err, result) {
-      if (err)
-        res.send(err);
-      res.send('Expense successfully updated!');
-  });
-});
+//insert prof review from ProfessorForm.jsx
+router.route('/insertNewProfessorReview').post(function(req,res){
+    console.log(req.body);
 
-router.get('/delete', function(req, res){
-    var id = req.query.id;
-    Expense.find({_id: id}).remove().exec(function(err, expense) {
-        if(err)
-        res.send(err)
-        res.send('Expense successfully deleted!');
-    })
-});
+})
 
 router.get('/getProfByMajor',function(req, res) {
     var majorRec = req.query.major;
  
+    
     Professor.find({major: majorRec}, function(err, professor) {
         if (err)
             res.send(err);
@@ -70,9 +56,7 @@ router.get('/getProfDetails',function(req, res) {
             res.send(err);
         res.json(professor);
     });
-
 });
-
 
 router.get('/getAll',function(req, res) {
     var monthRec = req.query.month;

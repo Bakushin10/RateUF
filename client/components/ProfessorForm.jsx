@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
 import styled from 'styled-components';
 
@@ -8,10 +9,10 @@ import Footer from './Footer';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-const WarningOn = styled.p`
+const WarningOn = styled.span`
     color:#fc2f4e;
 `
-const WarningOff = styled.p`
+const WarningOff = styled.span`
     color:#6be594;
 `
 
@@ -36,6 +37,7 @@ class ProfessorForm extends React.Component {
         this.wouldTakeAgainOnChange = this.wouldTakeAgainOnChange.bind(this);
         this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
         this.submitClicked = this.submitClicked.bind(this);
+        this.insertNewProfessorReview = this.insertNewProfessorReview.bind(this);
     }
 
     overAllExpeOnChange(value){
@@ -60,6 +62,25 @@ class ProfessorForm extends React.Component {
     extraCommentOnChange(e){
         this.setState({ extraComment: e.target.value })
         console.log(this.state.extraComment)
+    }
+
+    insertNewProfessorReview(){
+        axios.post('/insertNewProfessorReview',
+            querystring.stringify({
+                overallExpe: this.state.overallExpe,
+                levelOfDiffculty: this.state.levelOfDiffculty,
+                communicationOfIdeas: this.state.communicationOfIdeas,
+                facilitationOfLearning: this.state.facilitationOfLearning,
+                wouldTakeAgain: this.state.wouldTakeAgain,
+                extraComment: this.state.extraComment
+            }), {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+            }).then(function(response) {
+                //go to submit successfully page
+                console.log(response.data); 
+        });
     }
 
     getLabel(val, tag){
@@ -135,8 +156,8 @@ class ProfessorForm extends React.Component {
             this.setState({hasError: true});
             console.log("input false");
          }else{
-           //submit
-           console.log(this.state);  
+          //  will be updated  
+          //  this.insertNewProfessorReview();
          }
     }
 
