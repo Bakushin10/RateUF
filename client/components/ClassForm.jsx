@@ -1,11 +1,18 @@
 import React from 'react';
-import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col } from 'antd';
-import 'antd/dist/antd.css';
+import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card} from 'antd';
+import styled from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
+
+const WarningOn = styled.p`
+    color:#fc2f4e;
+`
+const WarningOff = styled.p`
+    color:#6be594;
+`
 
 class ClassForm extends React.Component {
 
@@ -16,7 +23,8 @@ class ClassForm extends React.Component {
             overallExpe : 0,
             levelOfDiffculty : 0,
             extraComment: '',
-            knowBeforeCourse: ''
+            knowBeforeCourse: '',
+            hasError : false
         }
 
         this.overAllExpeOnChange = this.overAllExpeOnChange.bind(this);
@@ -54,8 +62,69 @@ class ClassForm extends React.Component {
         console.log(this.state.extraComment)
     }
 
+    getLabel(val, tag){
+
+        if(tag === "OE"){
+            if(val == 0){            
+                return(
+                    <WarningOn>* Overall Experience</WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff>Overall Experience</WarningOff>
+                )
+            }
+        }
+
+        if(tag === "LD"){
+            if(val === 0 ){
+                return(
+                    <WarningOn>* Level Of Diffculty </WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff> Level Of Diffculty </WarningOff>
+                )
+            }
+        }
+
+        if(tag === "knowBeforeCourse"){
+            if(val === '' ){
+                return(
+                    <WarningOn>* What to know before the course </WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff> What to know before the course </WarningOff>
+                )
+            }
+        }
+
+        if(tag === "Comment"){
+            if(val === ''){
+                return(
+                    <WarningOn>* Commnet </WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff> Commnet </WarningOff>
+                )
+            }
+        }
+    }
+
     submitClicked(){
-        console.log("submitted");
+        if( this.state.overallExpe === 0 
+         || this.state.levelOfDiffculty === 0
+         || this.state.knowBeforeCourse === ''
+         || this.state.extraComment === '')
+         {
+            this.setState({hasError: true});
+            console.log("input false");
+         }else{
+           //successfully submitted 
+           console.log(this.state);  
+         }
     }
 
     render() {
@@ -63,29 +132,22 @@ class ClassForm extends React.Component {
             labelCol: {span: 8},
             wrapperCol : {span: 10}
         };
-
+        const hasError = this.state.hasError;
 
         return (
             <div className='button-center'>
                 <Header />
                 <h1>Rate a Class</h1>
-
+                <div>
+                    <Card style={{ width: 500}} hidden = {!hasError}>
+                        <p>Please Check your inputs ! </p>
+                    </Card>
+                </div>
                 <div align="center">
                     <Form>
                         <FormItem
                             {...formItemLayout}
-                            label = "Select a Class"
-                            hasFeedback
-                        >
-                            <Select name="select" placeholder="Please select a Class" style={{ width: 150 }}>
-                                <Select.Option value="CDA 4630">CDA 4630 Embedded Systems</Select.Option>
-                                <Select.Option value="CIS 4914">CIS 4914 Senior Project</Select.Option>
-                                <Select.Option value="COP 3502">COP 3503 Programming 1</Select.Option>
-                            </Select>
-                        </FormItem>
-                        <FormItem
-                            {...formItemLayout}
-                            label="Overall Experience"
+                            label = {this.getLabel(this.state.overallExpe, "OE")}
                         >
                             <Slider
                                 onChange = {this.overAllExpeOnChange}
@@ -100,7 +162,7 @@ class ClassForm extends React.Component {
                         </FormItem>
                         <FormItem
                             {...formItemLayout}
-                            label="Level of Difficulty"
+                            label = {this.getLabel(this.state.levelOfDiffculty, "LD")}
                         >
                             <Slider
                                 onChange = {this.levelOfDiffcultyOnChange}
@@ -115,7 +177,7 @@ class ClassForm extends React.Component {
                         </FormItem>
                         <FormItem  
                             {...formItemLayout}
-                            label="What to know before the course"
+                            label = {this.getLabel(this.state.knowBeforeCourse, "knowBeforeCourse")}
                         >
                             <TextArea
                                 type = "text"
@@ -127,7 +189,7 @@ class ClassForm extends React.Component {
                         </FormItem>
                         <FormItem
                             {...formItemLayout}
-                            label="Extra Comments"
+                            label = {this.getLabel(this.state.extraComment, "Comment")}
                         >
                             <TextArea
                                 type = "text"

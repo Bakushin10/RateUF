@@ -1,11 +1,19 @@
 import React from 'react';
-import { Form, Select, Radio, Input, Slider, Icon, Rate, Button } from 'antd';
+import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
+import styled from 'styled-components';
 
 import Header from './Header';
 import Footer from './Footer';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
+
+const WarningOn = styled.p`
+    color:#fc2f4e;
+`
+const WarningOff = styled.p`
+    color:#6be594;
+`
 
 class ProfessorForm extends React.Component {
 
@@ -17,7 +25,8 @@ class ProfessorForm extends React.Component {
             communicationOfIdeas : 0,
             facilitationOfLearning : 0,
             wouldTakeAgain : "Yes", //by default
-            extraComment: '' 
+            extraComment: '',
+            hasError : false
         }
         
         this.overAllExpeOnChange = this.overAllExpeOnChange.bind(this);
@@ -53,8 +62,82 @@ class ProfessorForm extends React.Component {
         console.log(this.state.extraComment)
     }
 
+    getLabel(val, tag){
+
+        if(tag === "OE"){
+            if(val == 0){            
+                return(
+                    <WarningOn>* Overall Experience</WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff>Overall Experience</WarningOff>
+                )
+            }
+        }
+
+        if(tag === "LD"){
+            if(val === 0 ){
+                return(
+                    <WarningOn>* Level Of Diffculty </WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff> Level Of Diffculty </WarningOff>
+                )
+            }
+        }
+
+        if(tag === "CI"){
+            if(val === 0 ){
+                return(
+                    <WarningOn>* Communication </WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff> Communication </WarningOff>
+                )
+            }
+        }
+
+        if(tag === "FL"){
+            if(val === 0){
+                return(
+                    <WarningOn>* Facilitation Of Learning </WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff> Facilitation Of Learning </WarningOff>
+                )
+            }
+        }
+
+        if(tag === "Comment"){
+            if(val === ''){
+                return(
+                    <WarningOn>* Commnet </WarningOn>
+                )
+            }else{
+                return(
+                    <WarningOff> Commnet </WarningOff>
+                )
+            }
+        }
+    }
+
     submitClicked(){
-        console.log("submitted");
+        if( this.state.overallExpe === 0 
+         || this.state.levelOfDiffculty === 0
+         || this.state.communicationOfIdeas === 0
+         || this.state.facilitationOfLearning === 0
+         || this.state.extraComment === '')
+         {
+            this.setState({hasError: true});
+            console.log("input false");
+         }else{
+           //submit
+           console.log(this.state);  
+         }
     }
 
     render() {
@@ -62,17 +145,23 @@ class ProfessorForm extends React.Component {
             labelCol: {span: 8},
             wrapperCol : {span: 9}
         };
-        const profName = this.props.match.params.profName;
 
+        const profName = this.props.match.params.profName;
+        const hasError = this.state.hasError;
         return (
             <div className='button-center'>
-                <Header />
-                <h1>{ profName }</h1>
+                <Header />                
+                    <h1>{ profName }</h1>
+                    <div>
+                        <Card style={{ width: 500}} hidden = {!hasError}>
+                            <p>Please Check your inputs ! </p>
+                        </Card>
+                    </div>
                     <div align="center">
                         <Form>
                             <FormItem
                                 {...formItemLayout}
-                                label="Overall Experience"
+                                label = {this.getLabel(this.state.overallExpe, "OE")}
                             >
                                 <Slider
                                     onChange = {this.overAllExpeOnChange}
@@ -82,12 +171,12 @@ class ProfessorForm extends React.Component {
                                         0: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
                                         50: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>,
                                         100: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div>
-                                    }} 
+                                    }}
                                 />
                             </FormItem>
                             <FormItem
                                 {...formItemLayout}
-                                label="Level of Difficulty"
+                                label = {this.getLabel(this.state.levelOfDiffculty, "LD")}
                             >
                                 <Slider
                                     onChange = {this.levelOfDiffcultyOnChange}
@@ -102,7 +191,7 @@ class ProfessorForm extends React.Component {
                             </FormItem>
                             <FormItem
                                 {...formItemLayout}
-                                label="Communication of Ideas"
+                                label = {this.getLabel(this.state.communicationOfIdeas, "CI")}
                             >
                                 <Slider
                                     onChange = {this.communicationOfIdeasOnChange}
@@ -117,7 +206,7 @@ class ProfessorForm extends React.Component {
                             </FormItem>
                             <FormItem
                                 {...formItemLayout}
-                                label="Facilitation of Learning"
+                                label = {this.getLabel(this.state.facilitationOfLearning, "FL")}
                             >
                                 <Slider
                                     onChange = {this.facilitationOfLearningOnChange}
@@ -132,16 +221,7 @@ class ProfessorForm extends React.Component {
                             </FormItem>
                             <FormItem
                                 {...formItemLayout}
-                                label="Would Take This Professor Again?"
-                            >
-                                <Select name="select" defaultValue="Yes" style={{ width: 80 }} onChange = {this.wouldTakeAgainOnChange} >
-                                    <Select.Option value = {"Yes"}> Yes </Select.Option>
-                                    <Select.Option  value = {"No"}> No  </Select.Option>
-                                </Select>
-                            </FormItem>
-                            <FormItem
-                                {...formItemLayout}
-                                label="Extra Comments"
+                                label = {this.getLabel(this.state.extraComment, "Comment")} 
                             >
                                 <TextArea
                                     type = "text"
@@ -151,12 +231,14 @@ class ProfessorForm extends React.Component {
                                     onChange = {this.extraCommentOnChange}
                                 />
                             </FormItem>
-
                             <FormItem
                                 {...formItemLayout}
-                                label="Rate"
+                                label="Would Take This Professor Again?"
                             >
-                                <Rate />
+                                <Select name="select" defaultValue="Yes" style={{ width: 80 }} onChange = {this.wouldTakeAgainOnChange} >
+                                    <Select.Option value = {"Yes"}> Yes </Select.Option>
+                                    <Select.Option  value = {"No"}> No  </Select.Option>
+                                </Select>
                             </FormItem>
                             <FormItem>
                                 <Button align="center" type="primary" htmlType="submit" onClick = {this.submitClicked}>
