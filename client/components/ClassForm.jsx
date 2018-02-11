@@ -37,29 +37,22 @@ class ClassForm extends React.Component {
 
     overAllExpeOnChange(value){
         this.setState({overallExpe : value})
-        console.log("overallExpe")
-        console.log(this.state.overallExpe)
     }
 
     levelOfDiffcultyOnChange(value){
         this.setState({levelOfDiffculty : value})
-        console.log("levelOfDiff")
-        console.log(this.state.levelOfDiffculty)
     }
 
     checkboxOnChange(value){
         this.setState({a : value})
-        console.log("checkboxOnChange")
     }
 
     knowBeforeCourseOnChange(e){
         this.setState({ knowBeforeCourse: e.target.value })
-        console.log(this.state.knowBeforeCourse)
     }
 
     extraCommentOnChange(e){
         this.setState({ extraComment: e.target.value })
-        console.log(this.state.extraComment)
     }
 
     getLabel(val, tag){
@@ -85,7 +78,7 @@ class ClassForm extends React.Component {
                 return(
                     <WarningOff> Level Of Diffculty </WarningOff>
                 )
-            }
+            }   
         }
 
         if(tag === "knowBeforeCourse"){
@@ -120,7 +113,6 @@ class ClassForm extends React.Component {
          || this.state.extraComment === '')
          {
             this.setState({hasError: true});
-            console.log("input false");
          }else{
            //successfully submitted 
            console.log(this.state);  
