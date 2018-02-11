@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { List, Avatar, Icon, Slider} from 'antd';
+import { Link } from 'react-router-dom';
 import { Row, Grid, Col, DropdownButton, MenuItem } from 'react-bootstrap';
 import { Button } from 'antd';
 
@@ -52,7 +53,11 @@ class ProfessorDetails extends React.Component {
                         <Col xs = {3} md = {3}>
                             {this.state.profName}
                             <div>
-                                <Button type="primary" ghost>Rate this professor</Button>
+                                <Button type="primary" ghost>
+                                        <Link to={`/ProfessorForm/${this.state.id}/${this.state.profName}`}>
+                                        Rate this professor
+                                    </Link>
+                                </Button>
                             </div>
                         </Col>
                         <Col xs = {3} md = {3}>

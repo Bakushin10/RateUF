@@ -11,9 +11,9 @@ import FourOhFour from './components/FourOhFour'
 export const Routes = () => (
     <Switch>
       <Route exact path='/' component={Home} />
-      <Route path='/ProfessorForm' component={ProfessorForm} />
       <Route path='/Professor' component={Professor} />
       <Route path='/ProfessorDetails/:id' component={ProfessorDetails} />
+      <Route path='/ProfessorForm/:id/:profName' component={ProfessorForm} />
       <Route path='/ClassForm' component={ClassForm} />
       <Route component={FourOhFour} />
     </Switch>

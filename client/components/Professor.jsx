@@ -23,7 +23,7 @@ class Professor extends React.Component {
         this.state = {
             selectedMajor: "CS",
             professor: [], //array professors to keep
-            professorToShow:[], //this array will change based on the search
+            professorToShow:[], //this array will change based on the search. temp array to show 
             searchTerm: '', // user input for search
             loading: false,
             hasMore: true
@@ -151,7 +151,7 @@ class Professor extends React.Component {
                         </Dropdown>
                     </div>
                 </Col>
-                <Col xs = {12} md = {9}>{/* lift of prof*/}
+                <Col xs = {12} md = {9}>{/* list of prof*/}
                     <InfiniteScroll className = "demo-infinite-container"
                         initialLoad={false}
                         pageStart={0}
