@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
 
+var querystring = require('querystring');
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
@@ -72,7 +73,9 @@ class ProfessorForm extends React.Component {
                 communicationOfIdeas: this.state.communicationOfIdeas,
                 facilitationOfLearning: this.state.facilitationOfLearning,
                 wouldTakeAgain: this.state.wouldTakeAgain,
-                extraComment: this.state.extraComment
+                extraComment: this.state.extraComment,
+                major : this.props.match.params.major,
+                name : this.props.match.params.profName
             }), {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -81,6 +84,20 @@ class ProfessorForm extends React.Component {
                 //go to submit successfully page
                 console.log(response.data); 
         });
+    }
+
+    submitClicked(){
+        if( this.state.overallExpe === 0 
+         || this.state.levelOfDiffculty === 0
+         || this.state.communicationOfIdeas === 0
+         || this.state.facilitationOfLearning === 0
+         || this.state.extraComment === '')
+         {
+            this.setState({hasError: true}); //trigger the error message
+         }else{
+          //  will be updated
+            this.insertNewProfessorReview();
+         }
     }
 
     getLabel(val, tag){
@@ -146,21 +163,6 @@ class ProfessorForm extends React.Component {
         }
     }
 
-    submitClicked(){
-        if( this.state.overallExpe === 0 
-         || this.state.levelOfDiffculty === 0
-         || this.state.communicationOfIdeas === 0
-         || this.state.facilitationOfLearning === 0
-         || this.state.extraComment === '')
-         {
-            this.setState({hasError: true});
-            console.log("input false");
-         }else{
-          //  will be updated  
-          //  this.insertNewProfessorReview();
-         }
-    }
-
     render() {
         const formItemLayout = {
             labelCol: {span: 8},
@@ -174,7 +176,7 @@ class ProfessorForm extends React.Component {
                 <Header />                
                     <h1>{ profName }</h1>
                     <div>
-                        <Card style={{ width: 500}} hidden = {!hasError}>
+                        <Card style={{ width: 500}} hidden = {!hasError}> {/*only show when the input errors are detected */}
                             <p>Please Check your inputs ! </p>
                         </Card>
                     </div>

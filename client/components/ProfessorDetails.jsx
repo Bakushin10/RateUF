@@ -54,7 +54,7 @@ class ProfessorDetails extends React.Component {
                             {this.state.profName}
                             <div>
                                 <Button type="primary" ghost>
-                                        <Link to={`/ProfessorForm/${this.state.id}/${this.state.profName}`}>
+                                        <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>
                                         Rate this professor
                                     </Link>
                                 </Button>

@@ -21,7 +21,7 @@ router.route('/insert').post(function(req,res) {
     expense.month = req.body.month;
     expense.year = req.body.year;
   
-    expense.save(function(err) {
+    expense.save(function(err) { 
         if (err)
             res.send(err);
         res.send('Expense successfully added!');
@@ -30,7 +30,54 @@ router.route('/insert').post(function(req,res) {
 
 //insert prof review from ProfessorForm.jsx
 router.route('/insertNewProfessorReview').post(function(req,res){
-    console.log(req.body);
+
+    var name = req.body.name;
+    var newReview = {
+        overallExpe : req.body.overallExpe,
+        levelOfDiffculty : req.body.levelOfDiffculty,
+        communicationOfIdeas : req.body.communicationOfIdeas,
+        facilitationOfLearning : req.body.facilitationOfLearning,
+        wouldTakeAgain : req.body.wouldTakeAgain,
+        extraComment : req.body.extraComment
+    }
+
+    console.log(name)
+    console.log(newReview);
+    if(req.body.major == "CS"){
+        CS_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
+            function(err,req){
+                if (err) {
+                    console.log(err);
+                    res.status(400).send(err);
+                } else {
+                    console.log("Successfully created chat updated!\n ");
+                }
+          });
+    }
+
+    if(req.body.major == "MATH"){
+        Math_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
+        function(err,req){
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);  
+            } else {
+                console.log("Successfully created chat updated!\n ");
+            }
+      });
+    }
+
+    if(req.body.major == "ECE"){
+        ECE_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
+        function(err,req){
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);  
+            } else {
+                console.log("Successfully created chat updated!\n ");
+            }
+      });
+    }
 
 })
 

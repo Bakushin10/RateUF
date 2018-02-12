@@ -13,7 +13,7 @@ export const Routes = () => (
       <Route exact path='/' component={Home} />
       <Route path='/Professor' component={Professor} />
       <Route path='/ProfessorDetails/:id' component={ProfessorDetails} />
-      <Route path='/ProfessorForm/:id/:profName' component={ProfessorForm} />
+      <Route path='/ProfessorForm/:major/:profName' component={ProfessorForm} />
       <Route path='/ClassForm' component={ClassForm} />
       <Route component={FourOhFour} />
     </Switch>
