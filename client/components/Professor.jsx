@@ -7,95 +7,96 @@ import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header-Footer/Header';
+import Footer from './Header-Footer/Footer';
 
 const ProfessorName = styled.h5`
-    color:#878fad;
-    padding-top: 15px;
-    padding-left: 30px;
-`
+  color: #878fad;
+  padding-top: 15px;
+  padding-left: 30px;
+`;
 
 class Professor extends React.Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            selectedMajor: "CS",
-            professor: [], //array professors to keep
-            professorToShow:[], //this array will change based on the search. temp array to show 
-            searchTerm: '', // user input for search
-            loading: false,
-            hasMore: true
-        }
+    this.state = {
+      selectedMajor: 'CS',
+      professor: [], //array professors to keep
+      professorToShow: [], //this array will change based on the search
+      searchTerm: '', // user input for search
+      loading: false,
+      hasMore: true
+    };
 
-        this.getProfByMajor = this.getProfByMajor.bind(this);
-        this.handleSearchProf = this.handleSearchProf.bind(this);
-        this.searchProf = this.searchProf.bind(this);
-    }   
+    this.getProfByMajor = this.getProfByMajor.bind(this);
+    this.handleSearchProf = this.handleSearchProf.bind(this);
+    this.searchProf = this.searchProf.bind(this);
+  }
 
-    handleInfiniteOnLoad() {
-        let data = this.state.professor;
-        this.setState({
-            loading: true
-        });
-        if (data.length > 14) {
-            message.warning('Infinite List loaded all');
-            this.setState({
-            hasMore: false,
-            loading: false
-            });
-            return;
-        }
-        this.getData(res => {
-            data = data.concat(res.results);
-            this.setState({
-            data,
-            loading: false
-            });
-        });
+  handleInfiniteOnLoad() {
+    let data = this.state.professor;
+    this.setState({
+      loading: true
+    });
+    if (data.length > 14) {
+      message.warning('Infinite List loaded all');
+      this.setState({
+        hasMore: false,
+        loading: false
+      });
+      return;
     }
-    
-    componentDidMount(){
-        this.getProfByMajor(this, 'CS');
-      //  this.setState({selectedMajor:'CS'});
-    }
-    
-    handleSearchProf(e) {
-        this.setState({ searchTerm: e.target.value });
-        this.searchProf();
-    }
+    this.getData(res => {
+      data = data.concat(res.results);
+      this.setState({
+        data,
+        loading: false
+      });
+    });
+  }
 
-    searchProf(){
-        const selectedProf = this.state.professor.filter(prof =>{
-            if(`${prof.name}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase())>=0){
-                return prof;
-            }
-        })
-        this.setState({professorToShow : selectedProf})
-    }
+  componentDidMount() {
+    this.getProfByMajor(this, 'CS');
+    //  this.setState({selectedMajor:'CS'});
+  }
 
-    getProfByMajor(ev, major){
-        axios.get('/getProfByMajor?major='+major) //passing major as an argument
-          .then(function(response) {
-            ev.setState({professor:response.data[0].professor});
-            ev.setState({professorToShow:response.data[0].professor});
-          });
-    }
-    
-    handleInfiniteOnLoad() {
-        let data = this.state.professor;
-        this.setState({
-          loading: true,
-        });
-    }
+  handleSearchProf(e) {
+    this.setState({ searchTerm: e.target.value });
+    this.searchProf();
+  }
 
-    changeProfByMajor(e, major){
-        if(this.state.selectedMajor != major){
-            this.setState({selectedMajor: major}); //update currently selected major
-            this.getProfByMajor(this, major);
-        }
+  searchProf() {
+    const selectedProf = this.state.professor.filter(prof => {
+      if (`${prof.name}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0) {
+        return prof;
+      }
+    });
+    this.setState({ professorToShow: selectedProf });
+  }
+
+  getProfByMajor(ev, major) {
+    axios
+      .get('/getProfByMajor?major=' + major) //passing major as an argument
+      .then(function(response) {
+        ev.setState({ professor: response.data[0].professor });
+        ev.setState({ professorToShow: response.data[0].professor });
+      });
+  }
+
+  handleInfiniteOnLoad() {
+    let data = this.state.professor;
+    this.setState({
+      loading: true
+    });
+  }
+
+  changeProfByMajor(e, major) {
+    if (this.state.selectedMajor != major) {
+      this.setState({ selectedMajor: major }); //update currently selected major
+      this.getProfByMajor(this, major);
     }
+  }
 
   render() {
     const pagination = {
@@ -106,10 +107,10 @@ class Professor extends React.Component {
     };
 
     const IconText = ({ type, text }) => (
-        <span>
-            <Icon type={type} style={{ marginRight: 8 }} />
-            {text}
-        </span>
+      <span>
+        <Icon type={type} style={{ marginRight: 8 }} />
+        {text}
+      </span>
     );
 
     const menu = (
@@ -130,7 +131,7 @@ class Professor extends React.Component {
     
     return(
         <div className = "container">
-        <Header />
+        {/* <Header /> */}
             <Grid>
                 <Col xs = {12} md = {3} className = "sidebar">{/* side bar*/}
                     <div>
@@ -159,51 +160,51 @@ class Professor extends React.Component {
                         hasMore={!this.state.loading && this.state.hasMore}
                         useWindow={false}
                     >
-                        <List 
-                            itemLayout="vertical"
-                            size="large"
-                            pagination={pagination}
-                            dataSource={ this.state.professorToShow }
-                            renderItem={item => (
-                                <Link to={`/ProfessorDetails/${item._id}`}>
-                                    <Row>
-                                        <Col xs = {12} md = {4}>
-                                                <ProfessorName>{item.name}</ProfessorName>
-                                        </Col>
-                                        <Col xs = {7} md = {5}>
-                                            <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
-                                                defaultValue={30} 
-                                                disabled = {true} 
-                                                marks={{ 
-                                                        30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                                        60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
-                                                        90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
-                                                        }}
-                                            />
-                                        </Col>
-                                    </Row>
-                                    <Col xs = {9} md = {9}>
-                                        <List.Item xs = {9} md = {9}
-                                            key={item.id}
-                                            /*
-                                            actions={[<IconText type="star-o" text="156" />, 
-                                                    <IconText type= "like-o" text="156" />, 
-                                                    <IconText type="message" text="2" />]}
-                                            */
-                                        >
-                                        <List.Item.Meta/>
-                                        </List.Item>
+                    <List 
+                        itemLayout="vertical"
+                        size="large"
+                        pagination={pagination}
+                        dataSource={ this.state.professorToShow }
+                        renderItem={item => (
+                            <Link to={`/ProfessorDetails/${item._id}`}>
+                                <Row>
+                                    <Col xs = {12} md = {4}>
+                                            <ProfessorName>{item.name}</ProfessorName>
                                     </Col>
-                                </Link>
-                            )}
-                        />
-                    </InfiniteScroll>
-                </Col>
-            </Grid>
-         <Footer />
-        </div>
-        )
-    }
+                                    <Col xs = {7} md = {5}>
+                                        <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
+                                            defaultValue={30} 
+                                            disabled = {true} 
+                                            marks={{ 
+                                                    30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                                                    60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
+                                                    90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
+                                                    }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <Col xs = {9} md = {9}>
+                                    <List.Item xs = {9} md = {9}
+                                        key={item.id}
+                                        /*
+                                        actions={[<IconText type="star-o" text="156" />, 
+                                                <IconText type= "like-o" text="156" />, 
+                                                <IconText type="message" text="2" />]}
+                                        */
+                        >
+                            <List.Item.Meta />
+                        </List.Item>
+                        </Col>
+                    </Link>
+                    )}
+                />
+            </InfiniteScroll>
+          </Col>
+        </Grid>
+        {/* <Footer /> */}
+      </div>
+    );
+  }
 }
 
 export default Professor;

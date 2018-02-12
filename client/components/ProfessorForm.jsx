@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
 import styled from 'styled-components';
 
-import Header from './Header';
-import Footer from './Footer';
+// import Header from './Header';
+// import Footer from './Footer';
 
 var querystring = require('querystring');
 const FormItem = Form.Item;
@@ -173,7 +173,7 @@ class ProfessorForm extends React.Component {
         const hasError = this.state.hasError;
         return (
             <div className='button-center'>
-                <Header />                
+                {/* <Header /> */}
                     <h1>{ profName }</h1>
                     <div>
                         <Card style={{ width: 500}} hidden = {!hasError}> {/*only show when the input errors are detected */}
@@ -270,7 +270,7 @@ class ProfessorForm extends React.Component {
                             </FormItem>
                         </Form>
                     </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         )
     }

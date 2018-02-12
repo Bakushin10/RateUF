@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container, Row, Col, Grid } from 'react-bootstrap';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header-Footer/Header';
+import Footer from './Header-Footer/Footer';
 
 export default class Home extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <Header />
         <div>
           <Grid>

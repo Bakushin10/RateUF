@@ -1,25 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Pacifico');
+
 .head {
   background-color: #97bbff;
   height: 9rem;
   width: 100%;
-  color: whitesmoke;
+  position: relative;
+  white-space: nowrap;
 }
 
 .special-text {
-  color: whitesmoke;
   font-family: 'Pacifico', cursive;
   text-align: center;
   position: relative;
   font-size: 5rem;
   top: 2rem;
+  color: grey;
 }
 
 .head-contents {
-  color: whitesmoke;
   text-align: center;
+  position: relative;
   font-size: 2rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  top: 2rem;
+  color: grey;
+  margin-left: 12rem;
+  top: 3rem;
 }
 
 .foot {
@@ -32,7 +37,7 @@
 }
 
 .foot-contents {
-  color: whitesmoke;
+  color: grey;
   font-size: 2rem;
   text-align: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -41,4 +46,6 @@
 .foott {
   height: 4rem;
   background-color: #97bbff;
+  color: gray;
+  position: relative;
 }

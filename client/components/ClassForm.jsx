@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card} from 'antd';
 import styled from 'styled-components';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header-Footer/Header';
+import Footer from './Header-Footer/Footer';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -129,7 +129,7 @@ class ClassForm extends React.Component {
 
         return (
             <div className='button-center'>
-                <Header />
+                {/* <Header /> */}
                 <h1>Rate a Class</h1>
                 <div>
                     <Card style={{ width: 500}} hidden = {!hasError}>
@@ -215,7 +215,7 @@ class ClassForm extends React.Component {
                         </FormItem>
                     </Form>
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         )
     }
