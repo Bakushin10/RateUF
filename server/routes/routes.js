@@ -4,6 +4,9 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var Expense = require('../../models/Expense');
 var Professor = require('../../models/Prof');
+var CS_Prof = require('../../models/CSProfModel');
+var Math_Prof = require('../../models/MathProfModel');
+var ECE_Prof = require('../../models/ECEProfModel');
 
 router.get('/', function(req, res){
   res.render('index')
@@ -18,40 +21,70 @@ router.route('/insert').post(function(req,res) {
     expense.month = req.body.month;
     expense.year = req.body.year;
   
-    expense.save(function(err) {
+    expense.save(function(err) { 
         if (err)
             res.send(err);
         res.send('Expense successfully added!');
     });
 })
 
-router.route('/update').post(function(req, res) {
- const doc = {
-     description: req.body.description,
-     amount: req.body.amount,
-     month: req.body.month,
-     year: req.body.year
- };
-    console.log(doc);
-    Expense.update({_id: req.body._id}, doc, function(err, result) {
-      if (err)
-        res.send(err);
-      res.send('Expense successfully updated!');
-  });
-});
+//insert prof review from ProfessorForm.jsx
+router.route('/insertNewProfessorReview').post(function(req,res){
 
-router.get('/delete', function(req, res){
-    var id = req.query.id;
-    Expense.find({_id: id}).remove().exec(function(err, expense) {
-        if(err)
-        res.send(err)
-        res.send('Expense successfully deleted!');
-    })
-});
+    var name = req.body.name;
+    var newReview = {
+        overallExpe : req.body.overallExpe,
+        levelOfDiffculty : req.body.levelOfDiffculty,
+        communicationOfIdeas : req.body.communicationOfIdeas,
+        facilitationOfLearning : req.body.facilitationOfLearning,
+        wouldTakeAgain : req.body.wouldTakeAgain,
+        extraComment : req.body.extraComment
+    }
+
+    console.log(name)
+    console.log(newReview);
+    if(req.body.major == "CS"){
+        CS_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
+            function(err,req){
+                if (err) {
+                    console.log(err);
+                    res.status(400).send(err);
+                } else {
+                    console.log("Successfully created chat updated!\n ");
+                }
+          });
+    }
+
+    if(req.body.major == "MATH"){
+        Math_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
+        function(err,req){
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);  
+            } else {
+                console.log("Successfully created chat updated!\n ");
+            }
+      });
+    }
+
+    if(req.body.major == "ECE"){
+        ECE_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
+        function(err,req){
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);  
+            } else {
+                console.log("Successfully created chat updated!\n ");
+            }
+      });
+    }
+
+})
 
 router.get('/getProfByMajor',function(req, res) {
     var majorRec = req.query.major;
  
+    
     Professor.find({major: majorRec}, function(err, professor) {
         if (err)
             res.send(err);
@@ -70,9 +103,7 @@ router.get('/getProfDetails',function(req, res) {
             res.send(err);
         res.json(professor);
     });
-
 });
-
 
 router.get('/getAll',function(req, res) {
     var monthRec = req.query.month;
