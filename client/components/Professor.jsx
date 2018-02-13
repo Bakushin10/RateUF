@@ -29,7 +29,7 @@ class Professor extends React.Component {
       hasMore: true
     };
 
-    this.getProfByMajor = this.getProfByMajor.bind(this);
+    this.getAllProfByMajor = this.getAllProfByMajor.bind(this);
     this.handleSearchProf = this.handleSearchProf.bind(this);
     this.searchProf = this.searchProf.bind(this);
   }
@@ -57,7 +57,7 @@ class Professor extends React.Component {
   }
 
   componentDidMount() {
-    this.getProfByMajor(this, 'CS');
+    this.getAllProfByMajor(this, 'CS');
     //  this.setState({selectedMajor:'CS'});
   }
 
@@ -75,9 +75,9 @@ class Professor extends React.Component {
     this.setState({ professorToShow: selectedProf });
   }
 
-  getProfByMajor(ev, major) {
+  getAllProfByMajor(ev, major) {
     axios
-      .get('/getProfByMajor?major=' + major) //passing major as an argument
+      .get('/getAllProfByMajor?major=' + major) //passing major as an argument
       .then(function(response) {
         ev.setState({ professor: response.data });
         ev.setState({ professorToShow: response.data });
@@ -94,7 +94,7 @@ class Professor extends React.Component {
   changeProfByMajor(e, major) {
     if (this.state.selectedMajor != major) {
       this.setState({ selectedMajor: major }); //update currently selected major
-      this.getProfByMajor(this, major);
+      this.getAllProfByMajor(this, major);
     }
   }
 
