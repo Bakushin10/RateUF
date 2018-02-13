@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { List, Avatar, Icon, Slider} from 'antd';
 import { Link } from 'react-router-dom';
-import { Row, Grid, Col, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Row, Grid, Col } from 'react-bootstrap';
 import { Menu, Dropdown, Button} from 'antd';
 
 import 'antd/dist/antd.css';
@@ -23,7 +23,7 @@ class ProfessorDetails extends React.Component {
     componentDidMount(){
         let self = this;
         const _id = this.props.match.params.id;
-        const name = this.props.match.params.name;
+        const name = this.props.    match.params.name;
         const major = this.props.match.params.major;
 
         axios.get('/getProfDetails',{
@@ -49,6 +49,14 @@ class ProfessorDetails extends React.Component {
 
     render(){
         console.log(this.state)
+        const menu = (
+            <Menu>
+                <Menu.Item onClick = { (e) => this.jumpToSelectedClass(e,"CS")} >CS</Menu.Item>
+                <Menu.Item onClick = { (e) => this.jumpToSelectedClass(e,"ECE")} >ECE</Menu.Item>
+                <Menu.Item onClick = { (e) => this.jumpToSelectedClass(e,"MATH")} >MATH</Menu.Item>
+            </Menu>
+        );
+
         return(
             <div className = "container">
                 <Grid>
@@ -66,16 +74,9 @@ class ProfessorDetails extends React.Component {
                         <Col xs = {3} md = {3}>
                             Departmemnt : {this.state.major}
                             <div>
-                            <DropdownButton
-                                bsStyle="default"
-                                title="Previously taught"
-                                noCaret
-                                id="dropdown-no-caret"
-                            >
-                                <MenuItem onClick = { (e) => this.jumpToSelectedClass(e,"CS")} >CS</MenuItem>
-                                <MenuItem onClick = { (e) => this.jumpToSelectedClass(e,"ECE")} >ECE</MenuItem>
-                                <MenuItem onClick = { (e) => this.jumpToSelectedClass(e,"MATH")} >MATH</MenuItem>
-                            </DropdownButton>
+                            <Dropdown overlay = {menu} title="previous course">
+                                <Button>See previoud course</Button>
+                            </Dropdown>
                             </div>
                         </Col>
                         <Col xs = {6} md = {6} >
