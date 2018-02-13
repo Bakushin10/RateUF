@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { List, Avatar, Icon, Slider} from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, Menu, Dropdown, Button } from 'react-router-dom';
 import { Row, Grid, Col, DropdownButton, MenuItem } from 'react-bootstrap';
 import { Button } from 'antd';
 
@@ -24,20 +24,23 @@ class ProfessorDetails extends React.Component {
         let self = this;
         const _id = this.props.match.params.id;
         const name = this.props.match.params.name;
-        axios.get('/getProfDetails?_id='+_id)
+        const major = this.props.match.params.major;
+
+        axios.get('/getProfDetails',{
+            params:{
+                major : major,
+                _id : _id
+            }
+        })
         .then(function(response) {
             self.init(response.data);
           });  
     }
 
-    init(array){
-        array.professor.forEach(element => {
-            if(element._id === this.props.match.params.id){
-                this.setState({profName:element.name})
-                this.setState({id:element._id})
-                this.setState({major:array.major})
-            }
-        });
+    init(profInfo){
+        this.setState({profName:profInfo.name})
+        this.setState({id:profInfo._id})
+        this.setState({major:profInfo.major})
     }
 
     jumpToSelectedClass(e, major){

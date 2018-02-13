@@ -79,8 +79,8 @@ class Professor extends React.Component {
     axios
       .get('/getProfByMajor?major=' + major) //passing major as an argument
       .then(function(response) {
-        ev.setState({ professor: response.data[0].professor });
-        ev.setState({ professorToShow: response.data[0].professor });
+        ev.setState({ professor: response.data });
+        ev.setState({ professorToShow: response.data });
       });
   }
 
@@ -166,7 +166,7 @@ class Professor extends React.Component {
                         pagination={pagination}
                         dataSource={ this.state.professorToShow }
                         renderItem={item => (
-                            <Link to={`/ProfessorDetails/${item._id}`}>
+                            <Link to={`/ProfessorDetails/${item.major}/${item._id}`}>
                                 <Row>
                                     <Col xs = {12} md = {4}>
                                             <ProfessorName>{item.name}</ProfessorName>
