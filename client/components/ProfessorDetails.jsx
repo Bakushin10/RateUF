@@ -75,7 +75,7 @@ class ProfessorDetails extends React.Component {
                             Departmemnt : {this.state.major}
                             <div>
                             <Dropdown overlay = {menu} title="previous course">
-                                <Button>See previoud course</Button>
+                                <Button>See previous course</Button>
                             </Dropdown>
                             </div>
                         </Col>
