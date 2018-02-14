@@ -12,7 +12,7 @@ export const Routes = () => (
     <Switch>
       <Route exact path='/' component={Home} />
       <Route path='/Professor' component={Professor} />
-      <Route path='/ProfessorDetails/:id' component={ProfessorDetails} />
+      <Route path='/ProfessorDetails/:major/:id' component={ProfessorDetails} />
       <Route path='/ProfessorForm/:major/:profName' component={ProfessorForm} />
       <Route path='/ClassForm' component={ClassForm} />
       <Route component={FourOhFour} />
