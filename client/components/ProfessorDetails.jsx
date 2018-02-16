@@ -23,7 +23,7 @@ class ProfessorDetails extends React.Component {
     componentDidMount(){
         let self = this;
         const _id = this.props.match.params.id;
-        const name = this.props.    match.params.name;
+        const name = this.props.match.params.name;
         const major = this.props.match.params.major;
 
         axios.get('/getProfDetails',{
