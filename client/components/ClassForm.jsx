@@ -58,52 +58,14 @@ class ClassForm extends React.Component {
 
     getLabel(val, tag){
 
-        if(tag === "OE"){
-            if(val == 0){            
-                return(
-                    <WarningOn>* Overall Experience</WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff>Overall Experience</WarningOff>
-                )
-            }
-        }
-
-        if(tag === "LD"){
-            if(val === 0 ){
-                return(
-                    <WarningOn>* Level Of Diffculty </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> Level Of Diffculty </WarningOff>
-                )
-            }   
-        }
-
-        if(tag === "knowBeforeCourse"){
-            if(val === '' ){
-                return(
-                    <WarningOn>* What to know before the course </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> What to know before the course </WarningOff>
-                )
-            }
-        }
-
-        if(tag === "Comment"){
-            if(val === ''){
-                return(
-                    <WarningOn>* Commnet </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> Commnet </WarningOff>
-                )
-            }
+        if(val === '' || val === 0){
+            return(
+                <WarningOn> *{tag} </WarningOn>
+            )
+        }else{
+            return(
+                <WarningOff> {tag} </WarningOff>
+            )
         }
     }
 
@@ -140,7 +102,7 @@ class ClassForm extends React.Component {
                     <Form>
                         <FormItem
                             {...formItemLayout}
-                            label = {this.getLabel(this.state.overallExpe, "OE")}
+                            label = {this.getLabel(this.state.overallExpe, "Overall Experiences")}
                         >
                             <Slider
                                 onChange = {this.overAllExpeOnChange}
@@ -155,7 +117,7 @@ class ClassForm extends React.Component {
                         </FormItem>
                         <FormItem
                             {...formItemLayout}
-                            label = {this.getLabel(this.state.levelOfDiffculty, "LD")}
+                            label = {this.getLabel(this.state.levelOfDiffculty, "Level of Difficulty")}
                         >
                             <Slider
                                 onChange = {this.levelOfDiffcultyOnChange}
@@ -170,7 +132,7 @@ class ClassForm extends React.Component {
                         </FormItem>
                         <FormItem  
                             {...formItemLayout}
-                            label = {this.getLabel(this.state.knowBeforeCourse, "knowBeforeCourse")}
+                            label = {this.getLabel(this.state.knowBeforeCourse, "Know Before Course")}
                         >
                             <TextArea
                                 type = "text"
