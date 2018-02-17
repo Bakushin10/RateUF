@@ -36,6 +36,33 @@ router.route('/insertNewProfessorReview').post(function(req,res){
         });
 })
 
+//insert prof review from ProfessorForm.jsx
+router.route('/insertNewCourseReview').post(function(req,res){
+
+    const courseCode = req.body.courseCode;
+    const major = req.body.major;
+    const DB_name = require('../../models/'+major+'CourseReviewModel')
+    var newReview = {
+        overallExpe : req.body.overallExpe,
+        levelOfDiffculty : req.body.levelOfDiffculty,
+        knowBeforeCourse : req.body.knowBeforeCourse,
+        extraComment : req.body.extraComment,
+    }
+
+    console.log(courseCode)
+    console.log(newReview);
+ 
+    DB_name.findOneAndUpdate({'courseCode':courseCode},{$push:{review:newReview}},{upsert:true},
+        function(err,req){
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);
+            } else {
+                console.log("Successfully created new review!\n ");
+            }
+        });
+})
+
 /*
  retrieve array of all prof by selected major 
 */
@@ -105,7 +132,7 @@ router.get('/getCourseDetails',function(req, res) {
     const courseCode = req.query.courseCode;
     console.log("getProfDetails server side");
     console.log(courseCode)
-    
+
     const DB_name = require('../../models/'+major+'CourseModel')
 
     DB_name.findOne({courseCode : courseCode},function(err,professor){

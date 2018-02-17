@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Header from './Header-Footer/Header';
 import Footer from './Header-Footer/Footer';
 
+var querystring = require('querystring');
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
@@ -36,12 +37,7 @@ class ClassForm extends React.Component {
         this.knowBeforeCourseOnChange = this.knowBeforeCourseOnChange.bind(this);
         this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
         this.submitClicked = this.submitClicked.bind(this);
-    }
-
-    componentDidMount(){
-        let self = this;
-        self.setState({courName: this.props.match.params.courName})
-        self.setState({courseCode: this.props.match.params.courseCode})
+        this.insertNewProfessorReview = this.insertNewProfessorReview.bind(this);
     }
 
     overAllExpeOnChange(value){
@@ -77,6 +73,25 @@ class ClassForm extends React.Component {
         }
     }
 
+    insertNewProfessorReview(){
+        axios.post('/insertNewCourseReview',
+            querystring.stringify({
+                overallExpe: this.state.overallExpe,
+                levelOfDiffculty: this.state.levelOfDiffculty,
+                extraComment: this.state.extraComment,
+                knowBeforeCourse : this.state.knowBeforeCourse,
+                major : this.props.match.params.major,
+                courseCode : this.props.match.params.courseCode
+            }), {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+            }).then(function(response) {
+                //go to submit successfully page
+                console.log(response.data); 
+        });
+    }
+
     submitClicked(){
         if( this.state.overallExpe === 0 
          || this.state.levelOfDiffculty === 0
@@ -85,8 +100,7 @@ class ClassForm extends React.Component {
          {
             this.setState({hasError: true});
          }else{
-           //successfully submitted 
-           console.log(this.state);  
+            this.insertNewProfessorReview();
          }
     }
 
