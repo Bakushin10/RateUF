@@ -77,7 +77,11 @@ class Professor extends React.Component {
 
   getAllProfByMajor(ev, major) {
     axios
-      .get('/getAllProfByMajor?major=' + major) //passing major as an argument
+      .get('/getAllProfByMajor',{
+        params:{
+          major : major
+        }
+    })
       .then(function(response) {
         ev.setState({ professor: response.data });
         ev.setState({ professorToShow: response.data });

@@ -21,6 +21,8 @@ class ClassForm extends React.Component {
         super();
 
         this.state = {
+            courseCode : "",
+            courName : "",
             overallExpe : 0,
             levelOfDiffculty : 0,
             extraComment: '',
@@ -34,6 +36,12 @@ class ClassForm extends React.Component {
         this.knowBeforeCourseOnChange = this.knowBeforeCourseOnChange.bind(this);
         this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
         this.submitClicked = this.submitClicked.bind(this);
+    }
+
+    componentDidMount(){
+        let self = this;
+        self.setState({courName: this.props.match.params.courName})
+        self.setState({courseCode: this.props.match.params.courseCode})
     }
 
     overAllExpeOnChange(value){
@@ -88,11 +96,14 @@ class ClassForm extends React.Component {
             wrapperCol : {span: 10}
         };
         const hasError = this.state.hasError;
-
+        const courseCode = this.props.match.params.courseCode;
+        const courseName = this.props.match.params.courseName;
+        
         return (
             <div className='button-center'>
                 {/* <Header /> */}
-                <h1>Rate a Class</h1>
+                <h1>{courseCode}</h1>
+                <h1>{courseName}</h1>
                 <div>
                     <Card style={{ width: 500}} hidden = {!hasError}>
                         <p>Please Check your inputs ! </p>
