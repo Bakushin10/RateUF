@@ -38,17 +38,17 @@ class CourseDetails extends React.Component {
             self.init(response.data);
         });
 
-        // axios.get('/getCourseReviews',{
-        //     params:{
-        //         major : major,
-        //         name : name
-        //     }
-        // })
-        // .then(function(response) {
-        //     console.log("getCourseReviews")
-        //     console.log(response.data.review)
-        //     self.setState({reviews: response.data.review})
-        // });
+        axios.get('/getCourseReviews',{
+            params:{
+                major : major,
+                courseCode : courseCode
+            }
+        })
+        .then(function(response) {
+            console.log("getCourseReviews")
+            console.log(response.data.review)
+            self.setState({reviews: response.data.review})
+        });
     }
 
     init(courseInfo){

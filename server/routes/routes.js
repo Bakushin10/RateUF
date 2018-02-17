@@ -130,9 +130,6 @@ router.get('/getAllCoursesByMajor',function(req, res) {
 router.get('/getCourseDetails',function(req, res) {
     const major = req.query.major;
     const courseCode = req.query.courseCode;
-    console.log("getProfDetails server side");
-    console.log(courseCode)
-
     const DB_name = require('../../models/'+major+'CourseModel')
 
     DB_name.findOne({courseCode : courseCode},function(err,professor){
@@ -148,12 +145,12 @@ router.get('/getCourseDetails',function(req, res) {
 */
 router.get('/getCourseReviews',function(req, res) {
     const major = req.query.major;
-    const name = req.query.name;
+    const courseCode = req.query.courseCode;
     console.log("getProfDetails server side");
     console.log(req.query)
     const DB_name = require('../../models/'+major+'CourseReviewModel')
 
-    DB_name.findOne({name : name},function(err,professor){
+    DB_name.findOne({courseCode : courseCode},function(err,professor){
         if(err)
             res.send(err);
         console.log(professor)
