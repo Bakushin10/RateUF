@@ -166,7 +166,7 @@ class Professor extends React.Component {
                         pagination={pagination}
                         dataSource={ this.state.professorToShow }
                         renderItem={item => (
-                            <Link to={`/ProfessorDetails/${item.major}/${item._id}`}>
+                            <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>
                                 <Row>
                                     <Col xs = {12} md = {4}>
                                             <ProfessorName>{item.name}</ProfessorName>

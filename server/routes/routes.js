@@ -12,7 +12,7 @@ router.route('/insertNewProfessorReview').post(function(req,res){
 
     const name = req.body.name;
     const major = req.body.major;
-    const DB_name = require('../../models/'+major+'ProfModel')
+    const DB_name = require('../../models/'+major+'ProfReviewModel')
     var newReview = {
         overallExpe : req.body.overallExpe,
         levelOfDiffculty : req.body.levelOfDiffculty,
@@ -48,6 +48,8 @@ router.get('/getAllProfByMajor',function(req, res) {
             res.send(err);
         res.json(professor);
     })
+
+
 });
 
 /*
@@ -67,4 +69,21 @@ router.get('/getProfDetails',function(req, res) {
     })
 });
 
+/*
+ get review of the prof
+*/
+router.get('/getProfReviews',function(req, res) {
+    const major = req.query.major;
+    const name = req.query.name;
+    console.log("getProfDetails server side");
+    console.log(req.query)
+    const DB_name = require('../../models/'+major+'ProfReviewModel')
+
+    DB_name.findOne({name : name},function(err,professor){
+        if(err)
+            res.send(err);
+        console.log(professor)
+        res.json(professor);
+    })
+});
 module.exports = router;
