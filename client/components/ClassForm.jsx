@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card} from 'antd';
 import styled from 'styled-components';
-import Header from './Header-Footer/Header';
-import Footer from './Header-Footer/Footer';
+/* import Head from './Header-Footer/Header';
+import Footer from './Header-Footer/Footer'; */
 
 const FormItem = Form.Item;
 const { TextArea } = Input;

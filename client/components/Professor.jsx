@@ -7,8 +7,8 @@ import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
-import Header from './Header-Footer/Header';
-import Footer from './Header-Footer/Footer';
+/* import Head from './Header-Footer/Header';
+import Footer from './Header-Footer/Footer'; */
 
 const ProfessorName = styled.h5`
   color: #878fad;
