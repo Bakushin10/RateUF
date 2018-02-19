@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17a06ee3-303e-45d3-a677-00728726d41e" name="Default" comment="" />
+    <list default="true" id="17a06ee3-303e-45d3-a677-00728726d41e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/CourseCatalog/ceCatalog.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/CourseCatalog/cscCatalog.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/CourseCatalog/cseCatalog.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/CourseCatalog/eeCatalog.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/CourseCatalog/mathCatalog.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/bundle.js" afterPath="$PROJECT_DIR$/client/bundle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/routes.js" afterPath="$PROJECT_DIR$/client/routes.js" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,127 +23,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Professor.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/Professor.jsx">
+      <file leaf-file-name="cseCatalog.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/cseCatalog.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="75" column="3" lean-forward="false" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+            <state relative-caret-position="17">
+              <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cscCatalog.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/cscCatalog.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ceCatalog.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/ceCatalog.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="eeCatalog.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/eeCatalog.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1518580133681" expanded="true" signature="594:7222" ph="{...}" />
-                <marker date="1518580133681" expanded="true" signature="612:903" ph="{...}" />
-                <marker date="1518580133681" expanded="true" signature="5148:7106" ph="&lt;List/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5148:7136" ph="&lt;InfiniteScroll/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5148:7153" ph="&lt;Col/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5148:7169" ph="&lt;Grid/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5148:7209" ph="&lt;div/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5148:7220" ph="{...}" />
-                <marker date="1518580133681" expanded="true" signature="5196:6368" ph="&lt;Row/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5238:5392" ph="&lt;Col/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5429:6329" ph="&lt;Col/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5493:6286" ph="&lt;Slider/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="5535:5559" ph="/*...*/" />
-                <marker date="1518580133681" expanded="true" signature="5737:6242" ph="{...}" />
-                <marker date="1518580133681" expanded="true" signature="6401:7036" ph="&lt;Col/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="6461:7005" ph="&lt;List.Item/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="6584:6895" ph="/*...*/" />
-                <marker date="1518580133681" expanded="true" signature="7179:7195" ph="/*...*/" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfessorDetails.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/ProfessorDetails.jsx">
+      <file leaf-file-name="mathCatalog.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/mathCatalog.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="10" />
+            <state relative-caret-position="4760">
+              <caret line="280" column="27" lean-forward="false" selection-start-line="280" selection-start-column="27" selection-end-line="280" selection-end-column="27" />
               <folding>
-                <marker date="1518580133681" expanded="true" signature="2540:2542" ph="&lt;DropdownButton/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2540:2577" ph="&lt;div/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2540:2608" ph="&lt;Col/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2540:2955" ph="&lt;Row/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2540:3127" ph="&lt;Grid/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2540:3146" ph="&lt;div/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2540:3162" ph="{...}" />
-                <marker date="1518580133681" expanded="true" signature="2540:3164" ph="{...}" />
-                <marker date="1518580133681" expanded="true" signature="2633:2928" ph="&lt;Col/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2686:2777" ph="&lt;div/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2806:2897" ph="&lt;div/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="2976:3103" ph="&lt;Col/&gt;" />
-                <marker date="1518580133681" expanded="true" signature="3050:3073" ph="/*...*/" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Header.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/css/Header.css">
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/index.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfessorForm.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/ProfessorForm.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="107" column="13" lean-forward="false" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassForm.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/ClassForm.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="33" column="32" lean-forward="false" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/css/App.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Home.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/Home.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+            <state relative-caret-position="238">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#19#45#0" expanded="true" />
+                <element signature="e#1734#1781#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -166,10 +116,16 @@
         <option value="$PROJECT_DIR$/client/components/Header.jsx" />
         <option value="$PROJECT_DIR$/client/components/Add.jsx" />
         <option value="$PROJECT_DIR$/client/components/Home.jsx" />
-        <option value="$PROJECT_DIR$/client/routes.js" />
         <option value="$PROJECT_DIR$/client/components/ClassForm.jsx" />
         <option value="$PROJECT_DIR$/client/components/ProfessorForm.jsx" />
         <option value="$PROJECT_DIR$/server/server.js" />
+        <option value="$PROJECT_DIR$/client/components/CourseCatalog.jsx" />
+        <option value="$PROJECT_DIR$/client/routes.js" />
+        <option value="$PROJECT_DIR$/client/components/CourseCatalog/mathCatalog.jsx" />
+        <option value="$PROJECT_DIR$/client/components/CourseCatalog/cscCatalog.jsx" />
+        <option value="$PROJECT_DIR$/client/components/CourseCatalog/cseCatalog.jsx" />
+        <option value="$PROJECT_DIR$/client/components/CourseCatalog/ceCatalog.jsx" />
+        <option value="$PROJECT_DIR$/client/components/CourseCatalog/eeCatalog.jsx" />
       </list>
     </option>
   </component>
@@ -202,7 +158,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -225,6 +181,13 @@
               <item name="RateUF" type="b2602c69:ProjectViewProjectNode" />
               <item name="RateUF" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="CourseCatalog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RateUF" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RateUF" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -241,7 +204,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -250,6 +213,11 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="SearchEverywhereHistoryKey" value="Add&#9;FILE&#9;file://C:/Users/Owner/Desktop/CIS4914/RateUF/node_modules/nodemon/lib/rules/add.js&#10;app.css&#9;FILE&#9;file://C:/Users/Owner/Desktop/CIS4914/RateUF/client/css/App.css" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Owner\Desktop\CIS4914\RateUF\client\components\CourseCatalog" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -262,6 +230,14 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="Node.js.CourseCatalog.jsx">
+    <configuration name="CourseCatalog.jsx" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="$PROJECT_DIR$/client/components/CourseCatalog/cseCatalog.jsx" working-dir="$PROJECT_DIR$/client/components" />
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.CourseCatalog.jsx" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -290,11 +266,12 @@
       <workItem from="1518137794966" duration="416000" />
       <workItem from="1518139658230" duration="8667000" />
       <workItem from="1518580226941" duration="159000" />
+      <workItem from="1519070126846" duration="10584000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15201000" />
+    <option name="totallyTimeSpent" value="25785000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -307,15 +284,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14787701" sideWeight="0.76689976" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3023426" sideWeight="0.76689976" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.4918415" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32012677" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14787701" sideWeight="0.23310024" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -338,103 +314,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/components/FourOhFour.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/css/Header.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/Header.jsx" />
-    <entry file="file://$PROJECT_DIR$/client/bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="168" column="47" lean-forward="true" selection-start-line="168" selection-start-column="47" selection-end-line="168" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/ProfessorForm.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3757">
-          <caret line="232" column="7" lean-forward="false" selection-start-line="232" selection-start-column="7" selection-end-line="232" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/Home.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/nodemon/lib/rules/add.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/ClassForm.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="184" column="42" lean-forward="false" selection-start-line="184" selection-start-column="42" selection-end-line="184" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/App.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/App.jsx" />
     <entry file="file://$PROJECT_DIR$/client/components/Professor.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1518580133681" expanded="true" signature="594:7222" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="612:903" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5148:7106" ph="&lt;List/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7136" ph="&lt;InfiniteScroll/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7153" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7169" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7209" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7220" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5196:6368" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5238:5392" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5429:6329" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5493:6286" ph="&lt;Slider/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5535:5559" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="5737:6242" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="6401:7036" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6461:7005" ph="&lt;List.Item/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6584:6895" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="7179:7195" ph="/*...*/" />
+            <marker date="1519006933391" expanded="true" signature="612:903" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -452,24 +339,7 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1518580133681" expanded="true" signature="594:7222" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="612:903" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5148:7106" ph="&lt;List/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7136" ph="&lt;InfiniteScroll/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7153" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7169" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7209" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7220" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5196:6368" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5238:5392" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5429:6329" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5493:6286" ph="&lt;Slider/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5535:5559" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="5737:6242" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="6401:7036" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6461:7005" ph="&lt;List.Item/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6584:6895" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="7179:7195" ph="/*...*/" />
+            <marker date="1519006933391" expanded="true" signature="612:903" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -486,7 +356,7 @@
         <state relative-caret-position="289">
           <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -500,43 +370,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/App.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/App.jsx" />
     <entry file="file://$PROJECT_DIR$/client/components/ProfessorDetails.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="10" />
-          <folding>
-            <marker date="1518580133681" expanded="true" signature="2540:2542" ph="&lt;DropdownButton/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2577" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2608" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2955" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3127" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3146" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3162" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="2540:3164" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="2633:2928" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2686:2777" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2806:2897" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2976:3103" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="3050:3073" ph="/*...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/ShowAllProf.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/ShowAllProf.jsx" />
     <entry file="file://$PROJECT_DIR$/client/css/Header.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -560,24 +403,7 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1518580133681" expanded="true" signature="594:7222" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="612:903" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5148:7106" ph="&lt;List/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7136" ph="&lt;InfiniteScroll/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7153" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7169" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7209" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7220" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5196:6368" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5238:5392" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5429:6329" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5493:6286" ph="&lt;Slider/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5535:5559" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="5737:6242" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="6401:7036" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6461:7005" ph="&lt;List.Item/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6584:6895" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="7179:7195" ph="/*...*/" />
+            <marker date="1519006933391" expanded="true" signature="612:903" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -595,7 +421,7 @@
         <state relative-caret-position="289">
           <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -604,21 +430,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="10" />
-          <folding>
-            <marker date="1518580133681" expanded="true" signature="2540:2542" ph="&lt;DropdownButton/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2577" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2608" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2955" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3127" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3146" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3162" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="2540:3164" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="2633:2928" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2686:2777" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2806:2897" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2976:3103" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="3050:3073" ph="/*...*/" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -634,7 +446,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2941">
           <caret line="184" column="42" lean-forward="false" selection-start-line="184" selection-start-column="42" selection-end-line="184" selection-end-column="42" />
-          <folding />
+          <folding>
+            <marker date="1519006933376" expanded="true" signature="5994:6426" ph="&lt;FormItem/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="5994:8368" ph="&lt;Form/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="5994:8391" ph="&lt;div/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="5994:8445" ph="&lt;div/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="5994:8461" ph="{...}" />
+            <marker date="1519006933376" expanded="true" signature="5994:8463" ph="{...}" />
+            <marker date="1519006933376" expanded="true" signature="6058:6390" ph="&lt;TextArea/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="6451:7011" ph="&lt;FormItem/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="6651:6975" ph="&lt;TextArea/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="7037:8076" ph="&lt;FormItem/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="7216:8040" ph="&lt;Checkbox.Group/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="7324:7994" ph="&lt;Row/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="8101:8340" ph="&lt;FormItem/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="8140:8304" ph="&lt;Button/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="8409:8425" ph="/*...*/" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -644,24 +472,7 @@
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1518580133681" expanded="true" signature="594:7222" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="612:903" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5148:7106" ph="&lt;List/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7136" ph="&lt;InfiniteScroll/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7153" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7169" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7209" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7220" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5196:6368" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5238:5392" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5429:6329" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5493:6286" ph="&lt;Slider/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5535:5559" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="5737:6242" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="6401:7036" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6461:7005" ph="&lt;List.Item/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6584:6895" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="7179:7195" ph="/*...*/" />
+            <marker date="1519006933391" expanded="true" signature="612:903" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -673,24 +484,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1518580133681" expanded="true" signature="594:7222" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="612:903" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5148:7106" ph="&lt;List/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7136" ph="&lt;InfiniteScroll/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7153" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7169" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7209" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7220" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5196:6368" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5238:5392" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5429:6329" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5493:6286" ph="&lt;Slider/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5535:5559" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="5737:6242" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="6401:7036" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6461:7005" ph="&lt;List.Item/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6584:6895" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="7179:7195" ph="/*...*/" />
+            <marker date="1519006933391" expanded="true" signature="612:903" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -724,21 +518,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/App.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" column="2" lean-forward="false" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/App.jsx" />
     <entry file="file://$PROJECT_DIR$/client/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -747,71 +527,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/Home.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/css/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/Professor.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="75" column="3" lean-forward="false" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1518580133681" expanded="true" signature="594:7222" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="612:903" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5148:7106" ph="&lt;List/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7136" ph="&lt;InfiniteScroll/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7153" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7169" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7209" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5148:7220" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="5196:6368" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5238:5392" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5429:6329" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5493:6286" ph="&lt;Slider/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="5535:5559" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="5737:6242" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="6401:7036" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6461:7005" ph="&lt;List.Item/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="6584:6895" ph="/*...*/" />
-            <marker date="1518580133681" expanded="true" signature="7179:7195" ph="/*...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/ProfessorDetails.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="10" />
-          <folding>
-            <marker date="1518580133681" expanded="true" signature="2540:2542" ph="&lt;DropdownButton/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2577" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2608" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:2955" ph="&lt;Row/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3127" ph="&lt;Grid/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3146" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2540:3162" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="2540:3164" ph="{...}" />
-            <marker date="1518580133681" expanded="true" signature="2633:2928" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2686:2777" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2806:2897" ph="&lt;div/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="2976:3103" ph="&lt;Col/&gt;" />
-            <marker date="1518580133681" expanded="true" signature="3050:3073" ph="/*...*/" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -824,35 +544,162 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/Header.jsx" />
-    <entry file="file://$PROJECT_DIR$/client/components/ShowAllProf.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/ShowAllProf.jsx" />
     <entry file="file://$PROJECT_DIR$/client/components/ClassForm.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="33" column="32" lean-forward="false" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/ProfessorForm.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="107" column="13" lean-forward="false" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="527">
+          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+          <folding>
+            <marker date="1519006933376" expanded="true" signature="5994:6426" ph="&lt;FormItem/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="5994:8368" ph="&lt;Form/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="5994:8391" ph="&lt;div/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="5994:8445" ph="&lt;div/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="5994:8461" ph="{...}" />
+            <marker date="1519006933376" expanded="true" signature="5994:8463" ph="{...}" />
+            <marker date="1519006933376" expanded="true" signature="6058:6390" ph="&lt;TextArea/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="6451:7011" ph="&lt;FormItem/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="6651:6975" ph="&lt;TextArea/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="7037:8076" ph="&lt;FormItem/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="7216:8040" ph="&lt;Checkbox.Group/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="7324:7994" ph="&lt;Row/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="8101:8340" ph="&lt;FormItem/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="8140:8304" ph="&lt;Button/&gt;" />
+            <marker date="1519006933376" expanded="true" signature="8409:8425" ph="/*...*/" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/Course.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/Home.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/ProfessorForm.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1574">
+          <caret line="110" column="38" lean-forward="true" selection-start-line="110" selection-start-column="38" selection-end-line="110" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/CourseDetails.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/eeCatalog">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#19#45#0" expanded="true" />
+            <element signature="e#1734#1781#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/ProfessorDetails.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1324">
+          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/Professor.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2601">
+          <caret line="153" column="24" lean-forward="true" selection-start-line="153" selection-start-column="24" selection-end-line="155" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1519006933391" expanded="true" signature="612:903" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/cseCatalog.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/cscCatalog.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/ceCatalog.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/eeCatalog.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/CourseCatalog/mathCatalog.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4760">
+          <caret line="280" column="27" lean-forward="false" selection-start-line="280" selection-start-column="27" selection-end-line="280" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
