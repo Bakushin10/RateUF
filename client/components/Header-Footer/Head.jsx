@@ -17,11 +17,13 @@ export default class Head extends React.Component {
               </a>
             </Menu.Item>
 
-            <Menu.Item key="class" className="items">
-              Classes
+            <Menu.Item key="class">
+              <a href="/#/Class" className="items">
+                Classes
+              </a>
             </Menu.Item>
             <Menu.Item key="degree" className="items">
-              Degree Outline
+              <a className="items">Degree Outline</a>
             </Menu.Item>
           </Menu>
         </Header>
