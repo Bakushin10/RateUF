@@ -2,11 +2,6 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var Expense = require('../../models/Expense');
-var Professor = require('../../models/Prof');
-var CS_Prof = require('../../models/CSProfModel');
-var Math_Prof = require('../../models/MathProfModel');
-var ECE_Prof = require('../../models/ECEProfModel');
 
 router.get('/', function(req, res){
   res.render('index')
@@ -15,8 +10,9 @@ router.get('/', function(req, res){
 //insert prof review from ProfessorForm.jsx
 router.route('/insertNewProfessorReview').post(function(req,res){
 
-    var name = req.body.name;
-    var major = req.body.major;
+    const name = req.body.name;
+    const major = req.body.major;
+    const DB_name = require('../../models/'+major+'ProfReviewModel')
     var newReview = {
         overallExpe : req.body.overallExpe,
         levelOfDiffculty : req.body.levelOfDiffculty,
@@ -28,125 +24,138 @@ router.route('/insertNewProfessorReview').post(function(req,res){
 
     console.log(name)
     console.log(newReview);
-    if(major == "CS"){
-        CS_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
-            function(err,req){
-                if (err) {
-                    console.log(err);
-                    res.status(400).send(err);
-                } else {
-                    console.log("Successfully created chat updated!\n ");
-                }
-          });
-    }
-
-    if(major == "MATH"){
-        Math_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
+ 
+    DB_name.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
         function(err,req){
             if (err) {
                 console.log(err);
-                res.status(400).send(err);  
+                res.status(400).send(err);
             } else {
-                console.log("Successfully created chat updated!\n ");
+                console.log("Successfully created new review!\n ");
             }
-      });
+        });
+})
+
+//insert prof review from ProfessorForm.jsx
+router.route('/insertNewCourseReview').post(function(req,res){
+
+    const courseCode = req.body.courseCode;
+    const major = req.body.major;
+    const DB_name = require('../../models/'+major+'CourseReviewModel')
+    var newReview = {
+        overallExpe : req.body.overallExpe,
+        levelOfDiffculty : req.body.levelOfDiffculty,
+        knowBeforeCourse : req.body.knowBeforeCourse,
+        extraComment : req.body.extraComment,
     }
 
-    if(major == "ECE"){
-        ECE_Prof.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
+    console.log(courseCode)
+    console.log(newReview);
+ 
+    DB_name.findOneAndUpdate({'courseCode':courseCode},{$push:{review:newReview}},{upsert:true},
         function(err,req){
             if (err) {
                 console.log(err);
-                res.status(400).send(err);  
+                res.status(400).send(err);
             } else {
-                console.log("Successfully created chat updated!\n ");
+                console.log("Successfully created new review!\n ");
             }
-      });
-    }
-
+        });
 })
 
 /*
  retrieve array of all prof by selected major 
 */
 router.get('/getAllProfByMajor',function(req, res) {
-    var majorRec = req.query.major;
- 
-    if(majorRec == "CS"){
-        CS_Prof.find({},function(err,professor){
-            if(err)
-                res.send(err);
-            res.json(professor);
-        })
-    }
-    if(majorRec == "ECE"){
-        ECE_Prof.find({},function(err,professor){
-            if(err)
-                res.send(err);
-            res.json(professor);
-        })
-    }
-    if(majorRec == "MATH"){
-        Math_Prof.find({},function(err,professor){
-            if(err)
-                res.send(err);
-            res.json(professor);
-        })
-    }
+    const major = req.query.major;
+    const DB_name = require('../../models/'+major+'ProfModel')
 
+    DB_name.find({},function(err,professor){
+        if(err)
+            res.send(err);
+        res.json(professor);
+    })
 });
+
 
 /*
  get a single prof slected by ID
 */
 router.get('/getProfDetails',function(req, res) {
-    var major = req.query.major;
-    var _id = req.query._id;
-    console.log("getProfDetails server side");
+    const major = req.query.major;
+    const _id = req.query._id;
+    const DB_name = require('../../models/'+major+'ProfModel')
 
-    if(major == "CS"){
-        CS_Prof.findOne({_id : _id},function(err,professor){
-            if(err)
-                res.send(err);
+    DB_name.findOne({_id : _id},function(err,professor){
+        if(err)
+            res.send(err);
 
-            res.json(professor);
-        })
-    }
-    if(major == "ECE"){
-        ECE_Prof.findOne({_id : _id},function(err,professor){
-            if(err)
-                res.send(err);
-
-            res.json(professor);
-        })
-    }
-    if(major == "MATH"){
-        Math_Prof.findOne({_id : _id},function(err,professor){
-            if(err)
-                res.send(err);
-
-            res.json(professor);
-        })
-    }
-
+        res.json(professor);
+    })
 });
 
-router.get('/getAll',function(req, res) {
-    var monthRec = req.query.month;
-    var yearRec = req.query.year;
-    if(monthRec && monthRec != 'All'){
-        Expense.find({$and: [ {month: monthRec}, {year: yearRec}]}, function(err, expenses) {
-        if (err)
+/*
+ get review of the prof
+*/
+router.get('/getProfReviews',function(req, res) {
+    const major = req.query.major;
+    const name = req.query.name;
+    const DB_name = require('../../models/'+major+'ProfReviewModel')
+
+    DB_name.findOne({name : name},function(err,professor){
+        if(err)
             res.send(err);
-        res.json(expenses);
-    });
-    } else {
-        Expense.find({year: yearRec}, function(err, expenses) {
-            if (err)
-                res.send(err);
-            res.json(expenses);
-        });
-    }
+        console.log(professor)
+        res.json(professor);
+    })
+});
+
+/*
+ retrieve array of all classes by selected major 
+*/
+router.get('/getAllCoursesByMajor',function(req, res) {
+    const major = req.query.major;
+    const DB_name = require('../../models/'+major+'CourseModel')
+
+    DB_name.find({},function(err,professor){
+        if(err)
+            res.send(err);
+        res.json(professor);
+    })
+});
+
+/*
+ get a single course slected by ID
+*/
+router.get('/getCourseDetails',function(req, res) {
+    const major = req.query.major;
+    const courseCode = req.query.courseCode;
+    const DB_name = require('../../models/'+major+'CourseModel')
+
+    DB_name.findOne({courseCode : courseCode},function(err,professor){
+        if(err)
+            res.send(err);
+
+        res.json(professor);
+    })
+});
+
+/*
+ get review of the course
+*/
+router.get('/getCourseReviews',function(req, res) {
+    const major = req.query.major;
+    const courseCode = req.query.courseCode;
+    console.log("getProfDetails server side");
+    console.log(req.query)
+    const DB_name = require('../../models/'+major+'CourseReviewModel')
+
+    DB_name.findOne({courseCode : courseCode},function(err,professor){
+        if(err)
+            res.send(err);
+        console.log(professor)
+        res.json(professor);
+    })
 });
 
 module.exports = router;

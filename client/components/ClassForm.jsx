@@ -5,6 +5,7 @@ import styled from 'styled-components';
 /* import Head from './Header-Footer/Header';
 import Footer from './Header-Footer/Footer'; */
 
+var querystring = require('querystring');
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
@@ -21,6 +22,8 @@ class ClassForm extends React.Component {
         super();
 
         this.state = {
+            courseCode : "",
+            courName : "",
             overallExpe : 0,
             levelOfDiffculty : 0,
             extraComment: '',
@@ -34,6 +37,7 @@ class ClassForm extends React.Component {
         this.knowBeforeCourseOnChange = this.knowBeforeCourseOnChange.bind(this);
         this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
         this.submitClicked = this.submitClicked.bind(this);
+        this.insertNewProfessorReview = this.insertNewProfessorReview.bind(this);
     }
 
     overAllExpeOnChange(value){
@@ -58,53 +62,34 @@ class ClassForm extends React.Component {
 
     getLabel(val, tag){
 
-        if(tag === "OE"){
-            if(val == 0){            
-                return(
-                    <WarningOn>* Overall Experience</WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff>Overall Experience</WarningOff>
-                )
-            }
+        if(val === '' || val === 0){
+            return(
+                <WarningOn> *{tag} </WarningOn>
+            )
+        }else{
+            return(
+                <WarningOff> {tag} </WarningOff>
+            )
         }
+    }
 
-        if(tag === "LD"){
-            if(val === 0 ){
-                return(
-                    <WarningOn>* Level Of Diffculty </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> Level Of Diffculty </WarningOff>
-                )
-            }   
-        }
-
-        if(tag === "knowBeforeCourse"){
-            if(val === '' ){
-                return(
-                    <WarningOn>* What to know before the course </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> What to know before the course </WarningOff>
-                )
+    insertNewProfessorReview(){
+        axios.post('/insertNewCourseReview',
+            querystring.stringify({
+                overallExpe: this.state.overallExpe,
+                levelOfDiffculty: this.state.levelOfDiffculty,
+                extraComment: this.state.extraComment,
+                knowBeforeCourse : this.state.knowBeforeCourse,
+                major : this.props.match.params.major,
+                courseCode : this.props.match.params.courseCode
+            }), {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
             }
-        }
-
-        if(tag === "Comment"){
-            if(val === ''){
-                return(
-                    <WarningOn>* Commnet </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> Commnet </WarningOff>
-                )
-            }
-        }
+            }).then(function(response) {
+                //go to submit successfully page
+                console.log(response.data); 
+        });
     }
 
     submitClicked(){
@@ -115,8 +100,7 @@ class ClassForm extends React.Component {
          {
             this.setState({hasError: true});
          }else{
-           //successfully submitted 
-           console.log(this.state);  
+            this.insertNewProfessorReview();
          }
     }
 
@@ -126,11 +110,14 @@ class ClassForm extends React.Component {
             wrapperCol : {span: 10}
         };
         const hasError = this.state.hasError;
-
+        const courseCode = this.props.match.params.courseCode;
+        const courseName = this.props.match.params.courseName;
+        
         return (
             <div className='button-center'>
                 {/* <Header /> */}
-                <h1>Rate a Class</h1>
+                <h1>{courseCode}</h1>
+                <h1>{courseName}</h1>
                 <div>
                     <Card style={{ width: 500}} hidden = {!hasError}>
                         <p>Please Check your inputs ! </p>
@@ -140,7 +127,7 @@ class ClassForm extends React.Component {
                     <Form>
                         <FormItem
                             {...formItemLayout}
-                            label = {this.getLabel(this.state.overallExpe, "OE")}
+                            label = {this.getLabel(this.state.overallExpe, "Overall Experiences")}
                         >
                             <Slider
                                 onChange = {this.overAllExpeOnChange}
@@ -155,7 +142,7 @@ class ClassForm extends React.Component {
                         </FormItem>
                         <FormItem
                             {...formItemLayout}
-                            label = {this.getLabel(this.state.levelOfDiffculty, "LD")}
+                            label = {this.getLabel(this.state.levelOfDiffculty, "Level of Difficulty")}
                         >
                             <Slider
                                 onChange = {this.levelOfDiffcultyOnChange}
@@ -170,7 +157,7 @@ class ClassForm extends React.Component {
                         </FormItem>
                         <FormItem  
                             {...formItemLayout}
-                            label = {this.getLabel(this.state.knowBeforeCourse, "knowBeforeCourse")}
+                            label = {this.getLabel(this.state.knowBeforeCourse, "Know Before Course")}
                         >
                             <TextArea
                                 type = "text"

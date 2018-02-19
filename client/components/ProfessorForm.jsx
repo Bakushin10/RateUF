@@ -102,64 +102,14 @@ class ProfessorForm extends React.Component {
 
     getLabel(val, tag){
 
-        if(tag === "OE"){
-            if(val == 0){            
-                return(
-                    <WarningOn>* Overall Experience</WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff>Overall Experience</WarningOff>
-                )
-            }
-        }
-
-        if(tag === "LD"){
-            if(val === 0 ){
-                return(
-                    <WarningOn>* Level Of Diffculty </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> Level Of Diffculty </WarningOff>
-                )
-            }
-        }
-
-        if(tag === "CI"){
-            if(val === 0 ){
-                return(
-                    <WarningOn>* Communication </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> Communication </WarningOff>
-                )
-            }
-        }
-
-        if(tag === "FL"){
-            if(val === 0){
-                return(
-                    <WarningOn>* Facilitation Of Learning </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> Facilitation Of Learning </WarningOff>
-                )
-            }
-        }
-
-        if(tag === "Comment"){
-            if(val === ''){
-                return(
-                    <WarningOn>* Commnet </WarningOn>
-                )
-            }else{
-                return(
-                    <WarningOff> Commnet </WarningOff>
-                )
-            }
+        if(val === '' || val === 0){
+            return(
+                <WarningOn> *{tag} </WarningOn>
+            )
+        }else{
+            return(
+                <WarningOff> {tag} </WarningOff>
+            )
         }
     }
 
@@ -184,7 +134,7 @@ class ProfessorForm extends React.Component {
                         <Form>
                             <FormItem
                                 {...formItemLayout}
-                                label = {this.getLabel(this.state.overallExpe, "OE")}
+                                label = {this.getLabel(this.state.overallExpe, "Overall Experices")}
                             >
                                 <Slider
                                     onChange = {this.overAllExpeOnChange}
@@ -199,7 +149,7 @@ class ProfessorForm extends React.Component {
                             </FormItem>
                             <FormItem
                                 {...formItemLayout}
-                                label = {this.getLabel(this.state.levelOfDiffculty, "LD")}
+                                label = {this.getLabel(this.state.levelOfDiffculty, "Level of Difficulty")}
                             >
                                 <Slider
                                     onChange = {this.levelOfDiffcultyOnChange}
@@ -214,7 +164,7 @@ class ProfessorForm extends React.Component {
                             </FormItem>
                             <FormItem
                                 {...formItemLayout}
-                                label = {this.getLabel(this.state.communicationOfIdeas, "CI")}
+                                label = {this.getLabel(this.state.communicationOfIdeas, "Communication of Ideas")}
                             >
                                 <Slider
                                     onChange = {this.communicationOfIdeasOnChange}
@@ -229,7 +179,7 @@ class ProfessorForm extends React.Component {
                             </FormItem>
                             <FormItem
                                 {...formItemLayout}
-                                label = {this.getLabel(this.state.facilitationOfLearning, "FL")}
+                                label = {this.getLabel(this.state.facilitationOfLearning, "Facilitation Of Learning")}
                             >
                                 <Slider
                                     onChange = {this.facilitationOfLearningOnChange}

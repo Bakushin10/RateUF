@@ -16,14 +16,16 @@ class ProfessorDetails extends React.Component {
         this.state = {
             profName : "",
             id: "",
-            major: ""
+            major: "",
+            reviews: [] //has reviews
         }
+        this.getProfInto = this.getProfInto.bind(this)
      }
 
     componentDidMount(){
         let self = this;
         const _id = this.props.match.params.id;
-        const name = this.props.    match.params.name;
+        const name = this.props.match.params.name;
         const major = this.props.match.params.major;
 
         axios.get('/getProfDetails',{
@@ -34,7 +36,31 @@ class ProfessorDetails extends React.Component {
         })
         .then(function(response) {
             self.init(response.data);
-          });  
+        });
+
+        axios.get('/getProfReviews',{
+            params:{
+                major : major,
+                name : name
+            }
+        })
+        .then(function(response) {
+            console.log("getProfReview")
+            console.log(response.data.review)
+            self.setState({reviews: response.data.review})
+        });
+    }
+
+    getProfInto(){
+        axios.get('/getProfDetails',{
+            params:{
+                major : major,
+                _id : _id
+            }
+        })
+        .then(function(response) {
+            self.init(response.data);
+          });
     }
 
     init(profInfo){
