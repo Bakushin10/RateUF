@@ -6,11 +6,10 @@ export default class Head extends React.Component {
   render() {
     return (
       <Layout>
-        <Header className="head">
-          <a className="special-text" href="/#">
-            RateUF
-          </a>
           <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }}>
+            <a className="special-text" href="/#">
+              RateUF
+            </a>
             <Menu.Item key="prof">
               <a href="/#/Professor" className="items">
                 Professors
@@ -26,7 +25,6 @@ export default class Head extends React.Component {
               <a className="items">Degree Outline</a>
             </Menu.Item>
           </Menu>
-        </Header>
       </Layout>
     );
   }
