@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container, Row, Col, Grid } from 'react-bootstrap';
-import Header from './Header-Footer/Header';
-import Footer from './Header-Footer/Footer';
+import Head from './Header-Footer/Head';
+// import Foot from './Header-Footer/Foot';
 
 export default class Home extends React.Component {
   render() {
     return (
-      <div className="container-fluid">
-        <Header />
-        <div>
+      <div>
+        <Head />
+        {/* <div>
           <Grid>
             <Row>
               <Col xs={6} md={4}>
@@ -25,7 +25,8 @@ export default class Home extends React.Component {
             </Row>
           </Grid>
         </div>
-        <Footer />
+        <Footer /> */}
+        {/* <Foot /> */}
       </div>
     );
   }
