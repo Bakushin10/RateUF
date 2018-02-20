@@ -86,8 +86,9 @@ class ProfessorDetails extends React.Component {
     );
 
     return (
+      <div>
+      <Head />
       <div className="container">
-        <Head />
         <Grid>
           <Row>
             {' '}
@@ -118,6 +119,7 @@ class ProfessorDetails extends React.Component {
             {/* list of form here */}
           </Col>
         </Grid>
+      </div>
       </div>
     );
   }

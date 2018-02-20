@@ -121,8 +121,9 @@ class ProfessorForm extends React.Component {
     const profName = this.props.match.params.profName;
     const hasError = this.state.hasError;
     return (
+      <div>
+      <Head />
       <div className="button-center">
-        <Head />
         <h1>{profName}</h1>
         <div>
           <Card style={{ width: 500 }} hidden={!hasError}>
@@ -270,6 +271,7 @@ class ProfessorForm extends React.Component {
           </Form>
         </div>
         {/* <Footer /> */}
+      </div>
       </div>
     );
   }

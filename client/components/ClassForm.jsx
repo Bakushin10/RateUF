@@ -113,122 +113,124 @@ class ClassForm extends React.Component {
     const courseName = this.props.match.params.courseName;
 
     return (
-      <div className="button-center">
+      <div>
         <Head />
-        <h1>{courseCode}</h1>
-        <h1>{courseName}</h1>
-        <div>
-          <Card style={{ width: 500 }} hidden={!hasError}>
-            <p>Please Check your inputs ! </p>
-          </Card>
-        </div>
-        <div align="center">
-          <Form>
-            <FormItem {...formItemLayout} label={this.getLabel(this.state.overallExpe, 'Overall Experiences')}>
-              <Slider
-                onChange={this.overAllExpeOnChange}
-                value={this.state.overallExpe}
-                defaultValue={0}
-                marks={{
-                  0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
-                  ),
-                  50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
-                  ),
-                  100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
-                  )
-                }}
-              />
-            </FormItem>
-            <FormItem {...formItemLayout} label={this.getLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
-              <Slider
-                onChange={this.levelOfDiffcultyOnChange}
-                value={this.state.levelOfDiffculty}
-                defaultValue={0}
-                marks={{
-                  0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
-                  ),
-                  50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
-                  ),
-                  100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
-                  )
-                }}
-              />
-            </FormItem>
-            <FormItem {...formItemLayout} label={this.getLabel(this.state.knowBeforeCourse, 'Know Before Course')}>
-              <TextArea
-                type="text"
-                value={this.state.knowBeforeCourse}
-                placeholder="enter text"
-                rows={4}
-                onChange={this.knowBeforeCourseOnChange}
-              />
-            </FormItem>
-            <FormItem {...formItemLayout} label={this.getLabel(this.state.extraComment, 'Comment')}>
-              <TextArea
-                type="text"
-                value={this.state.extraComment}
-                placeholder="enter text"
-                rows={4}
-                onChange={this.extraCommentOnChange}
-              />
-            </FormItem>
+        <div className="button-center">
+          <h1>{courseCode}</h1>
+          <h1>{courseName}</h1>
+          <div>
+            <Card style={{ width: 500 }} hidden={!hasError}>
+              <p>Please Check your inputs ! </p>
+            </Card>
+          </div>
+          <div align="center">
+            <Form>
+              <FormItem {...formItemLayout} label={this.getLabel(this.state.overallExpe, 'Overall Experiences')}>
+                <Slider
+                  onChange={this.overAllExpeOnChange}
+                  value={this.state.overallExpe}
+                  defaultValue={0}
+                  marks={{
+                    0: (
+                      <div>
+                        <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
+                        <div>meh</div>
+                      </div>
+                    ),
+                    50: (
+                      <div>
+                        <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
+                        <div>good</div>
+                      </div>
+                    ),
+                    100: (
+                      <div>
+                        <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
+                        <div>excellent</div>
+                      </div>
+                    )
+                  }}
+                />
+              </FormItem>
+              <FormItem {...formItemLayout} label={this.getLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
+                <Slider
+                  onChange={this.levelOfDiffcultyOnChange}
+                  value={this.state.levelOfDiffculty}
+                  defaultValue={0}
+                  marks={{
+                    0: (
+                      <div>
+                        <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
+                        <div>meh</div>
+                      </div>
+                    ),
+                    50: (
+                      <div>
+                        <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
+                        <div>good</div>
+                      </div>
+                    ),
+                    100: (
+                      <div>
+                        <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
+                        <div>excellent</div>
+                      </div>
+                    )
+                  }}
+                />
+              </FormItem>
+              <FormItem {...formItemLayout} label={this.getLabel(this.state.knowBeforeCourse, 'Know Before Course')}>
+                <TextArea
+                  type="text"
+                  value={this.state.knowBeforeCourse}
+                  placeholder="enter text"
+                  rows={4}
+                  onChange={this.knowBeforeCourseOnChange}
+                />
+              </FormItem>
+              <FormItem {...formItemLayout} label={this.getLabel(this.state.extraComment, 'Comment')}>
+                <TextArea
+                  type="text"
+                  value={this.state.extraComment}
+                  placeholder="enter text"
+                  rows={4}
+                  onChange={this.extraCommentOnChange}
+                />
+              </FormItem>
 
-            <FormItem {...formItemLayout} label="Select what to know beforehand">
-              <Checkbox.Group style={{ width: '100%' }} onChange={this.checkboxOnChange}>
-                <Row>
-                  <Col span={8}>
-                    <Checkbox value="Java">Java</Checkbox>
-                  </Col>
-                  <Col span={8}>
-                    <Checkbox value="C++">C++</Checkbox>
-                  </Col>
-                  <Col span={8}>
-                    <Checkbox value="C">C</Checkbox>
-                  </Col>
-                  <Col span={8}>
-                    <Checkbox value="JavaScript">JavaScript</Checkbox>
-                  </Col>
-                  <Col span={8}>
-                    <Checkbox value="Git">Git</Checkbox>
-                  </Col>
-                  <Col span={8}>
-                    <Checkbox value="some sort of coding experiences">some sort of coding experiences</Checkbox>
-                  </Col>
-                </Row>
-              </Checkbox.Group>
-            </FormItem>
-            <FormItem>
-              <Button align="center" type="primary" htmlType="submit" onClick={this.submitClicked}>
-                Submit
-              </Button>
-            </FormItem>
-          </Form>
+              <FormItem {...formItemLayout} label="Select what to know beforehand">
+                <Checkbox.Group style={{ width: '100%' }} onChange={this.checkboxOnChange}>
+                  <Row>
+                    <Col span={8}>
+                      <Checkbox value="Java">Java</Checkbox>
+                    </Col>
+                    <Col span={8}>
+                      <Checkbox value="C++">C++</Checkbox>
+                    </Col>
+                    <Col span={8}>
+                      <Checkbox value="C">C</Checkbox>
+                    </Col>
+                    <Col span={8}>
+                      <Checkbox value="JavaScript">JavaScript</Checkbox>
+                    </Col>
+                    <Col span={8}>
+                      <Checkbox value="Git">Git</Checkbox>
+                    </Col>
+                    <Col span={8}>
+                      <Checkbox value="some sort of coding experiences">some sort of coding experiences</Checkbox>
+                    </Col>
+                  </Row>
+                </Checkbox.Group>
+              </FormItem>
+              <FormItem>
+                <Button align="center" type="primary" htmlType="submit" onClick={this.submitClicked}>
+                  Submit
+                </Button>
+              </FormItem>
+            </Form>
+          </div>
+          {/* <Footer /> */}
         </div>
-        {/* <Footer /> */}
       </div>
     );
   }

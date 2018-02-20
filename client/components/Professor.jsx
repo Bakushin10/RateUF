@@ -139,8 +139,9 @@ class Professor extends React.Component {
     console.log(this.state);
 
     return (
+      <div>
+      <Head />
       <div className="container">
-        <Head />
         <Grid>
           <Col xs={12} md={3} className="sidebar">
             {/* side bar*/}
@@ -232,6 +233,7 @@ class Professor extends React.Component {
           </Col>
         </Grid>
         {/* <Footer /> */}
+      </div>
       </div>
     );
   }

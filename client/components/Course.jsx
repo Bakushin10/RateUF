@@ -133,81 +133,83 @@ class Course extends React.Component {
     console.log(this.state)
     
     return(
-        <div className = "container">
+      <div>
         <Head />
-            <Grid>
-                <Col xs = {12} md = {3} className = "sidebar">{/* side bar*/}
-                    <div>
-                        <form>
-                            <FormGroup controlId="formBasicText">
-                                <FormControl
-                                    type="text"
-                                    value={this.state.searchTerm}
-                                    placeholder="Search Your Courses"
-                                    onChange={this.handleSearchCourse}
-                                />
-                            </FormGroup>
-                        </form>
-                    </div>
-                    <div>
-                        <Dropdown overlay = {menu} title="Change Major">
-                            <Button >Change Major</Button>
-                        </Dropdown>
-                    </div>
-                </Col>
-                <Col xs = {12} md = {9}>{/* list of prof*/}
-                    <InfiniteScroll className = "demo-infinite-container"
-                        initialLoad={false}
-                        pageStart={0}
-                        loadMore={this.handleInfiniteOnLoad}
-                        hasMore={!this.state.loading && this.state.hasMore}
-                        useWindow={false}
-                    >
-                    <List 
-                        itemLayout="vertical"
-                        size="large"
-                        pagination={pagination}
-                        dataSource={ this.state.courseToShow }
-                        renderItem={item => (
-                            <Link to={`/ClassDetails/${item.major}/${item._id}/${item.courseCode}`}>
-                                <Row>
-                                    <Col xs = {12} md = {4}>
-                                            <CourseName>
-                                                <div>{item.courseCode}</div>
-                                                <div>{item.courseName}</div>
-                                            </CourseName>
-                                    </Col>
-                                    <Col xs = {7} md = {5}>
-                                        <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
-                                            defaultValue={30} 
-                                            disabled = {true} 
-                                            marks={{ 
-                                                    30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                                    60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
-                                                    90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
-                                                    }}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Col xs = {9} md = {9}>
-                                    <List.Item xs = {9} md = {9}
-                                        key={item.id}
-                                        /*
-                                        actions={[<IconText type="star-o" text="156" />, 
-                                                <IconText type= "like-o" text="156" />, 
-                                                <IconText type="message" text="2" />]}
-                                        */
-                        >
-                            <List.Item.Meta />
-                        </List.Item>
-                        </Col>
-                    </Link>
-                    )}
-                />
-            </InfiniteScroll>
-          </Col>
-        </Grid>
-        {/* <Footer /> */}
+          <div className = "container">
+              <Grid>
+                  <Col xs = {12} md = {3} className = "sidebar">{/* side bar*/}
+                      <div>
+                          <form>
+                              <FormGroup controlId="formBasicText">
+                                  <FormControl
+                                      type="text"
+                                      value={this.state.searchTerm}
+                                      placeholder="Search Your Courses"
+                                      onChange={this.handleSearchCourse}
+                                  />
+                              </FormGroup>
+                          </form>
+                      </div>
+                      <div>
+                          <Dropdown overlay = {menu} title="Change Major">
+                              <Button >Change Major</Button>
+                          </Dropdown>
+                      </div>
+                  </Col>
+                  <Col xs = {12} md = {9}>{/* list of prof*/}
+                      <InfiniteScroll className = "demo-infinite-container"
+                          initialLoad={false}
+                          pageStart={0}
+                          loadMore={this.handleInfiniteOnLoad}
+                          hasMore={!this.state.loading && this.state.hasMore}
+                          useWindow={false}
+                      >
+                      <List 
+                          itemLayout="vertical"
+                          size="large"
+                          pagination={pagination}
+                          dataSource={ this.state.courseToShow }
+                          renderItem={item => (
+                              <Link to={`/ClassDetails/${item.major}/${item._id}/${item.courseCode}`}>
+                                  <Row>
+                                      <Col xs = {12} md = {4}>
+                                              <CourseName>
+                                                  <div>{item.courseCode}</div>
+                                                  <div>{item.courseName}</div>
+                                              </CourseName>
+                                      </Col>
+                                      <Col xs = {7} md = {5}>
+                                          <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
+                                              defaultValue={30} 
+                                              disabled = {true} 
+                                              marks={{ 
+                                                      30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
+                                                      60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
+                                                      90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
+                                                      }}
+                                          />
+                                      </Col>
+                                  </Row>
+                                  <Col xs = {9} md = {9}>
+                                      <List.Item xs = {9} md = {9}
+                                          key={item.id}
+                                          /*
+                                          actions={[<IconText type="star-o" text="156" />, 
+                                                  <IconText type= "like-o" text="156" />, 
+                                                  <IconText type="message" text="2" />]}
+                                          */
+                          >
+                              <List.Item.Meta />
+                          </List.Item>
+                          </Col>
+                      </Link>
+                      )}
+                  />
+              </InfiniteScroll>
+            </Col>
+          </Grid>
+          {/* <Footer /> */}
+        </div>
       </div>
     );
   }
