@@ -7,19 +7,19 @@ class eeCatalog extends React.Component {
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="./#/ComputerScienceEngineeringCatalog">CSE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceEngineeringCatalog">CSE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="./#/ComputerScienceLiberalArtsCatalog">CSC</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceLiberalArtsCatalog">CSC</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="./#/ComputerEngineeringCatalog">CE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerEngineeringCatalog">CE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="./#/ElectricalEngineeringCatalog">EE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/ElectricalEngineeringCatalog">EE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="./#/MathCatalog">MATH</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MathCatalog">MATH</a>
                 </Menu.Item>
             </Menu>
         );
@@ -306,20 +306,22 @@ class eeCatalog extends React.Component {
 
         return (
 
-            <div>
+            <div align="center">
+                <h1>Electrical Engineering</h1>
+                <h3>Course Catalog</h3>
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Degree Catalog</Button>
                 </Dropdown>
-                <Table align="center" width="500" columns={semester1} dataSource={data1} />
-                <Table align="center" width="500" columns={semester2} dataSource={data2} />
-                <Table align="center" width="500" columns={semester3} dataSource={data3} />
-                <Table align="center" width="500" columns={semester4} dataSource={data4} />
-                <Table align="center" width="500" columns={summer} dataSource={dataSummer} />
-                <Table align="center" width="500" columns={semester5} dataSource={data5} />
-                <Table align="center" width="500" columns={semester6} dataSource={data6} />
-                <Table align="center" width="500" columns={semester7} dataSource={data7} />
-                <Table align="center" width="500" columns={semester8} dataSource={data8} />
-                <Table align="center" width="500" columns={semester9} dataSource={data9} />
+                <Table columns={semester1} dataSource={data1} />
+                <Table columns={semester2} dataSource={data2} />
+                <Table columns={semester3} dataSource={data3} />
+                <Table columns={semester4} dataSource={data4} />
+                <Table columns={summer} dataSource={dataSummer} />
+                <Table columns={semester5} dataSource={data5} />
+                <Table columns={semester6} dataSource={data6} />
+                <Table columns={semester7} dataSource={data7} />
+                <Table columns={semester8} dataSource={data8} />
+                <Table columns={semester9} dataSource={data9} />
             </div>
 
         )
