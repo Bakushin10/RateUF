@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Menu, Dropdown, Button } from 'antd';
+import Head from '../Header-Footer/Head';
 
 class cseCatalog extends React.Component {
 
@@ -277,7 +278,8 @@ class cseCatalog extends React.Component {
 
 
         return (
-
+            <div>
+                <Head/>
             <div align="center">
                 <h1>Computer Science, Engineering</h1>
                 <h3>Course Catalog</h3>
@@ -293,7 +295,7 @@ class cseCatalog extends React.Component {
                 <Table columns={semester7} dataSource={data7} />
                 <Table columns={semester8} dataSource={data8} />
             </div>
-
+            </div>
         )
     }
 }

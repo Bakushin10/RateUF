@@ -22,7 +22,7 @@ export default class Head extends React.Component {
               </a>
             </Menu.Item>
             <Menu.Item key="degree" className="items">
-              <a className="items">Degree Outline</a>
+              <a href="/#/ComputerScienceEngineeringCatalog" className="items">Degree Outline</a>
             </Menu.Item>
           </Menu>
       </Layout>
