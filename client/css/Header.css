@@ -2,19 +2,20 @@
 
 .head {
   background-color: #97bbff;
-  height: 9rem;
-  width: 100%;
+  color: purple;
   position: relative;
-  white-space: nowrap;
 }
 
 .special-text {
   font-family: 'Pacifico', cursive;
-  text-align: center;
+  /* 
   position: relative;
-  font-size: 5rem;
-  top: 2rem;
-  color: grey;
+  top: 2rem; */
+  color: rgb(252, 137, 84);
+  font-size: 3.5rem;
+  float: left;
+  padding-left: 2rem;
+  padding-right: 7rem;
 }
 
 .head-contents {
@@ -23,7 +24,7 @@
   font-size: 2rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: grey;
-  margin-left: 12rem;
+  padding-left: 2rem;
   top: 3rem;
 }
 
@@ -48,4 +49,10 @@
   background-color: #97bbff;
   color: gray;
   position: relative;
+}
+
+.items {
+  color: lightskyblue;
+  font-size: 1.25rem;
+  padding-left: 5rem;
 }
