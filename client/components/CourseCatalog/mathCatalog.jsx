@@ -283,14 +283,14 @@ class mathCatalog extends React.Component {
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Degree Catalog</Button>
                 </Dropdown>
-                <Table columns={semester1} dataSource={data1} />
-                <Table columns={semester2} dataSource={data2} />
-                <Table columns={semester3} dataSource={data3} />
-                <Table columns={semester4} dataSource={data4} />
-                <Table columns={semester5} dataSource={data5} />
-                <Table columns={semester6} dataSource={data6} />
-                <Table columns={semester7} dataSource={data7} />
-                <Table columns={semester8} dataSource={data8} />
+                <Table style={{ width: '1000px' }} columns={semester1} dataSource={data1} />
+                <Table style={{ width: '1000px' }} columns={semester2} dataSource={data2} />
+                <Table style={{ width: '1000px' }} columns={semester3} dataSource={data3} />
+                <Table style={{ width: '1000px' }} columns={semester4} dataSource={data4} />
+                <Table style={{ width: '1000px' }} columns={semester5} dataSource={data5} />
+                <Table style={{ width: '1000px' }} columns={semester6} dataSource={data6} />
+                <Table style={{ width: '1000px' }} columns={semester7} dataSource={data7} />
+                <Table style={{ width: '1000px' }} columns={semester8} dataSource={data8} />
             </div>
             </div>
         )

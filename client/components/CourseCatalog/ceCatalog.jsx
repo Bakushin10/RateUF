@@ -248,9 +248,7 @@ class ceCatalog extends React.Component {
 
         const data7 = [{
             key: '1',
-            course: 'CEN 3913 CISE Design 1 or \n' +
-            'EEL 3923C Electrical Engineering Design 1 or \n' +
-            'EEL 4912 / CIS 4912C Integrated Product and Process Design 1',
+            course: 'CEN 3913 CISE Design 1' ,
             credit: 3
         }, {
             key: '2',
@@ -272,9 +270,7 @@ class ceCatalog extends React.Component {
 
         const data8 = [{
             key: '1',
-            course: 'CEN 4914 CISE Design 2 or \n' +
-            'EEL 4924C ECE Design 2 or \n' +
-            'EEL / CIS 4913 Integrated Product and Process Design 2',
+            course: 'CEN 4914 CISE Design 2',
             credit: 3
         }, {
             key: '2',
@@ -286,21 +282,21 @@ class ceCatalog extends React.Component {
         return (
             <div>
                 <Head />
-            <div align="center">
-                <h1>Computer Engineering</h1>
-                <h3>Course Catalog</h3>
-                <Dropdown overlay = {menu} title="Change Major">
-                    <Button >Change Degree Catalog</Button>
-                </Dropdown>
-                <Table columns={semester1} dataSource={data1} />
-                <Table columns={semester2} dataSource={data2} />
-                <Table columns={semester3} dataSource={data3} />
-                <Table columns={semester4} dataSource={data4} />
-                <Table columns={semester5} dataSource={data5} />
-                <Table columns={semester6} dataSource={data6} />
-                <Table columns={semester7} dataSource={data7} />
-                <Table columns={semester8} dataSource={data8} />
-            </div>
+                <div align="center">
+                    <h1>Computer Engineering</h1>
+                    <h3>Course Catalog</h3>
+                    <Dropdown overlay = {menu} title="Change Major">
+                        <Button >Change Degree Catalog</Button>
+                    </Dropdown>
+                    <Table style={{ width: '1000px' }} columns={semester1} dataSource={data1} />
+                    <Table style={{ width: '1000px' }} columns={semester2} dataSource={data2} />
+                    <Table style={{ width: '1000px' }} columns={semester3} dataSource={data3} />
+                    <Table style={{ width: '1000px' }} columns={semester4} dataSource={data4} />
+                    <Table style={{ width: '1000px' }} columns={semester5} dataSource={data5} />
+                    <Table style={{ width: '1000px' }} columns={semester6} dataSource={data6} />
+                    <Table style={{ width: '1000px' }} columns={semester7} dataSource={data7} />
+                    <Table style={{ width: '1000px' }} columns={semester8} dataSource={data8} />
+                </div>
             </div>
         )
     }

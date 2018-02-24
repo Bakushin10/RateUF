@@ -138,13 +138,13 @@ class cscCatalog extends React.Component {
             credit: 4
         }, {
             key: '4',
-            course: 'PHY 2053 Physics 1, 4 credits, or \n' +
-            'PHY 2048 Physics with Calculus 1, 3 credits',
+            course: 'PHY 2053 Physics 1, 4 credits, or' +
+            'PHY 2048 Physics with Calculus 1',
             credit: 4
         }, {
             key: '5',
-            course: 'PHY 2053L Physics 1 Laboratory or \n' +
-            'PHY 2048L Physics with Calculus 1 Laboratory (GE-P)',
+            course: 'PHY 2053L Physics 1 Laboratory, or' +
+            'PHY 2048L Physics with Calculus 1 Laboratory',
             credit: 1
         }];
 
@@ -154,8 +154,7 @@ class cscCatalog extends React.Component {
             credit: 4
         }, {
             key: '2',
-            course: 'MAC 2313 Analytic Geometry and Calculus 3\n' +
-            'GE-M',
+            course: 'MAC 2313 Analytic Geometry and Calculus 3',
             credit: 4
         }, {
             key: '3',
@@ -164,8 +163,8 @@ class cscCatalog extends React.Component {
             credit: 3
         }, {
             key: '4',
-            course: 'PHY 2054L Physics 2 Laboratory or \n' +
-            'PHY 2049L Laboratory for Physics with Calculus 2 (GE-P)',
+            course: 'PHY 2054L Physics 2 Laboratory or ' +
+            'PHY 2049L Laboratory for Physics with Calculus 2',
             credit: 1
         }, {
             key: '5',
@@ -294,14 +293,14 @@ class cscCatalog extends React.Component {
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Degree Catalog</Button>
                 </Dropdown>
-                <Table columns={semester1} dataSource={data1} />
-                <Table columns={semester2} dataSource={data2} />
-                <Table columns={semester3} dataSource={data3} />
-                <Table columns={semester4} dataSource={data4} />
-                <Table columns={semester5} dataSource={data5} />
-                <Table columns={semester6} dataSource={data6} />
-                <Table columns={semester7} dataSource={data7} />
-                <Table columns={semester8} dataSource={data8} />
+                <Table style={{ width: '1000px' }} columns={semester1} dataSource={data1} />
+                <Table style={{ width: '1000px' }} columns={semester2} dataSource={data2} />
+                <Table style={{ width: '1000px' }} columns={semester3} dataSource={data3} />
+                <Table style={{ width: '1000px' }} columns={semester4} dataSource={data4} />
+                <Table style={{ width: '1000px' }} columns={semester5} dataSource={data5} />
+                <Table style={{ width: '1000px' }} columns={semester6} dataSource={data6} />
+                <Table style={{ width: '1000px' }} columns={semester7} dataSource={data7} />
+                <Table style={{ width: '1000px' }} columns={semester8} dataSource={data8} />
             </div>
             </div>
 
