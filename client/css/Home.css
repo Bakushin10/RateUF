@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Pacifico');
+
+.welcome-box {
+  padding: 3rem;
+  margin: 2rem;
+  margin-top: 5rem;
+  padding-bottom: 6rem;
+  background-color: lightgrey;
+}
+
+.welcome-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.start {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.botones {
+  padding: 1rem;
+  font-size: 5rem;
+}
+
+.welcome-buttons {
+  margin-left: 15%;
+  margin-top: 4rem;
+  position: relative;
+}
+
+.cols-as-buttons {
+  background-color: lightblue;
+}
