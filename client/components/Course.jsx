@@ -67,7 +67,8 @@ class Course extends React.Component {
 
   searchCourse() {
     const selectedCourse = this.state.course.filter(course => {
-      if (`${course.name}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0) {
+      if (`${course.courseName}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0 ||
+          `${course.courseCode}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0) {
         return course;
       }
     });

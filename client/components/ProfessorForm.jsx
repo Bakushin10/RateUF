@@ -141,22 +141,13 @@ class ProfessorForm extends React.Component {
                 defaultValue={0}
                 marks={{
                   0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
+                    <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} /><div>meh</div></div>
                   ),
                   50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
+                    <div><Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} /><div>good</div></div>
                   ),
                   100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
+                    <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} /><div>excellent</div></div>
                   )
                 }}
               />
@@ -168,22 +159,13 @@ class ProfessorForm extends React.Component {
                 defaultValue={0}
                 marks={{
                   0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
+                    <div> <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} /><div>meh</div></div>
                   ),
                   50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
+                    <div><Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} /><div>good</div></div>
                   ),
                   100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
+                    <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} /><div>excellent</div></div>
                   )
                 }}
               />
@@ -198,22 +180,13 @@ class ProfessorForm extends React.Component {
                 defaultValue={0}
                 marks={{
                   0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
+                    <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} /><div>meh</div></div>
                   ),
                   50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
+                    <div><Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} /><div>good</div></div>
                   ),
                   100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
+                    <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} /><div>excellent</div></div>
                   )
                 }}
               />
@@ -228,22 +201,13 @@ class ProfessorForm extends React.Component {
                 defaultValue={0}
                 marks={{
                   0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
+                    <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} /><div>meh</div></div>
                   ),
                   50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
+                    <div><Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} /><div>good</div> </div>
                   ),
                   100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
+                    <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} /><div>excellent</div></div>
                   )
                 }}
               />
