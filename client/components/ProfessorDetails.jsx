@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { List, Avatar, Icon, Slider } from 'antd';
 import { Link } from 'react-router-dom';
-import { Row, Grid, Col } from 'react-bootstrap';
 import { Menu, Dropdown, Button } from 'antd';
+import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 
 import 'antd/dist/antd.css';
 import Head from './Header-Footer/Head';
@@ -85,40 +85,44 @@ class ProfessorDetails extends React.Component {
       </Menu>
     );
 
+    const data = [
+    { subject: 'Math', A: 100, B: 80, fullMark: 100 },
+    { subject: 'Chinese', A: 100, B: 70, fullMark: 100 },
+    { subject: 'English', A: 20, B: 80, fullMark: 100 },
+    { subject: 'Geography', A: 45, B: 100, fullMark: 100 },
+    { subject: 'Physics', A: 60, B: 100, fullMark: 100 },
+    { subject: 'History', A: 100, B: 100, fullMark: 100 },
+];
+
     return (
       <div>
       <Head />
       <div className="container">
-        <Grid>
-          <Row>
-            {' '}
-            {/* fitst row */}
-            <Col xs={3} md={3}>
               {this.state.profName}
               <div>
                 <Button type="primary" ghost>
                   <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>Rate this professor</Link>
                 </Button>
               </div>
-            </Col>
-            <Col xs={3} md={3}>
               Departmemnt : {this.state.major}
               <div>
                 <Dropdown overlay={menu} title="previous course">
                   <Button>See previous course</Button>
                 </Dropdown>
               </div>
-            </Col>
-            <Col xs={6} md={6}>
               <div>OverAll Experiense</div>
               <div>OverAll Experiense</div>
-            </Col>
-          </Row>
-          <Col>
             list of form here
-            {/* list of form here */}
-          </Col>
-        </Grid>
+            <div>
+              <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={data}>
+                <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6}/>
+                <Radar name="Lily" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6}/>
+                <PolarGrid />
+                <Legend />
+                <PolarAngleAxis dataKey="subject" />
+                <PolarRadiusAxis angle={30} domain={[0, 100]}/>
+              </RadarChart>
+            </div>
       </div>
       </div>
     );

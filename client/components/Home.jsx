@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 import Head from './Header-Footer/Head';
 import { Col, Row, Button, Radio } from 'antd';
 // import Foot from './Header-Footer/Foot';

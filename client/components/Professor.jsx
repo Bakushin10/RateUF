@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { List, Avatar, Icon, Slider, Menu, Dropdown, Button } from 'antd';
-import { Row, Grid, Col, FormGroup, FormControl } from 'react-bootstrap';
+import { List, Avatar, Icon, Slider, Menu, Dropdown, Button , Form} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
@@ -142,19 +141,14 @@ class Professor extends React.Component {
       <div>
       <Head />
       <div className="container">
-        <Grid>
-          <Col xs={12} md={3} className="sidebar">
-            {/* side bar*/}
             <div>
               <form>
-                <FormGroup controlId="formBasicText">
-                  <FormControl
+                  <Form
                     type="text"
                     value={this.state.searchTerm}
                     placeholder="Search your Professor"
                     onChange={this.handleSearchProf}
                   />
-                </FormGroup>
               </form>
             </div>
             <div>
@@ -162,8 +156,6 @@ class Professor extends React.Component {
                 <Button>Change Major</Button>
               </Dropdown>
             </div>
-          </Col>
-          <Col xs={12} md={9}>
             {/* list of prof*/}
             <InfiniteScroll
               className="demo-infinite-container"
@@ -180,11 +172,7 @@ class Professor extends React.Component {
                 dataSource={this.state.professorToShow}
                 renderItem={item => (
                   <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>
-                    <Row>
-                      <Col xs={12} md={4}>
                         <ProfessorName>{item.name}</ProfessorName>
-                      </Col>
-                      <Col xs={7} md={5}>
                         <Slider
                           className="ant-slider-disabled" /*.ant-slider-disabled*/
                           defaultValue={30}
@@ -210,9 +198,6 @@ class Professor extends React.Component {
                             )
                           }}
                         />
-                      </Col>
-                    </Row>
-                    <Col xs={9} md={9}>
                       <List.Item
                         xs={9}
                         md={9}
@@ -225,14 +210,10 @@ class Professor extends React.Component {
                       >
                         <List.Item.Meta />
                       </List.Item>
-                    </Col>
                   </Link>
                 )}
               />
             </InfiniteScroll>
-          </Col>
-        </Grid>
-        {/* <Footer /> */}
       </div>
       </div>
     );

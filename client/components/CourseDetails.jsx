@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { List, Avatar, Icon, Slider } from 'antd';
 import { Link } from 'react-router-dom';
-import { Row, Grid, Col } from 'react-bootstrap';
 import { Menu, Dropdown, Button } from 'antd';
 
 import 'antd/dist/antd.css';
@@ -77,11 +76,8 @@ class CourseDetails extends React.Component {
       <div>
       <Head />
       <div className="container">
-        <Grid>
-          <Row>
             {' '}
             {/* fitst row */}
-            <Col xs={3} md={3}>
               <div>{this.state.courseCode}</div>
               <div>{this.state.courseName}</div>
               <div>
@@ -91,25 +87,16 @@ class CourseDetails extends React.Component {
                   </Link>
                 </Button>
               </div>
-            </Col>
-            <Col xs={3} md={3}>
               Departmemnt : {this.state.major}
               <div>
                 <Dropdown overlay={menu} title="previous course">
                   <Button>See previous course</Button>
                 </Dropdown>
               </div>
-            </Col>
-            <Col xs={6} md={6}>
               <div>OverAll Experiense</div>
               <div>OverAll Experiense</div>
-            </Col>
-          </Row>
-          <Col>
             list of form here
             {/* list of form here */}
-          </Col>
-        </Grid>
       </div>
       </div>
     );
