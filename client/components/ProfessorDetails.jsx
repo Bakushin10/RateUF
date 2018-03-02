@@ -86,13 +86,10 @@ class ProfessorDetails extends React.Component {
     );
 
     const data = [
-    { subject: 'Math', A: 100, B: 80, fullMark: 100 },
-    { subject: 'Chinese', A: 100, B: 70, fullMark: 100 },
-    { subject: 'English', A: 20, B: 80, fullMark: 100 },
-    { subject: 'Geography', A: 45, B: 100, fullMark: 100 },
-    { subject: 'Physics', A: 60, B: 100, fullMark: 100 },
-    { subject: 'History', A: 100, B: 100, fullMark: 100 },
-];
+      { subject: 'Level of Difficulty', A: 45, B: 100, fullMark: 100 },
+      { subject: 'Communication of Ideas', A: 60, B: 100, fullMark: 100 },
+      { subject: 'Facilitation Of Learning', A: 100, B: 100, fullMark: 100 },
+    ];
 
     return (
       <div>
@@ -120,7 +117,7 @@ class ProfessorDetails extends React.Component {
                 <PolarGrid />
                 <Legend />
                 <PolarAngleAxis dataKey="subject" />
-                <PolarRadiusAxis angle={30} domain={[0, 100]}/>
+                <PolarRadiusAxis angle={90} domain={[0, 100]}/>
               </RadarChart>
             </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { List, Avatar, Icon, Slider, Menu, Dropdown, Button , Form} from 'antd';
+import { List, Avatar, Icon, Slider, Menu, Dropdown, Button, Form, FormItem, Input} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
@@ -142,14 +142,14 @@ class Professor extends React.Component {
       <Head />
       <div className="container">
             <div>
-              <form>
-                  <Form
+              <Form>
+                  <Input 
                     type="text"
                     value={this.state.searchTerm}
                     placeholder="Search your Professor"
                     onChange={this.handleSearchProf}
                   />
-              </form>
+              </Form>
             </div>
             <div>
               <Dropdown overlay={menu} title="Change Major">
@@ -179,22 +179,13 @@ class Professor extends React.Component {
                           disabled={true}
                           marks={{
                             30: (
-                              <div>
-                                <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                                <div>meh</div>
-                              </div>
+                              <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} /> <div>meh</div></div>
                             ),
                             60: (
-                              <div>
-                                <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                                <div>good</div>
-                              </div>
+                              <div><Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} /><div>good</div></div>
                             ),
                             90: (
-                              <div>
-                                <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                                <div>excellent</div>
-                              </div>
+                              <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} /><div>excellent</div></div>
                             )
                           }}
                         />
@@ -202,11 +193,6 @@ class Professor extends React.Component {
                         xs={9}
                         md={9}
                         key={item.id}
-                        /*
-                                        actions={[<IconText type="star-o" text="156" />, 
-                                                <IconText type= "like-o" text="156" />, 
-                                                <IconText type="message" text="2" />]}
-                                        */
                       >
                         <List.Item.Meta />
                       </List.Item>

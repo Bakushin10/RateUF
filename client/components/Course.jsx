@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { List, Avatar, Icon, Slider,Menu, Dropdown, Button, Form} from 'antd';
+import { List, Avatar, Icon, Slider,Menu, Dropdown, Button, Form, Input} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
@@ -137,14 +137,14 @@ class Course extends React.Component {
         <Head />
           <div className = "container">
                       <div>
-                          <form>
-                              <Form
-                                  type="text"
-                                  value={this.state.searchTerm}
-                                  placeholder="Search Your Courses"
-                                  onChange={this.handleSearchCourse}
-                              />
-                          </form>
+                        <Form>
+                          <Input
+                            type="text"
+                            value={this.state.searchTerm}
+                            placeholder="Search Your Courses"
+                            onChange={this.handleSearchCourse}
+                          />
+                        </Form>
                       </div>
                       <div>
                           <Dropdown overlay = {menu} title="Change Major">
