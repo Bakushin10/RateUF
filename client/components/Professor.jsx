@@ -175,7 +175,7 @@ class Professor extends React.Component {
                         <ProfessorName>{item.name}</ProfessorName>
                         <Slider
                           className="ant-slider-disabled" /*.ant-slider-disabled*/
-                          defaultValue={30}
+                          defaultValue={item.overview}
                           disabled={true}
                           marks={{
                             30: (

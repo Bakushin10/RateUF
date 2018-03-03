@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
 import styled from 'styled-components';
+import { Redirect } from 'react-router';
 
 import Head from './Header-Footer/Head';
 
@@ -26,7 +28,8 @@ class ProfessorForm extends React.Component {
       facilitationOfLearning: 0,
       wouldTakeAgain: 'Yes', //by default
       extraComment: '',
-      hasError: false
+      hasError: false,
+      submitted : false
     };
 
     this.overAllExpeOnChange = this.overAllExpeOnChange.bind(this);
@@ -64,9 +67,7 @@ class ProfessorForm extends React.Component {
   }
 
   insertNewProfessorReview() {
-    axios
-      .post(
-        '/insertNewProfessorReview',
+    axios.post('/insertNewProfessorReview',
         querystring.stringify({
           overallExpe: this.state.overallExpe,
           levelOfDiffculty: this.state.levelOfDiffculty,
@@ -87,6 +88,8 @@ class ProfessorForm extends React.Component {
         //go to submit successfully page
         console.log(response.data);
       });
+
+      this.setState({submitted : true})
   }
 
   submitClicked() {
@@ -113,13 +116,18 @@ class ProfessorForm extends React.Component {
   }
 
   render() {
+    const profName = this.props.match.params.profName;
+    const hasError = this.state.hasError;
     const formItemLayout = {
       labelCol: { span: 8 },
       wrapperCol: { span: 9 }
     };
-
-    const profName = this.props.match.params.profName;
-    const hasError = this.state.hasError;
+    
+    // redirect to ProfessorDetails page after revire is successfully submitted
+    if(this.state.submitted){
+      return (<Redirect to ={`/ProfessorDetails/${this.props.match.params.major}/${this.props.match.params.id}/${this.props.match.params.profName}/${"success"}`}/>);
+    }
+    
     return (
       <div>
       <Head />
@@ -233,6 +241,9 @@ class ProfessorForm extends React.Component {
               </Button>
             </FormItem>
           </Form>
+        </div>
+        <div hidden={this.state.submitted}>
+          <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}></Link>
         </div>
         {/* <Footer /> */}
       </div>

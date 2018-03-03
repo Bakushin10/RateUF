@@ -141,7 +141,7 @@ class Course extends React.Component {
                           <Input
                             type="text"
                             value={this.state.searchTerm}
-                            placeholder="Search Your Courses"
+                            placeholder="Search Your Courses. ex) 'COP 4600' or 'operating systems'"
                             onChange={this.handleSearchCourse}
                           />
                         </Form>
@@ -179,14 +179,10 @@ class Course extends React.Component {
                                                       90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
                                                       }}
                                           />
-                                      <List.Item xs = {9} md = {9}
+                                      <List.Item 
+                                          xs = {9} md = {9}
                                           key={item.id}
-                                          /*
-                                          actions={[<IconText type="star-o" text="156" />, 
-                                                  <IconText type= "like-o" text="156" />, 
-                                                  <IconText type="message" text="2" />]}
-                                          */
-                          >
+                                      >
                               <List.Item.Meta />
                           </List.Item>
                       </Link>
