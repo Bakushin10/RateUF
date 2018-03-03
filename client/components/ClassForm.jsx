@@ -120,7 +120,7 @@ class ClassForm extends React.Component {
           <h1>{courseName}</h1>
           <div>
             <Card style={{ width: 500 }} hidden={!hasError}>
-              <p>Please Check your inputs ! </p>
+              <p> <Icon type="exclamation-circle-o" /> Please Check your inputs ! </p>
             </Card>
           </div>
           <div align="center">

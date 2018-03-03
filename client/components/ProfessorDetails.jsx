@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { List, Avatar, Icon, Slider, Card } from 'antd';
+import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown, Button } from 'antd';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 
 import 'antd/dist/antd.css';
@@ -19,7 +18,8 @@ class ProfessorDetails extends React.Component {
       reviews: [], //has reviews
       hasReview : false,
       overAllExpe : 0,
-      isOverAllExpeUpdated : false
+      isOverAllExpeUpdated : false,
+      submitSuccess : false
     };
     this.getProfInfo = this.getProfInfo.bind(this);
     this.getProfReview = this.getProfReview.bind(this);
@@ -35,6 +35,10 @@ class ProfessorDetails extends React.Component {
 
     self.getProfInfo(self, major, _id);
     self.getProfReview(self, major, name)
+
+    if(this.props.match.params.submissionSuccess === "success"){
+       this.setState({submitSuccess : true})
+     }
   }
   
   getProfReview(self, major, name){
@@ -105,6 +109,7 @@ class ProfessorDetails extends React.Component {
 
     overAllExpe = overAllExpe/this.state.reviews.length;
 
+    //update the overAllExpe after new overAllExpe was calculated
     axios.get('/updateOverAllExpeForAProf', {
       params: {
         major: major,
@@ -113,7 +118,6 @@ class ProfessorDetails extends React.Component {
       }
     })
     .then(function(response) {
-      console.log('updateOverAllExpeForAProf');
       self.setState({ overAllExpe: overAllExpe });
       self.setState({ isOverAllExpeUpdated : true});
     });
@@ -121,7 +125,6 @@ class ProfessorDetails extends React.Component {
 
   render() {
     console.log(this.state);
-    let submitSuccess = false; // show message when a review is successfully submitted 
     const ProfFields = {
       levelOfDiff : 0,
       CommOfIdea : 0,
@@ -136,21 +139,20 @@ class ProfessorDetails extends React.Component {
       </Menu>
     );
 
+    // get values for graph if there are any reviews
     if(typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
       this.getFieldValueForProfessor(ProfFields);
     }
 
+    //only execute ONCE to update overall experience value when a review was submitted.   
     if(this.props.match.params.submissionSuccess === "success" && this.state.isOverAllExpeUpdated === false){
 
       if(this.props.match.params.submissionSuccess === "success" && 
          typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
         this.updateValueForOverAllExperience()
       }
-      if(this.props.match.params.submissionSuccess === "success"){
-        submitSuccess = true;
-      }
     }
-    
+
     const data = [
       { subject: 'Level of Difficulty', prof: ProfFields.levelOfDiff, average: 50, fullMark: 100 },
       { subject: 'Communication of Ideas', prof: ProfFields.CommOfIdea, average: 70, fullMark: 100 },
@@ -162,10 +164,8 @@ class ProfessorDetails extends React.Component {
         <Head />
           <div className="container">
             <div>
-              <Card style={{ width: 500 }} hidden={!submitSuccess}>
-                {' '}
-                {/*only show when the input errors are detected */}
-                <p> successfully submitted ! </p>
+              <Card style={{ width: 500 }} hidden={!this.state.submitSuccess}>
+                <p> <Icon type="check-circle-o" /> Thank you! Your revire was successfully submitted ! (make Icon big, message green)</p>
               </Card>
             </div>
             <div>
@@ -173,19 +173,20 @@ class ProfessorDetails extends React.Component {
                 <div>
                   <Button type="primary" ghost>
                     <Link to={`/ProfessorForm/${this.state.major}/${this.props.match.params.id}/${this.state.profName}`}>
-                      Rate this professor
+                      <Icon type="form" /> Rate this professor
                     </Link>
                   </Button>
                 </div>
-                Departmemnt : {this.state.major}
+                  Departmemnt : {this.state.major}
                 <div>
                   <Dropdown overlay={menu} title="previous course">
                     <Button>See previous course</Button>
                   </Dropdown>
                 </div>
-                <div>OverAll Experiense</div>
-                <div>OverAll Experiense</div>
-              list of form here
+                <div>OverAll Experiense {this.state.overAllExpe}</div>
+                <div>Level of Difficulty {ProfFields.levelOfDiff}</div>
+                <div>Communication of Ideas { ProfFields.CommOfIdea}</div>
+                <div>Facilitation Of Learning {ProfFields.FaciliOfLearning}</div>
             </div>
             <div hidden={ProfFields.hasReview}> {/* if there are no review, show the message*/}
               <Card style={{ width: 500 }}>
@@ -196,12 +197,36 @@ class ProfessorDetails extends React.Component {
               <div>
                 <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={data}>
                   <Radar name= {this.state.profName} dataKey="prof" stroke="#e858bf" fill="#e858bf" fillOpacity={0.6}/>
-                  <Radar name= {this.state.major + " Professors Average"} dataKey="average" stroke="#4e42f4" fill="#4e42f4" fillOpacity={0.6}/>
+                  <Radar name= {this.state.major + " Professors Average"}exoerience dataKey="average" stroke="#4e42f4" fill="#4e42f4" fillOpacity={0.6}/>
                   <PolarGrid />
                   <Legend />
                   <PolarAngleAxis dataKey="subject" />
                   <PolarRadiusAxis angle={90} domain={[0, 100]}/>
                 </RadarChart>
+              </div>
+              <div>
+                <div>
+                  comment section
+                </div>
+                <List
+                  className="demo-loadmore-list"
+                  // loading={loading}
+                  itemLayout="horizontal"
+                  // loadMore={loadMore}
+                  dataSource={this.state.reviews}
+                  renderItem={item => (
+                    <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
+                      <List.Item.Meta
+                        // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                        //title={<a href="https://ant.design">{item.name.last}</a>}
+                        description = {item.extraComment}
+                      />
+                      <div>
+                        Would you take this professor again <p>{item.wouldTakeAgain}</p>
+                      </div>
+                    </List.Item>
+                  )}
+                />
               </div>
             </div>
           </div>

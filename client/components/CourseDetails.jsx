@@ -83,7 +83,7 @@ class CourseDetails extends React.Component {
               <div>
                 <Button type="primary" ghost>
                   <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
-                    Rate this Course
+                    <Icon type="form" /> Rate this Course
                   </Link>
                 </Button>
               </div>

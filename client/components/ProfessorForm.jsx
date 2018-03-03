@@ -137,7 +137,7 @@ class ProfessorForm extends React.Component {
           <Card style={{ width: 500 }} hidden={!hasError}>
             {' '}
             {/*only show when the input errors are detected */}
-            <p>Please Check your inputs ! </p>
+            <p> <Icon type="exclamation-circle-o" /> Please Check your inputs ! </p>
           </Card>
         </div>
         <div align="center">
