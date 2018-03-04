@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card } from 'antd';
 import styled from 'styled-components';
 import Head from './Header-Footer/Head';
+import { Redirect } from 'react-router';
 
 var querystring = require('querystring');
 const FormItem = Form.Item;
@@ -26,7 +27,8 @@ class ClassForm extends React.Component {
       levelOfDiffculty: 0,
       extraComment: '',
       knowBeforeCourse: '',
-      hasError: false
+      hasError: false,
+      submitted : false
     };
 
     this.overAllExpeOnChange = this.overAllExpeOnChange.bind(this);
@@ -35,7 +37,7 @@ class ClassForm extends React.Component {
     this.knowBeforeCourseOnChange = this.knowBeforeCourseOnChange.bind(this);
     this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
     this.submitClicked = this.submitClicked.bind(this);
-    this.insertNewProfessorReview = this.insertNewProfessorReview.bind(this);
+    this.insertNewCourseReview = this.insertNewCourseReview.bind(this);
   }
 
   overAllExpeOnChange(value) {
@@ -66,10 +68,8 @@ class ClassForm extends React.Component {
     }
   }
 
-  insertNewProfessorReview() {
-    axios
-      .post(
-        '/insertNewCourseReview',
+  insertNewCourseReview() {
+    axios.post('/insertNewCourseReview',
         querystring.stringify({
           overallExpe: this.state.overallExpe,
           levelOfDiffculty: this.state.levelOfDiffculty,
@@ -88,6 +88,8 @@ class ClassForm extends React.Component {
         //go to submit successfully page
         console.log(response.data);
       });
+
+      this.setState({submitted : true})
   }
 
   submitClicked() {
@@ -99,7 +101,7 @@ class ClassForm extends React.Component {
     ) {
       this.setState({ hasError: true });
     } else {
-      this.insertNewProfessorReview();
+      this.insertNewCourseReview();
     }
   }
 
@@ -111,6 +113,11 @@ class ClassForm extends React.Component {
     const hasError = this.state.hasError;
     const courseCode = this.props.match.params.courseCode;
     const courseName = this.props.match.params.courseName;
+
+    // redirect to ProfessorDetails page after revire is successfully submitted
+    if(this.state.submitted){
+      return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.props.match.params.id}/${this.props.match.params.courseCode}/${"success"}`}/>);
+    }
 
     return (
       <div>
@@ -132,22 +139,13 @@ class ClassForm extends React.Component {
                   defaultValue={0}
                   marks={{
                     0: (
-                      <div>
-                        <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                        <div>meh</div>
-                      </div>
+                      <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} /><div>meh</div></div>
                     ),
                     50: (
-                      <div>
-                        <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                        <div>good</div>
-                      </div>
+                      <div><Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} /><div>good</div></div>
                     ),
                     100: (
-                      <div>
-                        <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                        <div>excellent</div>
-                      </div>
+                      <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} /><div>excellent</div></div>
                     )
                   }}
                 />
@@ -159,22 +157,13 @@ class ClassForm extends React.Component {
                   defaultValue={0}
                   marks={{
                     0: (
-                      <div>
-                        <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                        <div>meh</div>
-                      </div>
+                      <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} /><div>meh</div></div>
                     ),
                     50: (
-                      <div>
-                        <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                        <div>good</div>
-                      </div>
+                      <div><Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} /><div>good</div></div>
                     ),
                     100: (
-                      <div>
-                        <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                        <div>excellent</div>
-                      </div>
+                      <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} /><div>excellent</div></div>
                     )
                   }}
                 />

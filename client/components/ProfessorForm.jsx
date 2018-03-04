@@ -242,9 +242,6 @@ class ProfessorForm extends React.Component {
             </FormItem>
           </Form>
         </div>
-        <div hidden={this.state.submitted}>
-          <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}></Link>
-        </div>
         {/* <Footer /> */}
       </div>
       </div>

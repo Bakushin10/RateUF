@@ -172,4 +172,18 @@ router.get('/updateOverAllExpeForAProf',function(req, res) {
     })
 });
 
+router.get('/updateOverAllExpeForACourse',function(req, res) {
+    const major = req.query.major;
+    const courseCode = req.query.courseCode;
+    const overallExpe = req.query.overAllExpe;
+    const DB_name = require('../../models/'+major+'CourseModel')
+
+    DB_name.findOneAndUpdate({courseCode : courseCode},{overview : overallExpe},function(err,professor){
+        if(err)
+            res.send(err);
+
+        res.json(professor);
+    })
+});
+
 module.exports = router;
