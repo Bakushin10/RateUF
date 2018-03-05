@@ -9,7 +9,8 @@ var ReviewSchema = new Schema({
         levelOfDiffculty: Number,
         knowBeforeCourse: Array,
         howIsTheClass: Array,
-        extraComment: String
+        extraComment: String,
+        whoTookWith: String
     }]
 });
 

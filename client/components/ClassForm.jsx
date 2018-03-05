@@ -30,18 +30,27 @@ class ClassForm extends React.Component {
       howIsTheClass: '',
       hasError: false,
       submitted : false,
+      whoTookWith: '',
+      professor : []
     };
 
     this.overAllExpeOnChange = this.overAllExpeOnChange.bind(this);
     this.levelOfDiffcultyOnChange = this.levelOfDiffcultyOnChange.bind(this);
     this.knowBeforeCourseOnChange = this.knowBeforeCourseOnChange.bind(this);
     this.howIsTheClassOnChange = this.howIsTheClassOnChange.bind(this);
+    this.whoTookWithOnChange = this.whoTookWithOnChange.bind(this);
     this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
     this.submitClicked = this.submitClicked.bind(this);
     this.insertNewCourseReview = this.insertNewCourseReview.bind(this);
     this.getKnowBeforeCourseOption = this.getKnowBeforeCourseOption.bind(this);
     this.getHowIstheClassOption = this.getHowIstheClassOption.bind(this);
     this.getSliderMark = this.getSliderMark.bind(this);
+    this.getAllProfByMajor = this.getAllProfByMajor.bind(this);
+    this.getWhoTookWithOption = this.getWhoTookWithOption.bind(this);
+  }
+
+  componentDidMount(){
+    this.getAllProfByMajor(this, this.props.match.params.major);
   }
 
   overAllExpeOnChange(value) {
@@ -58,11 +67,25 @@ class ClassForm extends React.Component {
 
   howIsTheClassOnChange(value) {
     this.setState({ howIsTheClass: value });
-    console.log(this.state.howIsTheClass)
+  }
+
+  whoTookWithOnChange(value){
+    this.setState({whoTookWith : value});
   }
 
   extraCommentOnChange(e) {
     this.setState({ extraComment: e.target.value });
+  }
+
+  getAllProfByMajor(ev, major) {
+    axios.get('/getAllProfByMajor', {
+        params: {
+          major: major
+        }
+      })
+      .then(function(response) {
+        ev.setState({ professor: response.data });
+      });
   }
 
   getLabel(val, tag) {
@@ -82,7 +105,8 @@ class ClassForm extends React.Component {
           knowBeforeCourse: this.state.knowBeforeCourse,
           howIsTheClass: this.state.howIsTheClass, 
           major: this.props.match.params.major,
-          courseCode: this.props.match.params.courseCode
+          courseCode: this.props.match.params.courseCode,
+          whoTookWith : this.state.whoTookWith
         }),
         {
           headers: {
@@ -104,7 +128,8 @@ class ClassForm extends React.Component {
       this.state.levelOfDiffculty === 0 ||
       this.state.knowBeforeCourse === '' ||
       this.state.howIsTheClass === '' ||
-      this.state.extraComment === ''
+      this.state.extraComment === '' ||
+      this.state.whoTookWith === ''
     ) {
       this.setState({ hasError: true });
     } else {
@@ -180,6 +205,23 @@ class ClassForm extends React.Component {
     )
   }
 
+    getWhoTookWithOption(){
+      return(
+        <Select
+          placeholder="Please pick a professor you took this course with"
+          onChange={this.whoTookWithOnChange}
+        >
+          <Select.Option value= "Don't remeber">Don't remeber</Select.Option>
+          {
+            this.state.professor.map(prof =>(
+              <Select.Option value= {prof.name}>{prof.name}</Select.Option>
+            ))
+          }
+        </Select>
+      )
+    }
+
+
   getSliderMark(){
     return(
       {
@@ -197,6 +239,7 @@ class ClassForm extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     const formItemLayout = {
       labelCol: { span: 8 },
       wrapperCol: { span: 10 }
@@ -209,7 +252,7 @@ class ClassForm extends React.Component {
     if(this.state.submitted){
       return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.props.match.params.id}/${this.props.match.params.courseCode}/${"success"}`}/>);
     }
-
+    
     return (
       <div>
         <Head />
@@ -223,6 +266,9 @@ class ClassForm extends React.Component {
           </div>
           <div align="center">
             <Form>
+              <FormItem {...formItemLayout} label={this.getLabel(this.state.whoTookWith, 'Who did you take with ?')}>
+                {this.getWhoTookWithOption()}
+              </FormItem>
               <FormItem {...formItemLayout} label={this.getLabel(this.state.howIsTheClass, 'How is the class ?')}>
                 {this.getHowIstheClassOption()}
               </FormItem>

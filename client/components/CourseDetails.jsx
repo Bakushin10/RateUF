@@ -211,17 +211,18 @@ class CourseDetails extends React.Component {
                     description = {item.extraComment}
                   />
                   <div>
-                    classes to take before this class  <p></p>
-                  </div>
-                  <div>
                     {/* show the knowBeforeCourse Array */}
-                    --- knowBeforeCourse ---
+                    knowBeforeCourse:
                     { this.showArrays(item.knowBeforeCourse) }
                   </div>
                   <div>
                     {/* show the HowIdTHeClass Array */}
-                    --- howIsTheClass ---
+                    howIsTheClass:
                     { this.showArrays(item.howIsTheClass) }
+                  </div>
+                  <div>
+                    Prof : 
+                    {item.whoTookWith}
                   </div>
                 </List.Item>
               )}
