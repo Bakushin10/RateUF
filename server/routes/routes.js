@@ -46,6 +46,7 @@ router.route('/insertNewCourseReview').post(function(req,res){
         overallExpe : req.body.overallExpe,
         levelOfDiffculty : req.body.levelOfDiffculty,
         knowBeforeCourse : req.body.knowBeforeCourse,
+        howIsTheClass : req.body.howIsTheClass,
         extraComment : req.body.extraComment,
     }
 

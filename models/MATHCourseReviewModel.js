@@ -7,7 +7,8 @@ var ReviewSchema = new Schema({
     review:[{
         overallExpe: Number,
         levelOfDiffculty: Number,
-        knowBeforeCourse: String,
+        knowBeforeCourse: Array,
+        howIsTheClass: Array,
         extraComment: String
     }]
 });

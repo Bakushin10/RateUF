@@ -27,14 +27,15 @@ class ClassForm extends React.Component {
       levelOfDiffculty: 0,
       extraComment: '',
       knowBeforeCourse: '',
+      howIsTheClass: '',
       hasError: false,
-      submitted : false
+      submitted : false,
     };
 
     this.overAllExpeOnChange = this.overAllExpeOnChange.bind(this);
     this.levelOfDiffcultyOnChange = this.levelOfDiffcultyOnChange.bind(this);
-    this.checkboxOnChange = this.checkboxOnChange.bind(this);
     this.knowBeforeCourseOnChange = this.knowBeforeCourseOnChange.bind(this);
+    this.howIsTheClassOnChange = this.howIsTheClassOnChange.bind(this);
     this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
     this.submitClicked = this.submitClicked.bind(this);
     this.insertNewCourseReview = this.insertNewCourseReview.bind(this);
@@ -48,12 +49,13 @@ class ClassForm extends React.Component {
     this.setState({ levelOfDiffculty: value });
   }
 
-  checkboxOnChange(value) {
-    this.setState({ a: value });
+  knowBeforeCourseOnChange(value) {
+    this.setState({ knowBeforeCourse: value });
   }
 
-  knowBeforeCourseOnChange(e) {
-    this.setState({ knowBeforeCourse: e.target.value });
+  howIsTheClassOnChange(value) {
+    this.setState({ howIsTheClass: value });
+    console.log(this.state.howIsTheClass)
   }
 
   extraCommentOnChange(e) {
@@ -75,6 +77,7 @@ class ClassForm extends React.Component {
           levelOfDiffculty: this.state.levelOfDiffculty,
           extraComment: this.state.extraComment,
           knowBeforeCourse: this.state.knowBeforeCourse,
+          howIsTheClass: this.state.howIsTheClass, 
           major: this.props.match.params.major,
           courseCode: this.props.match.params.courseCode
         }),
@@ -97,6 +100,7 @@ class ClassForm extends React.Component {
       this.state.overallExpe === 0 ||
       this.state.levelOfDiffculty === 0 ||
       this.state.knowBeforeCourse === '' ||
+      this.state.howIsTheClass === '' ||
       this.state.extraComment === ''
     ) {
       this.setState({ hasError: true });
@@ -169,13 +173,31 @@ class ClassForm extends React.Component {
                 />
               </FormItem>
               <FormItem {...formItemLayout} label={this.getLabel(this.state.knowBeforeCourse, 'Know Before Course')}>
-                <TextArea
-                  type="text"
-                  value={this.state.knowBeforeCourse}
-                  placeholder="enter text"
-                  rows={4}
+                <Select 
+                  mode="multiple" 
+                  placeholder="Please select the skills students should before taking this course"
                   onChange={this.knowBeforeCourseOnChange}
-                />
+                >
+                  <Select.Option value="Nothing">Nothing</Select.Option>
+                  <Select.Option value="java">Java</Select.Option>
+                  <Select.Option value="C">C</Select.Option>
+                  <Select.Option value="C++">C++</Select.Option>
+                  <Select.Option value="JavaScript">JavaScript</Select.Option>
+                  <Select.Option value="Python">Python</Select.Option>
+                  <Select.Option value="Git">Git</Select.Option>
+                  <Select.Option value="Some Programming Experiences">Some Programming Experiences</Select.Option>
+                </Select>
+              </FormItem>
+              <FormItem {...formItemLayout} label={this.getLabel(this.state.howIsTheClass, 'How is the class')}>
+                <Select 
+                  mode="multiple" 
+                  placeholder="How is the course itself ?"
+                  onChange={this.howIsTheClassOnChange}
+                >
+                  <Select.Option value="material is hard">material is hard</Select.Option>
+                  <Select.Option value="busy work">busy work</Select.Option>
+                  <Select.Option value="add more">add more</Select.Option>
+                </Select>
               </FormItem>
               <FormItem {...formItemLayout} label={this.getLabel(this.state.extraComment, 'Comment')}>
                 <TextArea
@@ -185,31 +207,6 @@ class ClassForm extends React.Component {
                   rows={4}
                   onChange={this.extraCommentOnChange}
                 />
-              </FormItem>
-
-              <FormItem {...formItemLayout} label="Select what to know beforehand">
-                <Checkbox.Group style={{ width: '100%' }} onChange={this.checkboxOnChange}>
-                  <Row>
-                    <Col span={8}>
-                      <Checkbox value="Java">Java</Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox value="C++">C++</Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox value="C">C</Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox value="JavaScript">JavaScript</Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox value="Git">Git</Checkbox>
-                    </Col>
-                    <Col span={8}>
-                      <Checkbox value="some sort of coding experiences">some sort of coding experiences</Checkbox>
-                    </Col>
-                  </Row>
-                </Checkbox.Group>
               </FormItem>
               <FormItem>
                 <Button align="center" type="primary" htmlType="submit" onClick={this.submitClicked}>

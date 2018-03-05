@@ -24,6 +24,7 @@ class CourseDetails extends React.Component {
     };
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
+    this.showArrays = this.showArrays.bind(this);
   }
 
   componentDidMount() {
@@ -106,6 +107,14 @@ class CourseDetails extends React.Component {
       self.setState({ overAllExpe: overAllExpe });
       self.setState({ isOverAllExpeUpdated : true});
     });
+  }
+
+  showArrays(items){
+    var rows = []  
+    for(let i = 0;i<items.length ;i++){
+        rows.push(<div>{ items[i] }</div>)
+      }
+    return rows;
   }
 
   render() {
@@ -203,6 +212,16 @@ class CourseDetails extends React.Component {
                   />
                   <div>
                     classes to take before this class  <p></p>
+                  </div>
+                  <div>
+                    {/* show the knowBeforeCourse Array */}
+                    --- knowBeforeCourse ---
+                    { this.showArrays(item.knowBeforeCourse) }
+                  </div>
+                  <div>
+                    {/* show the HowIdTHeClass Array */}
+                    --- howIsTheClass ---
+                    { this.showArrays(item.howIsTheClass) }
                   </div>
                 </List.Item>
               )}

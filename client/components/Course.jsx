@@ -171,7 +171,7 @@ class Course extends React.Component {
                                                   <div>{item.courseName}</div>
                                               </CourseName>
                                           <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
-                                              defaultValue={item.overview} 
+                                              value={item.overview} 
                                               disabled = {true} 
                                               marks={{ 
                                                       30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
