@@ -18,6 +18,7 @@ router.route('/insertNewProfessorReview').post(function(req,res){
         levelOfDiffculty : req.body.levelOfDiffculty,
         communicationOfIdeas : req.body.communicationOfIdeas,
         facilitationOfLearning : req.body.facilitationOfLearning,
+        howIsTheProfessor : req.body.howIsTheProfessor, 
         wouldTakeAgain : req.body.wouldTakeAgain,
         extraComment : req.body.extraComment
     }

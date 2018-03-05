@@ -25,6 +25,7 @@ class ProfessorDetails extends React.Component {
     this.getProfReview = this.getProfReview.bind(this);
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
+    this.showArrays = this.showArrays.bind(this);
   }
 
   componentDidMount() {
@@ -107,20 +108,28 @@ class ProfessorDetails extends React.Component {
       overAllExpe += this.state.reviews[i].overallExpe;
     }
 
-    overAllExpe = overAllExpe/this.state.reviews.length;
+    const averageOverAllExpe = overAllExpe/this.state.reviews.length;
 
     //update the overAllExpe after new overAllExpe was calculated
     axios.get('/updateOverAllExpeForAProf', {
       params: {
         major: major,
         _id: _id,
-        overAllExpe : overAllExpe
+        overAllExpe : averageOverAllExpe
       }
     })
     .then(function(response) {
-      self.setState({ overAllExpe: overAllExpe });
+      self.setState({ overAllExpe: averageOverAllExpe });
       self.setState({ isOverAllExpeUpdated : true});
     });
+  }
+
+  showArrays(items){
+    var rows = []  
+    for(let i = 0;i<items.length ;i++){
+        rows.push(<div>{ items[i] }</div>)
+      }
+    return rows;
   }
 
   render() {
@@ -223,6 +232,11 @@ class ProfessorDetails extends React.Component {
                       />
                       <div>
                         Would you take this professor again <p>{item.wouldTakeAgain}</p>
+                      </div>
+                      <div>
+                        {/* show the HowIsTheProfessor Array */}
+                        --- howIsTheClass ---
+                        { this.showArrays(item.howIsTheProfessor) }
                       </div>
                     </List.Item>
                   )}

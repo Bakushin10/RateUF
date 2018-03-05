@@ -93,18 +93,18 @@ class CourseDetails extends React.Component {
       overAllExpe += this.state.reviews[i].overallExpe;
     }
 
-    overAllExpe = overAllExpe/this.state.reviews.length;
+    const averageOverAllExpe = overAllExpe/this.state.reviews.length;
 
     //update the overAllExpe after new overAllExpe was calculated
     axios.get('/updateOverAllExpeForACourse', {
       params: {
         major: major,
         courseCode: courseCode,
-        overAllExpe : overAllExpe
+        overAllExpe : averageOverAllExpe
       }
     })
     .then(function(response) {
-      self.setState({ overAllExpe: overAllExpe });
+      self.setState({ overAllExpe: averageOverAllExpe });
       self.setState({ isOverAllExpeUpdated : true});
     });
   }
@@ -140,7 +140,7 @@ class CourseDetails extends React.Component {
     if(this.props.match.params.submissionSuccess === "success" && this.state.isOverAllExpeUpdated === false){
 
       if(this.props.match.params.submissionSuccess === "success" && 
-          typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
+         typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
         this.updateValueForOverAllExperience()
       }
     }

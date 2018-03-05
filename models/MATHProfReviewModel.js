@@ -8,6 +8,7 @@ var ReviewSchema = new Schema({
         levelOfDiffculty: Number,
         communicationOfIdeas: Number,
         facilitationOfLearning: Number,
+        howIsTheProfessor: Array,
         wouldTakeAgain: String,
         extraComment: String
     }]
