@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { List, Avatar, Icon, Slider, Menu, Dropdown, Button } from 'antd';
-import { Row, Grid, Col, FormGroup, FormControl } from 'react-bootstrap';
+import { List, Avatar, Icon, Slider, Menu, Dropdown, Button, Form, FormItem, Input} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
+import { getSliderMark } from './commonJS';
 
 import Head from './Header-Footer/Head';
 
@@ -75,8 +75,7 @@ class Professor extends React.Component {
   }
 
   getAllProfByMajor(ev, major) {
-    axios
-      .get('/getAllProfByMajor', {
+    axios.get('/getAllProfByMajor', {
         params: {
           major: major
         }
@@ -142,28 +141,21 @@ class Professor extends React.Component {
       <div>
       <Head />
       <div className="container">
-        <Grid>
-          <Col xs={12} md={3} className="sidebar">
-            {/* side bar*/}
             <div>
-              <form>
-                <FormGroup controlId="formBasicText">
-                  <FormControl
+              <Form>
+                  <Input 
                     type="text"
                     value={this.state.searchTerm}
                     placeholder="Search your Professor"
                     onChange={this.handleSearchProf}
                   />
-                </FormGroup>
-              </form>
+              </Form>
             </div>
             <div>
               <Dropdown overlay={menu} title="Change Major">
                 <Button>Change Major</Button>
               </Dropdown>
             </div>
-          </Col>
-          <Col xs={12} md={9}>
             {/* list of prof*/}
             <InfiniteScroll
               className="demo-infinite-container"
@@ -180,59 +172,24 @@ class Professor extends React.Component {
                 dataSource={this.state.professorToShow}
                 renderItem={item => (
                   <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>
-                    <Row>
-                      <Col xs={12} md={4}>
                         <ProfessorName>{item.name}</ProfessorName>
-                      </Col>
-                      <Col xs={7} md={5}>
                         <Slider
                           className="ant-slider-disabled" /*.ant-slider-disabled*/
-                          defaultValue={30}
+                          value={item.overview}
                           disabled={true}
-                          marks={{
-                            30: (
-                              <div>
-                                <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                                <div>meh</div>
-                              </div>
-                            ),
-                            60: (
-                              <div>
-                                <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                                <div>good</div>
-                              </div>
-                            ),
-                            90: (
-                              <div>
-                                <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                                <div>excellent</div>
-                              </div>
-                            )
-                          }}
+                          marks={getSliderMark()}
                         />
-                      </Col>
-                    </Row>
-                    <Col xs={9} md={9}>
                       <List.Item
                         xs={9}
                         md={9}
                         key={item.id}
-                        /*
-                                        actions={[<IconText type="star-o" text="156" />, 
-                                                <IconText type= "like-o" text="156" />, 
-                                                <IconText type="message" text="2" />]}
-                                        */
                       >
                         <List.Item.Meta />
                       </List.Item>
-                    </Col>
                   </Link>
                 )}
               />
             </InfiniteScroll>
-          </Col>
-        </Grid>
-        {/* <Footer /> */}
       </div>
       </div>
     );
