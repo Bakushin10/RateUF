@@ -5,6 +5,7 @@ import { List, Avatar, Icon, Slider,Menu, Dropdown, Button, Form, Input} from 'a
 import InfiniteScroll from 'react-infinite-scroller';
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
+import { getSliderMark } from './commonJS';
 
 import Head from './Header-Footer/Head';
 
@@ -173,11 +174,7 @@ class Course extends React.Component {
                                           <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
                                               value={item.overview} 
                                               disabled = {true} 
-                                              marks={{ 
-                                                      30: <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }}/><div>meh</div></div>,
-                                                      60: <div><Icon type="meh-o"   style={{ fontSize: 15, color: '#08c' }}/><div>good</div></div>, 
-                                                      90: <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }}/><div>excellent</div></div> 
-                                                      }}
+                                              marks={getSliderMark()}
                                           />
                                       <List.Item 
                                           xs = {9} md = {9}

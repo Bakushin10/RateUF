@@ -7,6 +7,7 @@ import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} f
 
 import 'antd/dist/antd.css';
 import Head from './Header-Footer/Head';
+import { showArrays, getMessageIfNoReview, getSuccessMessage } from './commonJS';
 
 class CourseDetails extends React.Component {
   constructor() {
@@ -154,9 +155,7 @@ class CourseDetails extends React.Component {
       <Head />
       <div className="container">
         <div>
-          <Card style={{ width: 500 }} hidden={!this.state.submitSuccess}>
-            <p> <Icon type="check-circle-o" /> Thank you! Your revire was successfully submitted ! (make Icon big, message green)</p>
-          </Card>
+          { getSuccessMessage(this.state.submitSuccess) }
         </div>
         <div>
           <div>{this.state.courseCode}</div>
@@ -174,14 +173,12 @@ class CourseDetails extends React.Component {
                 <Button>See previous course</Button>
               </Dropdown>
             </div>
-            <div>OverAll Experiense {this.state.overAllExpe}</div>
-            <div>Level of Difficulty {ProfFields.levelOfDiff}</div>
+            <div>OverAll Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
+            <div>Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
           </div>
-          <div hidden={ProfFields.hasReview}> {/* if there are no review, show the message*/}
-              <Card style={{ width: 500 }}>
-                <p> Be the first one to review this Professor ! </p>
-              </Card>
-          </div>
+          <div>
+              { getMessageIfNoReview(ProfFields.hasReview) }
+            </div>
           <div hidden={!ProfFields.hasReview}> {/* if there are at least one review, show the prof detail*/}
           <div>
             <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={data}>
@@ -213,12 +210,12 @@ class CourseDetails extends React.Component {
                   <div>
                     {/* show the knowBeforeCourse Array */}
                     knowBeforeCourse:
-                    { this.showArrays(item.knowBeforeCourse) }
+                    { showArrays(item.knowBeforeCourse) }
                   </div>
                   <div>
                     {/* show the HowIdTHeClass Array */}
                     howIsTheClass:
-                    { this.showArrays(item.howIsTheClass) }
+                    { showArrays(item.howIsTheClass) }
                   </div>
                   <div>
                     Prof : 

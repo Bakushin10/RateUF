@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
-
+import { showArrays, getMessageIfNoReview, getSuccessMessage } from './commonJS';
 import 'antd/dist/antd.css';
 import Head from './Header-Footer/Head';
 
@@ -25,7 +25,6 @@ class ProfessorDetails extends React.Component {
     this.getProfReview = this.getProfReview.bind(this);
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
-    this.showArrays = this.showArrays.bind(this);
   }
 
   componentDidMount() {
@@ -124,14 +123,6 @@ class ProfessorDetails extends React.Component {
     });
   }
 
-  showArrays(items){
-    var rows = []  
-    for(let i = 0;i<items.length ;i++){
-        rows.push(<div>{ items[i] }</div>)
-      }
-    return rows;
-  }
-
   render() {
     console.log(this.state);
     const ProfFields = {
@@ -173,9 +164,7 @@ class ProfessorDetails extends React.Component {
         <Head />
           <div className="container">
             <div>
-              <Card style={{ width: 500 }} hidden={!this.state.submitSuccess}>
-                <p> <Icon type="check-circle-o" /> Thank you! Your revire was successfully submitted ! (make Icon big, message green)</p>
-              </Card>
+              { getSuccessMessage(this.state.submitSuccess) }
             </div>
             <div>
               {this.state.profName}
@@ -192,15 +181,13 @@ class ProfessorDetails extends React.Component {
                     <Button>See previous course</Button>
                   </Dropdown>
                 </div>
-                <div>OverAll Experiense {this.state.overAllExpe}</div>
-                <div>Level of Difficulty {ProfFields.levelOfDiff}</div>
-                <div>Communication of Ideas { ProfFields.CommOfIdea}</div>
-                <div>Facilitation Of Learning {ProfFields.FaciliOfLearning}</div>
+                <div>OverAll Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
+                <div>Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
+                <div>Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
+                <div>Facilitation Of Learning {parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
-            <div hidden={ProfFields.hasReview}> {/* if there are no review, show the message*/}
-              <Card style={{ width: 500 }}>
-                <p> Be the first one to review this Professor ! </p>
-              </Card>
+            <div>
+              { getMessageIfNoReview(ProfFields.hasReview) }
             </div>
             <div hidden={!ProfFields.hasReview}> {/* if there are at least one review, show the prof detail*/}
               <div>
@@ -235,8 +222,8 @@ class ProfessorDetails extends React.Component {
                       </div>
                       <div>
                         {/* show the HowIsTheProfessor Array */}
-                        --- howIsTheClass ---
-                        { this.showArrays(item.howIsTheProfessor) }
+                        howIsTheProfessor : 
+                        { showArrays(item.howIsTheProfessor) }
                       </div>
                     </List.Item>
                   )}

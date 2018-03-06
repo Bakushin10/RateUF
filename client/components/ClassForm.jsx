@@ -1,20 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card } from 'antd';
-import styled from 'styled-components';
 import Head from './Header-Footer/Head';
 import { Redirect } from 'react-router';
+import { getSliderMark, getLabel } from './commonJS';
 
 var querystring = require('querystring');
 const FormItem = Form.Item;
 const { TextArea } = Input;
-
-const WarningOn = styled.span`
-  color: #fc2f4e;
-`;
-const WarningOff = styled.span`
-  color: #6be594;
-`;
 
 class ClassForm extends React.Component {
   constructor() {
@@ -26,8 +19,8 @@ class ClassForm extends React.Component {
       overallExpe: 0,
       levelOfDiffculty: 0,
       extraComment: '',
-      knowBeforeCourse: '',
-      howIsTheClass: '',
+      knowBeforeCourse: [],
+      howIsTheClass: [],
       hasError: false,
       submitted : false,
       whoTookWith: '',
@@ -44,7 +37,6 @@ class ClassForm extends React.Component {
     this.insertNewCourseReview = this.insertNewCourseReview.bind(this);
     this.getKnowBeforeCourseOption = this.getKnowBeforeCourseOption.bind(this);
     this.getHowIstheClassOption = this.getHowIstheClassOption.bind(this);
-    this.getSliderMark = this.getSliderMark.bind(this);
     this.getAllProfByMajor = this.getAllProfByMajor.bind(this);
     this.getWhoTookWithOption = this.getWhoTookWithOption.bind(this);
   }
@@ -88,14 +80,6 @@ class ClassForm extends React.Component {
       });
   }
 
-  getLabel(val, tag) {
-    if (val === '' || val === 0) {
-      return <WarningOn> *{tag} </WarningOn>;
-    } else {
-      return <WarningOff> {tag} </WarningOff>;
-    }
-  }
-
   insertNewCourseReview() {
     axios.post('/insertNewCourseReview',
         querystring.stringify({
@@ -126,8 +110,8 @@ class ClassForm extends React.Component {
     if (
       this.state.overallExpe === 0 ||
       this.state.levelOfDiffculty === 0 ||
-      this.state.knowBeforeCourse === '' ||
-      this.state.howIsTheClass === '' ||
+      this.state.knowBeforeCourse.length === 0 ||
+      this.state.howIsTheClass.length === 0 ||
       this.state.extraComment === '' ||
       this.state.whoTookWith === ''
     ) {
@@ -221,23 +205,6 @@ class ClassForm extends React.Component {
       )
     }
 
-
-  getSliderMark(){
-    return(
-      {
-        0: (
-          <div><Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} /><div>meh</div></div>
-        ),
-        50: (
-          <div><Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} /><div>good</div></div>
-        ),
-        100: (
-          <div><Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} /><div>excellent</div></div>
-        )
-      }
-    )
-  }
-
   render() {
     console.log(this.state)
     const formItemLayout = {
@@ -248,7 +215,7 @@ class ClassForm extends React.Component {
     const courseCode = this.props.match.params.courseCode;
     const courseName = this.props.match.params.courseName;
 
-    // redirect to ProfessorDetails page after revire is successfully submitted
+    // redirect to ProfessorDetails page after review is successfully submitted
     if(this.state.submitted){
       return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.props.match.params.id}/${this.props.match.params.courseCode}/${"success"}`}/>);
     }
@@ -266,32 +233,32 @@ class ClassForm extends React.Component {
           </div>
           <div align="center">
             <Form>
-              <FormItem {...formItemLayout} label={this.getLabel(this.state.whoTookWith, 'Who did you take with ?')}>
+              <FormItem {...formItemLayout} label={ getLabel(this.state.whoTookWith, 'Who did you take with ?')}>
                 {this.getWhoTookWithOption()}
               </FormItem>
-              <FormItem {...formItemLayout} label={this.getLabel(this.state.howIsTheClass, 'How is the class ?')}>
+              <FormItem {...formItemLayout} label={ getLabel(this.state.howIsTheClass, 'How is the class ?')}>
                 {this.getHowIstheClassOption()}
               </FormItem>
-              <FormItem {...formItemLayout} label={this.getLabel(this.state.overallExpe, 'Overall Experiences')}>
+              <FormItem {...formItemLayout} label={ getLabel(this.state.overallExpe, 'Overall Experiences')}>
                 <Slider
                   onChange={this.overAllExpeOnChange}
                   value={this.state.overallExpe}
                   defaultValue={0}
-                  marks={this.getSliderMark()}
+                  marks={ getSliderMark() }
                 />
               </FormItem>
-              <FormItem {...formItemLayout} label={this.getLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
+              <FormItem {...formItemLayout} label={ getLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
                 <Slider
                   onChange={this.levelOfDiffcultyOnChange}
                   value={this.state.levelOfDiffculty}
                   defaultValue={0}
-                  marks={this.getSliderMark()}
+                  marks={ getSliderMark() }
                 />
               </FormItem>
-              <FormItem {...formItemLayout} label={this.getLabel(this.state.knowBeforeCourse, 'Know Before Course')}>
+              <FormItem {...formItemLayout} label={ getLabel(this.state.knowBeforeCourse, 'Know Before Course')}>
                   {this.getKnowBeforeCourseOption(this.props.match.params.major)}
               </FormItem>
-              <FormItem {...formItemLayout} label={this.getLabel(this.state.extraComment, 'Comment')}>
+              <FormItem {...formItemLayout} label={ getLabel(this.state.extraComment, 'Comment')}>
                 <TextArea
                   type="text"
                   value={this.state.extraComment}
