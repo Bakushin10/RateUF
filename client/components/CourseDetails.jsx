@@ -7,7 +7,7 @@ import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} f
 
 import 'antd/dist/antd.css';
 import Head from './Header-Footer/Head';
-import { showArrays, getMessageIfNoReview, getSuccessMessage } from './commonJS';
+import { ShowArrays, GetMessageIfNoReview, GetSuccessMessage } from './commonJS';
 
 class CourseDetails extends React.Component {
   constructor() {
@@ -21,11 +21,11 @@ class CourseDetails extends React.Component {
       reviews: [], //has reviews,
       overAllExpe : 0,
       isOverAllExpeUpdated : false,
-      submitSuccess : false
+      submitSuccess : false,
+      dataloaded : false 
     };
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
-    this.showArrays = this.showArrays.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +54,7 @@ class CourseDetails extends React.Component {
         console.log('getCourseReviews');
         console.log(response.data.review);
         self.setState({ reviews: response.data.review });
+        self.setState({ dataloaded : true });
       });
 
       if(this.props.match.params.submissionSuccess === "success"){
@@ -110,14 +111,6 @@ class CourseDetails extends React.Component {
     });
   }
 
-  showArrays(items){
-    var rows = []  
-    for(let i = 0;i<items.length ;i++){
-        rows.push(<div>{ items[i] }</div>)
-      }
-    return rows;
-  }
-
   render() {
     console.log(this.state);
     const ProfFields = {
@@ -155,7 +148,7 @@ class CourseDetails extends React.Component {
       <Head />
       <div className="container">
         <div>
-          { getSuccessMessage(this.state.submitSuccess) }
+          { GetSuccessMessage(this.state.submitSuccess) }
         </div>
         <div>
           <div>{this.state.courseCode}</div>
@@ -177,7 +170,7 @@ class CourseDetails extends React.Component {
             <div>Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
           </div>
           <div>
-              { getMessageIfNoReview(ProfFields.hasReview) }
+              { GetMessageIfNoReview(ProfFields.hasReview, this.state.dataloaded) }
             </div>
           <div hidden={!ProfFields.hasReview}> {/* if there are at least one review, show the prof detail*/}
           <div>
@@ -210,12 +203,12 @@ class CourseDetails extends React.Component {
                   <div>
                     {/* show the knowBeforeCourse Array */}
                     knowBeforeCourse:
-                    { showArrays(item.knowBeforeCourse) }
+                    { ShowArrays(item.knowBeforeCourse) }
                   </div>
                   <div>
                     {/* show the HowIdTHeClass Array */}
                     howIsTheClass:
-                    { showArrays(item.howIsTheClass) }
+                    { ShowArrays(item.howIsTheClass) }
                   </div>
                   <div>
                     Prof : 

@@ -1,19 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { List, Avatar, Icon, Slider,Menu, Dropdown, Button, Form, Input} from 'antd';
-import InfiniteScroll from 'react-infinite-scroller';
-import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import { getSliderMark } from './commonJS';
+import { CourseList } from './CourseList';
 
 import Head from './Header-Footer/Head';
-
-const CourseName = styled.h5`
-  color: #878fad;
-  padding-top: 15px;
-  padding-left: 30px;
-`;
 
 class Course extends React.Component {
   constructor() {
@@ -25,7 +16,8 @@ class Course extends React.Component {
       courseToShow: [], //this array will change based on the search
       searchTerm: '', // user input for search
       loading: false,
-      hasMore: true
+      hasMore: true,
+      dataloaded : false
     };
 
     this.getAllCoursesByMajor = this.getAllCoursesByMajor.bind(this);
@@ -75,7 +67,7 @@ class Course extends React.Component {
     this.setState({ courseToShow: selectedCourse });
   }
 
-  getAllCoursesByMajor(ev, major) {
+  getAllCoursesByMajor(self, major) {
     axios
       .get('/getAllCoursesByMajor',{
           params:{
@@ -83,8 +75,9 @@ class Course extends React.Component {
           }
       }) //passing major as an argument
       .then(function(response) {
-        ev.setState({ course: response.data });
-        ev.setState({ courseToShow: response.data });
+        self.setState({ course: response.data });
+        self.setState({ courseToShow: response.data });
+        self.setState({ dataloaded : true});
       });
   }
 
@@ -103,12 +96,6 @@ class Course extends React.Component {
   }
 
   render() {
-    const pagination = {
-      pageSize: 10,
-      current: 1,
-      total: this.state.course.length,
-      onChange: () => {}
-    };
 
     const IconText = ({ type, text }) => (
       <span>
@@ -137,55 +124,23 @@ class Course extends React.Component {
       <div>
         <Head />
           <div className = "container">
-                      <div>
-                        <Form>
-                          <Input
-                            type="text"
-                            value={this.state.searchTerm}
-                            placeholder="Search Your Courses. ex) 'COP 4600' or 'operating systems'"
-                            onChange={this.handleSearchCourse}
-                          />
-                        </Form>
-                      </div>
-                      <div>
-                          <Dropdown overlay = {menu} title="Change Major">
-                              <Button >Change Major</Button>
-                          </Dropdown>
-                      </div>
-                      <InfiniteScroll className = "demo-infinite-container"
-                          initialLoad={false}
-                          pageStart={0}
-                          loadMore={this.handleInfiniteOnLoad}
-                          hasMore={!this.state.loading && this.state.hasMore}
-                          useWindow={false}
-                      >
-                      <List 
-                          itemLayout="vertical"
-                          size="large"
-                          pagination={pagination}
-                          dataSource={ this.state.courseToShow }
-                          renderItem={item => (
-                              <Link to={`/ClassDetails/${item.major}/${item._id}/${item.courseCode}`}>
-
-                                              <CourseName>
-                                                  <div>{item.courseCode}</div>
-                                                  <div>{item.courseName}</div>
-                                              </CourseName>
-                                          <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
-                                              value={item.overview} 
-                                              disabled = {true} 
-                                              marks={getSliderMark()}
-                                          />
-                                      <List.Item 
-                                          xs = {9} md = {9}
-                                          key={item.id}
-                                      >
-                              <List.Item.Meta />
-                          </List.Item>
-                      </Link>
-                      )}
-                  />
-              </InfiniteScroll>
+            <div>
+              <Form>
+                <Input
+                  type="text"
+                  value={this.state.searchTerm}
+                  placeholder="Search Your Courses. ex) 'COP 4600' or 'operating systems'"
+                  onChange={this.handleSearchCourse}
+                />
+              </Form>
+            </div>
+            <div>
+                <Dropdown overlay = {menu} title="Change Major">
+                    <Button >Change Major</Button>
+                </Dropdown>
+            </div>
+            { CourseList(this.state.courseToShow, this.state.loading, 
+                          this.state.hasMore, this.handleInfiniteOnLoad, this.state.dataloaded) }
           {/* <Footer /> */}
         </div>
       </div>

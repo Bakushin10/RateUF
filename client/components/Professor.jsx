@@ -1,19 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { List, Avatar, Icon, Slider, Menu, Dropdown, Button, Form, FormItem, Input} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
-import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import { getSliderMark } from './commonJS';
+import { ProfessorList } from './ProfessorList';
 
 import Head from './Header-Footer/Head';
-
-const ProfessorName = styled.h5`
-  color: #878fad;
-  padding-top: 15px;
-  padding-left: 30px;
-`;
 
 class Professor extends React.Component {
   constructor() {
@@ -25,7 +17,8 @@ class Professor extends React.Component {
       professorToShow: [], //this array will change based on the search
       searchTerm: '', // user input for search
       loading: false,
-      hasMore: true
+      hasMore: true,
+      dataloaded : false 
     };
 
     this.getAllProfByMajor = this.getAllProfByMajor.bind(this);
@@ -74,15 +67,16 @@ class Professor extends React.Component {
     this.setState({ professorToShow: selectedProf });
   }
 
-  getAllProfByMajor(ev, major) {
+  getAllProfByMajor(self, major) {
     axios.get('/getAllProfByMajor', {
         params: {
           major: major
         }
       })
       .then(function(response) {
-        ev.setState({ professor: response.data });
-        ev.setState({ professorToShow: response.data });
+        self.setState({ professor : response.data });
+        self.setState({ professorToShow : response.data });
+        self.setState({ dataloaded : true});
       });
   }
 
@@ -157,39 +151,8 @@ class Professor extends React.Component {
               </Dropdown>
             </div>
             {/* list of prof*/}
-            <InfiniteScroll
-              className="demo-infinite-container"
-              initialLoad={false}
-              pageStart={0}
-              loadMore={this.handleInfiniteOnLoad}
-              hasMore={!this.state.loading && this.state.hasMore}
-              useWindow={false}
-            >
-              <List
-                itemLayout="vertical"
-                size="large"
-                pagination={pagination}
-                dataSource={this.state.professorToShow}
-                renderItem={item => (
-                  <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>
-                        <ProfessorName>{item.name}</ProfessorName>
-                        <Slider
-                          className="ant-slider-disabled" /*.ant-slider-disabled*/
-                          value={item.overview}
-                          disabled={true}
-                          marks={getSliderMark()}
-                        />
-                      <List.Item
-                        xs={9}
-                        md={9}
-                        key={item.id}
-                      >
-                        <List.Item.Meta />
-                      </List.Item>
-                  </Link>
-                )}
-              />
-            </InfiniteScroll>
+            { ProfessorList(this.state.professorToShow, this.state.loading, this.state.hasMore, 
+                        this.handleInfiniteOnLoad, this.state.dataloaded) }
       </div>
       </div>
     );

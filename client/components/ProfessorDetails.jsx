@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
-import { showArrays, getMessageIfNoReview, getSuccessMessage } from './commonJS';
+import { ShowArrays, GetMessageIfNoReview, GetSuccessMessage } from './commonJS';
+
 import 'antd/dist/antd.css';
 import Head from './Header-Footer/Head';
 
@@ -19,7 +20,8 @@ class ProfessorDetails extends React.Component {
       hasReview : false,
       overAllExpe : 0,
       isOverAllExpeUpdated : false,
-      submitSuccess : false
+      submitSuccess : false,
+      dataloaded : false 
     };
     this.getProfInfo = this.getProfInfo.bind(this);
     this.getProfReview = this.getProfReview.bind(this);
@@ -52,6 +54,7 @@ class ProfessorDetails extends React.Component {
       console.log('getProfReview');
       console.log(response.data.review);
       self.setState({ reviews: response.data.review });
+      self.setState({ dataloaded : true });
     });
   }
 
@@ -164,7 +167,7 @@ class ProfessorDetails extends React.Component {
         <Head />
           <div className="container">
             <div>
-              { getSuccessMessage(this.state.submitSuccess) }
+              { GetSuccessMessage(this.state.submitSuccess) }
             </div>
             <div>
               {this.state.profName}
@@ -187,7 +190,7 @@ class ProfessorDetails extends React.Component {
                 <div>Facilitation Of Learning {parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
             <div>
-              { getMessageIfNoReview(ProfFields.hasReview) }
+              { GetMessageIfNoReview(ProfFields.hasReview, this.state.dataloaded) }
             </div>
             <div hidden={!ProfFields.hasReview}> {/* if there are at least one review, show the prof detail*/}
               <div>
@@ -223,7 +226,7 @@ class ProfessorDetails extends React.Component {
                       <div>
                         {/* show the HowIsTheProfessor Array */}
                         howIsTheProfessor : 
-                        { showArrays(item.howIsTheProfessor) }
+                        { ShowArrays(item.howIsTheProfessor) }
                       </div>
                     </List.Item>
                   )}
