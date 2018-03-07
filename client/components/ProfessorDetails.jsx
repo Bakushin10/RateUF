@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
-import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
-import { ShowArrays, GetMessageIfNoReview, GetSuccessMessage } from './commonJS';
+import { GetSuccessMessage } from './commonJS';
+import { GetMessageOrGraph, GetReview } from './ProfDetailComponent';
 
 import 'antd/dist/antd.css';
 import Head from './Header-Footer/Head';
@@ -190,48 +190,8 @@ class ProfessorDetails extends React.Component {
                 <div>Facilitation Of Learning {parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
             <div>
-              { GetMessageIfNoReview(ProfFields.hasReview, this.state.dataloaded) }
-            </div>
-            <div hidden={!ProfFields.hasReview}> {/* if there are at least one review, show the prof detail*/}
-              <div>
-                <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={data}>
-                  <Radar name= {this.state.profName} dataKey="prof" stroke="#e858bf" fill="#e858bf" fillOpacity={0.6}/>
-                  <Radar name= {this.state.major + " Professors Average"}exoerience dataKey="average" stroke="#4e42f4" fill="#4e42f4" fillOpacity={0.6}/>
-                  <PolarGrid />
-                  <Legend />
-                  <PolarAngleAxis dataKey="subject" />
-                  <PolarRadiusAxis angle={90} domain={[0, 100]}/>
-                </RadarChart>
-              </div>
-              <div>
-                <div>
-                  comment section
-                </div>
-                <List
-                  className="demo-loadmore-list"
-                  // loading={loading}
-                  itemLayout="horizontal"
-                  // loadMore={loadMore}
-                  dataSource={this.state.reviews}
-                  renderItem={item => (
-                    <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
-                      <List.Item.Meta
-                        // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                        //title={<a href="https://ant.design">{item.name.last}</a>}
-                        description = {item.extraComment}
-                      />
-                      <div>
-                        Would you take this professor again <p>{item.wouldTakeAgain}</p>
-                      </div>
-                      <div>
-                        {/* show the HowIsTheProfessor Array */}
-                        howIsTheProfessor : 
-                        { ShowArrays(item.howIsTheProfessor) }
-                      </div>
-                    </List.Item>
-                  )}
-                />
-              </div>
+              { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.profName, this.state.major, data) }
+              { GetReview(ProfFields.hasReview, this.state.reviews)}
             </div>
           </div>
       </div>

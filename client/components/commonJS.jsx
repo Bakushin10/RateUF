@@ -51,18 +51,6 @@ const WarningOff = styled.span`
     }
   }
 
-  export const GetMessageIfNoReview = (hasReview, dataloaded) =>{
-    if(!dataloaded){
-      return <Spinner/>;
-    }else{
-      return(
-          <Card style={{ width: 500 }} hidden={hasReview}>
-            <p> Be the first one to review ! </p>
-          </Card>
-      )
-    }
-  }
-
   export const GetSuccessMessage = (isSuccess) =>{
     return(
       <Card style={{ width: 500 }} hidden={!isSuccess}>
