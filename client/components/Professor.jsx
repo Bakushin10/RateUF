@@ -1,19 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { List, Avatar, Icon, Slider, Menu, Dropdown, Button, Form, FormItem, Input} from 'antd';
+import { List, Avatar, Icon, Menu, Dropdown, Button, Form, FormItem, Input} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
-import styled from 'styled-components';
 import 'antd/dist/antd.css';
-import { getSliderMark } from './commonJS';
+import Search from './Search';
 
 import Head from './Header-Footer/Head';
-
-const ProfessorName = styled.h5`
-  color: #878fad;
-  padding-top: 15px;
-  padding-left: 30px;
-`;
 
 class Professor extends React.Component {
   constructor() {
@@ -22,15 +14,18 @@ class Professor extends React.Component {
     this.state = {
       selectedMajor: 'CS',
       professor: [], //array professors to keep
-      professorToShow: [], //this array will change based on the search
-      searchTerm: '', // user input for search
       loading: false,
-      hasMore: true
+      hasMore: true,
+      dataloaded : false 
     };
 
     this.getAllProfByMajor = this.getAllProfByMajor.bind(this);
-    this.handleSearchProf = this.handleSearchProf.bind(this);
-    this.searchProf = this.searchProf.bind(this);
+  }
+  handleInfiniteOnLoad() {
+    let data = this.state.professor;
+    this.setState({
+      loading: true
+    });
   }
 
   handleInfiniteOnLoad() {
@@ -60,37 +55,17 @@ class Professor extends React.Component {
     //  this.setState({selectedMajor:'CS'});
   }
 
-  handleSearchProf(e) {
-    this.setState({ searchTerm: e.target.value });
-    this.searchProf();
-  }
-
-  searchProf() {
-    const selectedProf = this.state.professor.filter(prof => {
-      if (`${prof.name}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0) {
-        return prof;
-      }
-    });
-    this.setState({ professorToShow: selectedProf });
-  }
-
-  getAllProfByMajor(ev, major) {
+  getAllProfByMajor(self, major) {
     axios.get('/getAllProfByMajor', {
         params: {
           major: major
         }
       })
       .then(function(response) {
-        ev.setState({ professor: response.data });
-        ev.setState({ professorToShow: response.data });
+        self.setState({ professor : response.data });
+        self.setState({ professorToShow : response.data });
+        self.setState({ dataloaded : true});
       });
-  }
-
-  handleInfiniteOnLoad() {
-    let data = this.state.professor;
-    this.setState({
-      loading: true
-    });
   }
 
   changeProfByMajor(e, major) {
@@ -135,61 +110,16 @@ class Professor extends React.Component {
       </Menu>
     );
 
-    console.log(this.state);
-
     return (
       <div>
       <Head />
       <div className="container">
-            <div>
-              <Form>
-                  <Input 
-                    type="text"
-                    value={this.state.searchTerm}
-                    placeholder="Search your Professor"
-                    onChange={this.handleSearchProf}
-                  />
-              </Form>
-            </div>
-            <div>
-              <Dropdown overlay={menu} title="Change Major">
-                <Button>Change Major</Button>
-              </Dropdown>
-            </div>
-            {/* list of prof*/}
-            <InfiniteScroll
-              className="demo-infinite-container"
-              initialLoad={false}
-              pageStart={0}
-              loadMore={this.handleInfiniteOnLoad}
-              hasMore={!this.state.loading && this.state.hasMore}
-              useWindow={false}
-            >
-              <List
-                itemLayout="vertical"
-                size="large"
-                pagination={pagination}
-                dataSource={this.state.professorToShow}
-                renderItem={item => (
-                  <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>
-                        <ProfessorName>{item.name}</ProfessorName>
-                        <Slider
-                          className="ant-slider-disabled" /*.ant-slider-disabled*/
-                          value={item.overview}
-                          disabled={true}
-                          marks={getSliderMark()}
-                        />
-                      <List.Item
-                        xs={9}
-                        md={9}
-                        key={item.id}
-                      >
-                        <List.Item.Meta />
-                      </List.Item>
-                  </Link>
-                )}
-              />
-            </InfiniteScroll>
+        <div>
+          <Dropdown overlay={menu} title="Change Major">
+            <Button>Change Major</Button>
+          </Dropdown>
+        </div>
+        { <Search {...this.state} type = {"Professor"} /> }
       </div>
       </div>
     );

@@ -3,11 +3,11 @@ import axios from 'axios';
 import { List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
 import { Menu, Dropdown, Button } from 'antd';
-import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 
 import 'antd/dist/antd.css';
 import Head from './Header-Footer/Head';
-import { showArrays, getMessageIfNoReview, getSuccessMessage } from './commonJS';
+import { GetSuccessMessage } from './commonJS';
+import { GetMessageOrGraph, GetReview } from './CourseDetailComponent';
 
 class CourseDetails extends React.Component {
   constructor() {
@@ -21,11 +21,11 @@ class CourseDetails extends React.Component {
       reviews: [], //has reviews,
       overAllExpe : 0,
       isOverAllExpeUpdated : false,
-      submitSuccess : false
+      submitSuccess : false,
+      dataloaded : false 
     };
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
-    this.showArrays = this.showArrays.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +54,7 @@ class CourseDetails extends React.Component {
         console.log('getCourseReviews');
         console.log(response.data.review);
         self.setState({ reviews: response.data.review });
+        self.setState({ dataloaded : true });
       });
 
       if(this.props.match.params.submissionSuccess === "success"){
@@ -110,14 +111,6 @@ class CourseDetails extends React.Component {
     });
   }
 
-  showArrays(items){
-    var rows = []  
-    for(let i = 0;i<items.length ;i++){
-        rows.push(<div>{ items[i] }</div>)
-      }
-    return rows;
-  }
-
   render() {
     console.log(this.state);
     const ProfFields = {
@@ -155,7 +148,7 @@ class CourseDetails extends React.Component {
       <Head />
       <div className="container">
         <div>
-          { getSuccessMessage(this.state.submitSuccess) }
+          { GetSuccessMessage(this.state.submitSuccess) }
         </div>
         <div>
           <div>{this.state.courseCode}</div>
@@ -177,55 +170,9 @@ class CourseDetails extends React.Component {
             <div>Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
           </div>
           <div>
-              { getMessageIfNoReview(ProfFields.hasReview) }
-            </div>
-          <div hidden={!ProfFields.hasReview}> {/* if there are at least one review, show the prof detail*/}
-          <div>
-            <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={data}>
-              <Radar name= {this.state.profName} dataKey="prof" stroke="#e858bf" fill="#e858bf" fillOpacity={0.6}/>
-              <Radar name= {this.state.major + " Professors Average"}exoerience dataKey="average" stroke="#4e42f4" fill="#4e42f4" fillOpacity={0.6}/>
-              <PolarGrid />
-              <Legend />
-              <PolarAngleAxis dataKey="subject" />
-              <PolarRadiusAxis angle={90} domain={[0, 100]}/>
-            </RadarChart>
+              { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.courseCode, this.state.major, data) }
+              { GetReview(ProfFields.hasReview, this.state.reviews)}
           </div>
-          <div>
-            <div>
-              comment section
-            </div>
-            <List
-              className="demo-loadmore-list"
-              // loading={loading}
-              itemLayout="horizontal"
-              // loadMore={loadMore}
-              dataSource={this.state.reviews}
-              renderItem={item => (
-                <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
-                  <List.Item.Meta
-                    // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                    //title={<a href="https://ant.design">{item.name.last}</a>}
-                    description = {item.extraComment}
-                  />
-                  <div>
-                    {/* show the knowBeforeCourse Array */}
-                    knowBeforeCourse:
-                    { showArrays(item.knowBeforeCourse) }
-                  </div>
-                  <div>
-                    {/* show the HowIdTHeClass Array */}
-                    howIsTheClass:
-                    { showArrays(item.howIsTheClass) }
-                  </div>
-                  <div>
-                    Prof : 
-                    {item.whoTookWith}
-                  </div>
-                </List.Item>
-              )}
-            />
-          </div>
-        </div>
       </div>
       </div>
     );

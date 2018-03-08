@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card } from 'antd';
 import Head from './Header-Footer/Head';
 import { Redirect } from 'react-router';
-import { getSliderMark, getLabel } from './commonJS';
+import { GetSliderMark, GetLabel } from './commonJS';
 
 var querystring = require('querystring');
 const FormItem = Form.Item;
@@ -233,32 +233,32 @@ class ClassForm extends React.Component {
           </div>
           <div align="center">
             <Form>
-              <FormItem {...formItemLayout} label={ getLabel(this.state.whoTookWith, 'Who did you take with ?')}>
+              <FormItem {...formItemLayout} label={ GetLabel(this.state.whoTookWith, 'Who did you take with ?')}>
                 {this.getWhoTookWithOption()}
               </FormItem>
-              <FormItem {...formItemLayout} label={ getLabel(this.state.howIsTheClass, 'How is the class ?')}>
+              <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheClass, 'How is the class ?')}>
                 {this.getHowIstheClassOption()}
               </FormItem>
-              <FormItem {...formItemLayout} label={ getLabel(this.state.overallExpe, 'Overall Experiences')}>
+              <FormItem {...formItemLayout} label={ GetLabel(this.state.overallExpe, 'Overall Experiences')}>
                 <Slider
                   onChange={this.overAllExpeOnChange}
                   value={this.state.overallExpe}
                   defaultValue={0}
-                  marks={ getSliderMark() }
+                  marks={ GetSliderMark() }
                 />
               </FormItem>
-              <FormItem {...formItemLayout} label={ getLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
+              <FormItem {...formItemLayout} label={ GetLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
                 <Slider
                   onChange={this.levelOfDiffcultyOnChange}
                   value={this.state.levelOfDiffculty}
                   defaultValue={0}
-                  marks={ getSliderMark() }
+                  marks={ GetSliderMark() }
                 />
               </FormItem>
-              <FormItem {...formItemLayout} label={ getLabel(this.state.knowBeforeCourse, 'Know Before Course')}>
+              <FormItem {...formItemLayout} label={ GetLabel(this.state.knowBeforeCourse, 'Know Before Course')}>
                   {this.getKnowBeforeCourseOption(this.props.match.params.major)}
               </FormItem>
-              <FormItem {...formItemLayout} label={ getLabel(this.state.extraComment, 'Comment')}>
+              <FormItem {...formItemLayout} label={ GetLabel(this.state.extraComment, 'Comment')}>
                 <TextArea
                   type="text"
                   value={this.state.extraComment}

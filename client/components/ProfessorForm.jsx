@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
 import { Redirect } from 'react-router';
-import { getSliderMark, getLabel } from './commonJS'
+import { GetSliderMark, GetLabel } from './commonJS'
 
 import Head from './Header-Footer/Head';
 
@@ -156,48 +156,48 @@ class ProfessorForm extends React.Component {
         </div>
         <div align="center">
           <Form>
-            <FormItem {...formItemLayout} label={ getLabel(this.state.howIsTheProfessor, 'How is the Professor')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheProfessor, 'How is the Professor')}>
                 { this.getHowIstheProfessorOption()}
             </FormItem>
-            <FormItem {...formItemLayout} label={ getLabel(this.state.overallExpe, 'Overall Experices')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.overallExpe, 'Overall Experices')}>
               <Slider
                 onChange={this.overAllExpeOnChange}
                 value={this.state.overallExpe}
                 defaultValue={0}
-                marks={getSliderMark()}
+                marks={GetSliderMark()}
               />
             </FormItem>
-            <FormItem {...formItemLayout} label={ getLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
               <Slider
                 onChange={this.levelOfDiffcultyOnChange}
                 value={this.state.levelOfDiffculty}
                 defaultValue={0}
-                marks={getSliderMark()}
+                marks={GetSliderMark()}
               />
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label={ getLabel(this.state.communicationOfIdeas, 'Communication of Ideas')}
+              label={ GetLabel(this.state.communicationOfIdeas, 'Communication of Ideas')}
             >
               <Slider
                 onChange={this.communicationOfIdeasOnChange}
                 value={this.state.communicationOfIdeas}
                 defaultValue={0}
-                marks={getSliderMark()}
+                marks={GetSliderMark()}
               />
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label={ getLabel(this.state.facilitationOfLearning, 'Facilitation Of Learning')}
+              label={ GetLabel(this.state.facilitationOfLearning, 'Facilitation Of Learning')}
             >
               <Slider
                 onChange={this.facilitationOfLearningOnChange}
                 value={this.state.facilitationOfLearning}
                 defaultValue={0}
-                marks={getSliderMark()}
+                marks={GetSliderMark()}
               />
             </FormItem>
-            <FormItem {...formItemLayout} label={ getLabel(this.state.extraComment, 'Comment')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.extraComment, 'Comment')}>
               <TextArea
                 type="text"
                 value={this.state.extraComment}

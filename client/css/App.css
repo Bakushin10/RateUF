@@ -78,3 +78,9 @@ fieldset{
   background-color: rgba(230, 13, 31, 0.425) !important;
 }
 
+.spin-icon{
+  width: 20%;
+  height: 20%;
+  margin-left: 50%;
+}
+

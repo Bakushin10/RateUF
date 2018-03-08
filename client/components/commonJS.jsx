@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon, Card } from 'antd';
 import styled from 'styled-components';
+import Spinner from './Spinner';
 
 const WarningOn = styled.span`
   color: #fc2f4e;
@@ -9,7 +10,7 @@ const WarningOff = styled.span`
   color: #6be594;
 `;
 
- export const getSliderMark = () =>{
+ export const GetSliderMark = () =>{
     return(
       {
         0: (
@@ -34,7 +35,7 @@ const WarningOff = styled.span`
     )
   }
 
-  export const showArrays = (items) =>{
+  export const ShowArrays = (items) =>{
     var rows = []  
     for(let i = 0;i<items.length ;i++){
         rows.push(<div>{ items[i] }</div>)
@@ -42,7 +43,7 @@ const WarningOff = styled.span`
     return rows;
   }
 
-  export const getLabel = (val, tag) => {
+  export const GetLabel = (val, tag) => {
     if (val === '' || val === 0 || val.length === 0) {
       return <WarningOn> *{tag} </WarningOn>;
     } else {
@@ -50,15 +51,7 @@ const WarningOff = styled.span`
     }
   }
 
-  export const getMessageIfNoReview = (hasReview) =>{
-    return(
-        <Card style={{ width: 500 }} hidden={hasReview}>
-          <p> Be the first one to review ! </p>
-        </Card>
-    )
-  }
-
-  export const getSuccessMessage = (isSuccess) =>{
+  export const GetSuccessMessage = (isSuccess) =>{
     return(
       <Card style={{ width: 500 }} hidden={!isSuccess}>
         <p>
