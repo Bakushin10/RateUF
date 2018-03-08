@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { List, Avatar, Icon, Slider, Menu, Dropdown, Button, Form, FormItem, Input} from 'antd';
+import { List, Avatar, Icon, Menu, Dropdown, Button, Form, FormItem, Input} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import 'antd/dist/antd.css';
-import { ProfessorList } from './ProfessorList';
+import Search from './Search';
 
 import Head from './Header-Footer/Head';
 
@@ -14,16 +14,18 @@ class Professor extends React.Component {
     this.state = {
       selectedMajor: 'CS',
       professor: [], //array professors to keep
-      professorToShow: [], //this array will change based on the search
-      searchTerm: '', // user input for search
       loading: false,
       hasMore: true,
       dataloaded : false 
     };
 
     this.getAllProfByMajor = this.getAllProfByMajor.bind(this);
-    this.handleSearchProf = this.handleSearchProf.bind(this);
-    this.searchProf = this.searchProf.bind(this);
+  }
+  handleInfiniteOnLoad() {
+    let data = this.state.professor;
+    this.setState({
+      loading: true
+    });
   }
 
   handleInfiniteOnLoad() {
@@ -53,20 +55,6 @@ class Professor extends React.Component {
     //  this.setState({selectedMajor:'CS'});
   }
 
-  handleSearchProf(e) {
-    this.setState({ searchTerm: e.target.value });
-    this.searchProf();
-  }
-
-  searchProf() {
-    const selectedProf = this.state.professor.filter(prof => {
-      if (`${prof.name}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0) {
-        return prof;
-      }
-    });
-    this.setState({ professorToShow: selectedProf });
-  }
-
   getAllProfByMajor(self, major) {
     axios.get('/getAllProfByMajor', {
         params: {
@@ -78,13 +66,6 @@ class Professor extends React.Component {
         self.setState({ professorToShow : response.data });
         self.setState({ dataloaded : true});
       });
-  }
-
-  handleInfiniteOnLoad() {
-    let data = this.state.professor;
-    this.setState({
-      loading: true
-    });
   }
 
   changeProfByMajor(e, major) {
@@ -129,30 +110,16 @@ class Professor extends React.Component {
       </Menu>
     );
 
-    console.log(this.state);
-
     return (
       <div>
       <Head />
       <div className="container">
-            <div>
-              <Form>
-                  <Input 
-                    type="text"
-                    value={this.state.searchTerm}
-                    placeholder="Search your Professor"
-                    onChange={this.handleSearchProf}
-                  />
-              </Form>
-            </div>
-            <div>
-              <Dropdown overlay={menu} title="Change Major">
-                <Button>Change Major</Button>
-              </Dropdown>
-            </div>
-            {/* list of prof*/}
-            { ProfessorList(this.state.professorToShow, this.state.loading, this.state.hasMore, 
-                        this.handleInfiniteOnLoad, this.state.dataloaded) }
+        <div>
+          <Dropdown overlay={menu} title="Change Major">
+            <Button>Change Major</Button>
+          </Dropdown>
+        </div>
+        { <Search {...this.state} type = {"Professor"} /> }
       </div>
       </div>
     );

@@ -36,7 +36,7 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
             <List
             itemLayout="vertical"
             size="large"
-            pagination={pagination}
+            //pagination={pagination}
             dataSource={professorToShow}
             renderItem={item => (
                 <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>
