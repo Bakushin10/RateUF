@@ -22,7 +22,9 @@ class ProfessorForm extends React.Component {
       facilitationOfLearning: 0,
       wouldTakeAgain: 'Yes', //by default
       howIsTheProfessor : [],
+      course : [],
       extraComment: '',
+      courseTakenFor : '',
       hasError: false,
       submitted : false
     };
@@ -37,6 +39,8 @@ class ProfessorForm extends React.Component {
     this.insertNewProfessorReview = this.insertNewProfessorReview.bind(this);
     this.howIsTheProfessorOnChange = this.howIsTheProfessorOnChange.bind(this);
     this.getHowIstheProfessorOption = this.getHowIstheProfessorOption.bind(this);
+    this.courseTakenForOnChange = this.courseTakenForOnChange.bind(this);
+    this.getAllCoursesByMajor = this.getAllCoursesByMajor.bind(this);
   }
 
   overAllExpeOnChange(value) {
@@ -68,6 +72,28 @@ class ProfessorForm extends React.Component {
     console.log(this.state.howIsTheProfessor);
   }
 
+  courseTakenForOnChange(value){
+    this.setState({courseTakenFor : value})
+    console.log(this.state.courseTakenFor)
+  }
+
+  componentDidMount(){
+    this.getAllCoursesByMajor(this, this.props.match.params.major);
+  }
+
+  getAllCoursesByMajor(self, major) {
+    axios
+      .get('/getAllCoursesByMajor',{
+          params:{
+            major : major
+          }
+      }) //passing major as an argument
+      .then(function(response) {
+        self.setState({ course: response.data });
+        //self.setState({ dataloaded : true});
+      });
+  }
+
   insertNewProfessorReview() {
     axios.post('/insertNewProfessorReview',
         querystring.stringify({
@@ -78,6 +104,7 @@ class ProfessorForm extends React.Component {
           howIsTheProfessor : this.state.howIsTheProfessor,
           wouldTakeAgain: this.state.wouldTakeAgain,
           extraComment: this.state.extraComment,
+          courseTakenFor : this.state.courseTakenFor,
           major: this.props.match.params.major,
           name: this.props.match.params.profName
         }),
@@ -102,6 +129,7 @@ class ProfessorForm extends React.Component {
       this.state.communicationOfIdeas === 0 ||
       this.state.facilitationOfLearning === 0 ||
       this.state.howIsTheProfessor.length === 0 ||
+      this.state.courseTakenFor.length === 0 ||
       this.state.extraComment === ''
     ) {
       this.setState({ hasError: true }); //trigger the error message
@@ -109,6 +137,21 @@ class ProfessorForm extends React.Component {
       //  will be updated
       this.insertNewProfessorReview();
     }
+  }
+
+  getCourseOption(){
+    return(
+      <Select
+        placeholder="How is the Professor ?"
+        onChange={this.courseTakenForOnChange}
+      >
+        {
+          this.state.course.map(course =>(
+            <Select.Option value= {course.courseCode}>{course.courseCode + " " + course.courseName}</Select.Option>
+          ))
+        }
+    </Select>
+    )
   }
 
   getHowIstheProfessorOption(){
@@ -156,6 +199,9 @@ class ProfessorForm extends React.Component {
         </div>
         <div align="center">
           <Form>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.courseTakenFor, 'What class did you take this professor for ?')}>
+                { this.getCourseOption()}
+            </FormItem>
             <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheProfessor, 'How is the Professor')}>
                 { this.getHowIstheProfessorOption()}
             </FormItem>

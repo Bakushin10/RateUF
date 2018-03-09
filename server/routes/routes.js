@@ -20,7 +20,8 @@ router.route('/insertNewProfessorReview').post(function(req,res){
         facilitationOfLearning : req.body.facilitationOfLearning,
         howIsTheProfessor : req.body.howIsTheProfessor, 
         wouldTakeAgain : req.body.wouldTakeAgain,
-        extraComment : req.body.extraComment
+        extraComment : req.body.extraComment,
+        courseTakenFor : req.body.courseTakenFor
     }
 
     console.log(name)

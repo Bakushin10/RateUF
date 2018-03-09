@@ -47,6 +47,9 @@ export const GetReview = (hasReview, review) =>{
                   Would you take this professor again <p>{item.wouldTakeAgain}</p>
                 </div>
                 <div>
+                  Course took with <p>{item.courseTakenFor}</p>
+                </div>
+                <div>
                   {/* show the HowIsTheProfessor Array */}
                   howIsTheProfessor : 
                   { ShowArrays(item.howIsTheProfessor) }
