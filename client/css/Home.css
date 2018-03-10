@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster|Pacifico');
 
 .welcome-box {
-  padding: 3rem;
+  padding: 3.5rem;
   margin: 2rem;
   margin-top: 5rem;
   padding-bottom: 6rem;
-  background-color: lightgrey;
+  opacity: 5;
+
 }
 
 .welcome-text {
@@ -30,6 +31,3 @@
   position: relative;
 }
 
-.cols-as-buttons {
-  background-color: lightblue;
-}

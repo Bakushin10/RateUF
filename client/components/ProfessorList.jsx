@@ -7,7 +7,7 @@ import { GetSliderMark } from './commonJS';
 import Spinner from './Spinner';
 
 const ProfessorName = styled.h5`
-  color: #878fad;
+  color: black;
   padding-top: 15px;
   padding-left: 30px;
 `;
@@ -26,7 +26,7 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
         return (
             
             <InfiniteScroll
-                className="demo-infinite-container"
+                className="demo-infinite-container table"
                 initialLoad={false}
                 pageStart={0}
                 loadMore={handleInfiniteOnLoad}
@@ -36,7 +36,7 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
             <List
             itemLayout="vertical"
             size="large"
-            //pagination={pagination}
+            pagination={pagination}
             dataSource={professorToShow}
             renderItem={item => (
                 <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>

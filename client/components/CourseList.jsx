@@ -7,7 +7,7 @@ import { GetSliderMark } from './commonJS';
 import Spinner from './Spinner';
 
 const CourseName = styled.h5`
-  color: #878fad;
+  color: black;
   padding-top: 15px;
   padding-left: 30px;
 `;
@@ -25,7 +25,7 @@ export const CourseList = (courseToShow, loading, hasMore, handleInfiniteOnLoad,
         }
         ;
         return(
-        <InfiniteScroll className = "demo-infinite-container"
+        <InfiniteScroll className = "demo-infinite-container table"
             initialLoad={false}
             pageStart={0}
             loadMore={ handleInfiniteOnLoad}
