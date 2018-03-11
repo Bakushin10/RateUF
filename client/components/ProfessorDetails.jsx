@@ -17,6 +17,7 @@ class ProfessorDetails extends React.Component {
       id: '',
       major: '',
       reviews: [], //has reviews
+      previousCourse : [],
       hasReview : false,
       overAllExpe : 0,
       isOverAllExpeUpdated : false,
@@ -27,6 +28,9 @@ class ProfessorDetails extends React.Component {
     this.getProfReview = this.getProfReview.bind(this);
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
+    this.getPreviousCourse = this.getPreviousCourse.bind(this);
+    this.getMenuItemForPreviousCourse = this.getMenuItemForPreviousCourse.bind(this);
+    this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
   componentDidMount() {
@@ -51,8 +55,6 @@ class ProfessorDetails extends React.Component {
       }
     })
     .then(function(response) {
-      console.log('getProfReview');
-      console.log(response.data.review);
       self.setState({ reviews: response.data.review });
       self.setState({ dataloaded : true });
     });
@@ -78,9 +80,9 @@ class ProfessorDetails extends React.Component {
     this.setState({ overAllExpe: profInfo.overview });
   }
 
-  jumpToSelectedClass(e, major) {
+  handleMenuClick(e) {
     //TODO
-    console.log('clicked!');
+    console.log('click', e);
   }
 
   getFieldValueForProfessor(ProfFields){
@@ -98,6 +100,34 @@ class ProfessorDetails extends React.Component {
     ProfFields.CommOfIdea = (tempCommOfIdea/this.state.reviews.length);
     ProfFields.FaciliOfLearning = (tempFaciliOfLearning/this.state.reviews.length);
     ProfFields.hasReview = true;
+  }
+
+  getPreviousCourse(){
+
+    for(var i = 0;i< this.state.reviews.length;i++){
+      let hasValue = false;
+      for(var j = 0; j < this.state.previousCourse.length ;j++){
+        if(this.state.previousCourse[j] === this.state.reviews[i].previousCourse){
+          hasValue = true;
+        }
+      }
+      if(!hasValue){
+        const item = this.state.previousCourse;
+        item[i] = this.state.reviews[i].courseTakenFor;
+      }
+    }
+  }
+
+  getMenuItemForPreviousCourse(){
+    return(
+      <Menu onClick={this.handleMenuClick}>
+      {
+        this.state.previousCourse.map(course => (
+          <Menu.Item key = {course} >{ course }</Menu.Item>
+        ))
+      }
+      </Menu>
+    )
   }
   
   updateValueForOverAllExperience(){
@@ -134,17 +164,17 @@ class ProfessorDetails extends React.Component {
       FaciliOfLearning : 0,
       hasReview : this.state.hasReview
     }
-    const menu = (
-      <Menu>
-        <Menu.Item onClick={e => this.jumpToSelectedClass(e, 'CS')}>CS</Menu.Item>
-        <Menu.Item onClick={e => this.jumpToSelectedClass(e, 'ECE')}>ECE</Menu.Item>
-        <Menu.Item onClick={e => this.jumpToSelectedClass(e, 'MATH')}>MATH</Menu.Item>
-      </Menu>
+    let menu = ( 
+      <Menu><Menu.Item></Menu.Item></Menu>
     );
 
     // get values for graph if there are any reviews
     if(typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
       this.getFieldValueForProfessor(ProfFields);
+      this.getPreviousCourse();
+      menu = (
+        this.getMenuItemForPreviousCourse()
+      );
     }
 
     //only execute ONCE to update overall experience value when a review was submitted.   

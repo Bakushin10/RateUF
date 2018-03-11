@@ -11,7 +11,6 @@ var querystring = require('querystring');
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-
 class ProfessorForm extends React.Component {
   constructor() {
     super();
