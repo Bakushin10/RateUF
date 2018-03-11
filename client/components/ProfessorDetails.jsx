@@ -23,7 +23,7 @@ class ProfessorDetails extends React.Component {
       isOverAllExpeUpdated : false,
       submitSuccess : false,
       dataloaded : false,
-      redirectToCourse : false,
+      redirectCourse : false,
       redirectTo : '',
     };
     this.getProfInfo = this.getProfInfo.bind(this);
@@ -80,14 +80,6 @@ class ProfessorDetails extends React.Component {
     this.setState({ overAllExpe: profInfo.overview });
   }
 
-  handleMenuClick(e) {
-    //TODO
-    console.log('click', e.keyPath[0]);
-    this.setState({ redirectTo : e.keyPath[0] })
-    this.setState({ redirectToCourse : true })
-    //return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${e.keyPath[0]}`}/>);
-  }
-
   getFieldValueForProfessor(ProfFields){
     let tempLevelOfDiff = 0;
     let tempCommOfIdea = 0;
@@ -103,6 +95,14 @@ class ProfessorDetails extends React.Component {
     ProfFields.CommOfIdea = (tempCommOfIdea/this.state.reviews.length);
     ProfFields.FaciliOfLearning = (tempFaciliOfLearning/this.state.reviews.length);
     ProfFields.hasReview = true;
+  }
+  
+  handleMenuClick(e) {
+    //TODO
+    console.log('click', e.keyPath[0]);
+    this.setState({ redirectTo : e.keyPath[0] })
+    this.setState({ redirectCourse : true })
+    //return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${e.keyPath[0]}`}/>);
   }
 
   getPreviousCourse(){
@@ -167,10 +167,10 @@ class ProfessorDetails extends React.Component {
       hasReview : this.state.hasReview
     }
     let menu = ( 
-      <Menu><Menu.Item></Menu.Item></Menu>
+      <Menu><Menu.Item>No courses to show</Menu.Item></Menu>
     );
 
-    if(this.state.redirectToCourse){
+    if(this.state.redirectCourse){
       return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.state.redirectTo}`}/>);
     }
     // get values for graph if there are any reviews
