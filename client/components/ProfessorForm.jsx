@@ -81,8 +81,7 @@ class ProfessorForm extends React.Component {
   }
 
   getAllCoursesByMajor(self, major) {
-    axios
-      .get('/getAllCoursesByMajor',{
+    axios.get('/getAllCoursesByMajor',{
           params:{
             major : major
           }
@@ -181,7 +180,7 @@ class ProfessorForm extends React.Component {
     
     // redirect to ProfessorDetails page after review is successfully submitted
     if(this.state.submitted){
-      return (<Redirect to ={`/ProfessorDetails/${this.props.match.params.major}/${this.props.match.params.id}/${this.props.match.params.profName}/${"success"}`}/>);
+      return (<Redirect to ={`/ProfessorDetails/${this.props.match.params.major}/${this.props.match.params.profName}/${"success"}`}/>);
     }
     
     return (

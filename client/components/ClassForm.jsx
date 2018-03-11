@@ -217,7 +217,7 @@ class ClassForm extends React.Component {
 
     // redirect to ProfessorDetails page after review is successfully submitted
     if(this.state.submitted){
-      return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.props.match.params.id}/${this.props.match.params.courseCode}/${"success"}`}/>);
+      return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.props.match.params.courseCode}/${"success"}`}/>);
     }
     
     return (

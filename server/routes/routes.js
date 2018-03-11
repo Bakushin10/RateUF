@@ -81,16 +81,15 @@ router.get('/getAllProfByMajor',function(req, res) {
     })
 });
 
-
 /*
  get a single prof slected by ID
 */
 router.get('/getProfDetails',function(req, res) {
     const major = req.query.major;
-    const _id = req.query._id;
+    const name = req.query.name;
     const DB_name = require('../../models/'+major+'ProfModel')
 
-    DB_name.findOne({_id : _id},function(err,professor){
+    DB_name.findOne({name : name},function(err,professor){
         if(err)
             res.send(err);
 
@@ -129,7 +128,7 @@ router.get('/getAllCoursesByMajor',function(req, res) {
 });
 
 /*
- get a single course slected by ID
+ get a single course slected by courseName
 */
 router.get('/getCourseDetails',function(req, res) {
     const major = req.query.major;
@@ -164,11 +163,11 @@ router.get('/getCourseReviews',function(req, res) {
 
 router.get('/updateOverAllExpeForAProf',function(req, res) {
     const major = req.query.major;
-    const _id = req.query._id;
+    const name = req.query.name;
     const overallExpe = req.query.overAllExpe;
     const DB_name = require('../../models/'+major+'ProfModel')
 
-    DB_name.findOneAndUpdate({_id : _id},{overview : overallExpe},function(err,professor){
+    DB_name.findOneAndUpdate({name : name},{overview : overallExpe},function(err,professor){
         if(err)
             res.send(err);
 

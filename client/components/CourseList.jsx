@@ -38,7 +38,7 @@ export const CourseList = (courseToShow, loading, hasMore, handleInfiniteOnLoad,
             pagination={pagination}
             dataSource={ courseToShow }
             renderItem={item => (
-            <Link to={`/ClassDetails/${item.major}/${item._id}/${item.courseCode}`}>
+            <Link to={`/ClassDetails/${item.major}/${item.courseCode}`}>
                 <CourseName>
                     <div>{item.courseCode}</div>
                     <div>{item.courseName}</div>

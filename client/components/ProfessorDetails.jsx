@@ -4,7 +4,7 @@ import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
 import { GetSuccessMessage } from './commonJS';
 import { GetMessageOrGraph, GetReview } from './ProfDetailComponent';
-
+import { Redirect } from 'react-router';
 import 'antd/dist/antd.css';
 import Head from './Header-Footer/Head';
 
@@ -22,7 +22,9 @@ class ProfessorDetails extends React.Component {
       overAllExpe : 0,
       isOverAllExpeUpdated : false,
       submitSuccess : false,
-      dataloaded : false 
+      dataloaded : false,
+      redirectToCourse : false,
+      redirectTo : '',
     };
     this.getProfInfo = this.getProfInfo.bind(this);
     this.getProfReview = this.getProfReview.bind(this);
@@ -35,11 +37,10 @@ class ProfessorDetails extends React.Component {
 
   componentDidMount() {
     let self = this;
-    const _id = this.props.match.params.id;
     const name = this.props.match.params.name;
     const major = this.props.match.params.major;
 
-    self.getProfInfo(self, major, _id);
+    self.getProfInfo(self, major, name);
     self.getProfReview(self, major, name)
 
     if(this.props.match.params.submissionSuccess === "success"){
@@ -60,12 +61,11 @@ class ProfessorDetails extends React.Component {
     });
   }
 
-  getProfInfo(self, major, _id) {
-    axios
-      .get('/getProfDetails', {
+  getProfInfo(self, major, name) {
+    axios.get('/getProfDetails', {
         params: {
           major: major,
-          _id: _id
+          name: name
         }
       })
       .then(function(response) {
@@ -82,7 +82,10 @@ class ProfessorDetails extends React.Component {
 
   handleMenuClick(e) {
     //TODO
-    console.log('click', e);
+    console.log('click', e.keyPath[0]);
+    this.setState({ redirectTo : e.keyPath[0] })
+    this.setState({ redirectToCourse : true })
+    //return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${e.keyPath[0]}`}/>);
   }
 
   getFieldValueForProfessor(ProfFields){
@@ -103,11 +106,10 @@ class ProfessorDetails extends React.Component {
   }
 
   getPreviousCourse(){
-
     for(var i = 0;i< this.state.reviews.length;i++){
       let hasValue = false;
       for(var j = 0; j < this.state.previousCourse.length ;j++){
-        if(this.state.previousCourse[j] === this.state.reviews[i].previousCourse){
+        if(this.state.previousCourse[j] === this.state.reviews[i].courseTakenFor){
           hasValue = true;
         }
       }
@@ -133,7 +135,7 @@ class ProfessorDetails extends React.Component {
   updateValueForOverAllExperience(){
     let overAllExpe = 0;
     let self = this;
-    const _id = this.props.match.params.id;
+    const name = this.props.match.params.name;
     const major = this.props.match.params.major;
 
     for(let i = 0; i < this.state.reviews.length; i++){
@@ -146,7 +148,7 @@ class ProfessorDetails extends React.Component {
     axios.get('/updateOverAllExpeForAProf', {
       params: {
         major: major,
-        _id: _id,
+        name: name,
         overAllExpe : averageOverAllExpe
       }
     })
@@ -168,6 +170,9 @@ class ProfessorDetails extends React.Component {
       <Menu><Menu.Item></Menu.Item></Menu>
     );
 
+    if(this.state.redirectToCourse){
+      return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.state.redirectTo}`}/>);
+    }
     // get values for graph if there are any reviews
     if(typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
       this.getFieldValueForProfessor(ProfFields);
@@ -203,7 +208,7 @@ class ProfessorDetails extends React.Component {
               {this.state.profName}
                 <div>
                   <Button type="primary" ghost>
-                    <Link to={`/ProfessorForm/${this.state.major}/${this.props.match.params.id}/${this.state.profName}`}>
+                    <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>
                       <Icon type="form" /> Rate this professor
                     </Link>
                   </Button>
@@ -214,10 +219,10 @@ class ProfessorDetails extends React.Component {
                     <Button>See previous course</Button>
                   </Dropdown>
                 </div>
-                <div>OverAll Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-                <div>Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
+                <div>OverAll Experiense { parseFloat(this.state.overAllExpe).toFixed(1)}</div>
+                <div>Level of Difficulty { parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
                 <div>Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
-                <div>Facilitation Of Learning {parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
+                <div>Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
             <div>
               { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.profName, this.state.major, data) }

@@ -30,7 +30,6 @@ class CourseDetails extends React.Component {
 
   componentDidMount() {
     let self = this;
-    const _id = this.props.match.params.id;
     const courseCode = this.props.match.params.courseCode;
     const major = this.props.match.params.major;
 

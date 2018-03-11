@@ -39,7 +39,7 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
             //pagination={pagination}
             dataSource={professorToShow}
             renderItem={item => (
-                <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>
+                <Link to={`/ProfessorDetails/${item.major}/${item.name}`}>
                     <ProfessorName>{item.name}</ProfessorName>
                     <Slider
                         className="ant-slider-disabled" /*.ant-slider-disabled*/
