@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
-import styled from 'styled-components';
+import { Redirect } from 'react-router';
+import { GetSliderMark, GetLabel } from './commonJS'
 
 import Head from './Header-Footer/Head';
 
@@ -9,12 +11,6 @@ var querystring = require('querystring');
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-const WarningOn = styled.span`
-  color: #fc2f4e;
-`;
-const WarningOff = styled.span`
-  color: #6be594;
-`;
 
 class ProfessorForm extends React.Component {
   constructor() {
@@ -25,8 +21,10 @@ class ProfessorForm extends React.Component {
       communicationOfIdeas: 0,
       facilitationOfLearning: 0,
       wouldTakeAgain: 'Yes', //by default
+      howIsTheProfessor : [],
       extraComment: '',
-      hasError: false
+      hasError: false,
+      submitted : false
     };
 
     this.overAllExpeOnChange = this.overAllExpeOnChange.bind(this);
@@ -37,6 +35,8 @@ class ProfessorForm extends React.Component {
     this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
     this.submitClicked = this.submitClicked.bind(this);
     this.insertNewProfessorReview = this.insertNewProfessorReview.bind(this);
+    this.howIsTheProfessorOnChange = this.howIsTheProfessorOnChange.bind(this);
+    this.getHowIstheProfessorOption = this.getHowIstheProfessorOption.bind(this);
   }
 
   overAllExpeOnChange(value) {
@@ -63,15 +63,19 @@ class ProfessorForm extends React.Component {
     console.log(this.state.extraComment);
   }
 
+  howIsTheProfessorOnChange(value){
+    this.setState({howIsTheProfessor : value})
+    console.log(this.state.howIsTheProfessor);
+  }
+
   insertNewProfessorReview() {
-    axios
-      .post(
-        '/insertNewProfessorReview',
+    axios.post('/insertNewProfessorReview',
         querystring.stringify({
           overallExpe: this.state.overallExpe,
           levelOfDiffculty: this.state.levelOfDiffculty,
           communicationOfIdeas: this.state.communicationOfIdeas,
           facilitationOfLearning: this.state.facilitationOfLearning,
+          howIsTheProfessor : this.state.howIsTheProfessor,
           wouldTakeAgain: this.state.wouldTakeAgain,
           extraComment: this.state.extraComment,
           major: this.props.match.params.major,
@@ -87,6 +91,8 @@ class ProfessorForm extends React.Component {
         //go to submit successfully page
         console.log(response.data);
       });
+
+      this.setState({submitted : true})
   }
 
   submitClicked() {
@@ -95,6 +101,7 @@ class ProfessorForm extends React.Component {
       this.state.levelOfDiffculty === 0 ||
       this.state.communicationOfIdeas === 0 ||
       this.state.facilitationOfLearning === 0 ||
+      this.state.howIsTheProfessor.length === 0 ||
       this.state.extraComment === ''
     ) {
       this.setState({ hasError: true }); //trigger the error message
@@ -104,22 +111,37 @@ class ProfessorForm extends React.Component {
     }
   }
 
-  getLabel(val, tag) {
-    if (val === '' || val === 0) {
-      return <WarningOn> *{tag} </WarningOn>;
-    } else {
-      return <WarningOff> {tag} </WarningOff>;
-    }
+  getHowIstheProfessorOption(){
+    return(
+      <Select 
+        mode="multiple" 
+        placeholder="How is the Professor ?"
+        onChange={this.howIsTheProfessorOnChange}
+      >
+        <Select.Option value="Easy">Easy</Select.Option>
+        <Select.Option value="meh, okay">meh, okay</Select.Option>
+        <Select.Option value="Hard">Hard</Select.Option>
+        <Select.Option value="Group Project">Group Project</Select.Option>
+        <Select.Option value="Caring">Caring</Select.Option>
+        <Select.Option value="Tough Grader">Tough Grader</Select.Option>
+        <Select.Option value="Test Heavy">Test Heavy</Select.Option>
+      </Select>
+    )
   }
 
   render() {
+    const profName = this.props.match.params.profName;
+    const hasError = this.state.hasError;
     const formItemLayout = {
       labelCol: { span: 8 },
       wrapperCol: { span: 9 }
     };
-
-    const profName = this.props.match.params.profName;
-    const hasError = this.state.hasError;
+    
+    // redirect to ProfessorDetails page after review is successfully submitted
+    if(this.state.submitted){
+      return (<Redirect to ={`/ProfessorDetails/${this.props.match.params.major}/${this.props.match.params.id}/${this.props.match.params.profName}/${"success"}`}/>);
+    }
+    
     return (
       <div>
       <Head />
@@ -129,126 +151,53 @@ class ProfessorForm extends React.Component {
           <Card style={{ width: 500 }} hidden={!hasError}>
             {' '}
             {/*only show when the input errors are detected */}
-            <p>Please Check your inputs ! </p>
+            <p> <Icon type="exclamation-circle-o" /> Please Check your inputs ! </p>
           </Card>
         </div>
         <div align="center">
           <Form>
-            <FormItem {...formItemLayout} label={this.getLabel(this.state.overallExpe, 'Overall Experices')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheProfessor, 'How is the Professor')}>
+                { this.getHowIstheProfessorOption()}
+            </FormItem>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.overallExpe, 'Overall Experices')}>
               <Slider
                 onChange={this.overAllExpeOnChange}
                 value={this.state.overallExpe}
                 defaultValue={0}
-                marks={{
-                  0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
-                  ),
-                  50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
-                  ),
-                  100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
-                  )
-                }}
+                marks={GetSliderMark()}
               />
             </FormItem>
-            <FormItem {...formItemLayout} label={this.getLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.levelOfDiffculty, 'Level of Difficulty')}>
               <Slider
                 onChange={this.levelOfDiffcultyOnChange}
                 value={this.state.levelOfDiffculty}
                 defaultValue={0}
-                marks={{
-                  0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
-                  ),
-                  50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
-                  ),
-                  100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
-                  )
-                }}
+                marks={GetSliderMark()}
               />
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label={this.getLabel(this.state.communicationOfIdeas, 'Communication of Ideas')}
+              label={ GetLabel(this.state.communicationOfIdeas, 'Communication of Ideas')}
             >
               <Slider
                 onChange={this.communicationOfIdeasOnChange}
                 value={this.state.communicationOfIdeas}
                 defaultValue={0}
-                marks={{
-                  0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
-                  ),
-                  50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
-                  ),
-                  100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
-                  )
-                }}
+                marks={GetSliderMark()}
               />
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label={this.getLabel(this.state.facilitationOfLearning, 'Facilitation Of Learning')}
+              label={ GetLabel(this.state.facilitationOfLearning, 'Facilitation Of Learning')}
             >
               <Slider
                 onChange={this.facilitationOfLearningOnChange}
                 value={this.state.facilitationOfLearning}
                 defaultValue={0}
-                marks={{
-                  0: (
-                    <div>
-                      <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
-                      <div>meh</div>
-                    </div>
-                  ),
-                  50: (
-                    <div>
-                      <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
-                      <div>good</div>
-                    </div>
-                  ),
-                  100: (
-                    <div>
-                      <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
-                      <div>excellent</div>
-                    </div>
-                  )
-                }}
+                marks={GetSliderMark()}
               />
             </FormItem>
-            <FormItem {...formItemLayout} label={this.getLabel(this.state.extraComment, 'Comment')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.extraComment, 'Comment')}>
               <TextArea
                 type="text"
                 value={this.state.extraComment}

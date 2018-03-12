@@ -15,21 +15,22 @@ import mathCatalog from './components/CourseCatalog/mathCatalog';
 
 export const Routes = () => (
     <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/Professor' component={Professor} />
-          <Route path='/ProfessorDetails/:major/:id/:name' component={ProfessorDetails} />
-          <Route path='/ProfessorForm/:major/:profName' component={ProfessorForm} />
-          <Route path='/Class' component={Course} />
-          <Route path='/ClassDetails/:major/:id/:courseCode' component={CourseDetails} />
-          <Route path='/ClassForm/:major/:courseCode/:courseName' component={ClassForm} />
+      <Route exact path='/' component={Home} />
+      <Route path='/Professor' component={Professor} />
+      <Route path='/ProfessorDetails/:major/:id/:name/:submissionSuccess?' component={ProfessorDetails} />
+      <Route path='/ProfessorForm/:major/:id/:profName' component={ProfessorForm} />
+      <Route path='/Class' component={Course} />
+      <Route path='/ClassDetails/:major/:id/:courseCode/:submissionSuccess?' component={CourseDetails} />
+      <Route path='/ClassForm/:major/:courseCode/:courseName' component={ClassForm} />
+        
+      <Route path='/ComputerScienceEngineeringCatalog' component={cseCatalog} />
+      <Route path='/ComputerScienceLiberalArtsCatalog' component={cscCatalog} />
+      <Route path='/ComputerEngineeringCatalog' component={ceCatalog} />
+      <Route path='/ElectricalEngineeringCatalog' component={eeCatalog} />
+      <Route path='/MathCatalog' component={mathCatalog} />
 
-          <Route path='/ComputerScienceEngineeringCatalog' component={cseCatalog} />
-          <Route path='/ComputerScienceLiberalArtsCatalog' component={cscCatalog} />
-          <Route path='/ComputerEngineeringCatalog' component={ceCatalog} />
-          <Route path='/ElectricalEngineeringCatalog' component={eeCatalog} />
-          <Route path='/MathCatalog' component={mathCatalog} />
+      <Route component={FourOhFour} />
 
-          <Route component={FourOhFour} />
     </Switch>
 );
 import ClassForm from './components/ClassForm';
