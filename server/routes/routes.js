@@ -18,6 +18,7 @@ router.route('/insertNewProfessorReview').post(function(req,res){
         levelOfDiffculty : req.body.levelOfDiffculty,
         communicationOfIdeas : req.body.communicationOfIdeas,
         facilitationOfLearning : req.body.facilitationOfLearning,
+        howIsTheProfessor : req.body.howIsTheProfessor, 
         wouldTakeAgain : req.body.wouldTakeAgain,
         extraComment : req.body.extraComment
     }
@@ -46,7 +47,9 @@ router.route('/insertNewCourseReview').post(function(req,res){
         overallExpe : req.body.overallExpe,
         levelOfDiffculty : req.body.levelOfDiffculty,
         knowBeforeCourse : req.body.knowBeforeCourse,
+        howIsTheClass : req.body.howIsTheClass,
         extraComment : req.body.extraComment,
+        whoTookWith : req.body.whoTookWith
     }
 
     console.log(courseCode)
@@ -154,6 +157,34 @@ router.get('/getCourseReviews',function(req, res) {
         if(err)
             res.send(err);
         console.log(professor)
+        res.json(professor);
+    })
+});
+
+router.get('/updateOverAllExpeForAProf',function(req, res) {
+    const major = req.query.major;
+    const _id = req.query._id;
+    const overallExpe = req.query.overAllExpe;
+    const DB_name = require('../../models/'+major+'ProfModel')
+
+    DB_name.findOneAndUpdate({_id : _id},{overview : overallExpe},function(err,professor){
+        if(err)
+            res.send(err);
+
+        res.json(professor);
+    })
+});
+
+router.get('/updateOverAllExpeForACourse',function(req, res) {
+    const major = req.query.major;
+    const courseCode = req.query.courseCode;
+    const overallExpe = req.query.overAllExpe;
+    const DB_name = require('../../models/'+major+'CourseModel')
+
+    DB_name.findOneAndUpdate({courseCode : courseCode},{overview : overallExpe},function(err,professor){
+        if(err)
+            res.send(err);
+
         res.json(professor);
     })
 });
