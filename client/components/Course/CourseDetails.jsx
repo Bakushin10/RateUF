@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { Menu, Dropdown, Button } from 'antd';
 import { Redirect } from 'react-router';
 import 'antd/dist/antd.css';
-import Head from './Header-Footer/Head';
-import { GetSuccessMessage } from './commonJS';
+import Head from '../Header-Footer/Head';
+import { GetSuccessMessage } from '../utility/commonJS';
 import { GetMessageOrGraph, GetReview } from './CourseDetailComponent';
 
 class CourseDetails extends React.Component {

@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
 import { Redirect } from 'react-router';
-import { GetSliderMark, GetLabel } from './commonJS'
+import { GetSliderMark, GetLabel } from '../utility/commonJS'
 
-import Head from './Header-Footer/Head';
+import Head from '../Header-Footer/Head';
 
 var querystring = require('querystring');
 const FormItem = Form.Item;

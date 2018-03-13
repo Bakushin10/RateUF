@@ -3,8 +3,8 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
 import { List, Slider } from 'antd';
 import styled from 'styled-components';
-import { GetSliderMark } from './commonJS';
-import Spinner from './Spinner';
+import { GetSliderMark } from '../utility/commonJS';
+import Spinner from '../utility/Spinner';
 
 const CourseName = styled.h5`
   color: #878fad;

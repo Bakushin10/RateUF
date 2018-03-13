@@ -2,11 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
-import { GetSuccessMessage } from './commonJS';
+import { GetSuccessMessage } from '../utility/commonJS';
 import { GetMessageOrGraph, GetReview } from './ProfDetailComponent';
 import { Redirect } from 'react-router';
 import 'antd/dist/antd.css';
-import Head from './Header-Footer/Head';
+import Head from '../Header-Footer/Head';
 
 class ProfessorDetails extends React.Component {
   constructor() {

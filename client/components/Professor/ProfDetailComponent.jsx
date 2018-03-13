@@ -1,8 +1,8 @@
 import React from 'react';
-import Spinner from './Spinner';
+import Spinner from '../utility/Spinner';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import { List, Icon, Card } from 'antd';
-import { ShowArrays } from './commonJS';
+import { ShowArrays } from '../utility/commonJS';
 
 export const GetMessageOrGraph = (hasReview, dataloaded, profName, major, data) =>{
     if(!dataloaded){

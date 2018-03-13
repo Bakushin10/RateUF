@@ -2,13 +2,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
-import ProfessorForm from './components/ProfessorForm';
-import Professor from './components/Professor';
-import ProfessorDetails from './components/ProfessorDetails';
-import Course from './components/Course';
-import CourseDetails from './components/CourseDetails';
-import ClassForm from './components/ClassForm';
-import FourOhFour from './components/FourOhFour';
+import ProfessorForm from './components/Professor/ProfessorForm';
+import Professor from './components/Professor/Professor';
+import ProfessorDetails from './components/Professor/ProfessorDetails';
+import Course from './components/Course/Course';
+import CourseDetails from './components/Course/CourseDetails';
+import ClassForm from './components/Course/ClassForm';
+import FourOhFour from './components/utility/FourOhFour';
 
 export const Routes = () => (
     <Switch>
