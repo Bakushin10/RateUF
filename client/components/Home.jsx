@@ -11,8 +11,6 @@ export default class Home extends React.Component {
         <Head />
         <div className="welcome-box">
           <h1 className="welcome-text">Welcome to RateUF</h1>
-          <h2 className="start">Start Here:</h2>
-
           <div className="welcome-buttons">
             <Col span={3} offset={3}>
             <a href="/#/Professor" >
@@ -37,6 +35,7 @@ export default class Home extends React.Component {
             </Col>
           </div>
         </div>
+        <div className="whitespace"></div>
        <Foot />
       </div>
     );

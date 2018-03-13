@@ -9,8 +9,8 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
       return <Spinner/>;
     }else if(dataloaded && !hasReview){
       return(
-          <Card style={{ width: 500 }} hidden={hasReview}>
-            <p> Be the first one to review ! </p>
+          <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={hasReview}>
+            <p className= "success-text"> Be the first to review! </p>
           </Card>
       )
     }else{
