@@ -1,75 +1,103 @@
-var React = require('react')
-var ReactFlow = require('../server/server.js')
-var EventEmitter = require('events')
-
-require('./style.css')
+import React from 'react';
+import Flowchart from 'react-simple-flowchart';
 
 
+export class cePrereq extends Component {
 
-var data = [
-    {
-        nodeId: 'node1',
-        x: 20,
-        y: 20,
-        branches: [
-            {branchId:'branch1', nodeId:"node2"},
-            {branchId:'branch2', nodeId:"node2"},
-            {branchId:'branch3', nodeId:"node2"}
-        ]
-    },
-    {
-        nodeId: 'node2',
-        x: 250,
-        y: 20
-    },
-    {
-        nodeId: 'node3',
-        x: 250,
-        y: 200
+    constructor(props) {
+        super(props);
+        const code =
+            `st=>start: Begin
+e=>end: End
+op1=>operation: Operation 1|department1
+op2=>operation: Operation 2|department2
+sub=>subroutine: Go To Google|external:>http://www.google.com
+cond=>condition: Google?
+st(right)->op1(right)->op2(right)->cond(yes)->sub(bottom)
+cond(no)->e`;
+
+        const opt = {
+            x: 0,
+            y: 0,
+            'line-width': 3,
+            'line-length': 50,
+            'text-margin': 10,
+            'font-size': 14,
+            'font-color': 'black',
+            'line-color': 'black',
+            'element-color': 'black',
+            fill: 'white',
+            'yes-text': 'yes',
+            'no-text': 'no',
+            'arrow-end': 'block',
+            scale: 1,
+            symbols: {
+                start: {
+                    'font-color': 'red',
+                    'element-color': 'green',
+                    'font-weight': 'bold',
+                },
+                end: {
+                    'font-color': 'red',
+                    'element-color': 'green',
+                    'font-weight': 'bold',
+                },
+            },
+            flowstate: {
+                department1: { fill: 'pink' },
+                department2: { fill: 'yellow' },
+                external: { fill: 'green' },
+            },
+        };
+
+        this.state = {
+            code,
+            opt,
+            elementText: 'none',
+        }
     }
-]
 
-var NodeContents = React.createClass({
-    render : function() {
-        var html =
-            <div className="node">
-                {this.props.NodeTarget}
-                {this.props.NodeBranches}
+    handleCodeChange(e) {
+        this.setState({
+            code: e.target.value,
+        });
+
+    }
+
+    handleOptChange(e) {
+        this.setState({
+            opt: JSON.parse(e.target.value),
+        });
+
+    }
+
+    render() {
+        const { code, opt, elementText } = this.state;
+        return (
+            <div>
+                <p>Edit flowchart in real time!</p>
+                <textarea
+                    cols="100"
+                    rows="10"
+                    value={code}
+                    onChange={(e) => this.handleCodeChange(e)}
+                />
+                <br /><br />
+                <p>Flowchart options</p>
+                <textarea cols="100"
+                          rows="10"
+                          value={JSON.stringify(opt)}
+                          onChange={(e) => this.handleOptChange(e)}
+                />
+                <br /><br />
+                <p>Result</p>
+                <p>Last Clicked Node: <strong>{elementText}</strong></p>
+                <Flowchart
+                    chartCode={code}
+                    options={opt}
+                    onClick={elementText => this.setState({elementText})}
+                />
             </div>
-        return html
+        );
     }
-})
-
-var BranchContents = React.createClass({
-    render : function() {
-        var html =
-            <div className='branchHandle'>
-                {this.props.BranchHandle}
-            </div>
-        return html
-    }
-})
-
-var dropNode = function (node, coords) {
-    console.log('dropped at '+coords.x+','+coords.y)
 }
-
-var dropBranch = function (branch, node) {
-    console.log('dropped branchId:'+branch.branchId+' on nodeId:'+node.nodeId)
-}
-
-
-
-React.render(
-    (
-        <div className="container">
-            <ReactFlow
-                NodeContents={NodeContents}
-                BranchContents={BranchContents}
-                dropBranch={dropBranch}
-                dropNode={dropNode}
-                nodes={data} />
-        </div>
-    ),
-    document.body
-)

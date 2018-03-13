@@ -12,6 +12,7 @@ import cscCatalog from './components/CourseCatalog/cscCatalog';
 import ceCatalog from './components/CourseCatalog/ceCatalog';
 import eeCatalog from './components/CourseCatalog/eeCatalog';
 import mathCatalog from './components/CourseCatalog/mathCatalog';
+//import cePrereq from './components/prerequisites/cePrereq';
 
 export const Routes = () => (
     <Switch>
@@ -22,12 +23,13 @@ export const Routes = () => (
       <Route path='/Class' component={Course} />
       <Route path='/ClassDetails/:major/:id/:courseCode/:submissionSuccess?' component={CourseDetails} />
       <Route path='/ClassForm/:major/:courseCode/:courseName' component={ClassForm} />
-        
+
       <Route path='/ComputerScienceEngineeringCatalog' component={cseCatalog} />
       <Route path='/ComputerScienceLiberalArtsCatalog' component={cscCatalog} />
       <Route path='/ComputerEngineeringCatalog' component={ceCatalog} />
       <Route path='/ElectricalEngineeringCatalog' component={eeCatalog} />
       <Route path='/MathCatalog' component={mathCatalog} />
+      {/*<Route path='/cePrereq' component={cePrereq} />*/}
 
       <Route component={FourOhFour} />
 
