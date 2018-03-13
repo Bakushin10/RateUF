@@ -3,8 +3,8 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
 import { List, Slider } from 'antd';
 import styled from 'styled-components';
-import { GetSliderMark } from './commonJS';
-import Spinner from './Spinner';
+import { GetSliderMark } from '../utility/commonJS';
+import Spinner from '../utility/Spinner';
 
 const ProfessorName = styled.h5`
   color: black;
@@ -39,7 +39,7 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
             pagination={pagination}
             dataSource={professorToShow}
             renderItem={item => (
-                <Link to={`/ProfessorDetails/${item.major}/${item._id}/${item.name}`}>
+                <Link to={`/ProfessorDetails/${item.major}/${item.name}`}>
                     <ProfessorName>{item.name}</ProfessorName>
                     <Slider
                         className="ant-slider-disabled" /*.ant-slider-disabled*/

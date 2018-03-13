@@ -3,11 +3,11 @@ import axios from 'axios';
 import { List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
 import { Menu, Dropdown, Button } from 'antd';
-
+import { Redirect } from 'react-router';
 import 'antd/dist/antd.css';
-import Head from './Header-Footer/Head';
-import Foot from './Header-Footer/Foot';
-import { GetSuccessMessage } from './commonJS';
+import Head from '../Header-Footer/Head';
+import Foot from '../Header-Footer/Foot';
+import { GetSuccessMessage } from '../utility/commonJS';
 import { GetMessageOrGraph, GetReview } from './CourseDetailComponent';
 
 class CourseDetails extends React.Component {
@@ -20,18 +20,23 @@ class CourseDetails extends React.Component {
       id: '',
       major: '',
       reviews: [], //has reviews,
+      previousProf : [],
       overAllExpe : 0,
       isOverAllExpeUpdated : false,
       submitSuccess : false,
-      dataloaded : false 
+      dataloaded : false,
+      redirectCourse : false,
+      redirectTo : '',
     };
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
+    this.getPreviousProf = this.getPreviousProf.bind(this);
+    this.handleMenuClick = this.handleMenuClick.bind(this)
+    this.getMenuItemForPreviousProf = this.getMenuItemForPreviousProf.bind(this);
   }
 
   componentDidMount() {
     let self = this;
-    const _id = this.props.match.params.id;
     const courseCode = this.props.match.params.courseCode;
     const major = this.props.match.params.major;
 
@@ -86,6 +91,43 @@ class CourseDetails extends React.Component {
     ProfFields.hasReview = true;
   }
 
+  handleMenuClick(e) {
+    //TODO
+    console.log('click', e.keyPath[0]);
+    this.setState({ redirectTo : e.keyPath[0] })
+    this.setState({ redirectCourse : true })
+    //return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${e.keyPath[0]}`}/>);
+  }
+
+  getPreviousProf(){
+    for(var i = 0;i< this.state.reviews.length;i++){
+      let hasValue = false;
+      for(var j = 0; j < this.state.previousProf.length ; j++){
+        if((this.state.previousProf[j] === this.state.reviews[i].whoTookWith) || 
+            this.state.previousProf[j].localeCompare("Don't remember")){
+          hasValue = true;
+          j = this.state.previousProf.length;//end loop
+        }
+      }
+      if(!hasValue){
+        const item = this.state.previousProf;
+        item[i] = this.state.reviews[i].whoTookWith;
+      }
+    }
+  }
+
+  getMenuItemForPreviousProf(){
+    return(
+      <Menu onClick={this.handleMenuClick}>
+      {
+        this.state.previousProf.map(prof => (
+          <Menu.Item key = { prof } >{ prof }</Menu.Item>
+        ))
+      }
+      </Menu>
+    )
+  }
+
   updateValueForOverAllExperience(){
     let overAllExpe = 0;
     let self = this;
@@ -118,17 +160,21 @@ class CourseDetails extends React.Component {
       levelOfDiff : 0,
       hasReview : this.state.hasReview
     }
-    const menu = (
-      <Menu>
-        <Menu.Item onClick={e => this.jumpToSelectedClass(e, 'CS')}>CS</Menu.Item>
-        <Menu.Item onClick={e => this.jumpToSelectedClass(e, 'ECE')}>ECE</Menu.Item>
-        <Menu.Item onClick={e => this.jumpToSelectedClass(e, 'MATH')}>MATH</Menu.Item>
-      </Menu>
+    let menu = (
+      <Menu><Menu.Item>No Professors to show</Menu.Item></Menu>
     );
+
+    if(this.state.redirectCourse){
+      return (<Redirect to ={`/ProfessorDetails/${this.props.match.params.major}/${this.state.redirectTo}`}/>);
+    }
 
     // get values for graph if there are any reviews
     if(typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
       this.getFieldValueForProfessor(ProfFields);
+      this.getPreviousProf();
+      menu = (
+        this.getMenuItemForPreviousProf()
+      );
     }
 
     //only execute ONCE to update overall experience value when a review was submitted.   

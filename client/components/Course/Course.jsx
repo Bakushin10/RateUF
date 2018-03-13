@@ -2,10 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { List, Avatar, Icon, Slider,Menu, Dropdown, Button, Form, Input} from 'antd';
 import 'antd/dist/antd.css';
-import Search from './Search';
+import Search from '../utility/Search';
 
-import Head from './Header-Footer/Head';
-import Foot from './Header-Footer/Foot';
+import Head from '../Header-Footer/Head';
+import Foot from '../Header-Footer/Foot';
 
 class Course extends React.Component {
   constructor() {

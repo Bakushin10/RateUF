@@ -3,10 +3,10 @@ import axios from 'axios';
 import { List, Avatar, Icon, Menu, Dropdown, Button, Form, FormItem, Input} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import 'antd/dist/antd.css';
-import Search from './Search';
+import Search from '../utility/Search';
 
-import Head from './Header-Footer/Head';
-import Foot from './Header-Footer/Foot';
+import Head from '../Header-Footer/Head';
+import Foot from '../Header-Footer/Foot';
 
 class Professor extends React.Component {
   constructor() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon, Form, Input} from 'antd';
-import { ProfessorList } from './ProfessorList';
-import { CourseList } from './CourseList';
+import { ProfessorList } from '../Professor/ProfessorList';
+import { CourseList } from '../Course/CourseList';
 
 class Search extends React.Component{
 
