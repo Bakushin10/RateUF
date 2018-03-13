@@ -10,7 +10,8 @@ var ReviewSchema = new Schema({
         facilitationOfLearning: Number,
         howIsTheProfessor: Array,
         wouldTakeAgain: String,
-        extraComment: String
+        extraComment: String,
+        courseTakenFor : String
     }]
 });
 
