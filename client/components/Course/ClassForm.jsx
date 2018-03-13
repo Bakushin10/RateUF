@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card } from 'antd';
-import Head from './Header-Footer/Head';
+import Head from '../Header-Footer/Head';
 import { Redirect } from 'react-router';
-import { GetSliderMark, GetLabel } from './commonJS';
+import { GetSliderMark, GetLabel } from '../utility/commonJS';
 
 var querystring = require('querystring');
 const FormItem = Form.Item;
@@ -217,7 +217,7 @@ class ClassForm extends React.Component {
 
     // redirect to ProfessorDetails page after review is successfully submitted
     if(this.state.submitted){
-      return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.props.match.params.id}/${this.props.match.params.courseCode}/${"success"}`}/>);
+      return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.props.match.params.courseCode}/${"success"}`}/>);
     }
     
     return (
