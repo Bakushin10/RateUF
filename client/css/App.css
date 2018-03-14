@@ -94,3 +94,9 @@ fieldset{
   background-color: cadetblue;
   color: blue;
 }
+
+@media (max-width: 60rem) {
+  .table {
+    display: none;
+  }
+}
