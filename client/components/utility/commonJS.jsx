@@ -15,19 +15,19 @@ const WarningOff = styled.span`
       {
         0: (
           <div>
-            <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f' }} />
+            <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f', fontColor: 'black' }} />
               <div>meh</div>
           </div>
         ),
         50: (
           <div>
-            <Icon type="meh-o" style={{ fontSize: 15, color: '#08c' }} />
+            <Icon type="meh-o" style={{ fontSize: 15, color: '#08c', fontColor: 'black' }} />
               <div>good</div>
           </div>
         ),
         100: (
           <div>
-            <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987' }} />
+            <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987',fontColor: 'black' }} />
               <div>excellent</div>
           </div>
         )
@@ -53,9 +53,9 @@ const WarningOff = styled.span`
 
   export const GetSuccessMessage = (isSuccess) =>{
     return(
-      <Card style={{ width: 500 }} hidden={!isSuccess}>
-        <p>
-          <Icon type="check-circle-o" /> Thank you! Your review was successfully submitted ! (make Icon big, message green)
+      <Card style={{ width: '30rem', backgroundColor:'lightgreen', opacity:'0.5' }} hidden={!isSuccess}>
+        <p className="success-text">
+          <Icon type="check-circle-o"  /> Thank you! Your review was successfully submitted!
         </p>
       </Card>
     )

@@ -6,6 +6,7 @@ import { Menu, Dropdown, Button } from 'antd';
 import { Redirect } from 'react-router';
 import 'antd/dist/antd.css';
 import Head from '../Header-Footer/Head';
+import Foot from '../Header-Footer/Foot';
 import { GetSuccessMessage } from '../utility/commonJS';
 import { GetMessageOrGraph, GetReview } from './CourseDetailComponent';
 
@@ -191,35 +192,36 @@ class CourseDetails extends React.Component {
 
     return (
       <div>
-      <Head />
-      <div className="container">
-        <div>
-          { GetSuccessMessage(this.state.submitSuccess) }
-        </div>
-        <div>
-          <div>{this.state.courseCode}</div>
-          <div>{this.state.courseName}</div>
-            <div>
-              <Button type="primary" ghost>
-                <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
-                  <Icon type="form" /> Rate this Course
-                </Link>
-              </Button>
-            </div>
-                  Departmemnt : {this.state.major}
-            <div>
-              <Dropdown overlay={menu} title="previous course">
-                <Button>See previous course</Button>
-              </Dropdown>
-            </div>
-            <div>OverAll Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-            <div>Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
+        <Head />
+        <div className="container">
+          <div>
+            { GetSuccessMessage(this.state.submitSuccess) }
           </div>
           <div>
-              { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.courseCode, this.state.major, data) }
-              { GetReview(ProfFields.hasReview, this.state.reviews)}
-          </div>
-      </div>
+            <div>{this.state.courseCode}</div>
+            <div>{this.state.courseName}</div>
+              <div>
+                <Button type="primary" ghost>
+                  <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
+                    <Icon type="form" /> Rate this Course
+                  </Link>
+                </Button>
+              </div>
+                    Departmemnt : {this.state.major}
+              <div>
+                <Dropdown overlay={menu} title="previous course">
+                  <Button>See previous course</Button>
+                </Dropdown>
+              </div>
+              <div>OverAll Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
+              <div>Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
+            </div>
+            <div>
+                { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.courseCode, this.state.major, data) }
+                { GetReview(ProfFields.hasReview, this.state.reviews)}
+            </div>
+        </div>
+        <Foot />
       </div>
     );
   }
