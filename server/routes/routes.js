@@ -12,7 +12,7 @@ router.route('/insertNewProfessorReview').post(function(req,res){
 
     const name = req.body.name;
     const major = req.body.major;
-    const DB_name = require('../../models/'+major+'ProfReviewModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
     var newReview = {
         overallExpe : req.body.overallExpe,
         levelOfDiffculty : req.body.levelOfDiffculty,
@@ -49,7 +49,7 @@ router.route('/updateProfessorComment').post(function(req,res){
     console.log(name)
     console.log(comment)
     console.log(major)
-    const DB_name = require('../../models/'+major+'ProfReviewModel');
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel');
 
     DB_name.findOneAndUpdate({'review._id':_id}, {$push:{comment:comment}},{upsert:true},
     function(err,req){
@@ -67,7 +67,7 @@ router.route('/insertNewCourseReview').post(function(req,res){
 
     const courseCode = req.body.courseCode;
     const major = req.body.major;
-    const DB_name = require('../../models/'+major+'CourseReviewModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
     var newReview = {
         overallExpe : req.body.overallExpe,
         levelOfDiffculty : req.body.levelOfDiffculty,
@@ -96,7 +96,7 @@ router.route('/insertNewCourseReview').post(function(req,res){
 */
 router.get('/getAllProfByMajor',function(req, res) {
     const major = req.query.major;
-    const DB_name = require('../../models/'+major+'ProfModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfModel')
 
     DB_name.find({},function(err,professor){
         if(err)
@@ -111,7 +111,7 @@ router.get('/getAllProfByMajor',function(req, res) {
 router.get('/getProfDetails',function(req, res) {
     const major = req.query.major;
     const name = req.query.name;
-    const DB_name = require('../../models/'+major+'ProfModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfModel')
 
     DB_name.findOne({name : name},function(err,professor){
         if(err)
@@ -127,7 +127,7 @@ router.get('/getProfDetails',function(req, res) {
 router.get('/getProfReviews',function(req, res) {
     const major = req.query.major;
     const name = req.query.name;
-    const DB_name = require('../../models/'+major+'ProfReviewModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
 
     DB_name.findOne({name : name},function(err,professor){
         if(err)
@@ -142,7 +142,7 @@ router.get('/getProfReviews',function(req, res) {
 */
 router.get('/getAllCoursesByMajor',function(req, res) {
     const major = req.query.major;
-    const DB_name = require('../../models/'+major+'CourseModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseModel')
 
     DB_name.find({},function(err,professor){
         if(err)
@@ -157,7 +157,7 @@ router.get('/getAllCoursesByMajor',function(req, res) {
 router.get('/getCourseDetails',function(req, res) {
     const major = req.query.major;
     const courseCode = req.query.courseCode;
-    const DB_name = require('../../models/'+major+'CourseModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseModel')
 
     DB_name.findOne({courseCode : courseCode},function(err,professor){
         if(err)
@@ -175,7 +175,7 @@ router.get('/getCourseReviews',function(req, res) {
     const courseCode = req.query.courseCode;
     console.log("getProfDetails server side");
     console.log(req.query)
-    const DB_name = require('../../models/'+major+'CourseReviewModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
 
     DB_name.findOne({courseCode : courseCode},function(err,professor){
         if(err)
@@ -189,7 +189,7 @@ router.get('/updateOverAllExpeForAProf',function(req, res) {
     const major = req.query.major;
     const name = req.query.name;
     const overallExpe = req.query.overAllExpe;
-    const DB_name = require('../../models/'+major+'ProfModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfModel')
 
     DB_name.findOneAndUpdate({name : name},{overview : overallExpe},function(err,professor){
         if(err)
@@ -203,7 +203,7 @@ router.get('/updateOverAllExpeForACourse',function(req, res) {
     const major = req.query.major;
     const courseCode = req.query.courseCode;
     const overallExpe = req.query.overAllExpe;
-    const DB_name = require('../../models/'+major+'CourseModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseModel')
 
     DB_name.findOneAndUpdate({courseCode : courseCode},{overview : overallExpe},function(err,professor){
         if(err)
