@@ -11,8 +11,7 @@ var ReviewSchema = new Schema({
         howIsTheProfessor: Array,
         wouldTakeAgain: String,
         extraComment: String,
-        courseTakenFor : String,
-        comment : Array 
+        courseTakenFor : String
     }]
 });
 

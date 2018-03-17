@@ -116,6 +116,7 @@ class ProfessorForm extends React.Component {
         //go to submit successfully page
         console.log(response.data);
       });
+      
 
       this.setState({submitted : true})
   }

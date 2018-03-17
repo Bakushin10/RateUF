@@ -12,11 +12,25 @@ class ProfessorForm extends React.Component {
         this.state = {
             buttonMessage : 'comment',
             comment : '',//newly created state
-            showComment : true
+            showComment : true,
+            commnetToShow : []
         };
         this.extraCommentOnChange = this.extraCommentOnChange.bind(this);
         this.handleClick = this.handleClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount(){
+        let self = this;
+        axios.get('/getProfComment',{
+            params:{
+                id : this.props.id,
+                major : this.props.major,
+                name : this.props.name
+            }
+        }).then(function(response) {
+          self.setState({ commnetToShow: response.data });
+        });
     }
 
     extraCommentOnChange(e) {
@@ -31,7 +45,7 @@ class ProfessorForm extends React.Component {
                   name : this.props.name, //identify the which prof to update
                   id : this.props.id, //identify which review to update
                   major : this.props.major,
-                  comment : this.state.comment 
+                  comment : this.state.comment ,
                 }),
                 {
                   headers: {
@@ -56,10 +70,8 @@ class ProfessorForm extends React.Component {
     }
 
     render(){
-        console.log("id ");
-        console.log(this.props.id);
-        console.log(this.props.name)
-        console.log(this.props.major)
+        console.log("reviewComment");
+        console.log(this.state)
         const formItemLayout = {
             labelCol: { span: 8 },
             wrapperCol: { span: 9 }

@@ -40,23 +40,22 @@ router.route('/insertNewProfessorReview').post(function(req,res){
 
 
 router.route('/updateProfessorComment').post(function(req,res){
-    const _id = req.body.id;
     const name = req.body.name;
-    const comment = req.body.comment;
     const major = req.body.major;
-    
-    console.log(_id)
-    console.log(name)
-    console.log(comment)
-    console.log(major)
-    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel');
+    const comment = {
+        comment  : req.body.comment,
+        reviewID :  req.body.id
+    }
 
-    DB_name.findOneAndUpdate({'review._id':_id}, {$push:{comment:comment}},{upsert:true},
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment');
+
+    DB_name.findOneAndUpdate({'name':name}, {$push:{comment:comment}},{upsert:true},
     function(err,req){
         if (err) {
             console.log(err);
             res.status(400).send(err);
         } else {
+            console.log(req)
             console.log("Successfully created new review!\n ");
         }
     });
@@ -99,6 +98,22 @@ router.get('/getAllProfByMajor',function(req, res) {
     const DB_name = require('../../models/'+major+'Model/'+major+'ProfModel')
 
     DB_name.find({},function(err,professor){
+        if(err)
+            res.send(err);
+        res.json(professor);
+    })
+});
+
+/*
+ retrieve array of all prof by selected major 
+*/
+router.get('/getProfComment',function(req, res) {
+    const major = req.query.major;
+    const id = req.query.id;
+    const name = req.query.name;
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment')
+
+    DB_name.find({name : name},function(err,professor){
         if(err)
             res.send(err);
         res.json(professor);
