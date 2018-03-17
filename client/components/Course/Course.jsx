@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 import Search from '../utility/Search';
 
 import Head from '../Header-Footer/Head';
+import Foot from '../Header-Footer/Foot';
 
 class Course extends React.Component {
   constructor() {
@@ -118,6 +119,7 @@ class Course extends React.Component {
             </div>
             { <Search {...this.state} type = {"Course"} /> }
         </div>
+        <Foot />
       </div>
     );
   }

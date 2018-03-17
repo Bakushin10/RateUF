@@ -6,7 +6,9 @@ export default class Head extends React.Component {
   render() {
     return (
       <Layout>
-          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }}>
+          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '5rem' }}>
+          
+          
             <a className="special-text" href="/#">
               RateUF
             </a>

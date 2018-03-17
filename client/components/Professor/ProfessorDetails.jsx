@@ -7,6 +7,7 @@ import { GetMessageOrGraph, GetReview } from './ProfDetailComponent';
 import { Redirect } from 'react-router';
 import 'antd/dist/antd.css';
 import Head from '../Header-Footer/Head';
+import Foot from '../Header-Footer/Foot';
 
 class ProfessorDetails extends React.Component {
   constructor() {
@@ -229,6 +230,7 @@ class ProfessorDetails extends React.Component {
               { GetReview(ProfFields.hasReview, this.state.reviews)}
             </div>
           </div>
+          <Foot />
       </div>
     );
   }
