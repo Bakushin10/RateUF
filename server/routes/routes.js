@@ -38,6 +38,30 @@ router.route('/insertNewProfessorReview').post(function(req,res){
         });
 })
 
+
+router.route('/updateProfessorComment').post(function(req,res){
+    const _id = req.body.id;
+    const name = req.body.name;
+    const comment = req.body.comment;
+    const major = req.body.major;
+    
+    console.log(_id)
+    console.log(name)
+    console.log(comment)
+    console.log(major)
+    const DB_name = require('../../models/'+major+'ProfReviewModel');
+
+    DB_name.findOneAndUpdate({'review._id':_id}, {$push:{comment:comment}},{upsert:true},
+    function(err,req){
+        if (err) {
+            console.log(err);
+            res.status(400).send(err);
+        } else {
+            console.log("Successfully created new review!\n ");
+        }
+    });
+})
+
 //insert prof review from ProfessorForm.jsx
 router.route('/insertNewCourseReview').post(function(req,res){
 
