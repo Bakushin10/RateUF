@@ -105,7 +105,7 @@ router.get('/getAllProfByMajor',function(req, res) {
 });
 
 /*
- retrieve array of all prof by selected major 
+ retrieve commnet by prof
 */
 router.get('/getProfComment',function(req, res) {
     const major = req.query.major;
