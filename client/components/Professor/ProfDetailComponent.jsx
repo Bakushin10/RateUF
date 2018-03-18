@@ -3,7 +3,7 @@ import Spinner from '../utility/Spinner';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import { List, Icon, Card, Button } from 'antd';
 import { ShowArrays } from '../utility/commonJS';
-import Commnet from './reviewCommnet';
+import Commnet from '../utility/reviewCommnet';
 
 export const GetMessageOrGraph = (hasReview, props, data) =>{
     if(!props.dataloaded){
@@ -56,7 +56,7 @@ export const GetReview = (hasReview, props) =>{
                   howIsTheProfessor : 
                   { ShowArrays(item.howIsTheProfessor) }
                 </div>
-                <Commnet name = {props.profName} major = {props.major} id = {item._id}/>
+                <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
               </List.Item>
             )}
           />

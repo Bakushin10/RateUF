@@ -55,7 +55,49 @@ router.route('/updateProfessorComment').post(function(req,res){
             console.log(err);
             res.status(400).send(err);
         } else {
-            console.log(req)
+            console.log("Successfully created new review!\n ");
+        }
+    });
+})
+
+router.route('/updateCourseComment').post(function(req,res){
+    const coursename = req.body.name;
+    const major = req.body.major;
+    const comment = {
+        comment  : req.body.comment,
+        reviewID :  req.body.id
+    }
+
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseComment');
+
+    DB_name.findOneAndUpdate({'coursename':coursename}, {$push:{comment:comment}},{upsert:true},
+    function(err,req){
+        if (err) {
+            console.log(err);
+            res.status(400).send(err);
+        } else {
+            console.log("Successfully created new review!\n ");
+        }
+    });
+})
+
+
+router.route('/updateProfessorComment').post(function(req,res){
+    const name = req.body.name;
+    const major = req.body.major;
+    const comment = {
+        comment  : req.body.comment,
+        reviewID :  req.body.id
+    }
+
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment');
+
+    DB_name.findOneAndUpdate({'name':name}, {$push:{comment:comment}},{upsert:true},
+    function(err,req){
+        if (err) {
+            console.log(err);
+            res.status(400).send(err);
+        } else {
             console.log("Successfully created new review!\n ");
         }
     });
@@ -114,6 +156,22 @@ router.get('/getProfComment',function(req, res) {
     const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment')
 
     DB_name.find({name : name},function(err,professor){
+        if(err)
+            res.send(err);
+        res.json(professor);
+    })
+});
+
+/*
+ retrieve commnet by course
+*/
+router.get('/getCourseComment',function(req, res) {
+    const major = req.query.major;
+    const id = req.query.id;
+    const coursename = req.query.name;
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseComment')
+
+    DB_name.find({coursename : coursename},function(err,professor){
         if(err)
             res.send(err);
         res.json(professor);
