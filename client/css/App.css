@@ -99,14 +99,26 @@ fieldset{
 .title-here{
   font-size: 3.5rem;
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+/* .profName{
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
 
-.demo-loadmore-list{
-  width: 2rem;
-  height: 2rem;
+.profRateButton{
+  display: inline;
 }
 
+.profRateText{
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: inline;
+}  */
 @media (max-width: 60rem) {
   .table {
     display: none;

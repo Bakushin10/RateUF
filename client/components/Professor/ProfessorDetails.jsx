@@ -206,16 +206,17 @@ class ProfessorDetails extends React.Component {
               { GetSuccessMessage(this.state.submitSuccess) }
             </div>
             <div>
-              {this.state.profName}
-                <div>
+              <div className = "profName"> {this.state.profName}</div>
+                <div className="profRateButtom">
+                  <div className="profRateText">Taken this professor? </div>
                   <Button type="primary" ghost>
                     <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>
                       <Icon type="form" /> Rate this professor
                     </Link>
                   </Button>
-                </div>
+                </div >
                   Departmemnt : {this.state.major}
-                <div>
+                <div className="profPrevCourse">
                   <Dropdown overlay={menu} title="previous course">
                     <Button>See previous course</Button>
                   </Dropdown>
@@ -230,7 +231,6 @@ class ProfessorDetails extends React.Component {
               { GetReview(ProfFields.hasReview, this.state)}
             </div>
           </div>
-          <Foot />
       </div>
     );
   }

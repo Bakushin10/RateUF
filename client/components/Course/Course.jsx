@@ -120,6 +120,7 @@ class Course extends React.Component {
             </div>
             { <Search {...this.state} type = {"Course"} /> }
         </div>
+        <Foot />
       </div>
     );
   }

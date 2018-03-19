@@ -123,6 +123,7 @@ class Professor extends React.Component {
         </div>
         { <Search {...this.state} type = {"Professor"} /> }
       </div>
+      <Foot />
       </div>
     );
   }
