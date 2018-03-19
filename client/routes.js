@@ -9,7 +9,7 @@ import Course from './components/Course/Course';
 import CourseDetails from './components/Course/CourseDetails';
 import ClassForm from './components/Course/ClassForm';
 import FourOhFour from './components/utility/FourOhFour';
-import CscPrereq from './components/Prereqs/CscPrereq';
+import CSPrereq from './components/Prereqs/CSPrereq';
 
 export const Routes = () => (
     <Switch>
@@ -20,7 +20,7 @@ export const Routes = () => (
       <Route path='/Class' component={Course} />
       <Route path='/ClassDetails/:major/:courseCode/:submissionSuccess?' component={CourseDetails} />
       <Route path='/ClassForm/:major/:courseCode/:courseName' component={ClassForm} />
-      <Route path='/CscPrereq' component={CscPrereq} />
+      <Route path='/CSPrereq' component={CSPrereq} />
       <Route component={FourOhFour} />
     </Switch>
 );
