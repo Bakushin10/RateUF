@@ -10,13 +10,11 @@ import Course from './components/Course/Course';
 import CourseDetails from './components/Course/CourseDetails';
 import ClassForm from './components/Course/ClassForm';
 import FourOhFour from './components/utility/FourOhFour';
-
-import cseCatalog from './components/CourseCatalog/cseCatalog';
-import cscCatalog from './components/CourseCatalog/cscCatalog';
-import ceCatalog from './components/CourseCatalog/ceCatalog';
-import eeCatalog from './components/CourseCatalog/eeCatalog';
-import mathCatalog from './components/CourseCatalog/mathCatalog';
-//import cePrereq from './components/prerequisites/cePrereq';
+import cseCatalog from './components/CourseCatalog/CSECatalog';
+import cscCatalog from './components/CourseCatalog/CSCCatalog';
+import ceCatalog from './components/CourseCatalog/CECatalog';
+import eeCatalog from './components/CourseCatalog/EECatalog';
+import mathCatalog from './components/CourseCatalog/MATHCatalog';
 
 export const Routes = () => (
     <Switch>
@@ -27,20 +25,15 @@ export const Routes = () => (
       <Route path='/Class' component={Course} />
       <Route path='/ClassDetails/:major/:courseCode/:submissionSuccess?' component={CourseDetails} />
       <Route path='/ClassForm/:major/:courseCode/:courseName' component={ClassForm} />
-
       <Route path='/ComputerScienceEngineeringCatalog' component={cseCatalog} />
       <Route path='/ComputerScienceLiberalArtsCatalog' component={cscCatalog} />
       <Route path='/ComputerEngineeringCatalog' component={ceCatalog} />
       <Route path='/ElectricalEngineeringCatalog' component={eeCatalog} />
       <Route path='/MathCatalog' component={mathCatalog} />
-      {/*<Route path='/cePrereq' component={cePrereq} />*/}
 
       <Route component={FourOhFour} />
 
     </Switch>
 );
-import ClassForm from './components/ClassForm';
-
-import FourOhFour from './components/FourOhFour';
 
 export default Routes;
