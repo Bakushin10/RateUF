@@ -131,6 +131,9 @@ fieldset{
   display: inline;
   margin-left: 4rem;
 }
+
+
+
 @media (max-width: 60rem) {
   .table {
     display: none;
