@@ -112,6 +112,7 @@ class Course extends React.Component {
       <div>
         <Head />
           <div className = "container">
+          <h1 className="title-here">Find Class</h1>
             <div>
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Major</Button>
@@ -119,7 +120,6 @@ class Course extends React.Component {
             </div>
             { <Search {...this.state} type = {"Course"} /> }
         </div>
-        <Foot />
       </div>
     );
   }

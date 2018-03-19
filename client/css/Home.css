@@ -38,3 +38,10 @@
   height: 4rem;
 }
 
+.background{
+  background-image: url('./img/blue-shade.png');
+  background-repeat: no-repeat; 
+  background-position: center top; 
+  background-size:cover
+}
+
