@@ -10,6 +10,8 @@ import CourseDetails from './components/Course/CourseDetails';
 import ClassForm from './components/Course/ClassForm';
 import FourOhFour from './components/utility/FourOhFour';
 import CSPrereq from './components/Prereqs/CSPrereq';
+import CEPrereq from './components/Prereqs/CEPrereq';
+import EEPrereq from './components/Prereqs/EPrereq';
 
 export const Routes = () => (
     <Switch>
@@ -21,6 +23,9 @@ export const Routes = () => (
       <Route path='/ClassDetails/:major/:courseCode/:submissionSuccess?' component={CourseDetails} />
       <Route path='/ClassForm/:major/:courseCode/:courseName' component={ClassForm} />
       <Route path='/CSPrereq' component={CSPrereq} />
+      <Route path='/CEPrereq' component={CEPrereq} />
+      <Route path='/EEPrereq' component={EEPrereq} />
+
       <Route component={FourOhFour} />
     </Switch>
 );

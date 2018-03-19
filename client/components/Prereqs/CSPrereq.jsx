@@ -2,6 +2,7 @@ import React from 'react';
 import Flowchart from 'react-simple-flowchart';
 import Head from '../Header-Footer/Head';
 import Foot from '../Header-Footer/Foot';
+import { Menu, Dropdown, Button } from 'antd';
 
 
 class CSPrereq extends React.Component {
@@ -69,6 +70,19 @@ COP3530(no)->COP4600(right)->CEN3031
     }
 
     render() {
+        const menu = (
+            <Menu>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSPrereq">CS</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CEPrereq">CE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/EEPrereq">EE</a>
+                </Menu.Item>
+            </Menu>
+        );
         const { code, opt } = this.state;
         return (
             <div>
@@ -76,6 +90,11 @@ COP3530(no)->COP4600(right)->CEN3031
                 <div align="center">
                     <h1>Computer Science Prerequisites</h1>
                     <a>**same color means you can take the classes at the same time**</a>
+                    <div>
+                    <Dropdown overlay = {menu} title="Change Major">
+                        <Button >Change Degree Prereqs</Button>
+                    </Dropdown>
+                    </div>
                     <Flowchart
                         chartCode={code}
                         options={opt}
