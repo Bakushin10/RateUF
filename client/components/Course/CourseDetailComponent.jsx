@@ -3,6 +3,7 @@ import Spinner from '../utility/Spinner';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import { List, Icon, Card } from 'antd';
 import { ShowArrays } from '../utility/commonJS';
+import Commnet from '../utility/reviewCommnet';
 
 export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data) =>{
     if(!dataloaded){
@@ -27,7 +28,7 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
     }
   }
 
-  export const GetReview = (hasReview, review) =>{
+  export const GetReview = (hasReview, props) =>{
     if(hasReview){
         return(
             <List
@@ -35,7 +36,7 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
             // loading={loading}
             itemLayout="horizontal"
             // loadMore={loadMore}
-            dataSource={review}
+            dataSource={props.reviews}
             renderItem={item => (
               <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
                 <List.Item.Meta
@@ -55,6 +56,7 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
                     Prof : 
                     {item.whoTookWith}
                 </div>
+                <Commnet name = {props.courseCode} major = {props.major} id = {item._id} type = {"course"}/>
               </List.Item>
             )}
           />

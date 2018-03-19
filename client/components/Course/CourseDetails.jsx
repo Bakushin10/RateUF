@@ -218,7 +218,7 @@ class CourseDetails extends React.Component {
             </div>
             <div>
                 { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.courseCode, this.state.major, data) }
-                { GetReview(ProfFields.hasReview, this.state.reviews)}
+                { GetReview(ProfFields.hasReview, this.state)}
             </div>
         </div>
         <Foot />
