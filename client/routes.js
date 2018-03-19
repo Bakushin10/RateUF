@@ -11,7 +11,8 @@ import ClassForm from './components/Course/ClassForm';
 import FourOhFour from './components/utility/FourOhFour';
 import CSPrereq from './components/Prereqs/CSPrereq';
 import CEPrereq from './components/Prereqs/CEPrereq';
-import EEPrereq from './components/Prereqs/EPrereq';
+import EEPrereq from './components/Prereqs/EEPrereq';
+import MATHPrereq from './components/Prereqs/MATHPrereq';
 
 export const Routes = () => (
     <Switch>
@@ -25,6 +26,7 @@ export const Routes = () => (
       <Route path='/CSPrereq' component={CSPrereq} />
       <Route path='/CEPrereq' component={CEPrereq} />
       <Route path='/EEPrereq' component={EEPrereq} />
+      <Route path='/MATHPrereq' component={MATHPrereq} />
 
       <Route component={FourOhFour} />
     </Switch>

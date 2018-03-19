@@ -11,25 +11,34 @@ class EEPrereq extends React.Component {
         super(props);
         const code =
             `
-COP3502=>condition: COP3502|department1
-COP3503=>condition: COP3503|department2
-COT3100=>operation: COT3100|department3
-EEL3701C=>operation: EEL3701C|department4
-EEL3744C=>operation: EEL3744C|department5
-EEL4712C=>operation: EEL4712C|department6
-EEL3923C=>operation: EEL3923C|department7
-EEL4924C=>operation: EEL4924C|department8
-COP4600=>operation: COP4600|department9
-CDA3101=>operation: CDA3101|department10
-COP3530=>operation: COP3530|department11
-CEN3031=>operation: CEN3031|department12
+EEl3834=>condition: EEl3834|department1
+MAS3114=>operation: MAS3114|department2
+EEL3701C=>condition: EEL3701C|department3
+EEL3744C=>operation: EEL3744C|department4
+EEL4657C=>operation: EEL4657C|department5
+EEE4511C=>operation: EEE4511C|department6
 
-COP3502(yes)->COP3503(yes)->EEL3701C->EEL3744C->EEL4712C->EEL3923C->EEL4924C
-COP3503(no)->CDA3101->COP3530
-COP3502(no)->COT3100->COP3530->CEN3031->COP4600
+EEL3111C=>condition: EEL3111C|department7
+EEL3008=>operation: EEL3008|department8
+EEL3112=>operation: EEL3112|department9
 
+EEL3135=>condition: EEL3111C|department10
+EEL3000=>operation: EEL3000|department11
+EEL3472C=>operation: EEL3472C|department12
+EEL3211C=>operation: EEL3211C|department13
+EEE3396C=>operation: EEE3396C|department14
+EEE3308C=>operation: EEE3308C|department15
+EEE4260C=>operation: EEE4260C|department16
+EEL4514C=>operation: EEL4514C|department17
+EEL4712C=>operation: EEL4712C|department18
+
+EEL3834(yes)->MAS3114
+EEL3834(no)->EEL3701C(no)->EEL4712C
+EEL3111C(no)->EEL3008->EEL3472C->EEL3211C->EEE3396C->EEE3308C->EEE4260C
 `;
-
+// EEL3701C(yes)->EEL3744C->EEL4657C->EEE4511C->EEL4712C
+// EEL3111C(no)->EEL3008->EEL3472C->EEL3211C->EEE3396C->EEE3308C->EEE4260C
+// EEL3111C(yes)->EEL3112->EEE3308C->EEE4260C->EEL4514C->EEL657C
         const opt = {
             'yes-text' : ' ',
             'no-text' : ' ',
@@ -59,21 +68,6 @@ COP3502(no)->COT3100->COP3530->CEN3031->COP4600
             elementText: 'none',
         }
     }
-
-    handleCodeChange(e) {
-        this.setState({
-            code: e.target.value,
-        });
-
-    }
-
-    handleOptChange(e) {
-        this.setState({
-            opt: JSON.parse(e.target.value),
-        });
-
-    }
-
     render() {
         const menu = (
             <Menu>
@@ -85,6 +79,9 @@ COP3502(no)->COT3100->COP3530->CEN3031->COP4600
                 </Menu.Item>
                 <Menu.Item>
                     <a target="_self" rel="noopener noreferrer" href="./#/EEPrereq">EE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHPrereq">MATH</a>
                 </Menu.Item>
             </Menu>
         );

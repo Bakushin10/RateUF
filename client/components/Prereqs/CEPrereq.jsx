@@ -48,8 +48,6 @@ COP3502(no)->COT3100->COP3530->CEN3031->COP4600
                 department10: { fill: 'yellow' },
                 department11: { fill: 'yellow' },
                 department12: { fill: '#59fcff' },
-
-
             },
         };
 
@@ -59,21 +57,6 @@ COP3502(no)->COT3100->COP3530->CEN3031->COP4600
             elementText: 'none',
         }
     }
-
-    handleCodeChange(e) {
-        this.setState({
-            code: e.target.value,
-        });
-
-    }
-
-    handleOptChange(e) {
-        this.setState({
-            opt: JSON.parse(e.target.value),
-        });
-
-    }
-
     render() {
         const menu = (
             <Menu>
@@ -85,6 +68,9 @@ COP3502(no)->COT3100->COP3530->CEN3031->COP4600
                 </Menu.Item>
                 <Menu.Item>
                     <a target="_self" rel="noopener noreferrer" href="./#/EEPrereq">EE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHPrereq">MATH</a>
                 </Menu.Item>
             </Menu>
         );

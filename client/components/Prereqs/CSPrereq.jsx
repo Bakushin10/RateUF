@@ -14,7 +14,7 @@ class CSPrereq extends React.Component {
 COP3502=>condition: COP3502|department1
 COP3503=>condition: COP3503|department2
 COT3100=>operation: COT3100|department3
-EEL3701C=>operation: EEL3701C|department4
+EEL3701C=>operation: EEL3701C COT4501 CDA3101|department4
 COT4501=>operation: COT4501|department5
 CDA3101=>operation: CDA3101|department6
 COP3530=>condition: COP3530|department7
@@ -22,7 +22,7 @@ CIS4301=>operation: CIS4301|department8
 CEN3031=>operation: CEN3031|department9
 COP4600=>operation: COP4600|department10
 
-COP3502(yes)->COP3503(yes)->EEL3701C->COT4501->CDA3101->COP4600
+COP3502(yes)->COP3503(yes)->EEL3701C->COP4600
 COP3502(no)->COT3100(right)->COP3530(yes)->CIS4301(right)
 COP3503(no)->COP3530
 COP3530(no)->COP4600(right)->CEN3031
@@ -55,20 +55,6 @@ COP3530(no)->COP4600(right)->CEN3031
         }
     }
 
-    handleCodeChange(e) {
-        this.setState({
-            code: e.target.value,
-        });
-
-    }
-
-    handleOptChange(e) {
-        this.setState({
-            opt: JSON.parse(e.target.value),
-        });
-
-    }
-
     render() {
         const menu = (
             <Menu>
@@ -80,6 +66,9 @@ COP3530(no)->COP4600(right)->CEN3031
                 </Menu.Item>
                 <Menu.Item>
                     <a target="_self" rel="noopener noreferrer" href="./#/EEPrereq">EE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHPrereq">MATH</a>
                 </Menu.Item>
             </Menu>
         );
