@@ -53,12 +53,18 @@ const WarningOff = styled.span`
 
   export const GetSuccessMessage = (isSuccess) =>{
     return(
-      <Card style={{ width: '30rem', backgroundColor:'lightgreen', opacity:'0.5' }} hidden={!isSuccess}>
-        <p className="success-text">
+      <Card style={{ width: '30rem', backgroundColor:'#5cd65c', opacity:'0.5', alignContent:'center' }} hidden={!isSuccess}>
+        <div className="success-text">
           <Icon type="check-circle-o"  /> Thank you! Your review was successfully submitted!
-        </p>
+        </div>
+        {
+          setTimeout(function() {
+            $('success-text').fadeOut.empty();
+          }, 5000)
+        }
       </Card>
     )
+   
   } 
 
 

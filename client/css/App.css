@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Pacifico|PT+Sans');
+
 /*client/css/App.css*/
 .button-col {
   width:100px;
@@ -90,11 +92,45 @@ fieldset{
 
 .success-text {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 3rem;
-  background-color: cadetblue;
-  color: blue;
+  font-size: 1rem;
+  text-align: center;
 }
 
+.title-here{
+  font-size: 3.5rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+
+.prof{
+  text-align: center;
+}
+
+.profName{
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.profDept{
+  text-align: center;
+}
+
+.profRateButton{
+  display: inline;
+}
+
+.profRateText{
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+
+.profQua{
+  display: inline;
+  margin-left: 4rem;
+}
 @media (max-width: 60rem) {
   .table {
     display: none;

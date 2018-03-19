@@ -11,7 +11,7 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
     }else if(dataloaded && !hasReview){
       return(
           <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={hasReview}>
-            <p className= "success-text"> Be the first to review! </p>
+            <div className= "success-text"> Be the first to review! </div>
           </Card>
       )
     }else{

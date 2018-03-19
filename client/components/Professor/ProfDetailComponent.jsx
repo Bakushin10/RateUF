@@ -10,8 +10,8 @@ export const GetMessageOrGraph = (hasReview, props, data) =>{
       return <Spinner/>;
     }else if(props.dataloaded && !hasReview){
       return(
-          <Card style={{ width: 500 }} hidden={hasReview}>
-            <p> Be the first one to review ! </p>
+          <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={hasReview}>
+            <div className="success-text"> Be the first one to review ! </div>
           </Card>
       )
     }else{

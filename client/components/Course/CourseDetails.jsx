@@ -221,7 +221,6 @@ class CourseDetails extends React.Component {
                 { GetReview(ProfFields.hasReview, this.state)}
             </div>
         </div>
-        <Foot />
       </div>
     );
   }
