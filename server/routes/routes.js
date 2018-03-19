@@ -12,7 +12,7 @@ router.route('/insertNewProfessorReview').post(function(req,res){
 
     const name = req.body.name;
     const major = req.body.major;
-    const DB_name = require('../../models/'+major+'ProfReviewModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
     var newReview = {
         overallExpe : req.body.overallExpe,
         levelOfDiffculty : req.body.levelOfDiffculty,
@@ -38,12 +38,77 @@ router.route('/insertNewProfessorReview').post(function(req,res){
         });
 })
 
+
+router.route('/updateProfessorComment').post(function(req,res){
+    const name = req.body.name;
+    const major = req.body.major;
+    const comment = {
+        comment  : req.body.comment,
+        reviewID :  req.body.id
+    }
+
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment');
+
+    DB_name.findOneAndUpdate({'name':name}, {$push:{comment:comment}},{upsert:true},
+    function(err,req){
+        if (err) {
+            console.log(err);
+            res.status(400).send(err);
+        } else {
+            console.log("Successfully created new review!\n ");
+        }
+    });
+})
+
+router.route('/updateCourseComment').post(function(req,res){
+    const coursename = req.body.name;
+    const major = req.body.major;
+    const comment = {
+        comment  : req.body.comment,
+        reviewID :  req.body.id
+    }
+
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseComment');
+
+    DB_name.findOneAndUpdate({'coursename':coursename}, {$push:{comment:comment}},{upsert:true},
+    function(err,req){
+        if (err) {
+            console.log(err);
+            res.status(400).send(err);
+        } else {
+            console.log("Successfully created new review!\n ");
+        }
+    });
+})
+
+
+router.route('/updateProfessorComment').post(function(req,res){
+    const name = req.body.name;
+    const major = req.body.major;
+    const comment = {
+        comment  : req.body.comment,
+        reviewID :  req.body.id
+    }
+
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment');
+
+    DB_name.findOneAndUpdate({'name':name}, {$push:{comment:comment}},{upsert:true},
+    function(err,req){
+        if (err) {
+            console.log(err);
+            res.status(400).send(err);
+        } else {
+            console.log("Successfully created new review!\n ");
+        }
+    });
+})
+
 //insert prof review from ProfessorForm.jsx
 router.route('/insertNewCourseReview').post(function(req,res){
 
     const courseCode = req.body.courseCode;
     const major = req.body.major;
-    const DB_name = require('../../models/'+major+'CourseReviewModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
     var newReview = {
         overallExpe : req.body.overallExpe,
         levelOfDiffculty : req.body.levelOfDiffculty,
@@ -72,9 +137,41 @@ router.route('/insertNewCourseReview').post(function(req,res){
 */
 router.get('/getAllProfByMajor',function(req, res) {
     const major = req.query.major;
-    const DB_name = require('../../models/'+major+'ProfModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfModel')
 
     DB_name.find({},function(err,professor){
+        if(err)
+            res.send(err);
+        res.json(professor);
+    })
+});
+
+/*
+ retrieve commnet by prof
+*/
+router.get('/getProfComment',function(req, res) {
+    const major = req.query.major;
+    const id = req.query.id;
+    const name = req.query.name;
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment')
+
+    DB_name.find({name : name},function(err,professor){
+        if(err)
+            res.send(err);
+        res.json(professor);
+    })
+});
+
+/*
+ retrieve commnet by course
+*/
+router.get('/getCourseComment',function(req, res) {
+    const major = req.query.major;
+    const id = req.query.id;
+    const coursename = req.query.name;
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseComment')
+
+    DB_name.find({coursename : coursename},function(err,professor){
         if(err)
             res.send(err);
         res.json(professor);
@@ -87,7 +184,7 @@ router.get('/getAllProfByMajor',function(req, res) {
 router.get('/getProfDetails',function(req, res) {
     const major = req.query.major;
     const name = req.query.name;
-    const DB_name = require('../../models/'+major+'ProfModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfModel')
 
     DB_name.findOne({name : name},function(err,professor){
         if(err)
@@ -103,7 +200,7 @@ router.get('/getProfDetails',function(req, res) {
 router.get('/getProfReviews',function(req, res) {
     const major = req.query.major;
     const name = req.query.name;
-    const DB_name = require('../../models/'+major+'ProfReviewModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
 
     DB_name.findOne({name : name},function(err,professor){
         if(err)
@@ -118,7 +215,7 @@ router.get('/getProfReviews',function(req, res) {
 */
 router.get('/getAllCoursesByMajor',function(req, res) {
     const major = req.query.major;
-    const DB_name = require('../../models/'+major+'CourseModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseModel')
 
     DB_name.find({},function(err,professor){
         if(err)
@@ -133,7 +230,7 @@ router.get('/getAllCoursesByMajor',function(req, res) {
 router.get('/getCourseDetails',function(req, res) {
     const major = req.query.major;
     const courseCode = req.query.courseCode;
-    const DB_name = require('../../models/'+major+'CourseModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseModel')
 
     DB_name.findOne({courseCode : courseCode},function(err,professor){
         if(err)
@@ -151,7 +248,7 @@ router.get('/getCourseReviews',function(req, res) {
     const courseCode = req.query.courseCode;
     console.log("getProfDetails server side");
     console.log(req.query)
-    const DB_name = require('../../models/'+major+'CourseReviewModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
 
     DB_name.findOne({courseCode : courseCode},function(err,professor){
         if(err)
@@ -165,7 +262,7 @@ router.get('/updateOverAllExpeForAProf',function(req, res) {
     const major = req.query.major;
     const name = req.query.name;
     const overallExpe = req.query.overAllExpe;
-    const DB_name = require('../../models/'+major+'ProfModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfModel')
 
     DB_name.findOneAndUpdate({name : name},{overview : overallExpe},function(err,professor){
         if(err)
@@ -179,7 +276,7 @@ router.get('/updateOverAllExpeForACourse',function(req, res) {
     const major = req.query.major;
     const courseCode = req.query.courseCode;
     const overallExpe = req.query.overAllExpe;
-    const DB_name = require('../../models/'+major+'CourseModel')
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseModel')
 
     DB_name.findOneAndUpdate({courseCode : courseCode},{overview : overallExpe},function(err,professor){
         if(err)
