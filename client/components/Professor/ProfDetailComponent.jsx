@@ -1,13 +1,14 @@
 import React from 'react';
 import Spinner from '../utility/Spinner';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
-import { List, Icon, Card } from 'antd';
+import { List, Icon, Card, Button } from 'antd';
 import { ShowArrays } from '../utility/commonJS';
+import Commnet from '../utility/reviewCommnet';
 
-export const GetMessageOrGraph = (hasReview, dataloaded, profName, major, data) =>{
-    if(!dataloaded){
+export const GetMessageOrGraph = (hasReview, props, data) =>{
+    if(!props.dataloaded){
       return <Spinner/>;
-    }else if(dataloaded && !hasReview){
+    }else if(props.dataloaded && !hasReview){
       return(
           <Card style={{ width: 500 }} hidden={hasReview}>
             <p> Be the first one to review ! </p>
@@ -16,8 +17,8 @@ export const GetMessageOrGraph = (hasReview, dataloaded, profName, major, data) 
     }else{
       return(
         <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={data}>
-        <Radar name= { profName } dataKey="prof" stroke="#e858bf" fill="#e858bf" fillOpacity={0.6}/>
-        <Radar name= { major + " Professors Average"}exoerience dataKey="average" stroke="#4e42f4" fill="#4e42f4" fillOpacity={0.6}/>
+        <Radar name= { props.profName } dataKey="prof" stroke="#e858bf" fill="#e858bf" fillOpacity={0.6}/>
+        <Radar name= { props.major + " Professors Average"}exoerience dataKey="average" stroke="#4e42f4" fill="#4e42f4" fillOpacity={0.6}/>
         <PolarGrid />
         <Legend />
         <PolarAngleAxis dataKey="subject" />
@@ -27,7 +28,8 @@ export const GetMessageOrGraph = (hasReview, dataloaded, profName, major, data) 
     }
   }
 
-export const GetReview = (hasReview, review) =>{
+export const GetReview = (hasReview, props) =>{
+
     if(hasReview){
         return(
             <List
@@ -35,7 +37,7 @@ export const GetReview = (hasReview, review) =>{
             // loading={loading}
             itemLayout="horizontal"
             // loadMore={loadMore}
-            dataSource={review}
+            dataSource={props.reviews}
             renderItem={item => (
               <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
                 <List.Item.Meta
@@ -54,6 +56,7 @@ export const GetReview = (hasReview, review) =>{
                   howIsTheProfessor : 
                   { ShowArrays(item.howIsTheProfessor) }
                 </div>
+                <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
               </List.Item>
             )}
           />

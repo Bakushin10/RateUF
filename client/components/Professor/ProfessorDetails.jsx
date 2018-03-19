@@ -7,6 +7,7 @@ import { GetMessageOrGraph, GetReview } from './ProfDetailComponent';
 import { Redirect } from 'react-router';
 import 'antd/dist/antd.css';
 import Head from '../Header-Footer/Head';
+import Foot from '../Header-Footer/Foot';
 
 class ProfessorDetails extends React.Component {
   constructor() {
@@ -24,7 +25,7 @@ class ProfessorDetails extends React.Component {
       submitSuccess : false,
       dataloaded : false,
       redirectCourse : false,
-      redirectTo : '',
+      redirectTo : ''
     };
     this.getProfInfo = this.getProfInfo.bind(this);
     this.getProfReview = this.getProfReview.bind(this);
@@ -225,10 +226,11 @@ class ProfessorDetails extends React.Component {
                 <div>Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
             <div>
-              { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.profName, this.state.major, data) }
-              { GetReview(ProfFields.hasReview, this.state.reviews)}
+              { GetMessageOrGraph(ProfFields.hasReview, this.state, data) }
+              { GetReview(ProfFields.hasReview, this.state)}
             </div>
           </div>
+          <Foot />
       </div>
     );
   }
