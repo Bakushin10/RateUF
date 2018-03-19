@@ -103,11 +103,19 @@ fieldset{
 
 
 }
-/* .profName{
+
+.prof{
+  margin-left: 4rem;
+}
+
+.profName{
   font-size: 2rem;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+}
+.profDept{
+  text-align: center;
 }
 
 .profRateButton{
@@ -118,7 +126,7 @@ fieldset{
   font-size: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: inline;
-}  */
+} 
 @media (max-width: 60rem) {
   .table {
     display: none;
