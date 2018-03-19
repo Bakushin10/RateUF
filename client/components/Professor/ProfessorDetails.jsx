@@ -211,23 +211,23 @@ class ProfessorDetails extends React.Component {
                 
                 <div className="profRateButtom">
                   <div className="profRateText">Taken this professor? </div>
-                  <br/>
                   <Button type="primary" ghost>
                     <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>
                       <Icon type="form" /> Rate this professor
                     </Link>
                   </Button>
                 </div >
-                 
+                 <br/>
                 <div className="profPrevCourse">
                   <Dropdown overlay={menu} title="previous course">
                     <Button>See previous course</Button>
                   </Dropdown>
                 </div>
-                <div>OverAll Experiense { parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-                <div>Level of Difficulty { parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
-                <div>Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
-                <div>Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
+                <br/>
+                <div className="profQua">OverAll Experiense { parseFloat(this.state.overAllExpe).toFixed(1)}</div>
+                <div className="profQua">Level of Difficulty { parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
+                <div className="profQua">Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
+                <div className="profQua">Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
             <div>
               { GetMessageOrGraph(ProfFields.hasReview, this.state, data) }
