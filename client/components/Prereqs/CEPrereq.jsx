@@ -11,23 +11,22 @@ class CEPrereq extends React.Component {
         super(props);
         const code =
             `
-COP3502=>condition: COP3502|department1
-COP3503=>condition: COP3503|department2
-COT3100=>operation: COT3100|department3
-EEL3701C=>operation: EEL3701C|department4
-EEL3744C=>operation: EEL3744C|department5
-EEL4712C=>operation: EEL4712C|department6
-EEL3923C=>operation: EEL3923C|department7
-EEL4924C=>operation: EEL4924C|department8
-COP4600=>operation: COP4600|department9
-CDA3101=>operation: CDA3101|department10
-COP3530=>operation: COP3530|department11
-CEN3031=>operation: CEN3031|department12
+COP3502=>condition: COP3502|department1:>http://localhost:8000/#/ClassDetails/CS/COP 3502
+COP3503=>condition: COP3503|department2:>http://localhost:8000/#/ClassDetails/CS/COP 3503
+COT3100=>operation: COT3100|department3:>http://localhost:8000/#/ClassDetails/CS/COT 3100
+EEL3701C=>operation: EEL3701C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL 3701
+EEL3744C=>subroutine: EEL3744C|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL 3744
+EEL4712C=>operation: EEL4712C|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL 4712
+EEL3923C=>operation: EEL3923C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL 3923
+EEL4924C=>operation: EEL4924C|department8:>http://localhost:8000/#/ClassDetails/ECE/EEL 4924
+COP4600=>operation: COP4600|department9:>http://localhost:8000/#/ClassDetails/CS/COP 4600
+CDA3101=>subroutine: CDA3101|department10:>http://localhost:8000/#/ClassDetails/CS/CDA 3101
+COP3530=>operation: COP3530|department11:>http://localhost:8000/#/ClassDetails/CS/COP 3530
+CEN3031=>subroutine: CEN3031|department12:>http://localhost:8000/#/ClassDetails/CS/CEN 3031
 
-COP3502(yes)->COP3503(yes)->EEL3701C->EEL3744C->EEL4712C->EEL3923C->EEL4924C
-COP3503(no)->CDA3101->COP3530
-COP3502(no)->COT3100->COP3530->CEN3031->COP4600
-
+COP3502(yes)->COP3503(yes)->EEL3701C->EEL3744C(right)->EEL4712C(bottom)->EEL3923C->EEL4924C
+COP3503(no)->CDA3101(right)->COP3530(bottom)
+COP3502(no)->COT3100->COP3530(bottom)->CEN3031(right)->COP4600
 `;
 
         const opt = {

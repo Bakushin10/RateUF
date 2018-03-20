@@ -5,7 +5,7 @@ import Foot from '../Header-Footer/Foot';
 import { Menu, Dropdown, Button } from 'antd';
 
 
-class CSPrereq extends React.Component {
+class CSCPrereq extends React.Component {
 
     constructor(props) {
         super(props);
@@ -59,7 +59,7 @@ COP3530(no)->COP4600(right)->CEN3031
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/CSPrereq">CS</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSCPrereq">CS</a>
                 </Menu.Item>
                 <Menu.Item>
                     <a target="_self" rel="noopener noreferrer" href="./#/CEPrereq">CE</a>
@@ -77,7 +77,7 @@ COP3530(no)->COP4600(right)->CEN3031
             <div>
                 <Head/>
                 <div align="center">
-                    <h1>Computer Science Prerequisites</h1>
+                    <h1>Computer Science, Liberal Arts Prerequisites</h1>
                     <a>**same color means you can take the classes at the same time**</a>
                     <div>
                     <Dropdown overlay = {menu} title="Change Major">
@@ -95,4 +95,4 @@ COP3530(no)->COP4600(right)->CEN3031
     }
 }
 
-export default CSPrereq;
+export default CSCPrereq;
