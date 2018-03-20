@@ -59,7 +59,30 @@ COP3530(no)->COP4600(right)->CEN3031
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/CSCPrereq">CS</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceEngineeringCatalog">CSE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceLiberalArtsCatalog">CSC</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerEngineeringCatalog">CE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/ElectricalEngineeringCatalog">EE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MathCatalog">MATH</a>
+                </Menu.Item>
+            </Menu>
+        );
+
+        const PrereqMenu= (
+            <Menu>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSEPrereq">CSE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSCPrereq">CSC</a>
                 </Menu.Item>
                 <Menu.Item>
                     <a target="_self" rel="noopener noreferrer" href="./#/CEPrereq">CE</a>
@@ -80,9 +103,12 @@ COP3530(no)->COP4600(right)->CEN3031
                     <h1>Computer Science, Liberal Arts Prerequisites</h1>
                     <a>**same color means you can take the classes at the same time**</a>
                     <div>
-                    <Dropdown overlay = {menu} title="Change Major">
-                        <Button >Change Degree Prereqs</Button>
-                    </Dropdown>
+                        <Dropdown overlay = {menu} title="Change Major">
+                            <Button >Change Degree Catalog</Button>
+                        </Dropdown>
+                        <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
+                            <Button >Flowchart of Prerequisites</Button>
+                        </Dropdown>
                     </div>
                     <Flowchart
                         chartCode={code}

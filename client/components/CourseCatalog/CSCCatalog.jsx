@@ -24,6 +24,25 @@ class cscCatalog extends React.Component {
                 </Menu.Item>
             </Menu>
         );
+        const PrereqMenu= (
+            <Menu>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSEPrereq">CSE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSCPrereq">CSC</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CEPrereq">CE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/EEPrereq">EE</a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHPrereq">MATH</a>
+                </Menu.Item>
+            </Menu>
+        );
         const semester1 = [{
             title: 'Semester 1',
             dataIndex: 'course',
@@ -292,6 +311,9 @@ class cscCatalog extends React.Component {
                 <h3>Course Catalog</h3>
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Degree Catalog</Button>
+                </Dropdown>
+                <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
+                    <Button >Flowchart of Prerequisites</Button>
                 </Dropdown>
                 <Table style={{ width: '1000px' }} columns={semester1} dataSource={data1} />
                 <Table style={{ width: '1000px' }} columns={semester2} dataSource={data2} />
