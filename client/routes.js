@@ -2,6 +2,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
+
 import ProfessorForm from './components/Professor/ProfessorForm';
 import Professor from './components/Professor/Professor';
 import ProfessorDetails from './components/Professor/ProfessorDetails';
@@ -13,6 +14,11 @@ import CSCPrereq from './components/Prereqs/CSCPrereq';
 import CEPrereq from './components/Prereqs/CEPrereq';
 import EEPrereq from './components/Prereqs/EEPrereq';
 import MATHPrereq from './components/Prereqs/MATHPrereq';
+import cseCatalog from './components/CourseCatalog/CSECatalog';
+import cscCatalog from './components/CourseCatalog/CSCCatalog';
+import ceCatalog from './components/CourseCatalog/CECatalog';
+import eeCatalog from './components/CourseCatalog/EECatalog';
+import mathCatalog from './components/CourseCatalog/MATHCatalog';
 
 export const Routes = () => (
     <Switch>
@@ -27,8 +33,13 @@ export const Routes = () => (
       <Route path='/CEPrereq' component={CEPrereq} />
       <Route path='/EEPrereq' component={EEPrereq} />
       <Route path='/MATHPrereq' component={MATHPrereq} />
-
+      <Route path='/ComputerScienceEngineeringCatalog' component={cseCatalog} />
+      <Route path='/ComputerScienceLiberalArtsCatalog' component={cscCatalog} />
+      <Route path='/ComputerEngineeringCatalog' component={ceCatalog} />
+      <Route path='/ElectricalEngineeringCatalog' component={eeCatalog} />
+      <Route path='/MathCatalog' component={mathCatalog} />
       <Route component={FourOhFour} />
+
     </Switch>
 );
 
