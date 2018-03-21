@@ -155,6 +155,9 @@ router.get('/getProfComment',function(req, res) {
     const name = req.query.name;
     const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment')
 
+    console.log("major")
+    console.log(major)
+    
     DB_name.find({name : name},function(err,professor){
         if(err)
             res.send(err);
