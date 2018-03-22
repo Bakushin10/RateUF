@@ -23,26 +23,38 @@ class ReviewComment extends React.Component {
 
     componentDidMount(){
         let self = this;
-        if(this.props.type === "professor"){
-            axios.get('/getProfComment',{
-                params:{
-                    id : this.props.id,
-                    major : this.props.major,
-                    name : this.props.name
-                }
-            }).then(function(response) {
-                self.commentToShow(response.data[0].comment)
-            });
-        }else{
-            axios.get('/getCourseComment',{
-                params:{
-                    id : this.props.id,
-                    major : this.props.major,
-                    name : this.props.name
-                }
-            }).then(function(response) {
-                self.commentToShow(response.data[0].comment)
-            });
+        console.log("major")
+        console.log(this.props.major)
+        console.log(this.props.name)
+        
+            /*
+            
+            DB error when this.props not passed correctly 
+        
+        
+            */
+        if(this.props.major !== null && this.props.major !== 'undefined'){
+            if(this.props.type === "professor"){
+                axios.get('/getProfComment',{
+                    params:{
+                        id : this.props.id,
+                        major : this.props.major,
+                        name : this.props.name
+                    }
+                }).then(function(response) {
+                    self.commentToShow(response.data[0].comment)
+                });
+            }else{
+                axios.get('/getCourseComment',{
+                    params:{
+                        id : this.props.id,
+                        major : this.props.major,
+                        name : this.props.name
+                    }
+                }).then(function(response) {
+                    self.commentToShow(response.data[0].comment)
+                });
+            }
         }
 
     }
