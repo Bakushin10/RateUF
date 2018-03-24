@@ -21,6 +21,7 @@ class ProfessorForm extends React.Component {
       facilitationOfLearning: 0,
       wouldTakeAgain: 'Yes', //by default
       howIsTheProfessor : [],
+      tipsForSuccess : [],
       course : [],
       extraComment: '',
       courseTakenFor : '',
@@ -39,7 +40,9 @@ class ProfessorForm extends React.Component {
     this.howIsTheProfessorOnChange = this.howIsTheProfessorOnChange.bind(this);
     this.getHowIstheProfessorOption = this.getHowIstheProfessorOption.bind(this);
     this.courseTakenForOnChange = this.courseTakenForOnChange.bind(this);
+    this.TipsForSuccessOnChange = this.TipsForSuccessOnChange.bind(this);
     this.getAllCoursesByMajor = this.getAllCoursesByMajor.bind(this);
+    this.getTipsForSuccess = this.getTipsForSuccess.bind(this);
   }
 
   overAllExpeOnChange(value) {
@@ -63,17 +66,19 @@ class ProfessorForm extends React.Component {
 
   extraCommentOnChange(e) {
     this.setState({ extraComment: e.target.value });
-    console.log(this.state.extraComment);
   }
 
   howIsTheProfessorOnChange(value){
     this.setState({howIsTheProfessor : value})
-    console.log(this.state.howIsTheProfessor);
+  }
+
+  TipsForSuccessOnChange(value){
+    this.setState({tipsForSuccess : value})
+    console.log(this.state.tipsForSuccess);
   }
 
   courseTakenForOnChange(value){
     this.setState({courseTakenFor : value})
-    console.log(this.state.courseTakenFor)
   }
 
   componentDidMount(){
@@ -104,7 +109,8 @@ class ProfessorForm extends React.Component {
           extraComment: this.state.extraComment,
           courseTakenFor : this.state.courseTakenFor,
           major: this.props.match.params.major,
-          name: this.props.match.params.profName
+          name: this.props.match.params.profName,
+          tipsForSuccess : this.state.tipsForSuccess
         }),
         {
           headers: {
@@ -129,6 +135,7 @@ class ProfessorForm extends React.Component {
       this.state.facilitationOfLearning === 0 ||
       this.state.howIsTheProfessor.length === 0 ||
       this.state.courseTakenFor.length === 0 ||
+      this.state.tipsForSuccess.length === 0 ||
       this.state.extraComment === ''
     ) {
       this.setState({ hasError: true }); //trigger the error message
@@ -150,6 +157,19 @@ class ProfessorForm extends React.Component {
           ))
         }
     </Select>
+    )
+  }
+
+  getTipsForSuccess(){
+    return(
+      <Select 
+        mode="multiple" 
+        placeholder="How is the Professor ?"
+        onChange={this.TipsForSuccessOnChange}
+      >
+        <Select.Option value="option1">option1</Select.Option>
+        <Select.Option value="option2">option2</Select.Option>
+      </Select>
     )
   }
 
@@ -204,6 +224,18 @@ class ProfessorForm extends React.Component {
             <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheProfessor, 'How is the Professor')}>
                 { this.getHowIstheProfessorOption()}
             </FormItem>
+
+
+
+
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.tipsForSuccess, 'Tips for success')}>
+                { this.getTipsForSuccess()}
+            </FormItem>
+
+
+
+
+
             <FormItem {...formItemLayout} label={ GetLabel(this.state.overallExpe, 'Overall Experices')}>
               <Slider
                 onChange={this.overAllExpeOnChange}
