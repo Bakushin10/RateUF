@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Card } from 'antd';
+import { Icon, Alert} from 'antd';
 import styled from 'styled-components';
 import Spinner from './Spinner';
 
@@ -53,18 +53,38 @@ const WarningOff = styled.span`
 
   export const GetSuccessMessage = (isSuccess) =>{
     return(
-      <Card style={{ width: '30rem', backgroundColor:'#5cd65c', opacity:'0.5', alignContent:'center' }} hidden={!isSuccess}>
-        <div className="success-text">
-          <Icon type="check-circle-o"  /> Thank you! Your review was successfully submitted!
-        </div>
-        {
-          setTimeout(function() {
-            $('success-text').fadeOut.empty();
-          }, 5000)
-        }
-      </Card>
+      <div hidden={!isSuccess}>
+        <Alert
+          style={{ width: '60%', 'margin-left':'20%','margin-top': '1%', alignContent:'center' }}
+          message="Thank you!"
+          description="Your review was successfully submitted!"
+          type="success"
+          showIcon
+          >
+          {/* {
+            setTimeout(function() {
+              $('success-text').fadeOut.empty();
+            }, 5000)
+          } */}
+        </Alert>
+      </div>
     )
-   
-  } 
+  }
+
+  export const GetErrorMessage = (isSuccess) =>{
+    return(
+      <div hidden={!isSuccess}>
+        <Alert
+          style={{ width: '60%', 'margin-left':'20%', alignContent:'center' }}
+          message="Input Error"
+          type="warning"
+          description="Please check your inputs again."
+          type="error"
+          showIcon
+          >
+        </Alert>
+      </div>
+    )
+  }
 
 

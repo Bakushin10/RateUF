@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
+import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card} from 'antd';
 import { Redirect } from 'react-router';
-import { GetSliderMark, GetLabel } from '../utility/commonJS'
+import { GetSliderMark, GetLabel, GetErrorMessage } from '../utility/commonJS'
 
 import Head from '../Header-Footer/Head';
 
@@ -209,13 +209,7 @@ class ProfessorForm extends React.Component {
       <Head />
       <div className="button-center">
         <h1>{profName}</h1>
-        <div>
-          <Card style={{ width: 500 }} hidden={!hasError}>
-            {' '}
-            {/*only show when the input errors are detected */}
-            <p> <Icon type="exclamation-circle-o" /> Please Check your inputs ! </p>
-          </Card>
-        </div>
+        {GetErrorMessage(hasError)} {/* input error check*/}
         <div align="center">
           <Form>
             <FormItem {...formItemLayout} label={ GetLabel(this.state.courseTakenFor, 'What class did you take this professor for ?')}>
@@ -224,18 +218,9 @@ class ProfessorForm extends React.Component {
             <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheProfessor, 'How is the Professor')}>
                 { this.getHowIstheProfessorOption()}
             </FormItem>
-
-
-
-
             <FormItem {...formItemLayout} label={ GetLabel(this.state.tipsForSuccess, 'Tips for success')}>
                 { this.getTipsForSuccess()}
             </FormItem>
-
-
-
-
-
             <FormItem {...formItemLayout} label={ GetLabel(this.state.overallExpe, 'Overall Experices')}>
               <Slider
                 onChange={this.overAllExpeOnChange}
