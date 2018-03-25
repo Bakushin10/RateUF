@@ -3,7 +3,7 @@ import Spinner from '../utility/Spinner';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import { List, Icon, Card } from 'antd';
 import { ShowArrays } from '../utility/commonJS';
-import Commnet from '../utility/reviewCommnet';
+import Commnet from '../utility/ReviewCommnet';
 
 export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data) =>{
     if(!dataloaded){
