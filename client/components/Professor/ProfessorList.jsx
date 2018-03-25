@@ -35,18 +35,15 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
             >
             <List
             itemLayout="vertical"
-            size="large"
+            size="small"
             pagination={pagination}
             dataSource={professorToShow}
             renderItem={item => (
                 <Link to={`/ProfessorDetails/${item.major}/${item.name}`}>
-                    <ProfessorName>{item.name}</ProfessorName>
-                    <Slider
-                        className="ant-slider-disabled" /*.ant-slider-disabled*/
-                        value={item.overview}
-                        disabled={true}
-                        marks={GetSliderMark()}
-                    />
+                    <ProfessorName style={{fontSize:'1rem'}}>{item.name}</ProfessorName>
+                    <div className="list-rating">
+                        {item.overview} / 100
+                    </div>
                     <List.Item
                     xs={9}
                     md={9}
