@@ -133,6 +133,47 @@ router.route('/insertNewCourseReview').post(function(req,res){
         });
 })
 
+//update previous info 
+router.route('/updatePreviousHistory').post(function(req,res){
+
+    const major = req.body.major;
+    const name = req.body.name;
+    const courseName = req.body.courseName;
+    const courseCode = req.body.courseCode;
+    const previousProfModel = require('../../models/'+major+'Model/'+major+'CoursePreviousProfModel')
+    const previousCourseModel = require('../../models/'+major+'Model/'+major+'ProfPreviousCourseModel')
+
+    var previousProf = {
+        name : name
+    }
+    var prevousCourse = {
+        courseName : courseName,
+        courseCode : courseCode
+    }
+ 
+    //update previous Prof 
+    previousProfModel.findOneAndUpdate({'courseCode':courseCode},{$push:{ProfPreviouslyTaught:previousProf}},{upsert:true},
+        function(err,req){
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);
+            } else {
+                console.log("Successfully updated previous Prof!\n ");
+            }
+        });
+
+    //update previous course
+    previousCourseModel.findOneAndUpdate({'name':name},{$push:{coursePreviouslyTaught:prevousCourse}},{upsert:true},
+        function(err,req){
+            if (err) {
+                console.log(err);
+                res.status(400).send(err);
+            } else {
+                console.log("Successfully updated previous course!\n ");
+            }
+        });
+})
+
 /*
  retrieve array of all prof by selected major 
 */
@@ -250,7 +291,7 @@ router.get('/getCourseDetails',function(req, res) {
 router.get('/getCourseReviews',function(req, res) {
     const major = req.query.major;
     const courseCode = req.query.courseCode;
-    console.log("getProfDetails server side");
+    console.log("getCourseReviews server side");
     console.log(req.query)
     const DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
 
@@ -258,6 +299,37 @@ router.get('/getCourseReviews',function(req, res) {
         if(err)
             res.send(err);
         console.log(professor)
+        res.json(professor);
+    })
+});
+
+/*
+ retrieve array of all prof by selected major 
+*/
+router.get('/getPreviousProf',function(req, res) {
+    const major = req.query.major;
+    const courseCode = req.query.courseCode
+    const DB_name = require('../../models/'+major+'Model/'+major+'CoursePreviousProfModel')
+
+    DB_name.findOne({courseCode : courseCode},function(err,professor){
+        if(err)
+            res.send(err);
+        console.log(professor)
+        res.json(professor);
+    })
+});
+
+/*
+ retrieve array of all prof by selected major 
+*/
+router.get('/getPreviousCourse',function(req, res) {
+    const major = req.query.major;
+    const name = req.query.name
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfPreviousCourseModel')
+
+    DB_name.findOne({name : name},function(err,professor){
+        if(err)
+            res.send(err);
         res.json(professor);
     })
 });

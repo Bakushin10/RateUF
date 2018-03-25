@@ -118,11 +118,20 @@ class ProfessorForm extends React.Component {
           }
         }
       )
-      .then(function(response) {
-        //go to submit successfully page
-        console.log(response.data);
-      });
-      
+
+      axios.post('/updatePreviousHistory',
+        querystring.stringify({
+          name : this.props.match.params.profName,
+          major: this.props.match.params.major,
+          courseCode : this.state.courseTakenFor,
+          courseName : ""
+        }),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+      )
 
       this.setState({submitted : true})
   }

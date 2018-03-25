@@ -30,7 +30,6 @@ class CourseDetails extends React.Component {
     };
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
-    this.getPreviousProf = this.getPreviousProf.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this)
     this.getMenuItemForPreviousProf = this.getMenuItemForPreviousProf.bind(this);
   }
@@ -57,9 +56,24 @@ class CourseDetails extends React.Component {
         }
       })
       .then(function(response) {
-        console.log('getCourseReviews');
-        console.log(response.data.review);
         self.setState({ reviews: response.data.review });
+      });
+
+    axios.get('/getPreviousProf', {
+        params: {
+          major: major,
+          courseCode : courseCode
+        }
+      })
+      .then(function(response) {
+        //remove dupulicate from array
+        console.log(response.data)
+        var noDuplicate = response.data.ProfPreviouslyTaught.filter(function(elem, index, self){
+          return index === self.indexOf(elem);
+        })
+        for(var i = 0;i<noDuplicate.length ;i++){
+          self.setState({ previousProf: self.state.previousProf.concat([noDuplicate[i].name])});
+        }
         self.setState({ dataloaded : true });
       });
 
@@ -97,23 +111,6 @@ class CourseDetails extends React.Component {
     this.setState({ redirectTo : e.keyPath[0] })
     this.setState({ redirectCourse : true })
     //return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${e.keyPath[0]}`}/>);
-  }
-
-  getPreviousProf(){
-    for(var i = 0;i< this.state.reviews.length;i++){
-      let hasValue = false;
-      for(var j = 0; j < this.state.previousProf.length ; j++){
-        if((this.state.previousProf[j] === this.state.reviews[i].whoTookWith) || 
-            this.state.previousProf[j].localeCompare("Don't remember")){
-          hasValue = true;
-          j = this.state.previousProf.length;//end loop
-        }
-      }
-      if(!hasValue){
-        const item = this.state.previousProf;
-        item[i] = this.state.reviews[i].whoTookWith;
-      }
-    }
   }
 
   getMenuItemForPreviousProf(){
@@ -171,7 +168,6 @@ class CourseDetails extends React.Component {
     // get values for graph if there are any reviews
     if(typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
       this.getFieldValueForProfessor(ProfFields);
-      this.getPreviousProf();
       menu = (
         this.getMenuItemForPreviousProf()
       );

@@ -82,26 +82,40 @@ class ClassForm extends React.Component {
 
   insertNewCourseReview() {
     axios.post('/insertNewCourseReview',
-        querystring.stringify({
-          overallExpe: this.state.overallExpe,
-          levelOfDiffculty: this.state.levelOfDiffculty,
-          extraComment: this.state.extraComment,
-          knowBeforeCourse: this.state.knowBeforeCourse,
-          howIsTheClass: this.state.howIsTheClass, 
-          major: this.props.match.params.major,
-          courseCode: this.props.match.params.courseCode,
-          whoTookWith : this.state.whoTookWith
-        }),
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
+      querystring.stringify({
+        overallExpe: this.state.overallExpe,
+        levelOfDiffculty: this.state.levelOfDiffculty,
+        extraComment: this.state.extraComment,
+        knowBeforeCourse: this.state.knowBeforeCourse,
+        howIsTheClass: this.state.howIsTheClass, 
+        major: this.props.match.params.major,
+        courseCode: this.props.match.params.courseCode,
+        whoTookWith : this.state.whoTookWith
+      }),
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
-      )
-      .then(function(response) {
-        //go to submit successfully page
-        console.log(response.data);
-      });
+      }
+    )
+    
+    axios.post('/updatePreviousHistory',
+      querystring.stringify({
+        name : this.state.whoTookWith,
+        major: this.props.match.params.major,
+        courseCode : this.props.match.params.courseCode,
+        courseName : this.props.match.params.courseName
+      }),
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    )
+    .then(function(response) {
+      //go to submit successfully page
+      console.log(response.data);
+    });
 
       this.setState({submitted : true})
   }
