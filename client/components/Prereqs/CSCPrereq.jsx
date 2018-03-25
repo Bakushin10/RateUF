@@ -100,7 +100,8 @@ COP3530(no)->COP4600(right)->CEN3031
             <div>
                 <Head/>
                 <div align="center">
-                    <h1>Computer Science, Liberal Arts Prerequisites</h1>
+                    <h1>Computer Science, Liberal Arts</h1>
+                    <h3>Prerequisites</h3>
                     <a>**same color means you can take the classes at the same time**</a>
                     <div>
                         <Dropdown overlay = {menu} title="Change Major">

@@ -113,7 +113,8 @@ EEL3111C(no)->EEL3008->EEL3472C->EEL3211C->EEE3396C->EEE3308C->EEE4260C
             <div>
                 <Head/>
                 <div align="center">
-                    <h1>Computer Engineering Prerequisites</h1>
+                    <h1>Computer Engineering</h1>
+                    <h3>Prerequisites</h3>
                     <a>**same color means you can take the classes at the same time**</a>
                     <div>
                         <Dropdown overlay = {menu} title="Change Major">

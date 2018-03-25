@@ -101,7 +101,8 @@ COP3502(no)->COT3100->COP3530(bottom)->CEN3031(right)->COP4600
             <div>
                 <Head/>
                 <div align="center">
-                    <h1>Computer Engineering Prerequisites</h1>
+                    <h1>Computer Engineering</h1>
+                    <h3>Prerequisites</h3>
                     <div align="left">
                         <a>**same color means you can take the classes at the same time**</a>
 
