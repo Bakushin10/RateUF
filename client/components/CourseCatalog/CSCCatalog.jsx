@@ -8,19 +8,19 @@ class cscCatalog extends React.Component {
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceEngineeringCatalog">CSE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSECatalog">CSE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceLiberalArtsCatalog">CSC</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSLACatalog">CSC</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerEngineeringCatalog">CE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CECatalog">CE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ElectricalEngineeringCatalog">EE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/EECatalog">EE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/MathCatalog">MATH</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHCatalog">MATH</a>
                 </Menu.Item>
             </Menu>
         );

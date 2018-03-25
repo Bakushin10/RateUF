@@ -15,11 +15,11 @@ import CSCPrereq from './components/Prereqs/CSCPrereq';
 import CEPrereq from './components/Prereqs/CEPrereq';
 import EEPrereq from './components/Prereqs/EEPrereq';
 import MATHPrereq from './components/Prereqs/MATHPrereq';
-import cseCatalog from './components/CourseCatalog/CSECatalog';
-import cscCatalog from './components/CourseCatalog/CSCCatalog';
-import ceCatalog from './components/CourseCatalog/CECatalog';
-import eeCatalog from './components/CourseCatalog/EECatalog';
-import mathCatalog from './components/CourseCatalog/MATHCatalog';
+import CSECatalog from './components/CourseCatalog/CSECatalog';
+import CSCCatalog from './components/CourseCatalog/CSCCatalog';
+import CECatalog from './components/CourseCatalog/CECatalog';
+import EECatalog from './components/CourseCatalog/EECatalog';
+import MATHCatalog from './components/CourseCatalog/MATHCatalog';
 
 export const Routes = () => (
     <Switch>
@@ -35,13 +35,12 @@ export const Routes = () => (
       <Route path='/CEPrereq' component={CEPrereq} />
       <Route path='/EEPrereq' component={EEPrereq} />
       <Route path='/MATHPrereq' component={MATHPrereq} />
-      <Route path='/ComputerScienceEngineeringCatalog' component={cseCatalog} />
-      <Route path='/ComputerScienceLiberalArtsCatalog' component={cscCatalog} />
-      <Route path='/ComputerEngineeringCatalog' component={ceCatalog} />
-      <Route path='/ElectricalEngineeringCatalog' component={eeCatalog} />
-      <Route path='/MathCatalog' component={mathCatalog} />
+      <Route path='/CSECatalog' component={CSECatalog} />
+      <Route path='/CSLACatalog' component={CSCCatalog} />
+      <Route path='/CECatalog' component={CECatalog} />
+      <Route path='/EECatalog' component={EECatalog} />
+      <Route path='/MATHCatalog' component={MATHCatalog} />
       <Route component={FourOhFour} />
-
     </Switch>
 );
 

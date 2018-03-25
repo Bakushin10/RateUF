@@ -27,7 +27,7 @@ export default class Home extends React.Component {
               </a>
             </Col>
             <Col span={3} offset={2}>
-            <a href="/#/ComputerScienceEngineeringCatalog">
+            <a href="/#/CSECatalog">
               <Button type="default" className="botones" size="large" ghost>
                 Degree Outline
               </Button>
