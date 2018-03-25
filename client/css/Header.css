@@ -22,7 +22,6 @@
 }
 
 .items {
-  color: lightskyblue;
   font-size: 1.25rem;
   text-align: center;
   padding-left: 2rem;
@@ -43,4 +42,34 @@
 .foott{
   color: black;
 
+}
+
+.mobile-head{
+  display: none;
+}
+
+@media (max-width: 40rem) {
+  .web-head{
+    display: none;
+  }
+
+  .mobile-head{
+    display: list-item;
+    width: 100%;
+    height: 3rem;
+    background-color: black;
+    display: none;
+  }
+
+  .special-text{
+    font-family: 'Pacifico', cursive;
+    color: rgb(252, 137, 84);
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .burger{
+    margin-left: 80%;
+  }
+  
 }

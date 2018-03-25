@@ -6,6 +6,7 @@ export default class Head extends React.Component {
   render() {
     return (
       <Layout>
+        <div className="web-head">
           <Menu theme="dark" mode="horizontal" style={{ lineHeight: '5rem' }}>
           
           
@@ -27,6 +28,17 @@ export default class Head extends React.Component {
               <a className="items">Degree Outline</a>
             </Menu.Item>
           </Menu>
+        </div>
+          
+        {/* <div className="mobile-head">
+          <a className="special-text" href="/#">
+              RateUF
+          </a>
+          <a href="/#">
+            <img src="/css/img/vegan-burger.png" className="burger" /> 
+          </a>
+          
+        </div> */}
       </Layout>
     );
   }

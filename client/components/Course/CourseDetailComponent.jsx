@@ -10,7 +10,7 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
       return <Spinner/>;
     }else if(dataloaded && !hasReview){
       return(
-          <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={hasReview}>
+          <Card style={{ width: '30rem', backgroundColor:'#3399ff', opacity:'0.5' }} hidden={hasReview}>
             <div className= "success-text"> Be the first to review! </div>
           </Card>
       )
@@ -23,7 +23,7 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
         <Legend />
         <PolarAngleAxis dataKey="subject" />
         <PolarRadiusAxis angle={90} domain={[0, 100]}/>
-        </RadarChart>
+        </RadarChart> 
       )
     }
   }
@@ -31,6 +31,13 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
   export const GetReview = (hasReview, props) =>{
     if(hasReview){
         return(
+          <div className="hold-reviews">
+            {/* <div className="hold-categories">
+              <div className="hold-tookwith">Took Course With</div>
+              <div className="hold-knowbefore">Should Know Before Course</div>
+              <div className="hold-howsclass">How is the Course?</div>
+              <div className="hold-extracomment">Comment</div>
+            </div> */}
             <List
             className="demo-loadmore-list"
             // loading={loading}
@@ -38,28 +45,54 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
             // loadMore={loadMore}
             dataSource={props.reviews}
             renderItem={item => (
+              <div className="this-review">
               <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
-                <List.Item.Meta
+                <div className="this-review-ratings">
+                  <div className="this-overall">
+                    Overall Experience:
+                    <br/>
+                    { (item.overallExpe) } / 100
+                  </div>
+                  <br/>
+                  <div className="this-difficulty">
+                    Level of Difficulty:
+                    <br/>
+                    { (item.levelOfDiffculty) } / 100
+                  </div>
+                </div>
+
+                <div className="this-review-comments">
+                  <div className="this-tookwith">
+                    Took With: 
+                    <br/>{item.whoTookWith}
+                  </div>
+                  <br/>
+                  <div className="this-knowbefore">
+                     Know Before: { ShowArrays(item.knowBeforeCourse) }
+                  </div>
+                  <br/>
+                  <div className="this-howsclass">
+                    Class Overview:  { ShowArrays(item.howIsTheClass) }
+                  </div>
+                  <div className="this-review-extracomment">
+                  Comment:
+                  <List.Item.Meta
                   // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
                   //title={<a href="https://ant.design">{item.name.last}</a>}
                   description = {item.extraComment}
-                />
-                <div>
-                    knowBeforeCourse:
-                    { ShowArrays(item.knowBeforeCourse) }
+                  />
+                  </div>
                 </div>
-                <div>
-                    howIsTheClass:
-                    { ShowArrays(item.howIsTheClass) }
-                </div>
-                <div>
-                    Prof : 
-                    {item.whoTookWith}
-                </div>
+                <br/>
+                <div className="this-commnet">
+                
                 <Commnet name = {props.courseCode} major = {props.major} id = {item._id} type = {"course"}/>
+                </div>
               </List.Item>
+              </div>
             )}
           />
+          </div>
         )
     }
 }

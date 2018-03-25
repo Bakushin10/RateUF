@@ -21,13 +21,13 @@ const WarningOff = styled.span`
         ),
         50: (
           <div>
-            <Icon type="meh-o" style={{ fontSize: 15, color: '#08c', fontColor: 'black' }} />
+            <Icon type="meh-o" style={{ fontSize: 15, color: '#08c', fontColor: 'black'}} />
               <div>good</div>
           </div>
         ),
         100: (
           <div>
-            <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987',fontColor: 'black' }} />
+            <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987',fontColor: 'black'}} />
               <div>excellent</div>
           </div>
         )
