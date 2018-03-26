@@ -13,20 +13,22 @@ class CEPrereq extends React.Component {
             `
 COP3502=>condition: COP3502|department1:>http://localhost:8000/#/ClassDetails/CS/COP 3502
 COP3503=>condition: COP3503|department2:>http://localhost:8000/#/ClassDetails/CS/COP 3503
-COT3100=>operation: COT3100|department3:>http://localhost:8000/#/ClassDetails/CS/COT 3100
-EEL3701C=>operation: EEL3701C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL 3701
-EEL3744C=>subroutine: EEL3744C|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL 3744
-EEL4712C=>operation: EEL4712C|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL 4712
-EEL3923C=>operation: EEL3923C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL 3923
-EEL4924C=>operation: EEL4924C|department8:>http://localhost:8000/#/ClassDetails/ECE/EEL 4924
-COP4600=>operation: COP4600|department9:>http://localhost:8000/#/ClassDetails/CS/COP 4600
-CDA3101=>subroutine: CDA3101|department10:>http://localhost:8000/#/ClassDetails/CS/CDA 3101
-COP3530=>operation: COP3530|department11:>http://localhost:8000/#/ClassDetails/CS/COP 3530
-CEN3031=>subroutine: CEN3031|department12:>http://localhost:8000/#/ClassDetails/CS/CEN 3031
+COT3100=>condition: COT3100|department3:>http://localhost:8000/#/ClassDetails/CS/COT 3100
+EEL3701C=>condition: EEL3701C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL 3701
+EEL3744C=>condition: EEL3744C|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL 3744
+EEL4712C=>condition: EEL4712C|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL 4712
+EEL3923C=>condition: EEL3923C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL 3923
+EEL4924C=>condition: EEL4924C|department8:>http://localhost:8000/#/ClassDetails/ECE/EEL 4924
+COP4600=>condition: COP4600|department9:>http://localhost:8000/#/ClassDetails/CS/COP 4600
+CDA3101=>condition: CDA3101|department10:>http://localhost:8000/#/ClassDetails/CS/CDA 3101
+COP3530=>condition: COP3530|department11:>http://localhost:8000/#/ClassDetails/CS/COP 3530
+CEN3031=>condition: CEN3031|department12:>http://localhost:8000/#/ClassDetails/CS/CEN 3031
 
-COP3502(yes)->COP3503(yes)->EEL3701C->EEL3744C(right)->EEL4712C(bottom)->EEL3923C->EEL4924C
-COP3503(no)->CDA3101(right)->COP3530(bottom)
-COP3502(no)->COT3100->COP3530(bottom)->CEN3031(right)->COP4600
+COP3502(yes)->COP3503(yes)->EEL3701C(yes)->EEL3744C(no)->EEL3923C
+EEL3701C(no)->EEL4712C(yes)->EEL3923C(yes)->EEL4924C
+COP3502(no)->COT3100(yes)->COP3530(yes)->CEN3031
+COP3503(no)->COP3530(no)->CDA3101(yes)->COP4600
+
 `;
 
         const opt = {
@@ -43,7 +45,7 @@ COP3502(no)->COT3100->COP3530(bottom)->CEN3031(right)->COP4600
                 department6: { fill: 'white' },
                 department7: { fill: '#ff9e49' },
                 department8: { fill: '#ff644f' },
-                department9: { fill: '#59fcff' },
+                department9: { fill: 'blue' },
                 department10: { fill: 'yellow' },
                 department11: { fill: 'yellow' },
                 department12: { fill: '#59fcff' },
@@ -107,7 +109,7 @@ COP3502(no)->COT3100->COP3530(bottom)->CEN3031(right)->COP4600
                         <a>**same color means you can take the classes at the same time**</a>
 
                         <br/>
-                        <a>**an arrow down means it has a prerequisite**</a>
+                        <a>**a change in color means it has a prerequisite**</a>
                     </div>
                         <div><Dropdown overlay = {menu} title="Change Major">
                             <Button >Change Degree Catalog</Button>
