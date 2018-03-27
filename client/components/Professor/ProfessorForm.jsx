@@ -176,8 +176,14 @@ class ProfessorForm extends React.Component {
         placeholder="How is the Professor ?"
         onChange={this.TipsForSuccessOnChange}
       >
-        <Select.Option value="option1">option1</Select.Option>
-        <Select.Option value="option2">option2</Select.Option>
+        <Select.Option value="read text boks">Read text Books</Select.Option>
+        <Select.Option value="attend lectures">attend lectures</Select.Option>
+        <Select.Option value="go to office hours">go to office hours</Select.Option>
+        <Select.Option value="do HW">do HW</Select.Option>
+        <Select.Option value="do practice exams">do practice exams</Select.Option>
+        <Select.Option value="chegg">chegg</Select.Option>
+        <Select.Option value="Course Hero">Course Hero</Select.Option>
+        <Select.Option value="Walfram Alpha">Walfram Alpha</Select.Option>
       </Select>
     )
   }
