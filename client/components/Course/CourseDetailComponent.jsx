@@ -31,6 +31,7 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
   export const GetReview = (hasReview, props) =>{
     if(hasReview){
         return(
+          <div>
           <div className="hold-reviews">
             {/* <div className="hold-categories">
               <div className="hold-tookwith">Took Course With</div>
@@ -45,53 +46,63 @@ export const GetMessageOrGraph = (hasReview, dataloaded, courseCode, major, data
             // loadMore={loadMore}
             dataSource={props.reviews}
             renderItem={item => (
+              <div>
               <div className="this-review">
               <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
+              
                 <div className="this-review-ratings">
                   <div className="this-overall">
-                    Overall Experience:
-                    <br/>
+                    <div className="underline">Overall Experience: </div>
                     { (item.overallExpe) } / 100
                   </div>
                   <br/>
                   <div className="this-difficulty">
-                    Level of Difficulty:
-                    <br/>
+                  <div className="underline">Level of Difficulty: </div>
                     { (item.levelOfDiffculty) } / 100
                   </div>
                 </div>
 
                 <div className="this-review-comments">
                   <div className="this-tookwith">
-                    Took With: 
-                    <br/>{item.whoTookWith}
+                  <div className="underline"> Took With:  </div>
+                    {item.whoTookWith}
                   </div>
                   <br/>
                   <div className="this-knowbefore">
-                     Know Before: { ShowArrays(item.knowBeforeCourse) }
+                  <div className="underline"> Know Before:</div>
+                   { ShowArrays(item.knowBeforeCourse) }
                   </div>
                   <br/>
                   <div className="this-howsclass">
-                    Class Overview:  { ShowArrays(item.howIsTheClass) }
+                  <div className="underline"> Class Overview: </div>
+                  { ShowArrays(item.howIsTheClass) }
                   </div>
-                  <div className="this-review-extracomment">
-                  Comment:
-                  <List.Item.Meta
-                  // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                  //title={<a href="https://ant.design">{item.name.last}</a>}
-                  description = {item.extraComment}
-                  />
                   </div>
+
+                  <div className="this-review-commentscomments">
+                    <div className="this-review-extracomment">
+                    <div className="underline"> User Comment: </div>
+                    <List.Item.Meta
+                    // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    //title={<a href="https://ant.design">{item.name.last}</a>}
+                    
+                    description = {item.extraComment}
+                    />
+                    </div>
+                    <br/>
+                    <div className="hold-commnets">
+                      <Commnet name = {props.courseCode} major = {props.major} id = {item._id} type = {"course"}/>
+                    </div>
                 </div>
-                <br/>
-                <div className="this-commnet">
                 
-                <Commnet name = {props.courseCode} major = {props.major} id = {item._id} type = {"course"}/>
-                </div>
               </List.Item>
+              </div>
+              {/*  */}
               </div>
             )}
           />
+          </div>
+          {/*  */}
           </div>
         )
     }
