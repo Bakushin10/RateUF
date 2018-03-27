@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from '../utility/Spinner';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import { List, Icon, Card, Button } from 'antd';
-import { ShowArrays } from '../utility/commonJS';
+import { ShowArrays, getEmotion } from '../utility/commonJS';
 import Commnet from '../utility/ReviewCommnet';
 
 export const GetMessageOrGraph = (hasReview, props, data) =>{
@@ -44,6 +44,7 @@ export const GetReview = (hasReview, props) =>{
               <div className="this-review">
               <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
                 <div className="this-review-ratings">
+                  { getEmotion(item.overallExpe) }
                   <div className="this-overall">
                     <div className="underline">Overall Experience: </div>
                     {(item.overallExpe)} / 100

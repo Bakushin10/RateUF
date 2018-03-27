@@ -87,4 +87,21 @@ const WarningOff = styled.span`
     )
   }
 
-
+  export const getEmotion = (overAllValue) =>{
+    
+      if(overAllValue >= 90){
+        return <Icon type="smile-o" />
+      }
+      if(overAllValue < 90 && overAllValue >= 80){
+        return <Icon type="smile" />
+      }
+      if(overAllValue < 80 && overAllValue >= 70){
+        return <Icon type="meh-o" />
+      }
+      if(overAllValue < 70 && overAllValue >= 60){
+        return <Icon type="frown-o" />
+      }
+      if(overAllValue < 60){
+        return <Icon type="frown" />
+      }
+  }
