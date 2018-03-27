@@ -7,8 +7,11 @@ import { Col, Row, Button, Radio } from 'antd';
 export default class Home extends React.Component {
   render() {
     return (
-      <div>
+      <div className = "background">
         <Head />
+        {/* <body background="/css/img/blue-shade.png" style="background-repeat: no-repeat; background-position: center top; background-size:cover">
+  <div id="root"></div>
+</body> */}
         <div className="welcome-box">
           <h1 className="welcome-text">Welcome to RateUF</h1>
           <div className="welcome-buttons">

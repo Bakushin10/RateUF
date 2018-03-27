@@ -115,6 +115,7 @@ class Professor extends React.Component {
       <div>
       <Head />
       <div className="container">
+        <h1 className="title-here">Find Professor</h1>
         <div>
           <Dropdown overlay={menu} title="Change Major">
             <Button>Change Major</Button>

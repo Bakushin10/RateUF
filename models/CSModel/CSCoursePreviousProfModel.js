@@ -5,8 +5,7 @@ var CoursePreviousProfSchema = new Schema({
     courseCode: String,
     courseName: String,
     ProfPreviouslyTaught:[{
-        name: String,
-        major: String
+        name: String
     }]
 });
 

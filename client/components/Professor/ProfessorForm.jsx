@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card } from 'antd';
+import { Form, Select, Radio, Input, Slider, Icon, Rate, Button, Card} from 'antd';
 import { Redirect } from 'react-router';
-import { GetSliderMark, GetLabel } from '../utility/commonJS'
+import { GetSliderMark, GetLabel, GetErrorMessage } from '../utility/commonJS'
 
 import Head from '../Header-Footer/Head';
 
@@ -21,6 +21,7 @@ class ProfessorForm extends React.Component {
       facilitationOfLearning: 0,
       wouldTakeAgain: 'Yes', //by default
       howIsTheProfessor : [],
+      tipsForSuccess : [],
       course : [],
       extraComment: '',
       courseTakenFor : '',
@@ -39,7 +40,9 @@ class ProfessorForm extends React.Component {
     this.howIsTheProfessorOnChange = this.howIsTheProfessorOnChange.bind(this);
     this.getHowIstheProfessorOption = this.getHowIstheProfessorOption.bind(this);
     this.courseTakenForOnChange = this.courseTakenForOnChange.bind(this);
+    this.TipsForSuccessOnChange = this.TipsForSuccessOnChange.bind(this);
     this.getAllCoursesByMajor = this.getAllCoursesByMajor.bind(this);
+    this.getTipsForSuccess = this.getTipsForSuccess.bind(this);
   }
 
   overAllExpeOnChange(value) {
@@ -63,17 +66,19 @@ class ProfessorForm extends React.Component {
 
   extraCommentOnChange(e) {
     this.setState({ extraComment: e.target.value });
-    console.log(this.state.extraComment);
   }
 
   howIsTheProfessorOnChange(value){
     this.setState({howIsTheProfessor : value})
-    console.log(this.state.howIsTheProfessor);
+  }
+
+  TipsForSuccessOnChange(value){
+    this.setState({tipsForSuccess : value})
+    console.log(this.state.tipsForSuccess);
   }
 
   courseTakenForOnChange(value){
     this.setState({courseTakenFor : value})
-    console.log(this.state.courseTakenFor)
   }
 
   componentDidMount(){
@@ -104,7 +109,8 @@ class ProfessorForm extends React.Component {
           extraComment: this.state.extraComment,
           courseTakenFor : this.state.courseTakenFor,
           major: this.props.match.params.major,
-          name: this.props.match.params.profName
+          name: this.props.match.params.profName,
+          tipsForSuccess : this.state.tipsForSuccess
         }),
         {
           headers: {
@@ -112,11 +118,20 @@ class ProfessorForm extends React.Component {
           }
         }
       )
-      .then(function(response) {
-        //go to submit successfully page
-        console.log(response.data);
-      });
-      
+
+      axios.post('/updatePreviousHistory',
+        querystring.stringify({
+          name : this.props.match.params.profName,
+          major: this.props.match.params.major,
+          courseCode : this.state.courseTakenFor,
+          courseName : ""
+        }),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+      )
 
       this.setState({submitted : true})
   }
@@ -129,6 +144,7 @@ class ProfessorForm extends React.Component {
       this.state.facilitationOfLearning === 0 ||
       this.state.howIsTheProfessor.length === 0 ||
       this.state.courseTakenFor.length === 0 ||
+      this.state.tipsForSuccess.length === 0 ||
       this.state.extraComment === ''
     ) {
       this.setState({ hasError: true }); //trigger the error message
@@ -150,6 +166,25 @@ class ProfessorForm extends React.Component {
           ))
         }
     </Select>
+    )
+  }
+
+  getTipsForSuccess(){
+    return(
+      <Select 
+        mode="multiple" 
+        placeholder="How is the Professor ?"
+        onChange={this.TipsForSuccessOnChange}
+      >
+        <Select.Option value="read text boks">Read text Books</Select.Option>
+        <Select.Option value="attend lectures">attend lectures</Select.Option>
+        <Select.Option value="go to office hours">go to office hours</Select.Option>
+        <Select.Option value="do HW">do HW</Select.Option>
+        <Select.Option value="do practice exams">do practice exams</Select.Option>
+        <Select.Option value="chegg">chegg</Select.Option>
+        <Select.Option value="Course Hero">Course Hero</Select.Option>
+        <Select.Option value="Walfram Alpha">Walfram Alpha</Select.Option>
+      </Select>
     )
   }
 
@@ -189,13 +224,7 @@ class ProfessorForm extends React.Component {
       <Head />
       <div className="button-center">
         <h1>{profName}</h1>
-        <div>
-          <Card style={{ width: 500 }} hidden={!hasError}>
-            {' '}
-            {/*only show when the input errors are detected */}
-            <p> <Icon type="exclamation-circle-o" /> Please Check your inputs ! </p>
-          </Card>
-        </div>
+        {GetErrorMessage(hasError)} {/* input error check*/}
         <div align="center">
           <Form>
             <FormItem {...formItemLayout} label={ GetLabel(this.state.courseTakenFor, 'What class did you take this professor for ?')}>
@@ -203,6 +232,9 @@ class ProfessorForm extends React.Component {
             </FormItem>
             <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheProfessor, 'How is the Professor')}>
                 { this.getHowIstheProfessorOption()}
+            </FormItem>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.tipsForSuccess, 'Tips for success')}>
+                { this.getTipsForSuccess()}
             </FormItem>
             <FormItem {...formItemLayout} label={ GetLabel(this.state.overallExpe, 'Overall Experices')}>
               <Slider

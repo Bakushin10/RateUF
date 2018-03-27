@@ -31,7 +31,6 @@ class ProfessorDetails extends React.Component {
     this.getProfReview = this.getProfReview.bind(this);
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
-    this.getPreviousCourse = this.getPreviousCourse.bind(this);
     this.getMenuItemForPreviousCourse = this.getMenuItemForPreviousCourse.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this)
   }
@@ -43,6 +42,24 @@ class ProfessorDetails extends React.Component {
 
     self.getProfInfo(self, major, name);
     self.getProfReview(self, major, name)
+
+    axios.get('/getPreviousCourse', {
+      params: {
+        major: major,
+        name : name
+      }
+    })
+    .then(function(response) {
+      //remove dupulicate from array
+      var noDuplicate = response.data.coursePreviouslyTaught.filter(function(elem, index, self){
+        return index === self.indexOf(elem);
+      })
+      for(var i = 0;i<noDuplicate.length;i++){
+        self.setState({ previousCourse: self.state.previousCourse.concat([noDuplicate[i].courseCode])});
+      }
+
+      self.setState({ dataloaded : true });
+    });
 
     if(this.props.match.params.submissionSuccess === "success"){
        this.setState({submitSuccess : true})
@@ -58,7 +75,6 @@ class ProfessorDetails extends React.Component {
     })
     .then(function(response) {
       self.setState({ reviews: response.data.review });
-      self.setState({ dataloaded : true });
     });
   }
 
@@ -104,21 +120,6 @@ class ProfessorDetails extends React.Component {
     this.setState({ redirectTo : e.keyPath[0] })
     this.setState({ redirectCourse : true })
     //return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${e.keyPath[0]}`}/>);
-  }
-
-  getPreviousCourse(){
-    for(var i = 0;i< this.state.reviews.length;i++){
-      let hasValue = false;
-      for(var j = 0; j < this.state.previousCourse.length ;j++){
-        if(this.state.previousCourse[j] === this.state.reviews[i].courseTakenFor){
-          hasValue = true;
-        }
-      }
-      if(!hasValue){
-        const item = this.state.previousCourse;
-        item[i] = this.state.reviews[i].courseTakenFor;
-      }
-    }
   }
 
   getMenuItemForPreviousCourse(){
@@ -177,7 +178,7 @@ class ProfessorDetails extends React.Component {
     // get values for graph if there are any reviews
     if(typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
       this.getFieldValueForProfessor(ProfFields);
-      this.getPreviousCourse();
+
       menu = (
         this.getMenuItemForPreviousCourse()
       );
@@ -205,32 +206,35 @@ class ProfessorDetails extends React.Component {
             <div>
               { GetSuccessMessage(this.state.submitSuccess) }
             </div>
-            <div>
-              {this.state.profName}
-                <div>
+            <div className= "prof">
+              <div className = "profName"> {this.state.profName}</div>
+              <div className="profDept"> Departmemnt : {this.state.major} </div>
+                <br/>
+                <div className="profRateButtom">
+                  <div className="profRateText">Taken this professor? </div>
                   <Button type="primary" ghost>
                     <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>
                       <Icon type="form" /> Rate this professor
                     </Link>
                   </Button>
-                </div>
-                  Departmemnt : {this.state.major}
-                <div>
+                </div >
+                 <br/>
+                <div className="profPrevCourse">
                   <Dropdown overlay={menu} title="previous course">
-                    <Button>See previous course</Button>
+                    <Button>Previous Courses</Button>
                   </Dropdown>
                 </div>
-                <div>OverAll Experiense { parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-                <div>Level of Difficulty { parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
-                <div>Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
-                <div>Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
+                <br/>
+                <div className="class-overall">OverAll Experiense { parseFloat(this.state.overAllExpe).toFixed(1)}</div>
+                <div className="class-diflevel">Level of Difficulty { parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
+                <div className="class-diflevel">Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
+                <div className="class-diflevel">Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
             <div>
               { GetMessageOrGraph(ProfFields.hasReview, this.state, data) }
               { GetReview(ProfFields.hasReview, this.state)}
             </div>
           </div>
-          <Foot />
       </div>
     );
   }

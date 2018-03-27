@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from '../utility/Spinner';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import { List, Icon, Card, Button } from 'antd';
-import { ShowArrays } from '../utility/commonJS';
+import { ShowArrays, getEmotion } from '../utility/commonJS';
 import Commnet from '../utility/ReviewCommnet';
 
 export const GetMessageOrGraph = (hasReview, props, data) =>{
@@ -10,8 +10,8 @@ export const GetMessageOrGraph = (hasReview, props, data) =>{
       return <Spinner/>;
     }else if(props.dataloaded && !hasReview){
       return(
-          <Card style={{ width: 500 }} hidden={hasReview}>
-            <p> Be the first one to review ! </p>
+          <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={hasReview}>
+            <div className="success-text"> Be the first one to review ! </div>
           </Card>
       )
     }else{
@@ -32,6 +32,8 @@ export const GetReview = (hasReview, props) =>{
 
     if(hasReview){
         return(
+          <div>
+          <div className="hold-reviews">
             <List
             className="demo-loadmore-list"
             // loading={loading}
@@ -39,27 +41,78 @@ export const GetReview = (hasReview, props) =>{
             // loadMore={loadMore}
             dataSource={props.reviews}
             renderItem={item => (
+              <div className="this-review">
               <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
-                <List.Item.Meta
-                  // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                  //title={<a href="https://ant.design">{item.name.last}</a>}
-                  description = {item.extraComment}
-                />
-                <div>
-                  Would you take this professor again <p>{item.wouldTakeAgain}</p>
+                <div className="this-review-ratings">
+                  { getEmotion(item.overallExpe) }
+                  <div className="this-overall">
+                    <div className="underline">Overall Experience: </div>
+                    {(item.overallExpe)} / 100
+                  </div>
+                  <br/>
+                  <div className="this-difficult">
+                    <div className="underline">Level of Difficulty: </div>
+                    {(item.levelOfDiffculty)} / 100
+                  </div>
+                  <br/>
+                  <div className="this-toookwith">
+                    <div className="underline">Course: </div>
+                    {item.courseTakenFor}
+                  </div>
                 </div>
-                <div>
-                  Course took with <p>{item.courseTakenFor}</p>
+
+                  <div className="this-review-comments">
+                    <div className="this-howsprof">
+                      <div className="underline">How is the Professor: </div> 
+                      { ShowArrays(item.howIsTheProfessor) }
+                    </div>
+                    <br/>
+                    <div className="this-learning">
+                      <div className="underline">Faciliation of Learning: </div>
+                      {(item.facilitationOfLearning)} / 100
+                    </div>
+                    <br/>
+                    <div className="this-communication">
+                    <div className="underline">Communication of Ideas: </div>
+                    {(item.communicationOfIdeas)} / 100
+                    </div>
+                    <br/>
+                    <div className="this-takeagain">
+                      <div className="underline">Would take again: </div>
+                      {(item.wouldTakeAgain)}
+                    </div>
+                  </div>
+                
+                  <div className="this-review-comments">
+                    <div className="this-tips">
+                    <div className="underline">Tips for Success: </div>
+                      {ShowArrays(item.tipsForSuccess)}
+                    </div>
+
+                  </div>
+                
+                  <div className="this-review-commentscomments">
+                    <div className="this-review-extracomment">
+                    <div className="underline"> User Comment: </div>
+                    <List.Item.Meta
+                    // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    //title={<a href="https://ant.design">{item.name.last}</a>}
+                    
+                    description = {item.extraComment}
+                    />
+                    </div>
+                
+                <br/>
+                <div className="hold-commnets">
+                  <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
                 </div>
-                <div>
-                  {/* show the HowIsTheProfessor Array */}
-                  howIsTheProfessor : 
-                  { ShowArrays(item.howIsTheProfessor) }
                 </div>
-                <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
               </List.Item>
+              </div>
             )}
           />
+          </div>
+          </div>
         )
     }
 }
