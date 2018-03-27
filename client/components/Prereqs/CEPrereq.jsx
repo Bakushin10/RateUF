@@ -24,7 +24,7 @@ CDA3101=>condition: CDA3101|department10:>http://localhost:8000/#/ClassDetails/C
 COP3530=>condition: COP3530|department11:>http://localhost:8000/#/ClassDetails/CS/COP 3530
 CEN3031=>condition: CEN3031|department12:>http://localhost:8000/#/ClassDetails/CS/CEN 3031
 
-COP3502(yes)->COP3503(yes)->EEL3701C(yes)->EEL3744C(no)->EEL3923C
+COP3502(yes)->COP3503(yes)->EEL3701C(yes)->EEL3744C(yes)->EEL3923C
 EEL3701C(no)->EEL4712C(yes)->EEL3923C(yes)->EEL4924C
 COP3502(no)->COT3100(yes)->COP3530(yes)->CEN3031
 COP3503(no)->COP3530(no)->CDA3101(yes)->COP4600

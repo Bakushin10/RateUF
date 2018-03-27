@@ -11,28 +11,20 @@ class EEPrereq extends React.Component {
         super(props);
         const code =
             `
-EEL3834=>condition: EEL3834|department1
-MAS3114=>condition: MAS3114|department2
-EEL3701C=>condition: EEL3701C|department3
-EEL3744C=>condition: EEL3744C|department4
-EEL4712C=>condition: EEL4712C|department5
-EEL4657C=>condition: EEL4657C|department6
-EEE4511C=>condition: EEE4511C|department7
+EEL3701C=>condition: EEL3701C|department1:>http://localhost:8000/#/ClassDetails/CS/COP 3502
+EEL3000=>condition: EEL3000|department2:>http://localhost:8000/#/ClassDetails/CS/COP 3503
+EEL3135=>condition: EEL3135|department3:>http://localhost:8000/#/ClassDetails/CS/COT 3100
+EEL3111C=>condition: EEL3111C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL 3701
+EEL3008=>condition: EEL3008|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL 3744
+EEL3112=>condition: EEL3112|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL 4712
+EEL3744C=>condition: EEL3744C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL 3923
 
-EEL3111C=>condition: EEL3111C|department8
-EEL3008=>condition: EEL3111C|department9
-EEL3112=>condition: EEL3111C|department8
-EEL2472C=>condition: EEL3111C|department8
-EEL3211C=>condition: EEL3111C|department8
-EEE3396C=>condition: EEL3111C|department8
-EEE3308C=>condition: EEL3111C|department8
-EEE4260C=>condition: EEL3111C|department8
 
-EEL3834(yes)->MAS3114(no)->EEL3701C(yes)->EEL3744C(no)->EEL4712C
-EEL3744C(yes)->EEL4657C(no)->EEE4511C(yes)->EEL311C
+EEL3701C(no)->EEL3000(no)->EEL3135(no)->EEL3111C
+EEL3701C(yes)->EEL3744C
 
-EEL3111C(yes)->EEL3008(no)->EEL3112
-EEL3008(yes)->EEL2472C(no)->EEL3211C(no)->EEE3396C(no)->EEE3308C(no)->EEE4260C
+
+
 
 
 `;
