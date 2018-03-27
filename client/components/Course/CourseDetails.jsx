@@ -193,24 +193,29 @@ class CourseDetails extends React.Component {
           <div>
             { GetSuccessMessage(this.state.submitSuccess) }
           </div>
-          <div>
-            <div>{this.state.courseCode}</div>
-            <div>{this.state.courseName}</div>
+          <div className="class-deets">
+            <div className="class-code">{this.state.courseCode}</div>
+            <div className="class-name">{this.state.courseName}</div>
+            Departmemnt : {this.state.major}
+            
               <div>
+              <br/>
+              <div className="class-taken"> Taken This Course? </div>
                 <Button type="primary" ghost>
                   <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
                     <Icon type="form" /> Rate this Course
                   </Link>
                 </Button>
               </div>
-                    Departmemnt : {this.state.major}
+              <br/>      
               <div>
                 <Dropdown overlay={menu} title="previous course">
-                  <Button>See previous course</Button>
+                  <Button>Previous Professors</Button>
                 </Dropdown>
               </div>
-              <div>OverAll Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-              <div>Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
+              <br/>
+              <div className="class-overall">Overall Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
+              <div className="class-diflevel">Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
             </div>
             <div>
                 { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.courseCode, this.state.major, data) }

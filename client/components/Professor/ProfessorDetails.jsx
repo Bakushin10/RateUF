@@ -209,7 +209,7 @@ class ProfessorDetails extends React.Component {
             <div className= "prof">
               <div className = "profName"> {this.state.profName}</div>
               <div className="profDept"> Departmemnt : {this.state.major} </div>
-                
+                <br/>
                 <div className="profRateButtom">
                   <div className="profRateText">Taken this professor? </div>
                   <Button type="primary" ghost>
@@ -221,14 +221,14 @@ class ProfessorDetails extends React.Component {
                  <br/>
                 <div className="profPrevCourse">
                   <Dropdown overlay={menu} title="previous course">
-                    <Button>See previous course</Button>
+                    <Button>Previous Courses</Button>
                   </Dropdown>
                 </div>
                 <br/>
-                <div className="profQua">OverAll Experiense { parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-                <div className="profQua">Level of Difficulty { parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
-                <div className="profQua">Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
-                <div className="profQua">Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
+                <div className="class-overall">OverAll Experiense { parseFloat(this.state.overAllExpe).toFixed(1)}</div>
+                <div className="class-diflevel">Level of Difficulty { parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
+                <div className="class-diflevel">Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
+                <div className="class-diflevel">Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
             <div>
               { GetMessageOrGraph(ProfFields.hasReview, this.state, data) }
