@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col, Card } from 'antd';
+import { Form, Select, Input, Slider, Icon, Button, Checkbox, Row, Col } from 'antd';
 import Head from '../Header-Footer/Head';
 import { Redirect } from 'react-router';
-import { GetSliderMark, GetLabel } from '../utility/commonJS';
+import { GetSliderMark, GetLabel, GetErrorMessage } from '../utility/commonJS';
 
 var querystring = require('querystring');
 const FormItem = Form.Item;
@@ -82,26 +82,40 @@ class ClassForm extends React.Component {
 
   insertNewCourseReview() {
     axios.post('/insertNewCourseReview',
-        querystring.stringify({
-          overallExpe: this.state.overallExpe,
-          levelOfDiffculty: this.state.levelOfDiffculty,
-          extraComment: this.state.extraComment,
-          knowBeforeCourse: this.state.knowBeforeCourse,
-          howIsTheClass: this.state.howIsTheClass, 
-          major: this.props.match.params.major,
-          courseCode: this.props.match.params.courseCode,
-          whoTookWith : this.state.whoTookWith
-        }),
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
+      querystring.stringify({
+        overallExpe: this.state.overallExpe,
+        levelOfDiffculty: this.state.levelOfDiffculty,
+        extraComment: this.state.extraComment,
+        knowBeforeCourse: this.state.knowBeforeCourse,
+        howIsTheClass: this.state.howIsTheClass, 
+        major: this.props.match.params.major,
+        courseCode: this.props.match.params.courseCode,
+        whoTookWith : this.state.whoTookWith
+      }),
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
-      )
-      .then(function(response) {
-        //go to submit successfully page
-        console.log(response.data);
-      });
+      }
+    )
+    
+    axios.post('/updatePreviousHistory',
+      querystring.stringify({
+        name : this.state.whoTookWith,
+        major: this.props.match.params.major,
+        courseCode : this.props.match.params.courseCode,
+        courseName : this.props.match.params.courseName
+      }),
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    )
+    .then(function(response) {
+      //go to submit successfully page
+      console.log(response.data);
+    });
 
       this.setState({submitted : true})
   }
@@ -226,11 +240,7 @@ class ClassForm extends React.Component {
         <div className="button-center">
           <h1>{courseCode}</h1>
           <h1>{courseName}</h1>
-          <div>
-            <Card style={{ width: 500 }} hidden={!hasError}>
-              <p> <Icon type="exclamation-circle-o" /> Please Check your inputs ! </p>
-            </Card>
-          </div>
+          {GetErrorMessage(hasError)} {/* input error check*/}
           <div align="center">
             <Form>
               <FormItem {...formItemLayout} label={ GetLabel(this.state.whoTookWith, 'Who did you take with ?')}>

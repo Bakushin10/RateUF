@@ -10,7 +10,7 @@ class ReviewComment extends React.Component {
     constructor() {
         super();
         this.state = {
-            buttonMessage : 'comment',
+            buttonMessage : 'Reply',
             comment : '',
             showComment : true,
             commnetToShow : []
@@ -102,7 +102,7 @@ class ReviewComment extends React.Component {
                 }
               );
             }//end of else
-            this.setState({buttonMessage: 'comment'})
+            this.setState({buttonMessage: 'Reply'})
             this.setState({comment: ''})
             this.setState({showComment : true})
         }
@@ -110,10 +110,10 @@ class ReviewComment extends React.Component {
 
     handleClick(e) {
         if(this.state.showComment){
-            this.setState({buttonMessage: 'hide comment'})
+            this.setState({buttonMessage: 'Hide Reply'})
             this.setState({showComment : false})
         }else{
-            this.setState({buttonMessage: 'comment'})
+            this.setState({buttonMessage: 'Reply'})
             this.setState({showComment : true})
         }
     }
@@ -125,28 +125,31 @@ class ReviewComment extends React.Component {
         };
         const showComment = this.state.showComment
         return(
-            <div>
+            <div className="reply-commnet">
                 <div>
                     <Button type="primary" ghost onClick={this.handleClick}>
                         {this.state.buttonMessage}
                     </Button>
+                    <br/>
+                    
                     <Form  hidden={showComment}>
-                        <FormItem {...formItemLayout} label={ GetLabel(this.state.comment, 'Comment')}>
+                        <FormItem {...formItemLayout} label={ GetLabel(this.state.comment, 'Reply')}>
                         <TextArea
                             type="text"
                             value={this.state.comment}
-                            placeholder="enter text"
-                            rows={4}
+                            placeholder="Enter Reply"
+                            autosize
                             onChange={this.extraCommentOnChange}
                         />
                         </FormItem>
-                        <Button type="primary" ghost onClick={this.handleSubmit}>
-                            submit
+                        <Button type="primary"  onClick={this.handleSubmit}>
+                            Submit
                         </Button>
                     </Form>
                 </div>
+                <br/>
                 <div>
-                  -comment-
+                  <div className="underline"> Replies: </div>
                 { ShowArrays(this.state.commnetToShow) }
                 </div>
           </div>

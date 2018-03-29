@@ -6,35 +6,24 @@ import { Menu, Dropdown, Button } from 'antd';
 
 
 class MATHPrereq extends React.Component {
-
     constructor(props) {
         super(props);
         const code =
             `
-EEl3834=>condition: EEl3834|department1
-MAS3114=>operation: MAS3114|department2
-EEL3701C=>condition: EEL3701C|department3
-EEL3744C=>operation: EEL3744C|department4
-EEL4657C=>operation: EEL4657C|department5
-EEE4511C=>operation: EEE4511C|department6
+MAC2311=>condition: MAC2311|department1:>http://localhost:8000/#/ClassDetails/MATH/MAC%202311
+MAC2312=>condition: MAC2312|department2:>http://localhost:8000/#/ClassDetails/MATH/MAC%202312
+MAC2313=>condition: MAC2313|department3:>http://localhost:8000/#/ClassDetails/MATH/MAC%202313
+MHF3202=>condition: MHF3202|department4:>http://localhost:8000/#/ClassDetails/MATH/MHF%203202
+MAP2302=>condition: MAP2302|department5:>http://localhost:8000/#/ClassDetails/MATH/MAP%202302
+MAS4105=>condition: MAS4105|department6:>http://localhost:8000/#/ClassDetails/MATH/MAS%204105
+MAS4301=>condition: MAS4301|department7:>http://localhost:8000/#/ClassDetails/MATH/MAS%204301
+MAA4211=>condition: MAA4211|department8:>http://localhost:8000/#/ClassDetails/MATH/MAA%204211
+MAA4212=>condition: MAA4212|department9:>http://localhost:8000/#/ClassDetails/MATH/MAA%204212
 
-EEL3111C=>condition: EEL3111C|department7
-EEL3008=>operation: EEL3008|department8
-EEL3112=>operation: EEL3112|department9
+MAC2311(yes)->MAC2312(yes)->MAC2313(yes)->MAS4105(yes)->MAS4301(yes)->MAA4211(yes)->MAA4212
+MAC2312(no)->MHF3202(yes)->MAS4105
+MAC2313(no)->MAP2302
 
-EEL3135=>condition: EEL3111C|department10
-EEL3000=>operation: EEL3000|department11
-EEL3472C=>operation: EEL3472C|department12
-EEL3211C=>operation: EEL3211C|department13
-EEE3396C=>operation: EEE3396C|department14
-EEE3308C=>operation: EEE3308C|department15
-EEE4260C=>operation: EEE4260C|department16
-EEL4514C=>operation: EEL4514C|department17
-EEL4712C=>operation: EEL4712C|department18
-
-EEL3834(yes)->MAS3114
-EEL3834(no)->EEL3701C(no)->EEL4712C
-EEL3111C(no)->EEL3008->EEL3472C->EEL3211C->EEE3396C->EEE3308C->EEE4260C
 `;
         const opt = {
             'yes-text' : ' ',
@@ -44,16 +33,13 @@ EEL3111C(no)->EEL3008->EEL3472C->EEL3211C->EEE3396C->EEE3308C->EEE4260C
             flowstate: {
                 department1: { fill: '#57ff35' },
                 department2: { fill: 'pink' },
-                department3: { fill: 'pink' },
-                department4: { fill: 'yellow' },
-                department5: { fill: 'white' },
+                department3: { fill: 'yellow' },
+                department4: { fill: 'pink' },
+                department5: { fill: 'yellow' },
                 department6: { fill: 'white' },
                 department7: { fill: '#ff9e49' },
                 department8: { fill: '#ff644f' },
-                department9: { fill: '#59fcff' },
-                department10: { fill: 'yellow' },
-                department11: { fill: 'yellow' },
-                department12: { fill: '#59fcff' },
+                department9: { fill: '#59fcff' }
 
 
             },
@@ -69,19 +55,19 @@ EEL3111C(no)->EEL3008->EEL3472C->EEL3211C->EEE3396C->EEE3308C->EEE4260C
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceEngineeringCatalog">CSE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSECatalog">CSE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceLiberalArtsCatalog">CSC</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSLACatalog">CSC</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerEngineeringCatalog">CE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CECatalog">CE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ElectricalEngineeringCatalog">EE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/EECatalog">EE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/MathCatalog">MATH</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHCatalog">MATH</a>
                 </Menu.Item>
             </Menu>
         );
@@ -110,15 +96,22 @@ EEL3111C(no)->EEL3008->EEL3472C->EEL3211C->EEE3396C->EEE3308C->EEE4260C
             <div>
                 <Head/>
                 <div align="center">
-                    <h1>Computer Engineering</h1>
-                    <h3>Prerequisites</h3>
-                    <a>**same color means you can take the classes at the same time**</a>
+                    <h1>Math, Liberal Arts</h1>
+                    <h3>Major Coursework</h3>
+                    <div align="left">
+                        <a>**same color means you can take the classes at the same time**</a>
+                        <br/>
+                        <a>**a change in color means it has a prerequisite**</a>
+                        <br/>
+                        <a>**click on the class to see the review for it**</a>
+
+                    </div>
                     <div>
                         <Dropdown overlay = {menu} title="Change Major">
                             <Button >Change Degree Catalog</Button>
                         </Dropdown>
                         <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
-                            <Button >Flowchart of Prerequisites</Button>
+                            <Button >Flowchart of Major Coursework</Button>
                         </Dropdown>
                     </div>
                     <Flowchart

@@ -6,7 +6,7 @@ export default class Foot extends React.Component {
   render() {
     return (
       <Layout>
-        <Footer theme="dark" style={{ textAlign: 'center', lineHeight:'2rem', width:'100%', bottom:'0', position:'relative' }}>
+        <Footer style={{ textAlign: 'center', lineHeight:'2rem', width:'100%', bottom:'0', position:'relative' }}>
         <a href="/#">
         <img src="/css/img/favicon1.png" className="foot-pic" /> 
         </a>
@@ -15,3 +15,5 @@ export default class Foot extends React.Component {
     );
   }
 }
+// style={{ height:'100%', margin:'0'}}
+// minHeight:'100%', marginBottom:'-50px',

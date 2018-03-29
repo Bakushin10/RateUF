@@ -11,17 +11,21 @@ class EEPrereq extends React.Component {
         super(props);
         const code =
             `
-EEL3701C=>condition: EEL3701C|department1:>http://localhost:8000/#/ClassDetails/CS/COP 3502
-EEL3000=>condition: EEL3000|department2:>http://localhost:8000/#/ClassDetails/CS/COP 3503
-EEL3135=>condition: EEL3135|department3:>http://localhost:8000/#/ClassDetails/CS/COT 3100
-EEL3111C=>condition: EEL3111C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL 3701
-EEL3008=>condition: EEL3008|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL 3744
-EEL3112=>condition: EEL3112|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL 4712
-EEL3744C=>condition: EEL3744C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL 3923
+EEL3701C=>condition: EEL3701C|department1:>http://localhost:8000/#/ClassDetails/ECE/EEL%203701
+EEL3000=>condition: EEL3000|department2:>http://localhost:8000/#/ClassDetails/ECE/EEL%203000
+EEL3135=>condition: EEL3135|department3:>http://localhost:8000/#/ClassDetails/ECE/EEL%203135
+EEL3111C=>condition: EEL3111C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL%203701
+EEL3008=>condition: EEL3008|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL%203744
+EEL3112=>condition: EEL3112|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL%204712
+EEL3744C=>condition: EEL3744C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL%203923
 
 
-EEL3701C(no)->EEL3000(no)->EEL3135(no)->EEL3111C
+EEL3701C(no)->EEL3000(no)->EEL3135(no)->EEL3111C(yes)->EEL3008
 EEL3701C(yes)->EEL3744C
+EEL3135(yes)->EEL3112
+EEL3000(yes)->EEL3112
+EEL3111C(no)->EEL3112
+
 
 
 
@@ -36,17 +40,12 @@ EEL3701C(yes)->EEL3744C
             scale: 1,
             flowstate: {
                 department1: { fill: '#57ff35' },
-                department2: { fill: 'pink' },
-                department3: { fill: 'pink' },
-                department4: { fill: 'yellow' },
-                department5: { fill: 'white' },
-                department6: { fill: 'white' },
-                department7: { fill: '#ff9e49' },
-                department8: { fill: '#ff644f' },
-                department9: { fill: '#59fcff' },
-                department10: { fill: 'yellow' },
-                department11: { fill: 'yellow' },
-                department12: { fill: '#59fcff' },
+                department2: { fill: '#57ff35' },
+                department3: { fill: '#57ff35' },
+                department4: { fill: '#57ff35' },
+                department5: { fill: '#1c95ff' },
+                department6: { fill: '#1c95ff' },
+                department7: { fill: '#1c95ff' }
 
 
             },
@@ -62,19 +61,19 @@ EEL3701C(yes)->EEL3744C
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceEngineeringCatalog">CSE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSECatalog">CSE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceLiberalArtsCatalog">CSC</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSLACatalog">CSC</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerEngineeringCatalog">CE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CECatalog">CE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ElectricalEngineeringCatalog">EE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/EECatalog">EE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/MathCatalog">MATH</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHCatalog">MATH</a>
                 </Menu.Item>
             </Menu>
         );
@@ -104,19 +103,21 @@ EEL3701C(yes)->EEL3744C
                 <Head/>
                 <div align="center">
                     <h1>Electrical Engineering</h1>
-                    <h3>Prerequisites</h3>
+                    <h3>Major Coursework</h3>
                     <div align="left">
                         <a>**same color means you can take the classes at the same time**</a>
 
                         <br/>
                         <a>**a change in color means it has a prerequisite**</a>
+                        <br/>
+                        <a>**click on the class to see the review for it**</a>
                     </div>
                     <div>
                         <Dropdown overlay = {menu} title="Change Major">
                             <Button >Change Degree Catalog</Button>
                         </Dropdown>
                         <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
-                            <Button >Flowchart of Prerequisites</Button>
+                            <Button >Flowchart of Major Coursework</Button>
                         </Dropdown>
                     </div>
                     <Flowchart

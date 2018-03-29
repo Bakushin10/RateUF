@@ -297,13 +297,13 @@ class mathCatalog extends React.Component {
             <div>
                 <Head/>
             <div align="center">
-                <h1>Math Major</h1>
+                <h1>Math, Liberal Arts</h1>
                 <h3>Course Catalog</h3>
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Degree Catalog</Button>
                 </Dropdown>
                 <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
-                    <Button >Flowchart of Prerequisites</Button>
+                    <Button >Flowchart of Major Coursework</Button>
                 </Dropdown>
                 <Table style={{ width: '1000px' }} columns={semester1} dataSource={data1} />
                 <Table style={{ width: '1000px' }} columns={semester2} dataSource={data2} />

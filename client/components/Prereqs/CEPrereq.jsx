@@ -11,18 +11,18 @@ class CEPrereq extends React.Component {
         super(props);
         const code =
             `
-COP3502=>condition: COP3502|department1:>http://localhost:8000/#/ClassDetails/CS/COP 3502
-COP3503=>condition: COP3503|department2:>http://localhost:8000/#/ClassDetails/CS/COP 3503
-COT3100=>condition: COT3100|department3:>http://localhost:8000/#/ClassDetails/CS/COT 3100
-EEL3701C=>condition: EEL3701C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL 3701
-EEL3744C=>condition: EEL3744C|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL 3744
-EEL4712C=>condition: EEL4712C|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL 4712
-EEL3923C=>condition: EEL3923C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL 3923
-EEL4924C=>condition: EEL4924C|department8:>http://localhost:8000/#/ClassDetails/ECE/EEL 4924
-COP4600=>condition: COP4600|department9:>http://localhost:8000/#/ClassDetails/CS/COP 4600
-CDA3101=>condition: CDA3101|department10:>http://localhost:8000/#/ClassDetails/CS/CDA 3101
-COP3530=>condition: COP3530|department11:>http://localhost:8000/#/ClassDetails/CS/COP 3530
-CEN3031=>condition: CEN3031|department12:>http://localhost:8000/#/ClassDetails/CS/CEN 3031
+COP3502=>condition: COP3502|department1:>http://localhost:8000/#/ClassDetails/CS/COP%203502
+COP3503=>condition: COP3503|department2:>http://localhost:8000/#/ClassDetails/CS/COP%203503
+COT3100=>condition: COT3100|department3:>http://localhost:8000/#/ClassDetails/CS/COT%203100
+EEL3701C=>condition: EEL3701C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL%203701
+EEL3744C=>condition: EEL3744C|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL%203744
+EEL4712C=>condition: EEL4712C|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL%204712
+EEL3923C=>condition: EEL3923C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL%203923
+EEL4924C=>condition: EEL4924C|department8:>http://localhost:8000/#/ClassDetails/ECE/EEL%204924
+COP4600=>condition: COP4600|department9:>http://localhost:8000/#/ClassDetails/CS/COP%204600
+CDA3101=>condition: CDA3101|department10:>http://localhost:8000/#/ClassDetails/CS/CDA%203101
+COP3530=>condition: COP3530|department11:>http://localhost:8000/#/ClassDetails/CS/COP%203530
+CEN3031=>condition: CEN3031|department12:>http://localhost:8000/#/ClassDetails/CS/CEN%203031
 
 COP3502(yes)->COP3503(yes)->EEL3701C(yes)->EEL3744C(yes)->EEL3923C
 EEL3701C(no)->EEL4712C(yes)->EEL3923C(yes)->EEL4924C
@@ -62,19 +62,19 @@ COP3503(no)->COP3530(no)->CDA3101(yes)->COP4600
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceEngineeringCatalog">CSE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSECatalog">CSE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerScienceLiberalArtsCatalog">CSC</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSLACatalog">CSC</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ComputerEngineeringCatalog">CE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CECatalog">CE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/ElectricalEngineeringCatalog">EE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/EECatalog">EE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/MathCatalog">MATH</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHCatalog">MATH</a>
                 </Menu.Item>
             </Menu>
         );
@@ -104,18 +104,20 @@ COP3503(no)->COP3530(no)->CDA3101(yes)->COP4600
                 <Head/>
                 <div align="center">
                     <h1>Computer Engineering</h1>
-                    <h3>Prerequisites</h3>
+                    <h3>Major Coursework</h3>
                     <div align="left">
                         <a>**same color means you can take the classes at the same time**</a>
 
                         <br/>
                         <a>**a change in color means it has a prerequisite**</a>
+                        <br/>
+                        <a>**click on the class to see the review for it**</a>
                     </div>
                         <div><Dropdown overlay = {menu} title="Change Major">
                             <Button >Change Degree Catalog</Button>
                         </Dropdown>
                         <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
-                            <Button >Flowchart of Prerequisites</Button>
+                            <Button >Flowchart of Major Coursework</Button>
                         </Dropdown>
                         <br/>
                     </div>

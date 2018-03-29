@@ -34,20 +34,18 @@ export const CourseList = (courseToShow, loading, hasMore, handleInfiniteOnLoad,
         >
         <List 
             itemLayout="vertical"
-            size="large"
+            size="small"
             pagination={pagination}
             dataSource={ courseToShow }
             renderItem={item => (
             <Link to={`/ClassDetails/${item.major}/${item.courseCode}`}>
-                <CourseName>
+                <CourseName style={{fontSize:'1rem'}}>
                     <div>{item.courseCode}</div>
                     <div>{item.courseName}</div>
                 </CourseName>
-                <Slider className = "ant-slider-disabled" /*.ant-slider-disabled*/
-                    value={item.overview} 
-                    disabled = {true} 
-                    marks={GetSliderMark()}
-                />
+                <div class="list-rating">
+                    {item.overview} / 100
+                </div>
                 <List.Item 
                     xs = {9} md = {9}
                     key={item.id}
