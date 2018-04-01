@@ -40,8 +40,6 @@ MAC2313(no)->MAP2302
                 department7: { fill: '#ff9e49' },
                 department8: { fill: '#ff644f' },
                 department9: { fill: '#59fcff' }
-
-
             },
         };
 

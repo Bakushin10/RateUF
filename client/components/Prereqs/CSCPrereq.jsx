@@ -45,7 +45,6 @@ CDA3101(no)->COT4501
                 department8: { fill: '#ff9e49' },
                 department9: { fill: '#59fcff' },
                 department10: { fill: '#59fcff' }
-
             },
         };
 

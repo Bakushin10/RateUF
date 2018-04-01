@@ -19,18 +19,11 @@ EEL3008=>condition: EEL3008|department5:>http://localhost:8000/#/ClassDetails/EC
 EEL3112=>condition: EEL3112|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL%204712
 EEL3744C=>condition: EEL3744C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL%203923
 
-
 EEL3701C(no)->EEL3000(no)->EEL3135(no)->EEL3111C(yes)->EEL3008
 EEL3701C(yes)->EEL3744C
 EEL3135(yes)->EEL3112
 EEL3000(yes)->EEL3112
 EEL3111C(no)->EEL3112
-
-
-
-
-
-
 `;
 
         const opt = {
@@ -46,8 +39,6 @@ EEL3111C(no)->EEL3112
                 department5: { fill: '#1c95ff' },
                 department6: { fill: '#1c95ff' },
                 department7: { fill: '#1c95ff' }
-
-
             },
         };
 
