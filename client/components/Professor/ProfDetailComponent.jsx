@@ -1,29 +1,42 @@
 import React from 'react';
 import Spinner from '../utility/Spinner';
-import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
-import { List, Icon, Card, Button } from 'antd';
-import { ShowArrays, getEmotion } from '../utility/commonJS';
+import Gauge from 'react-svg-gauge';
+import { List, Icon, Card, Button, Row, Col } from 'antd';
+import { ShowArrays, getEmotion, getHexColor } from '../utility/commonJS';
 import Commnet from '../utility/ReviewCommnet';
 
-export const GetMessageOrGraph = (hasReview, props, data) =>{
+export const GetMessageOrGraph = (ProfFields, props) =>{
     if(!props.dataloaded){
       return <Spinner/>;
-    }else if(props.dataloaded && !hasReview){
+    }else if(props.dataloaded && !ProfFields.hasReview){
       return(
-          <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={hasReview}>
+          <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={ProfFields.hasReview}>
             <div className="success-text"> Be the first one to review ! </div>
           </Card>
       )
     }else{
+      var overAllExpeColor = getHexColor(props.overAllExpe);
+      var levelOfDiffColor = getHexColor(ProfFields.levelOfDiff);
+      var CommOfIdeaExpeColor = getHexColor(ProfFields.CommOfIdea);
+      var FaciliOfLearningExpeColor = getHexColor(ProfFields.FaciliOfLearning);
       return(
-        <RadarChart cx={300} cy={250} outerRadius={150} width={600} height={500} data={data}>
-        <Radar name= { props.profName } dataKey="prof" stroke="#e858bf" fill="#e858bf" fillOpacity={0.6}/>
-        <Radar name= { props.major + " Professors Average"}exoerience dataKey="average" stroke="#4e42f4" fill="#4e42f4" fillOpacity={0.6}/>
-        <PolarGrid />
-        <Legend />
-        <PolarAngleAxis dataKey="subject" />
-        <PolarRadiusAxis angle={90} domain={[0, 100]}/>
-        </RadarChart>
+        <div>
+          <Row type="flex" justify="space-around" align="middle">
+            <Gauge  value={props.overAllExpe} width={250} height={180} color = {overAllExpeColor} label="Overall" />
+          </Row>
+
+          <Row type="flex" justify="space-around" align="middle">
+            <Col span={4}>
+              <Gauge value={ProfFields.levelOfDiff} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
+            </Col>
+            <Col span={4}>
+              <Gauge value={ProfFields.CommOfIdea} width={180} height={125} color = {CommOfIdeaExpeColor} label="Communication" />
+            </Col>
+            <Col span={4}>
+              <Gauge value={ProfFields.FaciliOfLearning} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
+            </Col>
+          </Row>
+        </div>
       )
     }
   }

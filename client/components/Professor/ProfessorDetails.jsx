@@ -64,7 +64,7 @@ class ProfessorDetails extends React.Component {
       let noDuplicate = []
       const arr = response.data.coursePreviouslyTaught;
       
-      // trimming the duplicate 
+      // trimming the duplicate from course
       for(var i = 0; i < arr.length ;i++){
         var hasDuplicate = false
         for(var j = 0; j < noDuplicate.length; j++){
@@ -224,12 +224,6 @@ class ProfessorDetails extends React.Component {
       }
     }
 
-    const data = [
-      { subject: 'Level of Difficulty', prof: ProfFields.levelOfDiff, average: 50, fullMark: 100 },
-      { subject: 'Communication of Ideas', prof: ProfFields.CommOfIdea, average: 70, fullMark: 100 },
-      { subject: 'Facilitation Of Learning', prof: ProfFields.FaciliOfLearning, average: 80, fullMark: 100 },
-    ];
-
     return (
       <div>
         <Head />
@@ -256,13 +250,9 @@ class ProfessorDetails extends React.Component {
                   </Dropdown>
                 </div>
                 <br/>
-                <div className="class-overall">OverAll Experiense { parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-                <div className="class-diflevel">Level of Difficulty { parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
-                <div className="class-diflevel">Communication of Ideas { parseFloat(ProfFields.CommOfIdea).toFixed(1)}</div>
-                <div className="class-diflevel">Facilitation Of Learning { parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</div>
             </div>
             <div>
-              { GetMessageOrGraph(ProfFields.hasReview, this.state, data) }
+              { GetMessageOrGraph(ProfFields, this.state) }
               { GetReview(ProfFields.hasReview, this.state)}
             </div>
           </div>

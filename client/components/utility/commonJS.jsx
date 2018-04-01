@@ -105,3 +105,19 @@ const WarningOff = styled.span`
         return <Icon type="frown" />
       }
   }
+
+  export const getHexColor = (value) =>{
+    var r = Math.floor(value * 2.55);
+		var g = Math.floor(255 - (value * 2.55));
+    var b = 0;
+    
+    r = r.toString(16);
+    g = g.toString(16);
+    b = b.toString(16);
+    
+    r = (r.length === 1) ? '0' + r : r;
+    g = (g.length === 1) ? '0' + g : g;
+    b = (b.length === 1) ? '0' + b : b;
+
+    return '#' + g  + r  + b ;
+  }

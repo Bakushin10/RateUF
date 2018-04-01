@@ -93,7 +93,7 @@ class CourseDetails extends React.Component {
 
         //assign overview for previous courses
         for(var i = 0; i < noDuplicate.length;i++){
-          for(var j = 0; j < professors.length ;j ++){
+          for(var j = 0; j < professors.length; j++){
             if(noDuplicate[i].name === professors[j].name){
               var professor = {
                 name : noDuplicate[i].name,
@@ -212,10 +212,6 @@ class CourseDetails extends React.Component {
       }
     }
 
-    const data = [
-      { subject: 'Level of Difficulty', prof: ProfFields.levelOfDiff, average: 50, fullMark: 100 }
-    ];
-
     return (
       <div>
         <Head />
@@ -244,11 +240,9 @@ class CourseDetails extends React.Component {
                 </Dropdown>
               </div>
               <br/>
-              <div className="class-overall">Overall Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-              <div className="class-diflevel">Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
             </div>
             <div>
-                { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.courseCode, this.state.major, data) }
+                { GetMessageOrGraph(ProfFields, this.state) }
                 { GetReview(ProfFields.hasReview, this.state)}
             </div>
         </div>
