@@ -150,7 +150,7 @@ class ReviewComment extends React.Component {
                 <br/>
                 <div>
                   <div className="underline"> Replies: </div>
-                { ShowArrays(this.state.commnetToShow) }
+                    { ShowArrays(this.state.commnetToShow) }
                 </div>
           </div>
         ) //end of return

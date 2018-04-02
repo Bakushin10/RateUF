@@ -134,8 +134,26 @@ fieldset{
 
 .list-rating{
   display: inline;
+}
+
+.emo{
+  display: inline;
+}
+
+.grade{
+  margin-left: 2rem;
+  display: inline;
   font-size: 1rem;
-  margin-left: 50%;
+}
+
+.hold-list{
+  background-color: #0a2253;
+  border-radius: 5px;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
 }
 
 .hold-reviews{
@@ -186,6 +204,10 @@ fieldset{
   border-right: 2px solid #ffffff;
   vertical-align: middle;
   padding-right: 2rem;
+}
+
+.disp-emo{
+  text-align: center;
 }
 
 .this-review-comments{
@@ -269,6 +291,17 @@ fieldset{
   text-align: center;
   width: 20rem;
 }
+
+.the-graphs{
+/*   margin-bottom: 6rem;
+  padding-bottom: 6rem; */
+  margin-top: 3rem;
+}
+
+.list-to-show{
+  margin-top: -4rem;
+}
+
 
 @media (max-width: 60rem) {
   .table {

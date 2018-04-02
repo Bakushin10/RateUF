@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
 import { List, Slider } from 'antd';
 import styled from 'styled-components';
-import { GetSliderMark } from '../utility/commonJS';
+import { GetSliderMark, getEmotion } from '../utility/commonJS';
 import Spinner from '../utility/Spinner';
 
 const CourseName = styled.h5`
@@ -25,6 +25,7 @@ export const CourseList = (courseToShow, loading, hasMore, handleInfiniteOnLoad,
         }
         ;
         return(
+            <div>
         <InfiniteScroll className = "demo-infinite-container table"
             initialLoad={false}
             pageStart={0}
@@ -32,30 +33,39 @@ export const CourseList = (courseToShow, loading, hasMore, handleInfiniteOnLoad,
             hasMore={! loading && hasMore}
             useWindow={false}
         >
+        <div className="hold-list">
         <List 
             itemLayout="vertical"
             size="small"
             pagination={pagination}
             dataSource={ courseToShow }
             renderItem={item => (
+            <div className="this-review">
             <Link to={`/ClassDetails/${item.major}/${item.courseCode}`}>
-                <CourseName style={{fontSize:'1rem'}}>
-                    <div>{item.courseCode}</div>
-                    <div>{item.courseName}</div>
+                <CourseName style={{fontSize:'1.25rem', textAlign:'center'}}>
+                    <div >{item.courseCode}</div>
+                    <div className="list-rating">
+                        <div>{item.courseName}</div>
+                        <div className="emo">{ getEmotion(item.overview) } </div>
+                        <div className="grade">{item.overview} / 100 </div>
+                    </div>
                 </CourseName>
-                <div class="list-rating">
-                    {item.overview} / 100
-                </div>
+                
+                
                 <List.Item 
                     xs = {9} md = {9}
                     key={item.id}
                 >
+                
                 <List.Item.Meta />
             </List.Item>
         </Link>
+        </div>
         )}
     />
+    </div>
 </InfiniteScroll>  
+</div>
         )
     }
 }

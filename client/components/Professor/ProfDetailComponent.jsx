@@ -57,15 +57,14 @@ export const GetReview = (hasReview, props) =>{
               <div className="this-review">
               <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
                 <div className="this-review-ratings">
-                  { getEmotion(item.overallExpe) }
                   <div className="this-overall">
                     <div className="underline">Overall Experience: </div>
-                    {(item.overallExpe)} / 100
+                    { getEmotion(item.overallExpe) }      {(item.overallExpe)} / 100
                   </div>
                   <br/>
                   <div className="this-difficult">
                     <div className="underline">Level of Difficulty: </div>
-                    {(item.levelOfDiffculty)} / 100
+                    { getEmotion(item.levelOfDiffculty) }      {(item.levelOfDiffculty)} / 100
                   </div>
                   <br/>
                   <div className="this-toookwith">

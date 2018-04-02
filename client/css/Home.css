@@ -39,9 +39,29 @@
 }
 
 .background{
-  background-image: url('./img/blue-shade.png');
+  /* background-image: url('./img/blue-shade.png');
   background-repeat: no-repeat; 
   background-position: center top; 
-  background-size:cover
+  background-size:cover; */
+  background: linear-gradient(	 #809fff, #ffff)
 }
 
+@media (max-width:60rem){
+  .welcome-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    text-align: center;
+    color: #ff7733;
+    opacity: 0.8;
+    margin-top: 2rem;
+  }
+
+  .welcome-buttons{
+    display: block;
+  }
+
+  .botones{
+    display: block;
+  }
+
+}

@@ -253,9 +253,10 @@ class ProfessorDetails extends React.Component {
             </div>
             <div>
               { GetMessageOrGraph(ProfFields, this.state) }
-              { GetReview(ProfFields.hasReview, this.state)}
+              <div className="the-graphs">{ GetReview(ProfFields.hasReview, this.state)}</div>
             </div>
           </div>
+          <Foot/>
       </div>
     );
   }
