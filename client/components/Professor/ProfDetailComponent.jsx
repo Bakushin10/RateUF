@@ -72,7 +72,6 @@ export const GetReview = (hasReview, props) =>{
                     {item.courseTakenFor}
                   </div>
                 </div>
-
                   <div className="this-review-comments">
                     <div className="this-howsprof">
                       <div className="underline">How is the Professor: </div> 
@@ -105,20 +104,18 @@ export const GetReview = (hasReview, props) =>{
                 
                   <div className="this-review-commentscomments">
                     <div className="this-review-extracomment">
-                    <div className="underline"> User Comment: </div>
-                    <List.Item.Meta
-                    // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                    //title={<a href="https://ant.design">{item.name.last}</a>}
-                    
-                    description = {item.extraComment}
-                    />
+                      <div className="underline">User Comment:</div>
+                      <List.Item.Meta
+                      // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                      //title={<a href="https://ant.design">{item.name.last}</a>}
+                      
+                      description = {item.extraComment}
+                      />
                     </div>
-                
-                <br/>
-                <div className="hold-commnets">
-                  <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
-                </div>
-                </div>
+                    {/* <div className="hold-commnets"> */}
+                      <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
+                    {/* </div> */}
+                  </div>
               </List.Item>
               </div>
             )}

@@ -43,6 +43,17 @@ const WarningOff = styled.span`
     return rows;
   }
 
+  export const ShowCommentArrays = (items) =>{
+    var rows = []
+    // margin-left: 10px;
+    // margin-right: - 5px;
+    
+    for(let i = 0;i<items.length ;i++){
+        rows.push(<div className="hold-commnets">{ items[i] }</div>)
+      }
+    return rows;
+  }
+
   export const GetLabel = (val, tag) => {
     if (val === '' || val === 0 || val.length === 0) {
       return <WarningOn> *{tag} </WarningOn>;
