@@ -22,18 +22,18 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
       return(
         <div>
           <Row type="flex" justify="space-around" align="middle">
-            <Gauge  value={props.overAllExpe} width={250} height={180} color = {overAllExpeColor} label="Overall" />
+            <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall" />
           </Row>
 
           <Row type="flex" justify="space-around" align="middle">
             <Col span={4}>
-              <Gauge value={ProfFields.levelOfDiff} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
+              <Gauge value={parseFloat(ProfFields.levelOfDiff).toFixed(1)} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
             </Col>
             <Col span={4}>
-              <Gauge value={ProfFields.CommOfIdea} width={180} height={125} color = {CommOfIdeaExpeColor} label="Communication" />
+              <Gauge value={parseFloat(ProfFields.CommOfIdea).toFixed(1)} width={180} height={125} color = {CommOfIdeaExpeColor} label="Communication" />
             </Col>
             <Col span={4}>
-              <Gauge value={ProfFields.FaciliOfLearning} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
+              <Gauge value={parseFloat(ProfFields.FaciliOfLearning).toFixed(1)} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
             </Col>
           </Row>
         </div>
