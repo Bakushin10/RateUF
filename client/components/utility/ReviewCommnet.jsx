@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { ShowArrays, GetLabel } from '../utility/commonJS';
+import { ShowCommentArrays, GetLabel } from '../utility/commonJS';
 import { Button, Form, Input, Grid, Row } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -150,7 +150,7 @@ class ReviewComment extends React.Component {
                 <br/>
                 <div>
                   <div className="underline"> Replies: </div>
-                { ShowArrays(this.state.commnetToShow) }
+                    { ShowCommentArrays(this.state.commnetToShow) }
                 </div>
           </div>
         ) //end of return

@@ -7,7 +7,7 @@ export default class Head extends React.Component {
     return (
       <Layout>
         <div className="web-head">
-          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '5rem' }}>
+          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '5rem', background:'#000000' }}>
           
           
             <a className="special-text" href="/#">

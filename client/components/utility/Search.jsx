@@ -92,8 +92,10 @@ class Search extends React.Component{
                         onChange={this.handleSearchProf}
                         />
                     </Form>
-                    { ProfessorList(listToShow, this.props.loading, this.props.hasMore, 
+                    <div className="list-to-show">
+                    { ProfessorList(listToShow, this.props.loading, this.props.hasMore, this.props.reviewForAllProfs,
                             this.handleInfiniteOnLoad, this.props.dataloaded) }
+                    </div>
                </div>
             )
         }
@@ -113,8 +115,10 @@ class Search extends React.Component{
                         onChange={this.handleSearchCourse}
                         />
                     </Form>
-                    { CourseList(listToShow, this.props.loading, this.props.hasMore, 
+                    <div className="list-to-show">
+                    { CourseList(listToShow, this.props.loading, this.props.hasMore, this.props.reviewForAllCourses,
                             this.handleInfiniteOnLoad, this.props.dataloaded) }
+                    </div>
                </div>
             )
         }

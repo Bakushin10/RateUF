@@ -16,7 +16,8 @@ class Course extends React.Component {
       course: [], //array courses to keep
       loading: false,
       hasMore: true,
-      dataloaded : false
+      dataloaded : false,
+      reviewForAllCourses : [] // a list of reviews for all professors
     };
 
     this.getAllCoursesByMajor = this.getAllCoursesByMajor.bind(this);
@@ -47,6 +48,7 @@ class Course extends React.Component {
 
   componentDidMount() {
     this.getAllCoursesByMajor(this, 'CS');
+    this.getAllCourseReviews(this, 'CS');
     //  this.setState({selectedMajor:'CS'});
   }
 
@@ -61,10 +63,19 @@ class Course extends React.Component {
           params:{
             major : major
           }
-      }) //passing major as an argument
-      .then(function(response) {
+      }).then(function(response) {
         self.setState({ course: response.data });
         self.setState({ courseToShow: response.data });
+      });
+  }
+
+  getAllCourseReviews(self, major) {
+    axios.get('/getAllCourseReviews', {
+        params: {
+          major: major
+        }
+      }).then(function(response) {
+        self.setState({ reviewForAllCourses : response.data });
         self.setState({ dataloaded : true});
       });
   }
@@ -78,8 +89,12 @@ class Course extends React.Component {
 
   changeProfByMajor(e, major) {
     if (this.state.selectedMajor != major) {
+      
       this.setState({ selectedMajor: major }); //update currently selected major
+      this.setState({ dataloaded : false});
+      this.setState({ reviewForAllCourses : []});
       this.getAllCoursesByMajor(this, major);
+      this.getAllCourseReviews(this, 'CS');
     }
   }
 
@@ -113,12 +128,13 @@ class Course extends React.Component {
         <Head />
           <div className = "container">
           <h1 className="title-here">Find Class</h1>
-            <div>
+          <div>
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Major</Button>
                 </Dropdown>
             </div>
             { <Search {...this.state} type = {"Course"} /> }
+            
         </div>
         <Foot />
       </div>

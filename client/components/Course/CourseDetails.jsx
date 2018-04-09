@@ -36,16 +36,27 @@ class CourseDetails extends React.Component {
 
   componentDidMount() {
     let self = this;
+    let professors;
     const courseCode = this.props.match.params.courseCode;
     const major = this.props.match.params.major;
+
+    /* 
+    obtain a list of all major for overview
+    */
+    axios.get('/getAllProfByMajor',{
+            params:{
+              major : major
+            }
+        }).then(function(response) {
+          professors = response.data;
+        });
 
     axios.get('/getCourseDetails', {
         params: {
           major: major,
           courseCode: courseCode
         }
-      })
-      .then(function(response) {
+      }).then(function(response) {
         self.init(response.data);
       });
 
@@ -54,8 +65,7 @@ class CourseDetails extends React.Component {
           major: major,
           courseCode: courseCode
         }
-      })
-      .then(function(response) {
+      }).then(function(response) {
         self.setState({ reviews: response.data.review });
       });
 
@@ -64,16 +74,36 @@ class CourseDetails extends React.Component {
           major: major,
           courseCode : courseCode
         }
-      })
-      .then(function(response) {
-        //remove dupulicate from array
-        console.log(response.data)
-        var noDuplicate = response.data.ProfPreviouslyTaught.filter(function(elem, index, self){
-          return index === self.indexOf(elem);
-        })
-        for(var i = 0;i<noDuplicate.length ;i++){
-          self.setState({ previousProf: self.state.previousProf.concat([noDuplicate[i].name])});
+      }).then(function(response) {
+        const arr = response.data.ProfPreviouslyTaught;
+        let noDuplicate = []
+
+        // trimming the duplicate 
+        for(var i = 0; i < arr.length ;i++){
+          var hasDuplicate = false
+          for(var j = 0; j < noDuplicate.length; j++){
+            if(arr[i].name === noDuplicate[j].name){
+                hasDuplicate = true
+            }
+          }
+          if(!hasDuplicate){
+            noDuplicate.push(arr[i])
+          }
         }
+
+        //assign overview for previous courses
+        for(var i = 0; i < noDuplicate.length;i++){
+          for(var j = 0; j < professors.length; j++){
+            if(noDuplicate[i].name === professors[j].name){
+              var professor = {
+                name : noDuplicate[i].name,
+                overview : professors[j].overview
+              }
+              self.setState({ previousProf: self.state.previousProf.concat([professor])});
+            }
+          }
+        }
+
         self.setState({ dataloaded : true });
       });
 
@@ -118,7 +148,7 @@ class CourseDetails extends React.Component {
       <Menu onClick={this.handleMenuClick}>
       {
         this.state.previousProf.map(prof => (
-          <Menu.Item key = { prof } >{ prof }</Menu.Item>
+          <Menu.Item key = { prof.name } >{ prof.name+ "  " + prof.overview + "/100" }</Menu.Item>
         ))
       }
       </Menu>
@@ -182,10 +212,6 @@ class CourseDetails extends React.Component {
       }
     }
 
-    const data = [
-      { subject: 'Level of Difficulty', prof: ProfFields.levelOfDiff, average: 50, fullMark: 100 }
-    ];
-
     return (
       <div>
         <Head />
@@ -214,12 +240,10 @@ class CourseDetails extends React.Component {
                 </Dropdown>
               </div>
               <br/>
-              <div className="class-overall">Overall Experiense {parseFloat(this.state.overAllExpe).toFixed(1)}</div>
-              <div className="class-diflevel">Level of Difficulty {parseFloat(ProfFields.levelOfDiff).toFixed(1)}</div>
             </div>
             <div>
-                { GetMessageOrGraph(ProfFields.hasReview, this.state.dataloaded, this.state.courseCode, this.state.major, data) }
-                { GetReview(ProfFields.hasReview, this.state)}
+                { GetMessageOrGraph(ProfFields, this.state) }
+                <div className="the-graphs">{ GetReview(ProfFields.hasReview, this.state)}</div>
             </div>
         </div>
       </div>
