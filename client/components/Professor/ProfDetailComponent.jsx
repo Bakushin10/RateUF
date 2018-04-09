@@ -4,6 +4,7 @@ import Gauge from 'react-svg-gauge';
 import { List, Icon, Card, Button, Row, Col } from 'antd';
 import { ShowArrays, getEmotion, getHexColor } from '../utility/commonJS';
 import Commnet from '../utility/ReviewCommnet';
+import LikeDislike from '../utility/LikeDislike'
 
 export const GetMessageOrGraph = (ProfFields, props) =>{
     if(!props.dataloaded){
@@ -55,7 +56,14 @@ export const GetReview = (hasReview, props) =>{
             dataSource={props.reviews}
             renderItem={item => (
               <div className="this-review">
-              <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
+              <List.Item actions={[
+                //  <Button type="primary" shape="circle" icon="like" >
+                //   </Button>, 
+                // <Button type="primary" shape="circle" icon="dislike" >
+                // </Button> 
+              ]}
+              >
+                <LikeDislike/>
                 <div className="this-review-ratings">
                   <div className="this-overall">
                     <div className="underline">Overall Experience: </div>
