@@ -111,8 +111,7 @@ class ClassForm extends React.Component {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }
-    )
-    .then(function(response) {
+    ).then(function(response) {
       //go to submit successfully page
       console.log(response.data);
     });
