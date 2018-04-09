@@ -1,7 +1,7 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
-import { List, Slider } from 'antd';
+import { List, Slider, Table } from 'antd';
 import styled from 'styled-components';
 import { GetSliderMark, getEmotion } from '../utility/commonJS';
 import Spinner from '../utility/Spinner';
@@ -17,6 +17,25 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
     if(!dataloaded){
         return <Spinner />
     }else{
+        const columns = [{
+            title: 'Professor Name',
+            dataIndex: 'name',
+            key: 'name',
+            render: text => <Link to={`/ProfessorDetails/{major}/{name}`}>{text}</Link>, 
+          }, {
+            title:'Department',
+            dataIndex:'major',
+            key:'major',
+          }, {
+            title: 'Rating',
+            dataIndex: 'overview',
+            key: 'overview',
+          }, {
+            title: 'Emotion',
+            dataIndex: '{getEmotion(overview)}',
+            key: 'emotion',
+          }];
+
         const pagination = {
             pageSize: 10,
             current: 1,
@@ -33,16 +52,15 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
                 hasMore={!loading && hasMore}
                 useWindow={false}
             >
-            <div className="hold-list">
-            <List
+            {/* 
+            <Table
             itemLayout="vertical"
             size="small"
             pagination={pagination}
             dataSource={professorToShow}
             renderItem={item => (
-                <div className="this-review">
                 <Link to={`/ProfessorDetails/${item.major}/${item.name}`}>
-                    <ProfessorName style={{fontSize:'1.25rem', textAlign:'center'}}>
+                    <ProfessorName style={{fontSize:'1rem', textAlign:'center'}}>
                     <div className="list-rating">
                         <div>{item.name}</div>
                         <div className="emo">{ getEmotion(item.overview) } </div>
@@ -50,19 +68,21 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
                     </div>
                     </ProfessorName>
                     
-                    <List.Item
+                    <Table.Item
                     xs={9}
                     md={9}
                     key={item.id}
                     >
-                    <List.Item.Meta />
-                    </List.Item>
+                    <Table.Item.Meta />
+                    </Table.Item>
                 </Link>
-                </div>
             )}
+            />*/}
+            <Table dataSource={professorToShow} columns={columns} 
+                   
             />
-            </div>
-        </InfiniteScroll>
+        </InfiniteScroll> 
+
         </div>
         )
     }
