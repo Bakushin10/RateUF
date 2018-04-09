@@ -25,6 +25,7 @@ CNT4007C=>condition: CNT4007C|department11:>http://localhost:8000/#/ClassDetails
 
 COP3502(yes)->COP3503(yes)->EEL3701C(no)->CDA3101(yes)->COP4600
 COP3502(no)->COT3100(yes)->CIS4301(no)->COP3530(yes)->CEN3031
+COP3503(no)->CIS4301
 COP3530(no)->COP4600(yes)->CNT4007C
 CDA3101(no)->COT4501
 `;
@@ -103,14 +104,6 @@ CDA3101(no)->COT4501
                 <div align="center">
                     <h1>Computer Science, Engineering</h1>
                     <h3>Major Coursework</h3>
-                    <div align="left">
-                        <a>**same color means you can take the classes at the same time**</a>
-
-                        <br/>
-                        <a>**a change in color means it has a prerequisite**</a>
-                        <br/>
-                        <a>**click on the class to see the review for it**</a>
-                    </div>
                     <div>
                         <Dropdown overlay = {menu} title="Change Major">
                             <Button >Change Degree Catalog</Button>
@@ -119,10 +112,20 @@ CDA3101(no)->COT4501
                             <Button >Flowchart of Major Coursework</Button>
                         </Dropdown>
                     </div>
-                    <Flowchart
-                        chartCode={code}
-                        options={opt}
-                    />
+                    <div class="legend">
+                        <br/>
+                        <ul class="legend-text">
+                            <li >Click on the class to see the review for it</li>
+                            <li>The same color means it has the same prerequisite</li>
+                            <li>If you see a change in color, the arrow pointing to the new color is the prerequisite</li>
+                        </ul>
+                    </div>
+                    <div align="right">
+                        <Flowchart
+                            chartCode={code}
+                            options={opt}
+                        />
+                    </div>
                 </div>
                 <Foot/>
             </div>

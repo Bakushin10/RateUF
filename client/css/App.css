@@ -275,3 +275,34 @@ fieldset{
     display: none;
   }
 }
+
+/*====legend===*/
+.legend {
+  position: relative;
+  background-color: #0a2253;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  height: 220px;
+  /*height: auto;*/
+  width: 30%;
+}
+
+.legend-text{
+  position: relative;
+  display: inline-block;
+  list-style-position: inside;
+  /*margin-left: 1rem;*/
+  color:#ffffff;
+  padding: 4px;
+  /*padding-left: 1rem;*/
+  /*padding-right: 1rem;*/
+  /*padding-top: 1rem;*/
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  background-color: #6699cc;
+  /*height: 70%;*/
+  width: 60%;
+}

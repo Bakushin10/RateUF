@@ -24,6 +24,7 @@ COP4600=>condition: COP4600|department10:>http://localhost:8000/#/ClassDetails/C
 
 COP3502(yes)->COP3503(yes)->EEL3701C(no)->CDA3101(yes)->COP4600
 COP3502(no)->COT3100(yes)->CIS4301(no)->COP3530(yes)->CEN3031
+COP3503(no)->CIS4301
 COP3530(no)->COP4600
 CDA3101(no)->COT4501
 
@@ -79,19 +80,19 @@ CDA3101(no)->COT4501
         const PrereqMenu= (
             <Menu>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/CSECatalog">CSE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSEPrereq">CSE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/CSLACatalog">CSC</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CSCPrereq">CSC</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/CECatalog">CE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/CEPrereq">CE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/EECatalog">EE</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/EEPrereq">EE</a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_self" rel="noopener noreferrer" href="./#/MATHCatalog">MATH</a>
+                    <a target="_self" rel="noopener noreferrer" href="./#/MATHPrereq">MATH</a>
                 </Menu.Item>
             </Menu>
         );
@@ -102,14 +103,6 @@ CDA3101(no)->COT4501
                 <div align="center">
                     <h1>Computer Science, Liberal Arts</h1>
                     <h3>Major Coursework</h3>
-                    <div align="left">
-                        <a>**same color means you can take the classes at the same time**</a>
-
-                        <br/>
-                        <a>**a change in color means it has a prerequisite**</a>
-                        <br/>
-                        <a>**click on the class to see the review for it**</a>
-                    </div>
                     <div>
                         <Dropdown overlay = {menu} title="Change Major">
                             <Button >Change Degree Catalog</Button>
@@ -118,10 +111,20 @@ CDA3101(no)->COT4501
                             <Button >Flowchart of Major Coursework</Button>
                         </Dropdown>
                     </div>
-                    <Flowchart
-                        chartCode={code}
-                        options={opt}
-                    />
+                    <div class="legend">
+                        <br/>
+                        <ul class="legend-text">
+                            <li >Click on the class to see the review for it</li>
+                            <li>The same color means it has the same prerequisite</li>
+                            <li>If you see a change in color, the arrow pointing to the new color is the prerequisite</li>
+                        </ul>
+                    </div>
+                    <div align="right">
+                        <Flowchart
+                            chartCode={code}
+                            options={opt}
+                        />
+                    </div>
                 </div>
                 <Foot/>
             </div>

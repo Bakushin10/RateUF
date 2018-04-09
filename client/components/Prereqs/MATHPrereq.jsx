@@ -96,14 +96,6 @@ MAC2313(no)->MAP2302
                 <div align="center">
                     <h1>Math, Liberal Arts</h1>
                     <h3>Major Coursework</h3>
-                    <div align="left">
-                        <a>**same color means you can take the classes at the same time**</a>
-                        <br/>
-                        <a>**a change in color means it has a prerequisite**</a>
-                        <br/>
-                        <a>**click on the class to see the review for it**</a>
-
-                    </div>
                     <div>
                         <Dropdown overlay = {menu} title="Change Major">
                             <Button >Change Degree Catalog</Button>
@@ -111,6 +103,14 @@ MAC2313(no)->MAP2302
                         <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
                             <Button >Flowchart of Major Coursework</Button>
                         </Dropdown>
+                    </div>
+                    <div class="legend">
+                        <br/>
+                        <ul class="legend-text">
+                            <li >Click on the class to see the review for it</li>
+                            <li>The same color means it has the same prerequisite</li>
+                            <li>If you see a change in color, the arrow pointing to the new color is the prerequisite</li>
+                        </ul>
                     </div>
                     <Flowchart
                         chartCode={code}
