@@ -1,8 +1,8 @@
 import React from 'react';
 import Spinner from '../utility/Spinner';
 import Gauge from 'react-svg-gauge';
-import { List, Icon, Card, Button, Row, Col } from 'antd';
-import { ShowArrays, getEmotion, getHexColor } from '../utility/commonJS';
+import { List, Icon, Card, Button, Row, Col, Rate } from 'antd';
+import { ShowArrays, getEmotion, getHexColor, getRating } from '../utility/commonJS';
 import Commnet from '../utility/ReviewCommnet';
 import LikeDislike from '../utility/LikeDislike'
 
@@ -23,44 +23,40 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
       return(
         <div>
           <Row type="flex" justify="space-around" align="middle">
-            <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall" />
+            <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall Experience" />
           </Row>
-
-          {/* <Row type="flex" justify="space-around" align="middle">
-            <Col span={4}>
-              <Gauge value={parseFloat(ProfFields.levelOfDiff).toFixed(1)} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
-            </Col>
-            <Col span={4}>
-              <Gauge value={parseFloat(ProfFields.CommOfIdea).toFixed(1)} width={180} height={125} color = {CommOfIdeaExpeColor} label="Communication" />
-            </Col>
-            <Col span={4}>
-              <Gauge value={parseFloat(ProfFields.FaciliOfLearning).toFixed(1)} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
-            </Col>
-          </Row> */}
-
 
           <Row type="flex" justify="space-around" align="middle">
-            <Col span={4}>
-              <Card style={{ width: 300 }}>
-                Level of Difficulty
-                <h3 className = "previousCard">{parseFloat(ProfFields.levelOfDiff).toFixed(1)}</h3>
-              </Card>
-            </Col>
-
-            <Col span={4}>
-              <Card style={{ width: 300 }}>
-                Communication
-                <h3 className = "previousCard"> {parseFloat(ProfFields.CommOfIdea).toFixed(1)}</h3>
-              </Card>
-            </Col>
-
-            <Col span={4}>
-              <Card style={{ width: 300 }}>
-                Learning Experience
-                <h3 className = "previousCard">{parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</h3>
-              </Card>
-            </Col>
+            <p className = "text-center">
+              <Col span={3}>
+                <Card style={{ width: 300 }}>
+                  Level of Difficulty
+                  <h3 className = "previousCard">{parseFloat(ProfFields.levelOfDiff).toFixed(1)}</h3>
+                  <Rate disabled defaultValue={getRating(ProfFields.levelOfDiff)} disabled/>
+                </Card>
+              </Col>
+            </p>
+            <p className = "text-center">
+              <Col span={3}>
+                <Card style={{ width: 300 }}>
+                  Communication
+                  <h3 className = "previousCard"> {parseFloat(ProfFields.CommOfIdea).toFixed(1)}</h3>
+                  <Rate disabled defaultValue={getRating(ProfFields.CommOfIdea)} disabled/>
+                </Card>
+              </Col>
+            </p>
+            <p className = "text-center">
+              <Col span={3}>
+                <Card style={{ width: 300 }}>
+                  Learning Experience
+                  <h3 className = "previousCard">{parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</h3>
+                  <Rate disabled defaultValue={getRating(ProfFields.FaciliOfLearning)} disabled/>
+                </Card>
+              </Col>
+            </p>
           </Row>
+          <div>
+          </div>
         </div>
       )
     }

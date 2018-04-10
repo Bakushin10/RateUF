@@ -132,8 +132,16 @@ const WarningOff = styled.span`
 
   export const getPreviousCourse = (major, items) =>{
     var rows = []
-    
-    for(let i = 0;i<items.length ;i++){
+    if(items.length == 0 ){
+      return(
+        <p>
+          <Card >
+            <h5 className = "previousCard">No records to show</h5>
+          </Card>
+        </p>
+      )
+    }else{
+      for(let i = 0;i<items.length ;i++){
         rows.push(
           <p>
             <Card >
@@ -141,8 +149,16 @@ const WarningOff = styled.span`
               {checkOVerView(items[i].overview)}
             </Card>
           </p>
-          )}
+          )
+        }
+    }
     return rows;
+  }
+
+  export const getRating = (score) => {
+    // score is out of 100
+    // convert the score to scale of 0-5 for rating
+    return (score/20).toFixed(1);
   }
 
   function checkOVerView(overview){

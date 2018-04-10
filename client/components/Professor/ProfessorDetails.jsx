@@ -35,6 +35,7 @@ class ProfessorDetails extends React.Component {
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
     this.getMenuItemForPreviousCourse = this.getMenuItemForPreviousCourse.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this)
+    this.getDepartment = this.getDepartment.bind(this)
   }
 
   componentDidMount() {
@@ -193,6 +194,18 @@ class ProfessorDetails extends React.Component {
     });
   }
 
+  getDepartment(department){
+    if(department == "CS"){
+      return <span>Computer Science</span>
+    }
+    if(department == "MATH"){
+      return <span>Mathematics</span>
+    }
+    if(department == "ECE"){
+      return <span>Computer Engineering</span>
+    }
+  }
+
   render() {
     //console.log(this.state);
     const ProfFields = {
@@ -252,7 +265,9 @@ class ProfessorDetails extends React.Component {
               </Row>
               <Row>
                 <Col span={8}>
-                  <div className="profDept department"> Departmemnt : {this.state.major} </div>
+                  <div className="profDept department">
+                    <h5>{this.getDepartment(this.state.major)}</h5>
+                  </div>
                 </Col>
               </Row>
                 <div className="profPrevCourse">
