@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import Spinner from './Spinner';
 
 const WarningOn = styled.span`
-  color: #fc2f4e;
+  color: #c90825;
 `;
 const WarningOff = styled.span`
-  color: #6be594;
+  color: #14bc0f;
 `;
 
  export const GetSliderMark = () =>{
@@ -15,19 +15,19 @@ const WarningOff = styled.span`
       {
         0: (
           <div>
-            <Icon type="frown-o" style={{ fontSize: 15, color: '#db0f0f', fontColor: 'black' }} />
-              <div>meh</div>
+            <Icon type="frown-o" style={{ fontSize: 18, color: '#db0f0f', fontColor: 'black' }} />
+              <div>bad</div>
           </div>
         ),
         50: (
           <div>
-            <Icon type="meh-o" style={{ fontSize: 15, color: '#08c', fontColor: 'black'}} />
-              <div>good</div>
+            <Icon type="meh-o" style={{ fontSize: 18, color: '#ffee0a', fontColor: 'black'}} />
+              <div>meh</div>
           </div>
         ),
         100: (
           <div>
-            <Icon type="smile-o" style={{ fontSize: 15, color: '#77f987',fontColor: 'black'}} />
+            <Icon type="smile-o" style={{ fontSize: 18, color: '#14bc0f',fontColor: 'black'}} />
               <div>excellent</div>
           </div>
         )

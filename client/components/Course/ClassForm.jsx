@@ -237,11 +237,12 @@ class ClassForm extends React.Component {
       <div>
         <Head />
         <div className="button-center">
-          <h1>{courseCode}</h1>
-          <h1>{courseName}</h1>
+          <h1 class="class-code">{courseCode}</h1>
+          <h1 class="class-name">{courseName}</h1>
           {GetErrorMessage(hasError)} {/* input error check*/}
           <div align="center">
-            <Form>
+            <Form style={{ position:'relative', display:'block', background: '#a0c4ff', borderRadius:'25px', width:'60%' }}>
+              <br/>
               <FormItem {...formItemLayout} label={ GetLabel(this.state.whoTookWith, 'Who did you take with ?')}>
                 {this.getWhoTookWithOption()}
               </FormItem>
