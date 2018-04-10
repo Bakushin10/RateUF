@@ -11,7 +11,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
       return <Spinner/>;
     }else if(props.dataloaded && !ProfFields.hasReview){
       return(
-          <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={ProfFields.hasReview}>
+          <Card hidden={ProfFields.hasReview}>
             <div className="success-text"> Be the first one to review ! </div>
           </Card>
       )

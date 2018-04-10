@@ -264,27 +264,27 @@ class ProfessorDetails extends React.Component {
                 </div>
             </div>
             <div>
-            <Tabs>
-              <TabList>
-                <Tab>OverView</Tab>
-                <Tab>Comments</Tab>
-                <Tab>Previous Courses</Tab>
-              </TabList>
+              <Tabs>
+                <TabList>
+                  <Tab>OverView</Tab>
+                  <Tab>Comments</Tab>
+                  <Tab>Previous Courses</Tab>
+                </TabList>
 
-              <TabPanel>
-                { GetMessageOrGraph(ProfFields, this.state) }
-              </TabPanel>
-              <TabPanel>
-                <div className="the-graphs">
-                  { GetReview(ProfFields.hasReview, this.state)}
-                </div>
-              </TabPanel>
-              <TabPanel>
-                <div className="the-graphs">
-                  { getPreviousCourse(this.state.major, this.state.previousCourse, "professor")}
-                </div>
-              </TabPanel>
-            </Tabs>
+                <TabPanel>
+                  { GetMessageOrGraph(ProfFields, this.state) }
+                </TabPanel>
+                <TabPanel>
+                  <div className="the-graphs">
+                    { GetReview(ProfFields.hasReview, this.state)}
+                  </div>
+                </TabPanel>
+                <TabPanel>
+                  <div className="the-graphs">
+                    { getPreviousCourse(this.state.major, this.state.previousCourse, "professor")}
+                  </div>
+                </TabPanel>
+              </Tabs>
             </div>
           </div>
           <Foot/>
