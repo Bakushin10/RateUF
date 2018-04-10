@@ -1,9 +1,9 @@
 import React from 'react';
 import Spinner from '../utility/Spinner';
 import Gauge from 'react-svg-gauge';
-import { List, Icon, Card, Row, Col} from 'antd';
-import { ShowArrays, getEmotion, getHexColor } from '../utility/commonJS';
-import Commnet from '../utility/ReviewCommnet';
+import { List, Icon, Card, Row, Col, Rate} from 'antd';
+import { ShowArrays, getEmotion, getHexColor, getRating } from '../utility/commonJS';
+import Comment from '../utility/ReviewComment';
 
 export const GetMessageOrGraph = (ProfFields, props) =>{
     if(!props.dataloaded){
@@ -20,13 +20,18 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
       return(
         <div>
           <Row type="flex" justify="space-around" align="middle">
-            <Gauge value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor}  label="Overall" />
-          </Row>
-
-          <Row type="flex" justify="space-around" align="middle">
-            <Col span={4}>
-              <Gauge value={parseFloat(ProfFields.levelOfDiff).toFixed(1)} width={180} height={120}  color = {levelOfDiffColor} label="Level of Difficulty" />
-            </Col>
+            <p>
+              <Gauge value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor}  label="Overall Experience" />
+            </p>
+            <p>
+                <Col span={3}>
+                  <Card style={{ width: 300 }}>
+                    Level of Difficulty
+                    <h3 className = "previousCard">{parseFloat(ProfFields.levelOfDiff).toFixed(1)}</h3>
+                    <Rate disabled defaultValue={getRating(ProfFields.levelOfDiff)} disabled/>
+                  </Card>
+                </Col>
+              </p>
           </Row>
         </div>
       )
@@ -94,8 +99,8 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
                     />
                     </div>
                     <br/>
-                    <div className="hold-commnets">
-                      <Commnet name = {props.courseCode} major = {props.major} id = {item._id} type = {"course"}/>
+                    <div className="hold-Comments">
+                      <Comment name = {props.courseCode} major = {props.major} id = {item._id} type = {"course"}/>
                     </div>
                 </div>
                 

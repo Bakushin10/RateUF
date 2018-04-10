@@ -119,6 +119,13 @@ fieldset{
   font-family: 'Bree Serif', serif;
 }
 
+.title-detail-page{
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Bree Serif', serif;
+}
+
 .profDept{
   text-align: center;
 }

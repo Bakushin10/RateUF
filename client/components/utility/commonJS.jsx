@@ -130,7 +130,7 @@ const WarningOff = styled.span`
     return '#' + g  + r  + b ;
   }
 
-  export const getPreviousCourse = (major, items) =>{
+  export const getPreviousCourse = (major, items, category) =>{
     var rows = []
     if(items.length == 0 ){
       return(
@@ -140,12 +140,23 @@ const WarningOff = styled.span`
           </Card>
         </p>
       )
-    }else{
+    }else if (category === "professor"){
       for(let i = 0;i<items.length ;i++){
         rows.push(
           <p>
             <Card >
               <h5 className = "previousCard">{items[i].courseCode}</h5>
+              {checkOVerView(items[i].overview)}
+            </Card>
+          </p>
+          )
+        }
+    }else{
+      for(let i = 0;i<items.length ;i++){
+        rows.push(
+          <p>
+            <Card >
+              <h5 className = "previousCard">{items[i].name}</h5>
               {checkOVerView(items[i].overview)}
             </Card>
           </p>
@@ -159,6 +170,18 @@ const WarningOff = styled.span`
     // score is out of 100
     // convert the score to scale of 0-5 for rating
     return (score/20).toFixed(1);
+  }
+
+  export const getDepartment = (department) => {
+    if(department == "CS"){
+      return <span>Computer Science</span>
+    }
+    if(department == "MATH"){
+      return <span>Mathematics</span>
+    }
+    if(department == "ECE"){
+      return <span>Computer Engineering</span>
+    }
   }
 
   function checkOVerView(overview){

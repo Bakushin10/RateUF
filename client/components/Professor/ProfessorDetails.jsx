@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
-import { GetSuccessMessage, getPreviousCourse } from '../utility/commonJS';
+import { GetSuccessMessage, getPreviousCourse, getDepartment} from '../utility/commonJS';
 import { GetMessageOrGraph, GetReview } from './ProfDetailComponent';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -35,7 +35,6 @@ class ProfessorDetails extends React.Component {
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
     this.getMenuItemForPreviousCourse = this.getMenuItemForPreviousCourse.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this)
-    this.getDepartment = this.getDepartment.bind(this)
   }
 
   componentDidMount() {
@@ -194,18 +193,6 @@ class ProfessorDetails extends React.Component {
     });
   }
 
-  getDepartment(department){
-    if(department == "CS"){
-      return <span>Computer Science</span>
-    }
-    if(department == "MATH"){
-      return <span>Mathematics</span>
-    }
-    if(department == "ECE"){
-      return <span>Computer Engineering</span>
-    }
-  }
-
   render() {
     //console.log(this.state);
     const ProfFields = {
@@ -248,11 +235,11 @@ class ProfessorDetails extends React.Component {
             </div>
             <div className= "prof">
               <Row>
-                <Col span={8} className = "profName">
+                <Col span={8} className = "title-detail-page">
                   {this.state.profName}
                 </Col>
                 <Col span={8}></Col>
-                <Col span={6} className = "profName">
+                <Col span={6} className = "title-detail-page">
                   <div className="profRateButtom">
                     {/* <p className="profRateText">Taken this professor? </p> */}
                     <Button type="primary" ghost>
@@ -266,7 +253,7 @@ class ProfessorDetails extends React.Component {
               <Row>
                 <Col span={8}>
                   <div className="profDept department">
-                    <h5>{this.getDepartment(this.state.major)}</h5>
+                    <h6>{getDepartment(this.state.major)}</h6>
                   </div>
                 </Col>
               </Row>
@@ -294,7 +281,7 @@ class ProfessorDetails extends React.Component {
               </TabPanel>
               <TabPanel>
                 <div className="the-graphs">
-                  { getPreviousCourse(this.state.major, this.state.previousCourse)}
+                  { getPreviousCourse(this.state.major, this.state.previousCourse, "professor")}
                 </div>
               </TabPanel>
             </Tabs>
