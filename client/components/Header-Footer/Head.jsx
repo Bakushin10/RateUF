@@ -8,8 +8,6 @@ export default class Head extends React.Component {
       <Layout>
         <div className="web-head">
           <Menu theme="dark" mode="horizontal" style={{ lineHeight: '5rem', background:'#000000' }}>
-          
-          
             <a className="special-text" href="/#">
               RateUF
             </a>
@@ -18,7 +16,6 @@ export default class Head extends React.Component {
                 Professors
               </a>
             </Menu.Item>
-
             <Menu.Item key="class">
               <a href="/#/Class" className="items">
                 Classes

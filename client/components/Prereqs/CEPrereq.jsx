@@ -103,8 +103,8 @@ COP3503(no)->COP3530(no)->CDA3101(yes)->COP4600
             <div>
                 <Head/>
                 <div align="center">
-                    <h1>Computer Engineering</h1>
-                    <h3>Major Coursework</h3>
+                    <h1 className="class-code">Computer Engineering</h1>
+                    <h3 className="class-name">Major Coursework</h3>
                     <div>
                         <Dropdown overlay = {menu} title="Change Major">
                             <Button >Change Degree Catalog</Button>
@@ -114,10 +114,9 @@ COP3503(no)->COP3530(no)->CDA3101(yes)->COP4600
                         </Dropdown>
                     </div>
                     <div class="legend">
-                        <br/>
-                        <ul class="legend-text">
-                            <li >Click on the class to see the review for it</li>
-                            <li>The same color means it has the same prerequisite</li>
+                        <ul>
+                            <li>Click on the class to see the review for it</li>
+                            <li>The same color means it has the same prerequisites</li>
                             <li>If you see a change in color, the arrow pointing to the new color is the prerequisite</li>
                         </ul>
                     </div>

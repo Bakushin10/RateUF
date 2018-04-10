@@ -324,6 +324,11 @@ class eeCatalog extends React.Component {
             credit: 9
         }];
 
+
+        const config = {
+            pagination: false,
+        }
+
         return (
             <div>
                 <Head />
@@ -336,16 +341,18 @@ class eeCatalog extends React.Component {
                 <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
                     <Button >Flowchart of Major Coursework</Button>
                 </Dropdown>
-                <Table style={{ width: '1000px' }} columns={semester1} dataSource={data1} />
-                <Table style={{ width: '1000px' }} columns={semester2} dataSource={data2} />
-                <Table style={{ width: '1000px' }} columns={semester3} dataSource={data3} />
-                <Table style={{ width: '1000px' }} columns={semester4} dataSource={data4} />
-                <Table style={{ width: '1000px' }} columns={summer} dataSource={dataSummer} />
-                <Table style={{ width: '1000px' }} columns={semester5} dataSource={data5} />
-                <Table style={{ width: '1000px' }} columns={semester6} dataSource={data6} />
-                <Table style={{ width: '1000px' }} columns={semester7} dataSource={data7} />
-                <Table style={{ width: '1000px' }} columns={semester8} dataSource={data8} />
-                <Table style={{ width: '1000px' }} columns={semester9} dataSource={data9} />
+                <div class="catalog">
+                    <Table style={{ width: '1000px' }} {...config} columns={semester1} dataSource={data1} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester2} dataSource={data2} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester3} dataSource={data3} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester4} dataSource={data4} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={summer} dataSource={dataSummer} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester5} dataSource={data5} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester6} dataSource={data6} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester7} dataSource={data7} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester8} dataSource={data8} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester9} dataSource={data9} />
+                </div>
             </div>
             </div>
 
