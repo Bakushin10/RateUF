@@ -147,7 +147,7 @@ fieldset{
 }
 
 .hold-list{
-  background-color: #0a2253;
+  background-color: #1F618D;
   border-radius: 5px;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -157,7 +157,7 @@ fieldset{
 }
 
 .hold-reviews{
-  background-color: #0a2253;
+  background-color: #1F618D;
   border-radius: 5px;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -317,12 +317,11 @@ fieldset{
 /*====legend===*/
 .legend {
   position: relative;
-  background-color: #0a2253;
+  background-color: #1F618D;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 1rem;
   height: 220px;
-  /*height: auto;*/
   width: 30%;
 }
 
@@ -330,12 +329,8 @@ fieldset{
   position: relative;
   display: inline-block;
   list-style-position: inside;
-  /*margin-left: 1rem;*/
   color:#ffffff;
   padding: 4px;
-  /*padding-left: 1rem;*/
-  /*padding-right: 1rem;*/
-  /*padding-top: 1rem;*/
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1rem;
   border: 2px solid #ffffff;

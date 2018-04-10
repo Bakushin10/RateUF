@@ -54,8 +54,8 @@ export const ProfessorList = (professorToShow, loading, hasMore, reviewForAllPro
                         )}
                     />
                 </div>
-            </InfiniteScroll>
-        </div>
+                </InfiniteScroll>
+            </div>
         )
     }
 }
