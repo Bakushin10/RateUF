@@ -1,15 +1,22 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
-import { List, Slider } from 'antd';
+import { Row, Col, List, Slider } from 'antd';
 import styled from 'styled-components';
 import { GetSliderMark, getEmotion } from '../utility/commonJS';
 import Spinner from '../utility/Spinner';
 
 const CourseName = styled.h5`
-  color: black;
-  padding-top: 15px;
-  padding-left: 30px;
+color: black;
+padding-top: 0.75rem;
+padding-bottom: 1rem;
+padding-left: 30px;
+font-size: 1rem; 
+border-bottom: double;
+text-align: center;
+
+&:hover{
+  background-color: #e6f7ff;
 `;
 
 export const CourseList = (courseToShow, loading, hasMore, reviewForAllCourses, handleInfiniteOnLoad, dataloaded) =>{
@@ -25,7 +32,7 @@ export const CourseList = (courseToShow, loading, hasMore, reviewForAllCourses, 
         };
         return(
             <div>
-                <InfiniteScroll className = "demo-infinite-container table"
+                {/* <InfiniteScroll className = "demo-infinite-container table"
                     initialLoad={false}
                     pageStart={0}
                     loadMore={ handleInfiniteOnLoad}
@@ -55,7 +62,34 @@ export const CourseList = (courseToShow, loading, hasMore, reviewForAllCourses, 
                             )}
                         />
                     </div>
-                </InfiniteScroll>
+                </InfiniteScroll> */}
+                <InfiniteScroll
+                className="demo-infinite-container table"
+                initialLoad={false}
+                pageStart={0}
+                loadMore={handleInfiniteOnLoad}
+                hasMore={!loading && hasMore}
+                useWindow={false}
+                >
+                <List
+                    size="large"
+                    dataSource={courseToShow}
+                    renderItem={item =>(
+                    <Link to={`/ClassDetails/${item.major}/${item.courseCode}`}>
+                    <CourseName>
+                        <Row className="list-item">
+                            <Col span={4}>{item.courseCode}</Col>
+                            <Col span={6}>{item.courseName}</Col>
+                            <Col span={4}>{ getEmotion(item.overview) } </Col>
+                            <Col span={4}>{item.overview} / 100 </Col>
+                            <Col span={4}>{getNumberOfReviews(item.courseCode, reviewForAllCourses)}</Col>
+                        </Row>
+                    </CourseName>
+                    </Link>
+                    )}
+                /> 
+                </InfiniteScroll> 
+
             </div>
         )
     }

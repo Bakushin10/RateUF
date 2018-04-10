@@ -307,9 +307,18 @@ fieldset{
   margin-top: -4rem;
 }
 
+.profRateList1{
+  display: inline;
+}
+
+.profRateList{
+  display: inline;
+  position: relative;
+  margin-left: 20px;
+}
 
 @media (max-width: 60rem) {
   .table {
-    display: none;
+    /* display: none; */
   }
 }
