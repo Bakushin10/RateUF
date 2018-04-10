@@ -4,6 +4,8 @@ import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
 import { GetSuccessMessage } from '../utility/commonJS';
 import { GetMessageOrGraph, GetReview } from './ProfDetailComponent';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import { Redirect } from 'react-router';
 import 'antd/dist/antd.css';
 import Head from '../Header-Footer/Head';
@@ -252,10 +254,21 @@ class ProfessorDetails extends React.Component {
                 <br/>
             </div>
             <div>
-              { GetMessageOrGraph(ProfFields, this.state) }
+            <Tabs>
+              <TabList>
+                <Tab>OverView</Tab>
+                <Tab>Comments</Tab>
+              </TabList>
+
+              <TabPanel>
+                { GetMessageOrGraph(ProfFields, this.state) }
+              </TabPanel>
+              <TabPanel>
               <div className="the-graphs">
                 { GetReview(ProfFields.hasReview, this.state)}
               </div>
+              </TabPanel>
+            </Tabs>
             </div>
           </div>
           <Foot/>

@@ -26,7 +26,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
             <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall" />
           </Row>
 
-          <Row type="flex" justify="space-around" align="middle">
+          {/* <Row type="flex" justify="space-around" align="middle">
             <Col span={4}>
               <Gauge value={parseFloat(ProfFields.levelOfDiff).toFixed(1)} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
             </Col>
@@ -35,6 +35,30 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
             </Col>
             <Col span={4}>
               <Gauge value={parseFloat(ProfFields.FaciliOfLearning).toFixed(1)} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
+            </Col>
+          </Row> */}
+
+
+          <Row type="flex" justify="space-around" align="middle">
+            <Col span={4}>
+              <Card style={{ width: 300 }}>
+                <h2>Level of Difficulty</h2>
+                {parseFloat(ProfFields.levelOfDiff).toFixed(1)}
+              </Card>
+            </Col>
+
+            <Col span={4}>
+              <Card style={{ width: 300 }}>
+                <h2>Communication</h2>
+                {parseFloat(ProfFields.CommOfIdea).toFixed(1)}
+              </Card>
+            </Col>
+
+            <Col span={4}>
+              <Card style={{ width: 300 }}>
+                <h2>Learning Experience</h2>
+                {parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}
+              </Card>
             </Col>
           </Row>
         </div>
