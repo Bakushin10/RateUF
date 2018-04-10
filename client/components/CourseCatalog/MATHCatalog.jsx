@@ -297,8 +297,8 @@ class mathCatalog extends React.Component {
             <div>
                 <Head/>
             <div align="center">
-                <h1>Math, Liberal Arts</h1>
-                <h3>Course Catalog</h3>
+                <h1 className="class-code">Math Major</h1>
+                <h3 className="class-name">Course Catalog</h3>
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Degree Catalog</Button>
                 </Dropdown>
