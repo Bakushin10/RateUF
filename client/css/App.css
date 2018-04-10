@@ -159,7 +159,7 @@ fieldset{
 }
 
 .hold-list{
-  background-color: #0a2253;
+  background-color: #1F618D;
   border-radius: 5px;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -169,7 +169,7 @@ fieldset{
 }
 
 .hold-reviews{
-  background-color: #0a2253;
+  background-color: #1F618D;
   border-radius: 5px;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -343,3 +343,24 @@ fieldset{
     /* display: none; */
   }
 }
+
+/*====legend===*/
+.legend {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 25px;
+  margin-top: 10px;
+  width: 50%;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 1rem;
+}
+
+.catalog{
+  position: relative;
+  background-color: #ffffff;
+  width: 1000px;
+}
+
+

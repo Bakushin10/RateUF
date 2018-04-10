@@ -24,6 +24,26 @@ class cseCatalog extends React.Component {
                 </Menu.Item>
             </Menu>
         );
+
+        const PrereqMenu= (
+        <Menu>
+            <Menu.Item>
+                <a target="_self" rel="noopener noreferrer" href="./#/CSEPrereq">CSE</a>
+            </Menu.Item>
+            <Menu.Item>
+                <a target="_self" rel="noopener noreferrer" href="./#/CSCPrereq">CSC</a>
+            </Menu.Item>
+            <Menu.Item>
+                <a target="_self" rel="noopener noreferrer" href="./#/CEPrereq">CE</a>
+            </Menu.Item>
+            <Menu.Item>
+                <a target="_self" rel="noopener noreferrer" href="./#/EEPrereq">EE</a>
+            </Menu.Item>
+            <Menu.Item>
+                <a target="_self" rel="noopener noreferrer" href="./#/MATHPrereq">MATH</a>
+            </Menu.Item>
+        </Menu>
+        );
         const semester1 = [{
             title: 'Semester 1',
             dataIndex: 'course',
@@ -276,6 +296,9 @@ class cseCatalog extends React.Component {
             credit: 3
         }];
 
+        const config = {
+            pagination: false,
+        }
 
         return (
             <div>
@@ -286,14 +309,19 @@ class cseCatalog extends React.Component {
                 <Dropdown overlay = {menu} title="Change Major">
                     <Button >Change Degree Catalog</Button>
                 </Dropdown>
-                <Table style={{ width: '1000px' }} columns={semester1} dataSource={data1} />
-                <Table style={{ width: '1000px' }} columns={semester2} dataSource={data2} />
-                <Table style={{ width: '1000px' }} columns={semester3} dataSource={data3} />
-                <Table style={{ width: '1000px' }} columns={semester4} dataSource={data4} />
-                <Table style={{ width: '1000px' }} columns={semester5} dataSource={data5} />
-                <Table style={{ width: '1000px' }} columns={semester6} dataSource={data6} />
-                <Table style={{ width: '1000px' }} columns={semester7} dataSource={data7} />
-                <Table style={{ width: '1000px' }} columns={semester8} dataSource={data8} />
+                <Dropdown overlay = {PrereqMenu} title="Flowchart of Prerequisites">
+                    <Button >Flowchart of Major Coursework</Button>
+                </Dropdown>
+                <div class="catalog">
+                    <Table style={{ width: '1000px' }} {...config} columns={semester1} dataSource={data1} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester2} dataSource={data2} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester3} dataSource={data3} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester4} dataSource={data4} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester5} dataSource={data5} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester6} dataSource={data6} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester7} dataSource={data7} /><br/><br/><br/>
+                    <Table style={{ width: '1000px' }} {...config} columns={semester8} dataSource={data8} /><br/><br/><br/>
+                </div>
             </div>
             </div>
         )
