@@ -43,6 +43,17 @@ const WarningOff = styled.span`
     return rows;
   }
 
+  export const ShowCommentArrays = (items) =>{
+    var rows = []
+    // margin-left: 10px;
+    // margin-right: - 5px;
+    
+    for(let i = 0;i<items.length ;i++){
+        rows.push(<div className="hold-commnets">{ items[i] }</div>)
+      }
+    return rows;
+  }
+
   export const GetLabel = (val, tag) => {
     if (val === '' || val === 0 || val.length === 0) {
       return <WarningOn> *{tag} </WarningOn>;
@@ -89,20 +100,17 @@ const WarningOff = styled.span`
 
   export const getEmotion = (overAllValue) =>{
     
-      if(overAllValue >= 90){
+      if(overAllValue == 0){
+        return <div> No Reviews</div>
+      }
+      if(overAllValue >= 80){
         return <Icon type="smile-o" />
       }
-      if(overAllValue < 90 && overAllValue >= 80){
-        return <Icon type="smile" />
-      }
-      if(overAllValue < 80 && overAllValue >= 70){
+      if(overAllValue < 80 && overAllValue >= 60){
         return <Icon type="meh-o" />
       }
-      if(overAllValue < 70 && overAllValue >= 60){
+      if(overAllValue < 60 && overAllValue >0){
         return <Icon type="frown-o" />
-      }
-      if(overAllValue < 60){
-        return <Icon type="frown" />
       }
   }
 

@@ -284,6 +284,11 @@ fieldset{
   padding-bottom: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-top: -10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left
 }
 
 .reply-commnet{
@@ -302,9 +307,18 @@ fieldset{
   margin-top: -4rem;
 }
 
+.profRateList1{
+  display: inline;
+}
+
+.profRateList{
+  display: inline;
+  position: relative;
+  margin-left: 20px;
+}
 
 @media (max-width: 60rem) {
   .table {
-    display: none;
+    /* display: none; */
   }
 }

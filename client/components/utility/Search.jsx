@@ -93,7 +93,7 @@ class Search extends React.Component{
                         />
                     </Form>
                     <div className="list-to-show">
-                    { ProfessorList(listToShow, this.props.loading, this.props.hasMore, 
+                    { ProfessorList(listToShow, this.props.loading, this.props.hasMore, this.props.reviewForAllProfs,
                             this.handleInfiniteOnLoad, this.props.dataloaded) }
                     </div>
                </div>
@@ -116,7 +116,7 @@ class Search extends React.Component{
                         />
                     </Form>
                     <div className="list-to-show">
-                    { CourseList(listToShow, this.props.loading, this.props.hasMore, 
+                    { CourseList(listToShow, this.props.loading, this.props.hasMore, this.props.reviewForAllCourses,
                             this.handleInfiniteOnLoad, this.props.dataloaded) }
                     </div>
                </div>

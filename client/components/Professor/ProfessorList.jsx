@@ -1,41 +1,29 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
-import { List, Slider, Table } from 'antd';
+import { Row, Col, List, Slider, Table } from 'antd';
 import styled from 'styled-components';
 import { GetSliderMark, getEmotion } from '../utility/commonJS';
 import Spinner from '../utility/Spinner';
 
 const ProfessorName = styled.h5`
   color: black;
-  padding-top: 15px;
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
   padding-left: 30px;
+  font-size: 1rem; 
+  border-bottom: double;
+  text-align: center;
+
+  &:hover{
+    background-color: #f5f5f5;
+  }
 `;
 
-export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteOnLoad, dataloaded) =>{
-    
-    if(!dataloaded){
+export const ProfessorList = (professorToShow, loading, hasMore, reviewForAllProfs, handleInfiniteOnLoad, dataloaded) =>{
+    if(reviewForAllProfs.length === 0){
         return <Spinner />
     }else{
-        const columns = [{
-            title: 'Professor Name',
-            dataIndex: 'name',
-            key: 'name',
-            render: text => <Link to={`/ProfessorDetails/{major}/{name}`}>{text}</Link>, 
-          }, {
-            title:'Department',
-            dataIndex:'major',
-            key:'major',
-          }, {
-            title: 'Rating',
-            dataIndex: 'overview',
-            key: 'overview',
-          }, {
-            title: 'Emotion',
-            dataIndex: '{getEmotion(overview)}',
-            key: 'emotion',
-          }];
-
         const pagination = {
             pageSize: 10,
             current: 1,
@@ -52,38 +40,43 @@ export const ProfessorList = (professorToShow, loading, hasMore, handleInfiniteO
                 hasMore={!loading && hasMore}
                 useWindow={false}
             >
-            {/* 
-            <Table
-            itemLayout="vertical"
-            size="small"
-            pagination={pagination}
-            dataSource={professorToShow}
-            renderItem={item => (
+             <List
+                size="large"
+                dataSource={professorToShow}
+                renderItem={item =>(
                 <Link to={`/ProfessorDetails/${item.major}/${item.name}`}>
-                    <ProfessorName style={{fontSize:'1rem', textAlign:'center'}}>
-                    <div className="list-rating">
-                        <div>{item.name}</div>
-                        <div className="emo">{ getEmotion(item.overview) } </div>
-                        <div className="grade">{item.overview} / 100 </div>
-                    </div>
-                    </ProfessorName>
-                    
-                    <Table.Item
-                    xs={9}
-                    md={9}
-                    key={item.id}
-                    >
-                    <Table.Item.Meta />
-                    </Table.Item>
+                <ProfessorName>
+                    <Row className="list-item">
+                        <Col span={6}>{item.name}</Col>
+                        <Col span={6}>{ getEmotion(item.overview) } </Col>
+                        <Col span={6}>{item.overview} / 100 </Col>
+                        <Col span={6}>{getNumberOfReviews(item.name, reviewForAllProfs)}</Col>
+                    </Row>
+                </ProfessorName>
                 </Link>
-            )}
-            />*/}
-            <Table dataSource={professorToShow} columns={columns} 
-                   
-            />
+                )}
+            /> 
         </InfiniteScroll> 
 
         </div>
         )
     }
-} 
+}
+
+function getNumberOfReviews(name,reviewForAllProfs){
+    const selectedProf = reviewForAllProfs.filter(prof => {
+        if (`${prof.name}`.toUpperCase().indexOf(name.toUpperCase()) >= 0) {
+          return prof;
+        }
+      });
+
+    if(selectedProf.length > 0){
+        return(
+            <div className="profRateButton">Number of review : {selectedProf[0].review.length} </div>
+        )
+    }else{
+        return(
+            <div className="profRateButton">Number of review : 0 </div>
+        )
+    }
+}

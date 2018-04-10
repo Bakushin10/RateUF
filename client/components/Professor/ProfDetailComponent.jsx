@@ -22,18 +22,18 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
       return(
         <div>
           <Row type="flex" justify="space-around" align="middle">
-            <Gauge  value={props.overAllExpe} width={250} height={180} color = {overAllExpeColor} label="Overall" />
+            <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall" />
           </Row>
 
           <Row type="flex" justify="space-around" align="middle">
             <Col span={4}>
-              <Gauge value={ProfFields.levelOfDiff} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
+              <Gauge value={parseFloat(ProfFields.levelOfDiff).toFixed(1)} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
             </Col>
             <Col span={4}>
-              <Gauge value={ProfFields.CommOfIdea} width={180} height={125} color = {CommOfIdeaExpeColor} label="Communication" />
+              <Gauge value={parseFloat(ProfFields.CommOfIdea).toFixed(1)} width={180} height={125} color = {CommOfIdeaExpeColor} label="Communication" />
             </Col>
             <Col span={4}>
-              <Gauge value={ProfFields.FaciliOfLearning} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
+              <Gauge value={parseFloat(ProfFields.FaciliOfLearning).toFixed(1)} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
             </Col>
           </Row>
         </div>
@@ -72,7 +72,6 @@ export const GetReview = (hasReview, props) =>{
                     {item.courseTakenFor}
                   </div>
                 </div>
-
                   <div className="this-review-comments">
                     <div className="this-howsprof">
                       <div className="underline">How is the Professor: </div> 
@@ -105,20 +104,18 @@ export const GetReview = (hasReview, props) =>{
                 
                   <div className="this-review-commentscomments">
                     <div className="this-review-extracomment">
-                    <div className="underline"> User Comment: </div>
-                    <List.Item.Meta
-                    // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                    //title={<a href="https://ant.design">{item.name.last}</a>}
-                    
-                    description = {item.extraComment}
-                    />
+                      <div className="underline">User Comment:</div>
+                      <List.Item.Meta
+                      // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                      //title={<a href="https://ant.design">{item.name.last}</a>}
+                      
+                      description = {item.extraComment}
+                      />
                     </div>
-                
-                <br/>
-                <div className="hold-commnets">
-                  <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
-                </div>
-                </div>
+                    {/* <div className="hold-commnets"> */}
+                      <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
+                    {/* </div> */}
+                  </div>
               </List.Item>
               </div>
             )}

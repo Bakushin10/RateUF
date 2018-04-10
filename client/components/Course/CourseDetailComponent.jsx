@@ -20,12 +20,12 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
       return(
         <div>
           <Row type="flex" justify="space-around" align="middle">
-            <Gauge value={props.overAllExpe} width={250} height={180} color = {overAllExpeColor}  label="Overall" />
+            <Gauge value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor}  label="Overall" />
           </Row>
 
           <Row type="flex" justify="space-around" align="middle">
             <Col span={4}>
-              <Gauge value={ProfFields.levelOfDiff} width={180} height={120}  color = {levelOfDiffColor} label="Level of Difficulty" />
+              <Gauge value={parseFloat(ProfFields.levelOfDiff).toFixed(1)} width={180} height={120}  color = {levelOfDiffColor} label="Level of Difficulty" />
             </Col>
           </Row>
         </div>

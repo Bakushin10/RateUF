@@ -4,7 +4,6 @@ import { List, Avatar, Icon, Menu, Dropdown, Button, Form, FormItem, Input} from
 import InfiniteScroll from 'react-infinite-scroller';
 import 'antd/dist/antd.css';
 import Search from '../utility/Search';
-
 import Head from '../Header-Footer/Head';
 import Foot from '../Header-Footer/Foot';
 
@@ -17,10 +16,12 @@ class Professor extends React.Component {
       professor: [], //array professors to keep
       loading: false,
       hasMore: true,
-      dataloaded : false 
+      dataloaded : false,
+      reviewForAllProfs : [] // a list of reviews for all professors
     };
 
     this.getAllProfByMajor = this.getAllProfByMajor.bind(this);
+    this.changeProfByMajor = this.changeProfByMajor.bind(this);
   }
   handleInfiniteOnLoad() {
     let data = this.state.professor;
@@ -53,7 +54,7 @@ class Professor extends React.Component {
 
   componentDidMount() {
     this.getAllProfByMajor(this, 'CS');
-    //  this.setState({selectedMajor:'CS'});
+    this.getAllProfReviews(this, 'CS');
   }
 
   getAllProfByMajor(self, major) {
@@ -61,18 +62,32 @@ class Professor extends React.Component {
         params: {
           major: major
         }
-      })
-      .then(function(response) {
+      }).then(function(response) {
         self.setState({ professor : response.data });
         self.setState({ professorToShow : response.data });
+      });
+  }
+
+  getAllProfReviews(self, major) {
+    axios.get('/getAllProfReviews', {
+        params: {
+          major: major
+        }
+      }).then(function(response) {
+        self.setState({ reviewForAllProfs : response.data });
         self.setState({ dataloaded : true});
+        // console.log("reviews in getAllProfREviews")
+        // console.log(self.state.reviewForAllProfs)
       });
   }
 
   changeProfByMajor(e, major) {
     if (this.state.selectedMajor != major) {
+      this.setState({ reviewForAllProfs : []}) // set to null
       this.setState({ selectedMajor: major }); //update currently selected major
+      this.setState({ dataloaded : false});
       this.getAllProfByMajor(this, major);
+      this.getAllProfReviews(this, major);
     }
   }
 

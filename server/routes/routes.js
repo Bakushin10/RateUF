@@ -189,6 +189,34 @@ router.get('/getAllProfByMajor',function(req, res) {
 });
 
 /*
+ retrieve an array of all reviews by selected major
+*/
+router.get('/getAllProfReviews',function(req, res) {
+    const major = req.query.major;
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
+
+    DB_name.find({},function(err,professor){
+        if(err)
+            res.send(err);
+        res.json(professor);
+    })
+});
+
+/*
+ retrieve an array of all reviews by selected major
+*/
+router.get('/getAllCourseReviews',function(req, res) {
+    const major = req.query.major;
+    const DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
+
+    DB_name.find({},function(err,course){
+        if(err)
+            res.send(err);
+        res.json(course);
+    })
+});
+
+/*
  retrieve commnet by prof
 */
 router.get('/getProfComment',function(req, res) {

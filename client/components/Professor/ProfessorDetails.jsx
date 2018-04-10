@@ -242,7 +242,7 @@ class ProfessorDetails extends React.Component {
                       <Icon type="form" /> Rate this professor
                     </Link>
                   </Button>
-                </div >
+                </div>
                  <br/>
                 <div className="profPrevCourse">
                   <Dropdown overlay={menu} title="previous course">
@@ -253,7 +253,9 @@ class ProfessorDetails extends React.Component {
             </div>
             <div>
               { GetMessageOrGraph(ProfFields, this.state) }
-              <div className="the-graphs">{ GetReview(ProfFields.hasReview, this.state)}</div>
+              <div className="the-graphs">
+                { GetReview(ProfFields.hasReview, this.state)}
+              </div>
             </div>
           </div>
           <Foot/>
