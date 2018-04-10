@@ -223,20 +223,21 @@ class ProfessorForm extends React.Component {
       <div>
       <Head />
       <div className="button-center">
-        <h1>{profName}</h1>
+        <h1 class="profName">{profName}</h1>
         {GetErrorMessage(hasError)} {/* input error check*/}
         <div align="center">
-          <Form>
-            <FormItem {...formItemLayout} label={ GetLabel(this.state.courseTakenFor, 'What class did you take this professor for ?')}>
+          <Form style={{ position:'relative', display:'block', background: '#e6f7ff', borderRadius:'25px', width:'60%' }}>
+            <br/>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.courseTakenFor, 'Class took with this professor')}>
                 { this.getCourseOption()}
             </FormItem>
-            <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheProfessor, 'How is the Professor')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.howIsTheProfessor, 'How is the professor')}>
                 { this.getHowIstheProfessorOption()}
             </FormItem>
             <FormItem {...formItemLayout} label={ GetLabel(this.state.tipsForSuccess, 'Tips for success')}>
                 { this.getTipsForSuccess()}
             </FormItem>
-            <FormItem {...formItemLayout} label={ GetLabel(this.state.overallExpe, 'Overall Experices')}>
+            <FormItem {...formItemLayout} label={ GetLabel(this.state.overallExpe, 'Overall experience')}>
               <Slider
                 onChange={this.overAllExpeOnChange}
                 value={this.state.overallExpe}

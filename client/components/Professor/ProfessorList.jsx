@@ -1,15 +1,23 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
-import { List, Slider } from 'antd';
+import { Row, Col, List, Slider, Table } from 'antd';
 import styled from 'styled-components';
 import { GetSliderMark, getEmotion } from '../utility/commonJS';
 import Spinner from '../utility/Spinner';
 
 const ProfessorName = styled.h5`
   color: black;
-  padding-top: 15px;
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
   padding-left: 30px;
+  font-size: 1rem; 
+  border-bottom: double;
+  text-align: center;
+
+  &:hover{
+    background-color: #e6f7ff;
+  }
 `;
 
 export const ProfessorList = (professorToShow, loading, hasMore, reviewForAllProfs, handleInfiniteOnLoad, dataloaded) =>{
@@ -24,37 +32,32 @@ export const ProfessorList = (professorToShow, loading, hasMore, reviewForAllPro
           };
         return (
             <div>
-                <InfiniteScroll
-                    className="demo-infinite-container table"
-                    initialLoad={false}
-                    pageStart={0}
-                    loadMore={handleInfiniteOnLoad}
-                    hasMore={!loading && hasMore}
-                    useWindow={false}
-                >
-                <div className="hold-list">
-                    <List
-                        itemLayout="vertical"
-                        size="small"
-                        pagination={pagination}
-                        dataSource={professorToShow}
-                        renderItem={item => (
-                            <div className="this-review">
-                                <Link to={`/ProfessorDetails/${item.major}/${item.name}`}>
-                                    <ProfessorName style={{fontSize:'1.25rem', textAlign:'center'}}>
-                                        <div className="list-rating">
-                                            <div>{item.name}</div>
-                                            <div className="emo">{ getEmotion(item.overview) } </div>
-                                            <div className="grade">{item.overview} / 100 </div>
-                                        </div>
-                                        {getNumberOfReviews(item.name, reviewForAllProfs)}
-                                    </ProfessorName>
-                                </Link>
-                            </div>
-                        )}
-                    />
-                </div>
-            </InfiniteScroll>
+            <InfiniteScroll
+                className="demo-infinite-container table"
+                initialLoad={false}
+                pageStart={0}
+                loadMore={handleInfiniteOnLoad}
+                hasMore={!loading && hasMore}
+                useWindow={false}
+            >
+             <List
+                size="large"
+                dataSource={professorToShow}
+                renderItem={item =>(
+                <Link to={`/ProfessorDetails/${item.major}/${item.name}`}>
+                <ProfessorName>
+                    <Row className="list-item">
+                        <Col span={6}>{item.name}</Col>
+                        <Col span={6}>{ getEmotion(item.overview) } </Col>
+                        <Col span={6}>{item.overview} / 100 </Col>
+                        <Col span={6}>{getNumberOfReviews(item.name, reviewForAllProfs)}</Col>
+                    </Row>
+                </ProfessorName>
+                </Link>
+                )}
+            /> 
+        </InfiniteScroll> 
+
         </div>
         )
     }
@@ -69,11 +72,11 @@ function getNumberOfReviews(name,reviewForAllProfs){
 
     if(selectedProf.length > 0){
         return(
-            <div>Number of review : {selectedProf[0].review.length} </div>
+            <div className="profRateButton">Number of review : {selectedProf[0].review.length} </div>
         )
     }else{
         return(
-            <div>Number of review : 0 </div>
+            <div className="profRateButton">Number of review : 0 </div>
         )
     }
 }
