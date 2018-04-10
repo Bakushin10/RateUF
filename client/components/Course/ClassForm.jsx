@@ -241,7 +241,7 @@ class ClassForm extends React.Component {
           <h1 class="class-name">{courseName}</h1>
           {GetErrorMessage(hasError)} {/* input error check*/}
           <div align="center">
-            <Form style={{ position:'relative', display:'block', background: '#a0c4ff', borderRadius:'25px', width:'60%' }}>
+            <Form style={{ position:'relative', display:'block', background: '#e6f7ff', borderRadius:'25px', width:'60%' }}>
               <br/>
               <FormItem {...formItemLayout} label={ GetLabel(this.state.whoTookWith, 'Who did you take with ?')}>
                 {this.getWhoTookWithOption()}

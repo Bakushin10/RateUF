@@ -21,7 +21,7 @@ const WarningOff = styled.span`
         ),
         50: (
           <div>
-            <Icon type="meh-o" style={{ fontSize: 18, color: '#ffee0a', fontColor: 'black'}} />
+            <Icon type="meh-o" style={{ fontSize: 18, color: '#f7cd16', fontColor: 'black'}} />
               <div>meh</div>
           </div>
         ),
