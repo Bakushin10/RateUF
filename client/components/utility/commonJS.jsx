@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Alert} from 'antd';
+import { Icon, Alert, Card} from 'antd';
 import styled from 'styled-components';
 import Spinner from './Spinner';
 
@@ -131,4 +131,29 @@ const WarningOff = styled.span`
     b = (b.length === 1) ? '0' + b : b;
 
     return '#' + g  + r  + b ;
+  }
+
+  export const getPreviousCourse = (major, items) =>{
+    var rows = []
+    
+    for(let i = 0;i<items.length ;i++){
+        rows.push(
+          <p>
+            <Card >
+              <h5 className = "previousCard">{items[i].courseCode}</h5>
+              {checkOVerView(items[i].overview)}
+            </Card>
+          </p>
+          )}
+    return rows;
+  }
+
+  function checkOVerView(overview){
+    if(overview == 0){
+      return(
+        <p> No reviews</p>
+      )
+    }else{
+      return <p> {overview} /100 </p>
+    }
   }

@@ -107,6 +107,10 @@ fieldset{
   text-align: center;
 }
 
+.department{
+  /* margin-top: -40px; */
+}
+
 .profName{
   font-size: 3rem;
   text-align: center;
@@ -307,6 +311,11 @@ fieldset{
   margin-top: -4rem;
 }
 
+.previousCard{
+  padding-top: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Bree Serif', serif;  
+}
 
 @media (max-width: 60rem) {
   .table {

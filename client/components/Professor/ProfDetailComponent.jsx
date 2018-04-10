@@ -42,22 +42,22 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
           <Row type="flex" justify="space-around" align="middle">
             <Col span={4}>
               <Card style={{ width: 300 }}>
-                <h2>Level of Difficulty</h2>
-                {parseFloat(ProfFields.levelOfDiff).toFixed(1)}
+                Level of Difficulty
+                <h3 className = "previousCard">{parseFloat(ProfFields.levelOfDiff).toFixed(1)}</h3>
               </Card>
             </Col>
 
             <Col span={4}>
               <Card style={{ width: 300 }}>
-                <h2>Communication</h2>
-                {parseFloat(ProfFields.CommOfIdea).toFixed(1)}
+                Communication
+                <h3 className = "previousCard"> {parseFloat(ProfFields.CommOfIdea).toFixed(1)}</h3>
               </Card>
             </Col>
 
             <Col span={4}>
               <Card style={{ width: 300 }}>
-                <h2>Learning Experience</h2>
-                {parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}
+                Learning Experience
+                <h3 className = "previousCard">{parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</h3>
               </Card>
             </Col>
           </Row>
@@ -84,7 +84,7 @@ export const GetReview = (hasReview, props) =>{
                 //  <Button type="primary" shape="circle" icon="like" >
                 //   </Button>, 
                 // <Button type="primary" shape="circle" icon="dislike" >
-                // </Button> 
+                // </Button>
               ]}
               >
                 <LikeDislike/>
