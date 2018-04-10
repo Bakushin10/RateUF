@@ -32,6 +32,11 @@ export const ProfessorList = (professorToShow, loading, hasMore, reviewForAllPro
           };
         return (
             <div>
+            <Row className="list-header">
+                <Col span={6}>Professor Name </Col>
+                <Col span={8}>Overview </Col>
+                <Col span={6}>Number of Reviews </Col>
+            </Row>
             <InfiniteScroll
                 className="demo-infinite-container table"
                 initialLoad={false}
@@ -39,6 +44,7 @@ export const ProfessorList = (professorToShow, loading, hasMore, reviewForAllPro
                 loadMore={handleInfiniteOnLoad}
                 hasMore={!loading && hasMore}
                 useWindow={false}
+                style={{background:'#ffffff'}}
             >
              <List
                 size="large"
@@ -48,8 +54,7 @@ export const ProfessorList = (professorToShow, loading, hasMore, reviewForAllPro
                 <ProfessorName>
                     <Row className="list-item">
                         <Col span={6}>{item.name}</Col>
-                        <Col span={6}>{ getEmotion(item.overview) } </Col>
-                        <Col span={6}>{item.overview} / 100 </Col>
+                        <Col span={8}>{ getEmotion(item.overview) } {getOverview(item.overview)}</Col>
                         <Col span={6}>{getNumberOfReviews(item.name, reviewForAllProfs)}</Col>
                     </Row>
                 </ProfessorName>
@@ -72,11 +77,17 @@ function getNumberOfReviews(name,reviewForAllProfs){
 
     if(selectedProf.length > 0){
         return(
-            <div className="profRateButton">Number of review : {selectedProf[0].review.length} </div>
+            <div className="profRateButton"> {selectedProf[0].review.length} </div>
         )
     }else{
         return(
-            <div className="profRateButton">Number of review : 0 </div>
+            <div className="profRateButton"> 0 </div>
         )
+    }
+}
+
+function getOverview(overview){
+    if(overview > 0){
+        return <span>{overview} / 100</span>;
     }
 }

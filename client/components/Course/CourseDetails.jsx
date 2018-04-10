@@ -246,6 +246,7 @@ class CourseDetails extends React.Component {
                 <div className="the-graphs">{ GetReview(ProfFields.hasReview, this.state)}</div>
             </div>
         </div>
+        <Foot />
       </div>
     );
   }

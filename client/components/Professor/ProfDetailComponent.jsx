@@ -26,18 +26,6 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
             <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall" />
           </Row>
 
-          {/* <Row type="flex" justify="space-around" align="middle">
-            <Col span={4}>
-              <Gauge value={parseFloat(ProfFields.levelOfDiff).toFixed(1)} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
-            </Col>
-            <Col span={4}>
-              <Gauge value={parseFloat(ProfFields.CommOfIdea).toFixed(1)} width={180} height={125} color = {CommOfIdeaExpeColor} label="Communication" />
-            </Col>
-            <Col span={4}>
-              <Gauge value={parseFloat(ProfFields.FaciliOfLearning).toFixed(1)} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
-            </Col>
-          </Row> */}
-
 
           <Row type="flex" justify="space-around" align="middle">
             <Col span={4}>
@@ -138,16 +126,12 @@ export const GetReview = (hasReview, props) =>{
                     <div className="this-review-extracomment">
                       <div className="underline">User Comment:</div>
                       <List.Item.Meta
-                      // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                      //title={<a href="https://ant.design">{item.name.last}</a>}
                       
                       description = {item.extraComment}
                       />
                     </div>
-                    {/* <div className="hold-commnets"> */}
                       <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
-                    {/* </div> */}
-                  </div>
+                  </div> 
               </List.Item>
               </div>
             )}

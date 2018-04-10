@@ -32,6 +32,12 @@ export const CourseList = (courseToShow, loading, hasMore, reviewForAllCourses, 
         };
         return(
             <div>
+                <Row className="list-header">
+                    <Col span={4}>Course Code</Col>
+                    <Col span={6}>Course Name</Col>
+                    <Col span={8}>Overview </Col>
+                    <Col span={6}>Number of Reviews </Col>
+                </Row>
                 <InfiniteScroll
                 className="demo-infinite-container table"
                 initialLoad={false}
@@ -39,6 +45,7 @@ export const CourseList = (courseToShow, loading, hasMore, reviewForAllCourses, 
                 loadMore={handleInfiniteOnLoad}
                 hasMore={!loading && hasMore}
                 useWindow={false}
+                style={{background:'#ffffff'}}
                 >
                 <List
                     size="large"
@@ -49,9 +56,8 @@ export const CourseList = (courseToShow, loading, hasMore, reviewForAllCourses, 
                         <Row className="list-item">
                             <Col span={4}>{item.courseCode}</Col>
                             <Col span={6}>{item.courseName}</Col>
-                            <Col span={4}>{ getEmotion(item.overview) } </Col>
-                            <Col span={4}>{item.overview} / 100 </Col>
-                            <Col span={4}>{getNumberOfReviews(item.courseCode, reviewForAllCourses)}</Col>
+                            <Col span={8}>{ getEmotion(item.overview) } {getOverview(item.overview)} </Col>
+                            <Col span={6}>{getNumberOfReviews(item.courseCode, reviewForAllCourses)}</Col>
                         </Row>
                     </CourseName>
                     </Link>
@@ -72,11 +78,17 @@ function getNumberOfReviews(courseCode,reviewForAllCourses){
       });
     if(selectedCourse.length > 0){
         return(
-            <div>Number of review : {selectedCourse[0].review.length} </div>
+            <div>{selectedCourse[0].review.length} </div>
         )
     }else{
         return(
-            <div>Number of review : 0 </div>
+            <div> 0 </div>
         )
+    }
+}
+
+function getOverview(overview){
+    if(overview > 0){
+        return <span>{overview} / 100</span>;
     }
 }
