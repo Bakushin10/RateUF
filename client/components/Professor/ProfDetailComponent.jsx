@@ -4,6 +4,7 @@ import Gauge from 'react-svg-gauge';
 import { List, Icon, Card, Button, Row, Col } from 'antd';
 import { ShowArrays, getEmotion, getHexColor } from '../utility/commonJS';
 import Commnet from '../utility/ReviewCommnet';
+import LikeDislike from '../utility/LikeDislike'
 
 export const GetMessageOrGraph = (ProfFields, props) =>{
     if(!props.dataloaded){
@@ -25,7 +26,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
             <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall" />
           </Row>
 
-          <Row type="flex" justify="space-around" align="middle">
+          {/* <Row type="flex" justify="space-around" align="middle">
             <Col span={4}>
               <Gauge value={parseFloat(ProfFields.levelOfDiff).toFixed(1)} width={180} height={125} color = {levelOfDiffColor} label="Level of Difficulty" />
             </Col>
@@ -34,6 +35,30 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
             </Col>
             <Col span={4}>
               <Gauge value={parseFloat(ProfFields.FaciliOfLearning).toFixed(1)} width={180} height={125} color = {FaciliOfLearningExpeColor} label="Learning Experience" />
+            </Col>
+          </Row> */}
+
+
+          <Row type="flex" justify="space-around" align="middle">
+            <Col span={4}>
+              <Card style={{ width: 300 }}>
+                <h2>Level of Difficulty</h2>
+                {parseFloat(ProfFields.levelOfDiff).toFixed(1)}
+              </Card>
+            </Col>
+
+            <Col span={4}>
+              <Card style={{ width: 300 }}>
+                <h2>Communication</h2>
+                {parseFloat(ProfFields.CommOfIdea).toFixed(1)}
+              </Card>
+            </Col>
+
+            <Col span={4}>
+              <Card style={{ width: 300 }}>
+                <h2>Learning Experience</h2>
+                {parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}
+              </Card>
             </Col>
           </Row>
         </div>
@@ -55,7 +80,14 @@ export const GetReview = (hasReview, props) =>{
             dataSource={props.reviews}
             renderItem={item => (
               <div className="this-review">
-              <List.Item actions={[<Icon type="like" />, <Icon type="dislike" />]}>
+              <List.Item actions={[
+                //  <Button type="primary" shape="circle" icon="like" >
+                //   </Button>, 
+                // <Button type="primary" shape="circle" icon="dislike" >
+                // </Button> 
+              ]}
+              >
+                <LikeDislike/>
                 <div className="this-review-ratings">
                   <div className="this-overall">
                     <div className="underline">Overall Experience: </div>

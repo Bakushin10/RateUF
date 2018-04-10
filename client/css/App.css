@@ -96,9 +96,10 @@ fieldset{
 }
 
 .title-here{
-  font-size: 3.5rem;
+  font-size: 3rem;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Bree Serif', serif;
 
 
 }
@@ -307,9 +308,18 @@ fieldset{
   margin-top: -4rem;
 }
 
+.profRateList1{
+  display: inline;
+}
+
+.profRateList{
+  display: inline;
+  position: relative;
+  margin-left: 20px;
+}
 
 @media (max-width: 60rem) {
   .table {
-    display: none;
+    /* display: none; */
   }
 }
