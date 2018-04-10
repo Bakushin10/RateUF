@@ -16,7 +16,7 @@ border-bottom: double;
 text-align: center;
 
 &:hover{
-  background-color: #f5f5f5;
+  background-color: #e6f7ff;
 `;
 
 export const CourseList = (courseToShow, loading, hasMore, reviewForAllCourses, handleInfiniteOnLoad, dataloaded) =>{

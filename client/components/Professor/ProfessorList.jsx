@@ -16,7 +16,7 @@ const ProfessorName = styled.h5`
   text-align: center;
 
   &:hover{
-    background-color: #f5f5f5;
+    background-color: #e6f7ff;
   }
 `;
 
