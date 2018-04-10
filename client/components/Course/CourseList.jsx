@@ -32,37 +32,6 @@ export const CourseList = (courseToShow, loading, hasMore, reviewForAllCourses, 
         };
         return(
             <div>
-                {/* <InfiniteScroll className = "demo-infinite-container table"
-                    initialLoad={false}
-                    pageStart={0}
-                    loadMore={ handleInfiniteOnLoad}
-                    hasMore={! loading && hasMore}
-                    useWindow={false}
-                >
-                    <div className="hold-list">
-                        <List 
-                            itemLayout="vertical"
-                            size="small"
-                            pagination={pagination}
-                            dataSource={ courseToShow }
-                            renderItem={item => (
-                                <div className="this-review">
-                                    <Link to={`/ClassDetails/${item.major}/${item.courseCode}`}>
-                                        <CourseName style={{fontSize:'1.25rem', textAlign:'center'}}>
-                                            <div >{item.courseCode}</div>
-                                            <div className="list-rating">
-                                                <div>{item.courseName}</div>
-                                                <div className="emo">{ getEmotion(item.overview) } </div>
-                                                <div className="grade">{item.overview} / 100 </div>
-                                            </div>
-                                            {getNumberOfReviews(item.courseCode, reviewForAllCourses)}
-                                        </CourseName>
-                                    </Link>
-                                </div>
-                            )}
-                        />
-                    </div>
-                </InfiniteScroll> */}
                 <InfiniteScroll
                 className="demo-infinite-container table"
                 initialLoad={false}
