@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Alert} from 'antd';
+import { Icon, Alert, Card} from 'antd';
 import styled from 'styled-components';
 import Spinner from './Spinner';
 
@@ -128,4 +128,68 @@ const WarningOff = styled.span`
     b = (b.length === 1) ? '0' + b : b;
 
     return '#' + g  + r  + b ;
+  }
+
+  export const getPreviousCourse = (major, items, category) =>{
+    var rows = []
+    if(items.length == 0 ){
+      return(
+        <p>
+          <Card >
+            <h5 className = "previousCard">No records to show</h5>
+          </Card>
+        </p>
+      )
+    }else if (category === "professor"){
+      for(let i = 0;i<items.length ;i++){
+        rows.push(
+          <p>
+            <Card >
+              <h5 className = "previousCard">{items[i].courseCode}</h5>
+              {checkOVerView(items[i].overview)}
+            </Card>
+          </p>
+          )
+        }
+    }else{
+      for(let i = 0;i<items.length ;i++){
+        rows.push(
+          <p>
+            <Card >
+              <h5 className = "previousCard">{items[i].name}</h5>
+              {checkOVerView(items[i].overview)}
+            </Card>
+          </p>
+          )
+        }
+    }
+    return rows;
+  }
+
+  export const getRating = (score) => {
+    // score is out of 100
+    // convert the score to scale of 0-5 for rating
+    return (score/20).toFixed(1);
+  }
+
+  export const getDepartment = (department) => {
+    if(department == "CS"){
+      return <span>Computer Science</span>
+    }
+    if(department == "MATH"){
+      return <span>Mathematics</span>
+    }
+    if(department == "ECE"){
+      return <span>Computer Engineering</span>
+    }
+  }
+
+  function checkOVerView(overview){
+    if(overview == 0){
+      return(
+        <p> No reviews</p>
+      )
+    }else{
+      return <p> {overview} /100 </p>
+    }
   }

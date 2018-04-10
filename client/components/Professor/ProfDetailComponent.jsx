@@ -1,9 +1,9 @@
 import React from 'react';
 import Spinner from '../utility/Spinner';
 import Gauge from 'react-svg-gauge';
-import { List, Icon, Card, Button, Row, Col } from 'antd';
-import { ShowArrays, getEmotion, getHexColor } from '../utility/commonJS';
-import Commnet from '../utility/ReviewCommnet';
+import { List, Icon, Card, Button, Row, Col, Rate } from 'antd';
+import { ShowArrays, getEmotion, getHexColor, getRating } from '../utility/commonJS';
+import Comment from '../utility/ReviewComment';
 import LikeDislike from '../utility/LikeDislike'
 
 export const GetMessageOrGraph = (ProfFields, props) =>{
@@ -11,7 +11,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
       return <Spinner/>;
     }else if(props.dataloaded && !ProfFields.hasReview){
       return(
-          <Card style={{ width: '30rem', backgroundColor:'lightblue', opacity:'0.5' }} hidden={ProfFields.hasReview}>
+          <Card hidden={ProfFields.hasReview}>
             <div className="success-text"> Be the first one to review ! </div>
           </Card>
       )
@@ -23,32 +23,44 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
       return(
         <div>
           <Row type="flex" justify="space-around" align="middle">
-            <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall" />
+            <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall Experience" />
           </Row>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> detailPage
           <Row type="flex" justify="space-around" align="middle">
-            <Col span={4}>
-              <Card style={{ width: 300 }}>
-                <h2>Level of Difficulty</h2>
-                {parseFloat(ProfFields.levelOfDiff).toFixed(1)}
-              </Card>
-            </Col>
-
-            <Col span={4}>
-              <Card style={{ width: 300 }}>
-                <h2>Communication</h2>
-                {parseFloat(ProfFields.CommOfIdea).toFixed(1)}
-              </Card>
-            </Col>
-
-            <Col span={4}>
-              <Card style={{ width: 300 }}>
-                <h2>Learning Experience</h2>
-                {parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}
-              </Card>
-            </Col>
+            <p className = "text-center">
+              <Col span={3}>
+                <Card style={{ width: 300 }}>
+                  Level of Difficulty
+                  <h3 className = "previousCard">{parseFloat(ProfFields.levelOfDiff).toFixed(1)}</h3>
+                  <Rate disabled defaultValue={getRating(ProfFields.levelOfDiff)} disabled/>
+                </Card>
+              </Col>
+            </p>
+            <p className = "text-center">
+              <Col span={3}>
+                <Card style={{ width: 300 }}>
+                  Communication
+                  <h3 className = "previousCard"> {parseFloat(ProfFields.CommOfIdea).toFixed(1)}</h3>
+                  <Rate disabled defaultValue={getRating(ProfFields.CommOfIdea)} disabled/>
+                </Card>
+              </Col>
+            </p>
+            <p className = "text-center">
+              <Col span={3}>
+                <Card style={{ width: 300 }}>
+                  Learning Experience
+                  <h3 className = "previousCard">{parseFloat(ProfFields.FaciliOfLearning).toFixed(1)}</h3>
+                  <Rate disabled defaultValue={getRating(ProfFields.FaciliOfLearning)} disabled/>
+                </Card>
+              </Col>
+            </p>
           </Row>
+          <div>
+          </div>
         </div>
       )
     }
@@ -72,7 +84,7 @@ export const GetReview = (hasReview, props) =>{
                 //  <Button type="primary" shape="circle" icon="like" >
                 //   </Button>, 
                 // <Button type="primary" shape="circle" icon="dislike" >
-                // </Button> 
+                // </Button>
               ]}
               >
                 <LikeDislike/>
@@ -130,8 +142,15 @@ export const GetReview = (hasReview, props) =>{
                       description = {item.extraComment}
                       />
                     </div>
+<<<<<<< HEAD
                       <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
                   </div> 
+=======
+                    {/* <div className="hold-Comments"> */}
+                      <Comment name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
+                    {/* </div> */}
+                  </div>
+>>>>>>> detailPage
               </List.Item>
               </div>
             )}
