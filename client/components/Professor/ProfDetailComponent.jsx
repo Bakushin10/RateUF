@@ -69,12 +69,10 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
           <div className="hold-reviews">
             <List
             className="demo-loadmore-list"
-            // loading={loading}
             itemLayout="horizontal"
-            // loadMore={loadMore}
             dataSource={props.reviews}
             renderItem={item => (
-              <div className="this-review">
+              <Row className="this-review">
               <List.Item actions={[
                 //  <Button type="primary" shape="circle" icon="like" >
                 //   </Button>, 
@@ -83,29 +81,21 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
               ]}
               >
                 <LikeDislike/>
-                <div className="this-review-ratings">
-                  <div className="this-overall">
-                    <div className="underline">Overall Experience: </div>
-                    { getEmotion(item.overallExpe) }      {(item.overallExpe)} / 100
-                  </div>
-                  <br/>
-                  <div className="this-difficult">
-                    <div className="underline">Level of Difficulty: </div>
-                    { getEmotion(item.levelOfDiffculty) }      {(item.levelOfDiffculty)} / 100
-                  </div>
-                  <br/>
+                <Col span={6} className="this-review-ratings">
                   <div className="this-toookwith">
-                    <div className="underline">Course: </div>
                     {item.courseTakenFor}
                   </div>
-                </div>
-                  <div className="this-review-comments">
-                    <div className="this-howsprof">
-                      <div className="underline">How is the Professor: </div> 
-                      { ShowArrays(item.howIsTheProfessor) }
+                  <br/>
+                    <div className="this-overall">
+                      <div className="underline">Overall Experience: </div>
+                      {(item.overallExpe)} / 100
                     </div>
                     <br/>
-                    <div className="this-learning">
+                    <div className="this-difficult">
+                      <div className="underline">Level of Difficulty: </div>
+                      {(item.levelOfDiffculty)} / 100
+                    </div>
+                      <div className="this-learning">
                       <div className="underline">Faciliation of Learning: </div>
                       {(item.facilitationOfLearning)} / 100
                     </div>
@@ -115,35 +105,37 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
                     {(item.communicationOfIdeas)} / 100
                     </div>
                     <br/>
+                  
+                </Col> 
+                  <Col span={6} className="this-review-comments">
+                  <div className="this-tips">
+                    <div className="underline">Tips for Success: </div>
+                      {ShowArrays(item.tipsForSuccess)}
+                    </div>
+                    <br/>
+                    <div className="this-howsprof">
+                      <div className="underline">How is the Professor: </div> 
+                      { ShowArrays(item.howIsTheProfessor) }
+                    </div>
+                    <br/>
+                    
                     <div className="this-takeagain">
                       <div className="underline">Would take again: </div>
                       {(item.wouldTakeAgain)}
                     </div>
-                  </div>
+                  </Col>
                 
-                  <div className="this-review-comments">
-                    <div className="this-tips">
-                    <div className="underline">Tips for Success: </div>
-                      {ShowArrays(item.tipsForSuccess)}
-                    </div>
-                  </div>
-                
-                  <div className="this-review-commentscomments">
+                  <Col span={6} className="this-review-commentscomments">
                     <div className="this-review-extracomment">
                       <div className="underline">User Comment:</div>
                       <List.Item.Meta
-                      // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                      //title={<a href="https://ant.design">{item.name.last}</a>}
-                      
                       description = {item.extraComment}
                       />
                     </div>
-                    {/* <div className="hold-Comments"> */}
                       <Comment name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
-                    {/* </div> */}
-                  </div>
+                  </Col>
               </List.Item>
-              </div>
+              </Row>
             )}
           />
           </div>

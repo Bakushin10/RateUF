@@ -171,7 +171,6 @@ fieldset{
 
 .hold-reviews{
   background-color:  #ffffff;
-  background-color: #0a2253;
   border-radius: 5px;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -213,11 +212,11 @@ fieldset{
 }
 
 .this-review-ratings{
-  margin-left: 2rem;
-  width: 8rem;
+  /* margin-left: 2rem;
+  width: 8rem; */
   border-right: 2px solid #6699cc;
   vertical-align: middle;
-  padding-right: 2rem;
+  margin-left: 2rem;
 }
 
 .disp-emo{
@@ -225,15 +224,14 @@ fieldset{
 }
 
 .this-review-comments{
-  margin-left: 2rem;
+  /* margin-left: 2rem;
   display: inline;
-  width: 10rem;
-  border-right: 2px solid #ffffff;
+  width: 10rem; */
+  border-right: 2px solid #6699cc;
   margin-left: 2rem;
 }
 
 .this-review-commentscomments{
-  display: inline;
   margin-left: 2rem;
 }
 
@@ -242,7 +240,11 @@ fieldset{
   color: #ffffff;
 }
 
-
+.this-toookwith{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
 .class-deets{
   text-align: center;
 }

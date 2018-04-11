@@ -276,6 +276,7 @@ class CourseDetails extends React.Component {
             </Tabs>
             </div>
         </div>
+        <Foot/>
       </div>
     );
   }
