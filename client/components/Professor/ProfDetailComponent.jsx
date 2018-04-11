@@ -25,11 +25,6 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
           <Row type="flex" justify="space-around" align="middle">
             <Gauge  value={parseFloat(props.overAllExpe).toFixed(1)} width={250} height={180} color = {overAllExpeColor} label="Overall Experience" />
           </Row>
-
-<<<<<<< HEAD
-
-=======
->>>>>>> detailPage
           <Row type="flex" justify="space-around" align="middle">
             <p className = "text-center">
               <Col span={3}>
@@ -66,7 +61,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
     }
   }
 
-export const GetReview = (hasReview, props) =>{
+  export const GetReview = (hasReview, props) =>{
 
     if(hasReview){
         return(
@@ -131,26 +126,22 @@ export const GetReview = (hasReview, props) =>{
                     <div className="underline">Tips for Success: </div>
                       {ShowArrays(item.tipsForSuccess)}
                     </div>
-
                   </div>
                 
                   <div className="this-review-commentscomments">
                     <div className="this-review-extracomment">
                       <div className="underline">User Comment:</div>
                       <List.Item.Meta
+                      // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                      //title={<a href="https://ant.design">{item.name.last}</a>}
                       
                       description = {item.extraComment}
                       />
                     </div>
-<<<<<<< HEAD
-                      <Commnet name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
-                  </div> 
-=======
                     {/* <div className="hold-Comments"> */}
                       <Comment name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
                     {/* </div> */}
                   </div>
->>>>>>> detailPage
               </List.Item>
               </div>
             )}

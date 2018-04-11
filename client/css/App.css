@@ -159,11 +159,8 @@ fieldset{
 }
 
 .hold-list{
-<<<<<<< HEAD
   background-color: #ffffff;
-=======
-  background-color: #1F618D;
->>>>>>> detailPage
+  background-color: #0a2253;
   border-radius: 5px;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -173,11 +170,8 @@ fieldset{
 }
 
 .hold-reviews{
-<<<<<<< HEAD
   background-color:  #ffffff;
-=======
-  background-color: #1F618D;
->>>>>>> detailPage
+  background-color: #0a2253;
   border-radius: 5px;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -234,7 +228,7 @@ fieldset{
   margin-left: 2rem;
   display: inline;
   width: 10rem;
-  border-right: 2px solid #6699cc;
+  border-right: 2px solid #ffffff;
   margin-left: 2rem;
 }
 
@@ -300,7 +294,7 @@ fieldset{
 }
 
 .hold-commnets{
-  color: #0a2253;
+  color: #ffffff;
   border-radius: 5px;
   background-color: #6699cc;
   padding-top: 1rem;
@@ -352,7 +346,7 @@ fieldset{
   font-size: 1.5rem;
   margin-top: 6rem;
   margin-bottom: -4rem;
-}
+  }
 
 @media (max-width: 60rem) {
   .table {

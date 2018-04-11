@@ -14,7 +14,6 @@ padding-left: 30px;
 font-size: 1rem; 
 border-bottom: double;
 text-align: center;
-
 &:hover{
   background-color: #e6f7ff;
 `;
