@@ -62,7 +62,7 @@ fieldset{
 
 .demo-infinite-container {
   margin-top: 100px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid #6699cc;
   border-radius: 4px;
   overflow: auto;
   padding: 8px 24px;
@@ -108,8 +108,19 @@ fieldset{
   text-align: center;
 }
 
+.department{
+  /* margin-top: -40px; */
+}
+
 .profName{
   font-size: 3rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Bree Serif', serif;
+}
+
+.title-detail-page{
+  font-size: 2rem;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-family: 'Bree Serif', serif;
@@ -148,6 +159,7 @@ fieldset{
 }
 
 .hold-list{
+  background-color: #ffffff;
   background-color: #0a2253;
   border-radius: 5px;
   padding-right: 2rem;
@@ -158,7 +170,7 @@ fieldset{
 }
 
 .hold-reviews{
-  background-color: #0a2253;
+  background-color:  #ffffff;
   border-radius: 5px;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -191,20 +203,20 @@ fieldset{
 }
 
 .this-review{
-  border: 4px solid #ffffff;
+  border: 4px solid #6699cc;
   border-radius: 5px;
-  background-color: #6699cc;
+  background-color: #ffffff;
   margin-top: 2rem;
-  color: #ffffff;
+  color: #6699cc;
   margin-left: 1rem;
 }
 
 .this-review-ratings{
-  margin-left: 2rem;
-  width: 8rem;
-  border-right: 2px solid #ffffff;
+  /* margin-left: 2rem;
+  width: 8rem; */
+  border-right: 2px solid #6699cc;
   vertical-align: middle;
-  padding-right: 2rem;
+  margin-left: 2rem;
 }
 
 .disp-emo{
@@ -212,15 +224,14 @@ fieldset{
 }
 
 .this-review-comments{
-  margin-left: 2rem;
+  /* margin-left: 2rem;
   display: inline;
-  width: 10rem;
-  border-right: 2px solid #ffffff;
+  width: 10rem; */
+  border-right: 2px solid #6699cc;
   margin-left: 2rem;
 }
 
 .this-review-commentscomments{
-  display: inline;
   margin-left: 2rem;
 }
 
@@ -229,7 +240,11 @@ fieldset{
   color: #ffffff;
 }
 
-
+.this-toookwith{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
 .class-deets{
   text-align: center;
 }
@@ -266,9 +281,12 @@ fieldset{
 .user-comments{
   background-color: #0a2253;
   margin-left: 6rem;
-  border: 4px solid #ffffff;
+  border: 4px solid #6699cc;
   border-radius: 5px;
   display: block;
+}
+.text-center{
+  text-align: center;
 }
 
 .underline{
@@ -278,9 +296,9 @@ fieldset{
 }
 
 .hold-commnets{
-  color: #0a2253;
+  color: #ffffff;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #6699cc;
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin-top: 1rem;
@@ -308,6 +326,12 @@ fieldset{
   margin-top: -4rem;
 }
 
+.previousCard{
+  padding-top: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Bree Serif', serif;  
+}
+
 .profRateList1{
   display: inline;
 }
@@ -318,8 +342,42 @@ fieldset{
   margin-left: 20px;
 }
 
+.list-header{
+  text-align: center;
+  font-family: 'Bree Serif', serif;
+  font-size: 1.5rem;
+  margin-top: 6rem;
+  margin-bottom: -4rem;
+  }
+
+.errorMessage{
+  padding-bottom: 5px;
+}
+
 @media (max-width: 60rem) {
   .table {
     /* display: none; */
   }
 }
+
+/*====legend===*/
+.legend {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 25px;
+  margin-top: 10px;
+  width: 50%;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Asap', sans-serif;
+  font-size: 1rem;
+}
+
+.catalog{
+  position: relative;
+  background-color: #ffffff;
+  width: 1000px;
+}
+
+
+

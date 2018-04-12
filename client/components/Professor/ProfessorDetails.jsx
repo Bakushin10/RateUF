@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card } from 'antd';
+import { Menu, Dropdown, Button, List, Avatar, Icon, Slider, Card, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
-import { GetSuccessMessage } from '../utility/commonJS';
+import { GetSuccessMessage, getPreviousCourse, getDepartment} from '../utility/commonJS';
 import { GetMessageOrGraph, GetReview } from './ProfDetailComponent';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -234,41 +234,57 @@ class ProfessorDetails extends React.Component {
               { GetSuccessMessage(this.state.submitSuccess) }
             </div>
             <div className= "prof">
-              <div className = "profName"> {this.state.profName}</div>
-              <div className="profDept"> Departmemnt : {this.state.major} </div>
-                <br/>
-                <div className="profRateButtom">
-                  <div className="profRateText">Taken this professor? </div>
-                  <Button type="primary" ghost>
-                    <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>
-                      <Icon type="form" /> Rate this professor
-                    </Link>
-                  </Button>
-                </div>
-                 <br/>
+              <Row>
+                <Col span={8} className = "title-detail-page">
+                  {this.state.profName}
+                </Col>
+                <Col span={8}></Col>
+                <Col span={6} className = "title-detail-page">
+                  <div className="profRateButtom">
+                    {/* <p className="profRateText">Taken this professor? </p> */}
+                    <Button type="primary" ghost>
+                      <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>
+                        <Icon type="form" /> Rate this professor
+                      </Link>
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col span={8}>
+                  <div className="profDept department">
+                    <h6>{getDepartment(this.state.major)}</h6>
+                  </div>
+                </Col>
+              </Row>
                 <div className="profPrevCourse">
                   <Dropdown overlay={menu} title="previous course">
                     <Button>Previous Courses</Button>
                   </Dropdown>
                 </div>
-                <br/>
             </div>
             <div>
-            <Tabs>
-              <TabList>
-                <Tab>OverView</Tab>
-                <Tab>Comments</Tab>
-              </TabList>
+              <Tabs>
+                <TabList>
+                  <Tab>OverView</Tab>
+                  <Tab>Comments</Tab>
+                  <Tab>Previous Courses</Tab>
+                </TabList>
 
-              <TabPanel>
-                { GetMessageOrGraph(ProfFields, this.state) }
-              </TabPanel>
-              <TabPanel>
-              <div className="the-graphs">
-                { GetReview(ProfFields.hasReview, this.state)}
-              </div>
-              </TabPanel>
-            </Tabs>
+                <TabPanel>
+                  { GetMessageOrGraph(ProfFields, this.state) }
+                </TabPanel>
+                <TabPanel>
+                  <div className="the-graphs">
+                    { GetReview(ProfFields.hasReview, this.state)}
+                  </div>
+                </TabPanel>
+                <TabPanel>
+                  <div className="the-graphs">
+                    { getPreviousCourse(this.state.major, this.state.previousCourse, "professor")}
+                  </div>
+                </TabPanel>
+              </Tabs>
             </div>
           </div>
           <Foot/>

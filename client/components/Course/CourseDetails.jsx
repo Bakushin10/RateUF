@@ -2,12 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import { List, Avatar, Icon, Slider, Card } from 'antd';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown, Button } from 'antd';
+import { Menu, Dropdown, Button, Row, Col } from 'antd';
 import { Redirect } from 'react-router';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import 'antd/dist/antd.css';
 import Head from '../Header-Footer/Head';
 import Foot from '../Header-Footer/Foot';
-import { GetSuccessMessage } from '../utility/commonJS';
+import { GetSuccessMessage, getPreviousCourse, getDepartment } from '../utility/commonJS';
 import { GetMessageOrGraph, GetReview } from './CourseDetailComponent';
 
 class CourseDetails extends React.Component {
@@ -220,18 +222,29 @@ class CourseDetails extends React.Component {
             { GetSuccessMessage(this.state.submitSuccess) }
           </div>
           <div className="class-deets">
-            <div className="class-code">{this.state.courseCode}</div>
-            <div className="class-name">{this.state.courseName}</div>
-            Departmemnt : {this.state.major}
-            
+          <Row>
+            <Col span={5} className = "title-detail-page">
+              {this.state.courseCode}
+            </Col>
+            <Col span={15} className = "title-detail-page">
+              {this.state.courseName}
+            </Col>
+            <Col span={4} className = "title-detail-page">
+              <Button type="primary" ghost>
+                <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
+                  <Icon type="form" /> Rate this Course
+                </Link>
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={8}>
+              <div className="profDept department">
+                <h5>{getDepartment(this.state.major)}</h5>
+              </div>
+            </Col>
+          </Row>
               <div>
-              <br/>
-              <div className="class-taken"> Taken This Course? </div>
-                <Button type="primary" ghost>
-                  <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
-                    <Icon type="form" /> Rate this Course
-                  </Link>
-                </Button>
               </div>
               <br/>      
               <div>
@@ -242,10 +255,28 @@ class CourseDetails extends React.Component {
               <br/>
             </div>
             <div>
+            <Tabs>
+              <TabList>
+                <Tab>OverView</Tab>
+                <Tab>Comments</Tab>
+                <Tab>Previous Courses</Tab>
+              </TabList>
+
+              <TabPanel>
                 { GetMessageOrGraph(ProfFields, this.state) }
-                <div className="the-graphs">{ GetReview(ProfFields.hasReview, this.state)}</div>
+              </TabPanel>
+              <TabPanel>
+              <div className="the-graphs">{ GetReview(ProfFields.hasReview, this.state)}</div>
+              </TabPanel>
+              <TabPanel>
+              <div className="the-graphs">
+                  { getPreviousCourse(this.state.major, this.state.previousProf, "course")}
+                </div>
+              </TabPanel>
+            </Tabs>
             </div>
         </div>
+        <Foot/>
       </div>
     );
   }
