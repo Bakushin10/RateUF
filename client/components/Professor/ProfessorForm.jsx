@@ -226,7 +226,7 @@ class ProfessorForm extends React.Component {
         <h1 class="profName">{profName}</h1>
         {GetErrorMessage(hasError)} {/* input error check*/}
         <div align="center">
-          <Form style={{ position:'relative', display:'block', background: '#e6f7ff', borderRadius:'25px', width:'60%' }}>
+          <Form style={{ position:'relative', display:'block', borderRadius:'25px', width:'60%' }}>
             <br/>
             <FormItem {...formItemLayout} label={ GetLabel(this.state.courseTakenFor, 'Class took with this professor')}>
                 { this.getCourseOption()}
