@@ -85,15 +85,17 @@ const WarningOff = styled.span`
   export const GetErrorMessage = (isSuccess) =>{
     return(
       <div hidden={!isSuccess}>
-        <Alert
-          style={{ width: '60%', 'margin-left':'20%', alignContent:'center' }}
-          message="Input Error"
-          type="warning"
-          description="Please check your inputs again."
-          type="error"
-          showIcon
-          >
-        </Alert>
+        <p className = "errorMessage">
+          <Alert
+            style={{ width: '60%', 'margin-left':'20%', alignContent:'center' }}
+            message="Input Error"
+            type="warning"
+            description="Please check your inputs again."
+            type="error"
+            showIcon
+            >
+          </Alert>
+        </p>
       </div>
     )
   }

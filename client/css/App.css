@@ -350,6 +350,10 @@ fieldset{
   margin-bottom: -4rem;
   }
 
+.errorMessage{
+  padding-bottom: 5px;
+}
+
 @media (max-width: 60rem) {
   .table {
     /* display: none; */
@@ -374,5 +378,6 @@ fieldset{
   background-color: #ffffff;
   width: 1000px;
 }
+
 
 
