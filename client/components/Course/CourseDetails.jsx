@@ -32,8 +32,6 @@ class CourseDetails extends React.Component {
     };
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
-    this.handleMenuClick = this.handleMenuClick.bind(this)
-    this.getMenuItemForPreviousProf = this.getMenuItemForPreviousProf.bind(this);
   }
 
   componentDidMount() {
@@ -122,10 +120,6 @@ class CourseDetails extends React.Component {
     this.setState({ overAllExpe: courseInfo.overview });
   }
 
-  jumpToSelectedClass(e, major) {
-    console.log('clicked!');
-  }
-
   getFieldValueForProfessor(ProfFields){
     let tempLevelOfDiff = 0;
 
@@ -135,26 +129,6 @@ class CourseDetails extends React.Component {
 
     ProfFields.levelOfDiff = (tempLevelOfDiff/this.state.reviews.length);
     ProfFields.hasReview = true;
-  }
-
-  handleMenuClick(e) {
-    //TODO
-    console.log('click', e.keyPath[0]);
-    this.setState({ redirectTo : e.keyPath[0] })
-    this.setState({ redirectCourse : true })
-    //return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${e.keyPath[0]}`}/>);
-  }
-
-  getMenuItemForPreviousProf(){
-    return(
-      <Menu onClick={this.handleMenuClick}>
-      {
-        this.state.previousProf.map(prof => (
-          <Menu.Item key = { prof.name } >{ prof.name+ "  " + prof.overview + "/100" }</Menu.Item>
-        ))
-      }
-      </Menu>
-    )
   }
 
   updateValueForOverAllExperience(){
@@ -189,20 +163,10 @@ class CourseDetails extends React.Component {
       levelOfDiff : 0,
       hasReview : this.state.hasReview
     }
-    let menu = (
-      <Menu><Menu.Item>No Professors to show</Menu.Item></Menu>
-    );
-
-    if(this.state.redirectCourse){
-      return (<Redirect to ={`/ProfessorDetails/${this.props.match.params.major}/${this.state.redirectTo}`}/>);
-    }
 
     // get values for graph if there are any reviews
     if(typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
       this.getFieldValueForProfessor(ProfFields);
-      menu = (
-        this.getMenuItemForPreviousProf()
-      );
     }
 
     //only execute ONCE to update overall experience value when a review was submitted.   
@@ -222,39 +186,30 @@ class CourseDetails extends React.Component {
             { GetSuccessMessage(this.state.submitSuccess) }
           </div>
           <div className="class-deets">
-          <Row>
-            <Col span={5} className = "title-detail-page">
-              {this.state.courseCode}
-            </Col>
-            <Col span={15} className = "title-detail-page">
-              {this.state.courseName}
-            </Col>
-            <Col span={4} className = "title-detail-page">
-              <Button type="primary" ghost>
-                <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
-                  <Icon type="form" /> Rate this Course
-                </Link>
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={8}>
-              <div className="profDept department">
-                <h5>{getDepartment(this.state.major)}</h5>
-              </div>
-            </Col>
-          </Row>
-              <div>
-              </div>
-              <br/>      
-              <div>
-                <Dropdown overlay={menu} title="previous course">
-                  <Button>Previous Professors</Button>
-                </Dropdown>
-              </div>
-              <br/>
-            </div>
-            <div>
+            <Row>
+              <Col span={5} className = "title-detail-page">
+                {this.state.courseCode}
+              </Col>
+              <Col span={15} className = "title-detail-page">
+                {this.state.courseName}
+              </Col>
+              <Col span={4} className = "title-detail-page">
+                <Button type="primary" ghost>
+                  <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
+                    <Icon type="form" /> Rate this Course
+                  </Link>
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col span={8}>
+                <div className="profDept department">
+                  <h5>{getDepartment(this.state.major)}</h5>
+                </div>
+              </Col>
+            </Row>
+          </div>
+          <div>
             <Tabs>
               <TabList>
                 <Tab>OverView</Tab>
@@ -274,7 +229,7 @@ class CourseDetails extends React.Component {
                 </div>
               </TabPanel>
             </Tabs>
-            </div>
+          </div>
         </div>
         <Foot/>
       </div>

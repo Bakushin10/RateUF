@@ -26,14 +26,12 @@ class ProfessorDetails extends React.Component {
       isOverAllExpeUpdated : false,
       submitSuccess : false,
       dataloaded : false,
-      redirectCourse : false,
-      redirectTo : ''
+      redirectCourse : false
     };
     this.getProfInfo = this.getProfInfo.bind(this);
     this.getProfReview = this.getProfReview.bind(this);
     this.getFieldValueForProfessor = this.getFieldValueForProfessor.bind(this);
     this.updateValueForOverAllExperience = this.updateValueForOverAllExperience.bind(this);
-    this.getMenuItemForPreviousCourse = this.getMenuItemForPreviousCourse.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
@@ -154,18 +152,6 @@ class ProfessorDetails extends React.Component {
     this.setState({ redirectCourse : true })
     //return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${e.keyPath[0]}`}/>);
   }
-
-  getMenuItemForPreviousCourse(){
-    return(
-      <Menu onClick={this.handleMenuClick}>
-      {
-        this.state.previousCourse.map(course => (
-          <Menu.Item key = {course.courseCode} >{ course.courseCode + "  " + course.overview + "/100" }</Menu.Item>
-        ))
-      }
-      </Menu>
-    )
-  }
   
   updateValueForOverAllExperience(){
     let overAllExpe = 0;
@@ -201,20 +187,10 @@ class ProfessorDetails extends React.Component {
       FaciliOfLearning : 0,
       hasReview : this.state.hasReview
     }
-    let menu = ( 
-      <Menu><Menu.Item>No courses to show</Menu.Item></Menu>
-    );
 
-    if(this.state.redirectCourse){
-      return (<Redirect to ={`/ClassDetails/${this.props.match.params.major}/${this.state.redirectTo}`}/>);
-    }
     // get values for graph if there are any reviews
     if(typeof this.state.reviews !== 'undefined' && this.state.reviews.length > 0){
       this.getFieldValueForProfessor(ProfFields);
-
-      menu = (
-        this.getMenuItemForPreviousCourse()
-      );
     }
 
     //only execute ONCE to update overall experience value when a review was submitted.   
@@ -257,11 +233,6 @@ class ProfessorDetails extends React.Component {
                   </div>
                 </Col>
               </Row>
-                <div className="profPrevCourse">
-                  <Dropdown overlay={menu} title="previous course">
-                    <Button>Previous Courses</Button>
-                  </Dropdown>
-                </div>
             </div>
             <div>
               <Tabs>

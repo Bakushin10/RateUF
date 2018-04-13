@@ -12,7 +12,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
     }else if(props.dataloaded && !ProfFields.hasReview){
       return(
           <Card hidden={ProfFields.hasReview}>
-            <div className="success-text"> Be the first one to review ! </div>
+            <div className="success-text"> Be the first to review ! </div>
           </Card>
       )
     }else{

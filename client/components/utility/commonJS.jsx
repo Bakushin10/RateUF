@@ -136,6 +136,7 @@ const WarningOff = styled.span`
     var rows = []
     if(items.length == 0 ){
       return(
+        ///ClassDetails/${this.props.match.params.major}/${this.state.redirectTo
         <p>
           <Card >
             <h5 className = "previousCard">No records to show</h5>
@@ -144,24 +145,30 @@ const WarningOff = styled.span`
       )
     }else if (category === "professor"){
       for(let i = 0;i<items.length ;i++){
+        const path = "#/ClassDetails"+"/"+major+"/"+items[i].courseCode
         rows.push(
-          <p>
-            <Card >
-              <h5 className = "previousCard">{items[i].courseCode}</h5>
-              {checkOVerView(items[i].overview)}
-            </Card>
-          </p>
+          <a href = {path}>
+            <p>
+              <Card>
+                <h5 className = "previousCard">{items[i].courseCode}</h5>
+                {checkOVerView(items[i].overview)}
+              </Card>
+            </p>
+          </a>
           )
         }
     }else{
       for(let i = 0;i<items.length ;i++){
+        const path = "#/ProfessorDetails"+"/"+major+"/"+items[i].name
         rows.push(
-          <p>
-            <Card >
-              <h5 className = "previousCard">{items[i].name}</h5>
-              {checkOVerView(items[i].overview)}
-            </Card>
-          </p>
+          <a href = {path}>
+            <p>
+              <Card>
+                <h5 className = "previousCard">{items[i].name}</h5>
+                {checkOVerView(items[i].overview)}
+              </Card>
+            </p>
+          </a>
           )
         }
     }
@@ -186,7 +193,7 @@ const WarningOff = styled.span`
     }
   }
 
-  function checkOVerView(overview){
+  export const checkOVerView = (overview) =>{
     if(overview == 0){
       return(
         <p> No reviews</p>
