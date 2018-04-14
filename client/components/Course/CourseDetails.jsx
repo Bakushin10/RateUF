@@ -48,8 +48,47 @@ class CourseDetails extends React.Component {
               major : major
             }
         }).then(function(response) {
+         
           professors = response.data;
-        });
+        
+          axios.get('/getPreviousProf', {
+            params: {
+              major: major,
+              courseCode : courseCode
+            }
+          }).then(function(response) {
+            const arr = response.data.ProfPreviouslyTaught;
+            let noDuplicate = []
+    
+            // trimming the duplicate 
+            for(var i = 0; i < arr.length ;i++){
+              var hasDuplicate = false
+              for(var j = 0; j < noDuplicate.length; j++){
+                if(arr[i].name === noDuplicate[j].name){
+                    hasDuplicate = true
+                }
+              }
+              if(!hasDuplicate){
+                noDuplicate.push(arr[i])
+              }
+            }
+    
+            //assign overview for previous courses
+            for(var i = 0; i < noDuplicate.length;i++){
+              for(var j = 0; j < professors.length; j++){
+                if(noDuplicate[i].name === professors[j].name){
+                  var professor = {
+                    name : noDuplicate[i].name,
+                    overview : professors[j].overview
+                  }
+                  self.setState({ previousProf: self.state.previousProf.concat([professor])});
+                }
+              }
+            }
+    
+            self.setState({ dataloaded : true });
+          });
+    });
 
     axios.get('/getCourseDetails', {
         params: {
@@ -67,44 +106,6 @@ class CourseDetails extends React.Component {
         }
       }).then(function(response) {
         self.setState({ reviews: response.data.review });
-      });
-
-    axios.get('/getPreviousProf', {
-        params: {
-          major: major,
-          courseCode : courseCode
-        }
-      }).then(function(response) {
-        const arr = response.data.ProfPreviouslyTaught;
-        let noDuplicate = []
-
-        // trimming the duplicate 
-        for(var i = 0; i < arr.length ;i++){
-          var hasDuplicate = false
-          for(var j = 0; j < noDuplicate.length; j++){
-            if(arr[i].name === noDuplicate[j].name){
-                hasDuplicate = true
-            }
-          }
-          if(!hasDuplicate){
-            noDuplicate.push(arr[i])
-          }
-        }
-
-        //assign overview for previous courses
-        for(var i = 0; i < noDuplicate.length;i++){
-          for(var j = 0; j < professors.length; j++){
-            if(noDuplicate[i].name === professors[j].name){
-              var professor = {
-                name : noDuplicate[i].name,
-                overview : professors[j].overview
-              }
-              self.setState({ previousProf: self.state.previousProf.concat([professor])});
-            }
-          }
-        }
-
-        self.setState({ dataloaded : true });
       });
 
       if(this.props.match.params.submissionSuccess === "success"){
