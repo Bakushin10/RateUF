@@ -24,9 +24,6 @@ router.route('/insertNewProfessorReview').post(function(req,res){
         courseTakenFor : req.body.courseTakenFor,
         tipsForSuccess : req.body.tipsForSuccess
     }
-
-    console.log(name)
-    console.log(newReview);
  
     DB_name.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
         function(err,req){
@@ -56,7 +53,7 @@ router.route('/updateProfessorComment').post(function(req,res){
             console.log(err);
             res.status(400).send(err);
         } else {
-            console.log("Successfully created new review!\n ");
+            console.log("Successfully upload new comment for a prof!\n ");
         }
     });
 })
@@ -77,7 +74,7 @@ router.route('/updateCourseComment').post(function(req,res){
             console.log(err);
             res.status(400).send(err);
         } else {
-            console.log("Successfully created new review!\n ");
+            console.log("Successfully update new comment for a course!\n ");
         }
     });
 })
@@ -118,9 +115,6 @@ router.route('/insertNewCourseReview').post(function(req,res){
         extraComment : req.body.extraComment,
         whoTookWith : req.body.whoTookWith
     }
-
-    console.log(courseCode)
-    console.log(newReview);
  
     DB_name.findOneAndUpdate({'courseCode':courseCode},{$push:{review:newReview}},{upsert:true},
         function(err,req){
@@ -224,9 +218,6 @@ router.get('/getProfComment',function(req, res) {
     const id = req.query.id;
     const name = req.query.name;
     const DB_name = require('../../models/'+major+'Model/'+major+'ProfComment')
-
-    console.log("major")
-    console.log(major)
     
     DB_name.find({name : name},function(err,professor){
         if(err)
@@ -278,7 +269,6 @@ router.get('/getProfReviews',function(req, res) {
     DB_name.findOne({name : name},function(err,professor){
         if(err)
             res.send(err);
-        console.log(professor)
         res.json(professor);
     })
 });
@@ -319,14 +309,11 @@ router.get('/getCourseDetails',function(req, res) {
 router.get('/getCourseReviews',function(req, res) {
     const major = req.query.major;
     const courseCode = req.query.courseCode;
-    console.log("getCourseReviews server side");
-    console.log(req.query)
     const DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
 
     DB_name.findOne({courseCode : courseCode},function(err,professor){
         if(err)
             res.send(err);
-        console.log(professor)
         res.json(professor);
     })
 });
@@ -342,7 +329,6 @@ router.get('/getPreviousProf',function(req, res) {
     DB_name.findOne({courseCode : courseCode},function(err,professor){
         if(err)
             res.send(err);
-        console.log(professor)
         res.json(professor);
     })
 });
