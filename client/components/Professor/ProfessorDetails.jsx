@@ -52,46 +52,47 @@ class ProfessorDetails extends React.Component {
             major : major
           }
       }).then(function(response) {
+
         courses = response.data;
-      });
-
-    axios.get('/getPreviousCourse', {
-      params: {
-        major: major,
-        name : name
-      }
-    }).then(function(response) {
-      let noDuplicate = []
-      const arr = response.data.coursePreviouslyTaught;
-      
-      // trimming the duplicate from course
-      for(var i = 0; i < arr.length ;i++){
-        var hasDuplicate = false
-        for(var j = 0; j < noDuplicate.length; j++){
-          if(arr[i].courseCode === noDuplicate[j].courseCode){
-              hasDuplicate = true
+        
+        axios.get('/getPreviousCourse', {
+          params: {
+            major: major,
+            name : name
           }
-        }
-        if(!hasDuplicate){
-          noDuplicate.push(arr[i])
-        }
-      }
-
-      //assign overview for previous courses
-      for(var i = 0; i < noDuplicate.length;i++){
-        for(var j = 0; j < courses.length ;j ++){
-          if(noDuplicate[i].courseCode === courses[j].courseCode){
-            var course = {
-              courseCode : noDuplicate[i].courseCode,
-              overview : courses[j].overview
+        }).then(function(response) {
+          let noDuplicate = []
+          const arr = response.data.coursePreviouslyTaught;
+          
+          // trimming the duplicate from course
+          for(var i = 0; i < arr.length ;i++){
+            var hasDuplicate = false
+            for(var j = 0; j < noDuplicate.length; j++){
+              if(arr[i].courseCode === noDuplicate[j].courseCode){
+                  hasDuplicate = true
+              }
             }
-            self.setState({ previousCourse: self.state.previousCourse.concat([course])});
+            if(!hasDuplicate){
+              noDuplicate.push(arr[i])
+            }
           }
-        }
-      }
-
-      self.setState({ dataloaded : true });
-    });
+    
+          //assign overview for previous courses
+          for(var i = 0; i < noDuplicate.length;i++){
+            for(var j = 0; j < courses.length ;j ++){
+              if(noDuplicate[i].courseCode === courses[j].courseCode){
+                var course = {
+                  courseCode : noDuplicate[i].courseCode,
+                  overview : courses[j].overview
+                }
+                self.setState({ previousCourse: self.state.previousCourse.concat([course])});
+              }
+            }
+          }
+    
+          self.setState({ dataloaded : true });
+        });
+      });
 
     if(this.props.match.params.submissionSuccess === "success"){
        this.setState({submitSuccess : true})
