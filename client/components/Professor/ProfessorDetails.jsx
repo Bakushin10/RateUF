@@ -205,7 +205,7 @@ class ProfessorDetails extends React.Component {
 
     return (
       <div>
-        <Head />
+        <Head/>
           <div className="container">
             <div>
               { GetSuccessMessage(this.state.submitSuccess) }

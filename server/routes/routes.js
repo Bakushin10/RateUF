@@ -22,7 +22,9 @@ router.route('/insertNewProfessorReview').post(function(req,res){
         wouldTakeAgain : req.body.wouldTakeAgain,
         extraComment : req.body.extraComment,
         courseTakenFor : req.body.courseTakenFor,
-        tipsForSuccess : req.body.tipsForSuccess
+        tipsForSuccess : req.body.tipsForSuccess,
+        thumbsUp: 0,
+        thumbsDown:0
     }
  
     DB_name.findOneAndUpdate({'name':name},{$push:{review:newReview}},{upsert:true},
@@ -273,6 +275,7 @@ router.get('/getProfReviews',function(req, res) {
     })
 });
 
+
 /*
  retrieve array of all classes by selected major 
 */
@@ -375,5 +378,49 @@ router.get('/updateOverAllExpeForACourse',function(req, res) {
         res.json(professor);
     })
 });
+
+//API for updating thumbUp or thumdDown
+router.get('/updateThumbs',function(req, res) {
+    const id = req.query.id;
+    const condition = req.query.condition;
+    const major = req.query.major;
+    var thumps = {
+        thumbsUp : 0,
+        thumbsDown : 0
+    }
+    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
+    
+    if(condition === "thumbsUp"){
+        DB_name.findOneAndUpdate(
+            {'review._id': id}, //find the element in array
+            {$inc: {'review.$.thumbsUp': 1 }
+            },function(err,professor){
+            if(err)
+                res.send(err);
+        })
+    }else{
+        DB_name.findOneAndUpdate(
+            {'review._id': id},
+            {$inc: {'review.$.thumbsDown': 1}
+            },function(err,professor){
+            if(err)
+                res.send(err);
+        })
+    }
+
+    DB_name.findOne({'review._id': id},function(err, request){
+        if(err)
+            res.send(err);
+
+        for(var i = 0; i < request.review.length; i++){
+            if(request.review[i]._id == id){
+                thumps.thumbsUp = request.review[i].thumbsUp;
+                thumps.thumbsDown = request.review[i].thumbsDown;
+            }
+        }
+        res.json(thumps);
+    })
+});
+
 
 module.exports = router;

@@ -12,7 +12,9 @@ var ReviewSchema = new Schema({
         wouldTakeAgain: String,
         extraComment: String,
         courseTakenFor : String,
-        tipsForSuccess : Array
+        tipsForSuccess : Array,
+        thumbsUp : Number,
+        thumbsDown: Number
     }]
 });
 

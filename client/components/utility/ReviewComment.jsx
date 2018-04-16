@@ -23,9 +23,9 @@ class ReviewComment extends React.Component {
 
     componentDidMount(){
         let self = this;
-        console.log("major")
-        console.log(this.props.major)
-        console.log(this.props.name)
+        // console.log("major")
+        // console.log(this.props.major)
+        // console.log(this.props.name)
         
             /*
             

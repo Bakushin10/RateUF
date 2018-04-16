@@ -62,7 +62,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
   }
 
   export const GetReview = (hasReview, props) =>{
-
+    // console.log(props.reviews)
     if(hasReview){
         return(
           <div>
@@ -80,7 +80,12 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
                 // </Button>
               ]}
               >
-                <LikeDislike/>
+                <LikeDislike 
+                  id = {item._id}
+                  major = {props.major}
+                  thumbsDown = {item.thumbsDown}
+                  thumbsUp = {item.thumbsUp}
+                />
                 <Col span={6} className="this-review-ratings">
                   <div className="this-toookwith">
                     {item.courseTakenFor}
