@@ -26,7 +26,8 @@ class LikeDislike extends React.Component{
             params:{
               id : this.props.id,
               major: this.props.major,
-              condition : "thumbsUp"
+              condition : "thumbsUp",
+              isProf : this.props.isProf
             }
         }).then(function(response) {
             //update the state
@@ -41,7 +42,8 @@ class LikeDislike extends React.Component{
             params:{
               id : this.props.id,
               major: this.props.major,
-              condition : "thumbsDown"
+              condition : "thumbsDown",
+              isProf : this.props.isProf
             }
         }).then(function(response) {
             //console.log(response.data);

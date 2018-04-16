@@ -85,6 +85,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
                   major = {props.major}
                   thumbsDown = {item.thumbsDown}
                   thumbsUp = {item.thumbsUp}
+                  isProf = {"Prof"}
                 />
                 <Col span={6} className="this-review-ratings">
                   <div className="this-toookwith">

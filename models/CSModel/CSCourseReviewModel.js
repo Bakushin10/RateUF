@@ -10,7 +10,9 @@ var ReviewSchema = new Schema({
         knowBeforeCourse: Array,
         howIsTheClass: Array,
         extraComment: String,
-        whoTookWith: String
+        whoTookWith: String,
+        thumbsUp : Number,
+        thumbsDown: Number
     }]
 });
 

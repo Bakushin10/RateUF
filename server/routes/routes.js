@@ -115,7 +115,9 @@ router.route('/insertNewCourseReview').post(function(req,res){
         knowBeforeCourse : req.body.knowBeforeCourse,
         howIsTheClass : req.body.howIsTheClass,
         extraComment : req.body.extraComment,
-        whoTookWith : req.body.whoTookWith
+        whoTookWith : req.body.whoTookWith,
+        thumbsUp: 0,
+        thumbsDown:0
     }
  
     DB_name.findOneAndUpdate({'courseCode':courseCode},{$push:{review:newReview}},{upsert:true},
@@ -388,7 +390,16 @@ router.get('/updateThumbs',function(req, res) {
         thumbsUp : 0,
         thumbsDown : 0
     }
-    const DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
+    let DB_name;
+    
+    if(req.query.isProf === "Prof"){
+        console.log("Prof")
+        DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
+    }
+    else{
+        console.log("Course")
+        DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
+    }
     
     if(condition === "thumbsUp"){
         DB_name.findOneAndUpdate(
