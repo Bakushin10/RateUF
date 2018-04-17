@@ -219,7 +219,7 @@ class ProfessorDetails extends React.Component {
                 <Col span={6} className = "title-detail-page">
                   <div className="profRateButtom">
                     {/* <p className="profRateText">Taken this professor? </p> */}
-                    <Button type="primary" ghost>
+                    <Button type="primary" >
                       <Link to={`/ProfessorForm/${this.state.major}/${this.state.profName}`}>
                         <Icon type="form" /> Rate this professor
                       </Link>
@@ -238,7 +238,7 @@ class ProfessorDetails extends React.Component {
             <div>
               <Tabs>
                 <TabList>
-                  <Tab>OverView</Tab>
+                  <Tab>Overview</Tab>
                   <Tab>Comments</Tab>
                   <Tab>Previous Courses</Tab>
                 </TabList>

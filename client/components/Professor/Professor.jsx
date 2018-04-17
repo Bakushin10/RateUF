@@ -133,9 +133,10 @@ class Professor extends React.Component {
         <h1 className="title-here">Find Professor</h1>
         <div>
           <Dropdown overlay={menu} title="Change Major">
-            <Button>Change Major</Button>
+            <Button>Filter by Major</Button>
           </Dropdown>
         </div>
+        <br/>
         { <Search {...this.state} type = {"Professor"} /> }
       </div>
       <Foot />
