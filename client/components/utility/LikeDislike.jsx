@@ -16,8 +16,19 @@ class LikeDislike extends React.Component{
 
     componentDidMount(){
         let self = this;
-        self.setState({thumbsUp : self.props.thumbsUp})
-        self.setState({thumbsDown : self.props.thumbsDown})
+
+        axios.get('/getThumbs',{
+            params:{
+              id : this.props.id,
+              major: this.props.major,
+              condition : "thumbsUp",
+              isProf : this.props.isProf
+            }
+        }).then(function(response) {
+            //update the state
+            self.setState({thumbsUp : response.data.thumbsUp})
+            self.setState({thumbsDown : response.data.thumbsDown})
+        })
     }
     
     thumbsUpOnClick(){
@@ -32,7 +43,6 @@ class LikeDislike extends React.Component{
         }).then(function(response) {
             //update the state
             self.setState({thumbsUp : response.data.thumbsUp})
-            self.setState({thumbsDown : response.data.thumbsDown})
         })
     }
 
@@ -48,26 +58,21 @@ class LikeDislike extends React.Component{
         }).then(function(response) {
             //console.log(response.data);
             //update the state
-            self.setState({thumbsUp : response.data.thumbsUp})
             self.setState({thumbsDown : response.data.thumbsDown})
         })
     }
 
     render(){
         return(
-            <Row>
-                <Col>
-                    <Button onClick={this.thumbsUpOnClick} type="primary" shape="circle" icon="like"></Button>
-                    <div>
-                        {this.state.thumbsUp}
-                    </div>
-                </Col>
-                <Col>
-                    <Button onClick={this.thumbsDownOnClick} type="primary" shape="circle" icon="dislike"></Button>
-                    <div>
-                        {this.state.thumbsDown}
-                    </div>
-                </Col>
+            <Row>           
+                <Button onClick={this.thumbsUpOnClick} type="primary" shape="circle" icon="like"></Button>
+                <div>
+                    {this.state.thumbsUp}
+                </div>
+                <Button onClick={this.thumbsDownOnClick} type="primary" shape="circle" icon="dislike"></Button>
+                <div>
+                    {this.state.thumbsDown}
+                </div>
             </Row>
         )
     }

@@ -23,17 +23,17 @@ class Search extends React.Component{
         this.setState({ searchTerm: e.target.value });
         console.log("searchTerm")
         console.log(this.state.searchTerm)
-        this.searchProf();
+        this.searchProf(e.target.value);
     }
     
     handleSearchCourse(e) {
         this.setState({ searchTerm: e.target.value });
-        this.searchCourse();
+        this.searchCourse(e.target.value);
     }
 
-    searchProf(){
+    searchProf(searchTerm){
         const selectedProf = this.props.professor.filter(prof => {
-          if (`${prof.name}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0) {
+          if (`${prof.name}`.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0) {
             return prof;
           }
         });
@@ -41,10 +41,10 @@ class Search extends React.Component{
         this.setState({ listToShow : selectedProf })
     }
 
-    searchCourse() {
+    searchCourse(searchTerm) {
         const selectedCourse = this.props.course.filter(course => {
-          if (`${course.courseName}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0 ||
-              `${course.courseCode}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0) {
+          if (`${course.courseName}`.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0 ||
+              `${course.courseCode}`.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0) {
             return course;
           }
         });

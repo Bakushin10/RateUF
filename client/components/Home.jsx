@@ -17,22 +17,22 @@ export default class Home extends React.Component {
           <div className="welcome-buttons">
             <Col span={3} offset={3}>
             <a href="/#/Professor" >
-              <Button type="default" className="botones" size="large" ghost>
-                  Professors 
+              <Button type="default" className="botones" size="large">
+                  Rate Professors 
               </Button>
               </a>
             </Col>
             <Col span={3} offset={3}>
             <a href="/#/Class">
-              <Button type="default" className="botones" size="large" ghost>
-                Classes
+              <Button type="default" className="botones" size="large" >
+                Rate Classes
               </Button>
               </a>
             </Col>
             <Col span={3} offset={2}>
             <a href="/#/CSECatalog">
-              <Button type="default" className="botones" size="large" ghost>
-                Degree Outline
+              <Button type="default" className="botones" size="large" >
+                See Degree Outline
               </Button>
               </a>
             </Col>

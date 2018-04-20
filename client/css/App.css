@@ -346,9 +346,9 @@ fieldset{
 .list-header{
   text-align: center;
   font-family: 'Bree Serif', serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-top: 6rem;
-  margin-bottom: -4rem;
+  margin-bottom: -5rem;
   }
 
 .errorMessage{

@@ -130,10 +130,11 @@ class Course extends React.Component {
           <h1 className="title-here">Find Class</h1>
           <div>
                 <Dropdown overlay = {menu} title="Change Major">
-                    <Button >Change Major</Button>
+                    <Button >Filter by Major</Button>
                 </Dropdown>
-            </div>
-            { <Search {...this.state} type = {"Course"} /> }
+          </div>
+          <br/>
+          { <Search {...this.state} type = {"Course"} /> }
             
         </div>
         <Foot />

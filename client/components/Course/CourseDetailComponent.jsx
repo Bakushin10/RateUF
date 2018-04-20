@@ -54,8 +54,6 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
                 <LikeDislike 
                   id = {item._id}
                   major = {props.major}
-                  thumbsDown = {item.thumbsDown}
-                  thumbsUp = {item.thumbsUp}
                   isProf = {"course"}
                 />
                 <Col span={6} className="this-review-ratings">

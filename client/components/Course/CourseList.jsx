@@ -12,7 +12,7 @@ padding-top: 0.75rem;
 padding-bottom: 1rem;
 padding-left: 30px;
 font-size: 1rem; 
-border-bottom: double;
+border-bottom: 1px solid #d9d9d9;
 text-align: center;
 &:hover{
   background-color: #e6f7ff;

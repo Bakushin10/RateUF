@@ -195,7 +195,7 @@ class CourseDetails extends React.Component {
                 {this.state.courseName}
               </Col>
               <Col span={4} className = "title-detail-page">
-                <Button type="primary" ghost>
+                <Button type="primary">
                   <Link to={`/ClassForm/${this.state.major}/${this.state.courseCode}/${this.state.courseName}`}>
                     <Icon type="form" /> Rate this Course
                   </Link>
@@ -213,9 +213,9 @@ class CourseDetails extends React.Component {
           <div>
             <Tabs>
               <TabList>
-                <Tab>OverView</Tab>
+                <Tab>Overview</Tab>
                 <Tab>Comments</Tab>
-                <Tab>Previous Courses</Tab>
+                <Tab>Previous Professors</Tab>
               </TabList>
 
               <TabPanel>
