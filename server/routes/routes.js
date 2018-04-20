@@ -381,6 +381,8 @@ router.get('/updateOverAllExpeForACourse',function(req, res) {
     })
 });
 
+
+
 //API for updating thumbUp or thumdDown
 router.get('/updateThumbs',function(req, res) {
     const id = req.query.id;
@@ -393,11 +395,9 @@ router.get('/updateThumbs',function(req, res) {
     let DB_name;
     
     if(req.query.isProf === "Prof"){
-        console.log("Prof")
         DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
     }
     else{
-        console.log("Course")
         DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
     }
     
@@ -433,5 +433,39 @@ router.get('/updateThumbs',function(req, res) {
     })
 });
 
+
+router.get('/getThumbs',function(req, res) {
+    const id = req.query.id;
+    const condition = req.query.condition;
+    const major = req.query.major;
+    var thumps = {
+        thumbsUp : 0,
+        thumbsDown : 0
+    }
+    let DB_name;
+
+    if(req.query.isProf === "Prof"){
+        DB_name = require('../../models/'+major+'Model/'+major+'ProfReviewModel')
+    }
+    else{
+        DB_name = require('../../models/'+major+'Model/'+major+'CourseReviewModel')
+    }
+
+    DB_name.findOne({'review._id': id},function(err, request){
+        if(err)
+            res.send(err);
+
+            for(var i = 0; i < request.review.length; i++){
+                if(request.review[i]._id == id){
+                    thumps.thumbsUp = request.review[i].thumbsUp;
+                    thumps.thumbsDown = request.review[i].thumbsDown;
+                }
+            }
+        
+        // console.log(thumps)
+        res.json(thumps);
+    })
+
+});
 
 module.exports = router;

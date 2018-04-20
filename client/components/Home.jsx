@@ -18,21 +18,21 @@ export default class Home extends React.Component {
             <Col span={3} offset={3}>
             <a href="/#/Professor" >
               <Button type="default" className="botones" size="large">
-                  Professors 
+                  Rate Professors 
               </Button>
               </a>
             </Col>
             <Col span={3} offset={3}>
             <a href="/#/Class">
               <Button type="default" className="botones" size="large" >
-                Classes
+                Rate Classes
               </Button>
               </a>
             </Col>
             <Col span={3} offset={2}>
             <a href="/#/CSECatalog">
               <Button type="default" className="botones" size="large" >
-                Degree Outline
+                See Degree Outline
               </Button>
               </a>
             </Col>

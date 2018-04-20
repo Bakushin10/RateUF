@@ -3,7 +3,7 @@ import Spinner from '../utility/Spinner';
 import Gauge from 'react-svg-gauge';
 import { List, Icon, Card, Button, Row, Col, Rate } from 'antd';
 import { ShowArrays, getEmotion, getHexColor, getRating } from '../utility/commonJS';
-import Comment from '../utility/ReviewComment';
+import ReviewComment from '../utility/ReviewComment';
 import LikeDislike from '../utility/LikeDislike'
 
 export const GetMessageOrGraph = (ProfFields, props) =>{
@@ -83,8 +83,6 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
                 <LikeDislike 
                   id = {item._id}
                   major = {props.major}
-                  thumbsDown = {item.thumbsDown}
-                  thumbsUp = {item.thumbsUp}
                   isProf = {"Prof"}
                 />
                 <Col span={6} className="this-review-ratings">
@@ -138,7 +136,7 @@ export const GetMessageOrGraph = (ProfFields, props) =>{
                       description = {item.extraComment}
                       />
                     </div>
-                      <Comment name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
+                      <ReviewComment name = {props.profName} major = {props.major} id = {item._id} type = {"professor"}/>
                   </Col>
               </List.Item>
               </Row>
