@@ -9,8 +9,7 @@ RateUF will be used to help UF students determine what courses to take when regi
 
 ## Resources Used ##
 + MERN STACK
-+ [Bootstrap](https://getbootstrap.com/ "Bootstrap Website") for front-end components
 + [PayPal Express Checkout](https://developer.paypal.com/docs/integration/direct/express-checkout/integration-jsv4/ "PayPal Express Checkout Page") for user payments
 + [Create React App](https://github.com/facebookincubator/create-react-app).
-+ [Ant Design](https://ant.design/)
++ [Ant Design](https://ant.design/) for front-end Design
 
