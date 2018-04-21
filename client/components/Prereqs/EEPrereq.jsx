@@ -11,13 +11,13 @@ class EEPrereq extends React.Component {
         super(props);
         const code =
             `
-EEL3701C=>condition: EEL3701C|department1:>http://localhost:8000/#/ClassDetails/ECE/EEL%203701
-EEL3000=>condition: EEL3000|department2:>http://localhost:8000/#/ClassDetails/ECE/EEL%203000
-EEL3135=>condition: EEL3135|department3:>http://localhost:8000/#/ClassDetails/ECE/EEL%203135
-EEL3111C=>condition: EEL3111C|department4:>http://localhost:8000/#/ClassDetails/ECE/EEL%203701
-EEL3008=>condition: EEL3008|department5:>http://localhost:8000/#/ClassDetails/ECE/EEL%203744
-EEL3112=>condition: EEL3112|department6:>http://localhost:8000/#/ClassDetails/ECE/EEL%204712
-EEL3744C=>condition: EEL3744C|department7:>http://localhost:8000/#/ClassDetails/ECE/EEL%203923
+EEL3701C=>condition: EEL3701C|department1:>#/ClassDetails/ECE/EEL%203701
+EEL3000=>condition: EEL3000|department2:>#/ClassDetails/ECE/EEL%203000
+EEL3135=>condition: EEL3135|department3:>#/ClassDetails/ECE/EEL%203135
+EEL3111C=>condition: EEL3111C|department4:>#/ClassDetails/ECE/EEL%203701
+EEL3008=>condition: EEL3008|department5:>#/ClassDetails/ECE/EEL%203744
+EEL3112=>condition: EEL3112|department6:>#/ClassDetails/ECE/EEL%204712
+EEL3744C=>condition: EEL3744C|department7:>#/ClassDetails/ECE/EEL%203923
 
 EEL3701C(no)->EEL3000(no)->EEL3135(no)->EEL3111C(yes)->EEL3008
 EEL3701C(yes)->EEL3744C

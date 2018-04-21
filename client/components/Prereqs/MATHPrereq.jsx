@@ -10,15 +10,15 @@ class MATHPrereq extends React.Component {
         super(props);
         const code =
             `
-MAC2311=>condition: MAC2311|department1:>http://localhost:8000/#/ClassDetails/MATH/MAC%202311
-MAC2312=>condition: MAC2312|department2:>http://localhost:8000/#/ClassDetails/MATH/MAC%202312
-MAC2313=>condition: MAC2313|department3:>http://localhost:8000/#/ClassDetails/MATH/MAC%202313
-MHF3202=>condition: MHF3202|department4:>http://localhost:8000/#/ClassDetails/MATH/MHF%203202
-MAP2302=>condition: MAP2302|department5:>http://localhost:8000/#/ClassDetails/MATH/MAP%202302
-MAS4105=>condition: MAS4105|department6:>http://localhost:8000/#/ClassDetails/MATH/MAS%204105
-MAS4301=>condition: MAS4301|department7:>http://localhost:8000/#/ClassDetails/MATH/MAS%204301
-MAA4211=>condition: MAA4211|department8:>http://localhost:8000/#/ClassDetails/MATH/MAA%204211
-MAA4212=>condition: MAA4212|department9:>http://localhost:8000/#/ClassDetails/MATH/MAA%204212
+MAC2311=>condition: MAC2311|department1:>#/ClassDetails/MATH/MAC%202311
+MAC2312=>condition: MAC2312|department2:>#/ClassDetails/MATH/MAC%202312
+MAC2313=>condition: MAC2313|department3:>#/ClassDetails/MATH/MAC%202313
+MHF3202=>condition: MHF3202|department4:>#/ClassDetails/MATH/MHF%203202
+MAP2302=>condition: MAP2302|department5:>#/ClassDetails/MATH/MAP%202302
+MAS4105=>condition: MAS4105|department6:>#/ClassDetails/MATH/MAS%204105
+MAS4301=>condition: MAS4301|department7:>#/ClassDetails/MATH/MAS%204301
+MAA4211=>condition: MAA4211|department8:>#/ClassDetails/MATH/MAA%204211
+MAA4212=>condition: MAA4212|department9:>#/ClassDetails/MATH/MAA%204212
 
 MAC2311(yes)->MAC2312(yes)->MAC2313(yes)->MAS4105(yes)->MAS4301(yes)->MAA4211(yes)->MAA4212
 MAC2312(no)->MHF3202(yes)->MAS4105
