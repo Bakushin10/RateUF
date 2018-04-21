@@ -1,5 +1,5 @@
 # RateUF #
-This is our senior project at University of Florida Apring 2018
+This is our senior project at University of Florida Spring 2018
 
 [Visit the website here](https://rateuf.herokuapp.com/#/ "Study Swamp Website")
 
