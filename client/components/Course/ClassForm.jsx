@@ -195,9 +195,15 @@ class ClassForm extends React.Component {
           placeholder="How is the course itself ?"
           onChange={this.howIsTheClassOnChange}
         >
+          <Select.Option value="class is easy">class is easy</Select.Option>
           <Select.Option value="material is hard">material is hard</Select.Option>
           <Select.Option value="busy work">busy work</Select.Option>
-          <Select.Option value="add more">add more</Select.Option>
+          <Select.Option value="Weekly quizzes">Weekly quizzes</Select.Option>
+          <Select.Option value="lecture heavy">lecture heavy</Select.Option>
+          <Select.Option value="attendance mandatory">attendance mandatory</Select.Option>
+          <Select.Option value="hard Projects">hard projects</Select.Option>
+          <Select.Option value="Hard exams">Hard exams</Select.Option>
+          <Select.Option value="easy exams">easy exams</Select.Option>
         </Select>
     )
   }
