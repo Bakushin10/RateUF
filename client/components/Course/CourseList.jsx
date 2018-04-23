@@ -88,6 +88,6 @@ function getNumberOfReviews(courseCode,reviewForAllCourses){
 
 function getOverview(overview){
     if(overview > 0){
-        return <span>{overview} / 100</span>;
+        return <span>{parseFloat(overview).toFixed(1)} / 100</span>;
     }
 }
